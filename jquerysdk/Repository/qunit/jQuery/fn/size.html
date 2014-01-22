@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 2 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<style type="text/css">
+.box {
+	position:    absolute;
+	margin:      15px;
+	border:      solid 5px;
+	padding:     10px;
+	width:       100px;
+	height:      100px
+}
+</style>
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.fn.size");
+
+	asyncTest('jQuery.fn.size', function() {
+
+		$.ready( 'jQuery.fn.size', function($){
+
+			// WIDTH
+			equal(
+				$('.box').width(),
+				100,
+				"$('.box').width()"
+			);
+			equal(
+				$('.box').width(300).width(),
+				300,
+				"$('.box').width(300).width()"
+			);
+			equal(
+				$('.box').innerWidth(300).width(),
+				280,
+				"$('.box').innerWidth(300).width()"
+			);
+			equal(
+				$('.box').outerWidth(300).width(),
+				270,
+				"$('.box').outerWidth(300).width()"
+			);
+			equal(
+				$('.box').outerWidth(300,true).width(),
+				240,
+				"$('.box').outerWidth(300,true).width()"
+			);
+
+			// HEIGHT
+			equal(
+				$('.box').height(),
+				100,
+				"$('.box').height()"
+			);
+			equal(
+				$('.box').height(300).height(),
+				300,
+				"$('.box').height(300).height()"
+			);
+			equal(
+				$('.box').innerHeight(300).height(),
+				280,
+				"$('.box').innerHeight(300).height()"
+			);
+			equal(
+				$('.box').outerHeight(300).height(),
+				270,
+				"$('.box').outerHeight(300).height()"
+			);
+			equal(
+				$('.box').outerHeight(300,true).height(),
+				240,
+				"$('.box').outerHeight(300,true).height()"
+			);
+
+			start();
+
+		});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">
+		<div class="box"></div>
+	</div>
+</body>
+</html>

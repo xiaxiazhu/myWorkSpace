@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 2 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.fn.bound");
+
+	asyncTest('jQuery.fn.bound', function() {
+
+		$.ready( 'jQuery.fn.bound', function($){
+			
+			var data = {qunit:'test'},
+				elem = $('.elem')
+					.on( 'click', $.noop )
+					.on( 'click.my', $.noop )
+					.on( 'mouseover', $.noop )
+					.on( 'mouseenter.me', data, $.noop )
+					.eq(1)
+						.on( 'mouseover.me', $.noop )
+						.on( 'click', data, $.noop )
+					.end(),
+				t;
+			
+			t = 0;
+			elem.bound( 'click', function( i, handle ){ t++; });
+			equals(
+				t,
+				5,
+				"$('.elem').bound( 'click', function( i, handle ){ t = i })"
+			);
+			
+			t = 0;
+			elem.bound( 'click.my', function( i, handle ){ t++; });
+			equals(
+				t,
+				2,
+				"$('.elem').bound( 'click.my', function( i, handle ){ count() })"
+			);
+			
+			t = 0;
+			elem.bound( '*.me', function( i, handle ){ t++; });
+			equals(
+				t,
+				3,
+				"$('.elem').bound( '*.me', function( i, handle ){ count() })"
+			);
+			
+			t = 0;
+			elem.bound( 'mouseenter', function( i, handle ){ t++; });
+			equals(
+				t,
+				2,
+				"$('.elem').bound( 'mouseenter', function( i, handle ){ count() })"
+			);
+			
+			elem.bound( 'click', function( i, handle ){ t = handle.data; });
+			same(
+				t,
+				data,
+				"$('.elem').bound( 'click', function( i, handle ){ handle.data })"
+			);
+			
+			t = 0;
+			elem.bound( '*.me', function( i, handle ){ elem.off(handle.origType, handle.handler) });
+			elem.bound( '*.me', function( i, handle ){ t++; });
+			same(
+				t,
+				0,
+				"$('.elem').bound( '*.me', function( i, handle ){ .off(); })"
+			);
+			start();
+		});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">
+		<div class="elem"></div>
+		<div class="elem"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+
+@plugin				jQuery.support.flash
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				jQuery.support.flash                 | Available flash version. | property
+
+@categories			Utilities | Properties of the Global jQuery Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				jQuery.support.flash
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        This property represent the flash version string, if flash is'n supported the string will be empty.

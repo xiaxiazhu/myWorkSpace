@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!--script type="text/javascript" src="https://getfirebug.com/firebug-lite-debug.js"></script>
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 2 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	},
+	i18n:{
+		region:		['de-DE','en-US','fr-FR']
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/jQuery/ui/core.css" rel="stylesheet"/>
+<link   type="text/css"       href="style/jQuery/ui/datepicker.css" rel="stylesheet"/>
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<style type="text/css">
+.scrollbox-test {
+	padding: 20px;
+	width: 500px;
+	height: 300px;
+	overflow: auto;
+	background: green;
+}
+</style>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.ui.datepicker");
+
+	asyncTest('jQuery.ui.datepicker', function() {
+
+		$.ready('jQuery.ui.datepicker', function($){
+
+			var elem = $('#datepicker01')
+			
+			elem.datepicker({region: "de-DE"});
+			$.each({
+				dayNames		: [ "Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag" ],
+				dayNamesMin		: [ "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa" ],
+				dayNamesShort	: [ "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa" ],
+				monthNames		: [ "Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember", "" ],
+				monthNamesShort	: [ "Jan", "Feb", "Mrz", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez", "" ],
+				firstDay		: 1,
+				shortYearCutoff : "+19",
+				dateFormat		: "dd.mm.yy"
+			}, function( name, value ){	
+				same(
+					elem.datepicker('option',name),
+					value,
+					"$('#datepicker01').datepicker('option','" + name + "') == '" + value + "'"
+				);
+			});
+			
+			elem.datepicker("option", {region: "en-US"});
+			$.each({
+				dayNames		: [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ],
+				dayNamesMin		: [ "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa" ],
+				dayNamesShort	: [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ],
+				monthNames		: [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "" ],
+				monthNamesShort	: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "" ],
+				firstDay		: 0,
+				shortYearCutoff : "+19",
+				dateFormat		: "m/d/yy"
+			}, function( name, value ){	
+				same(
+					elem.datepicker('option',name),
+					value,
+					"$('#datepicker01').datepicker('option','" + name + "') == '" + value + "'"
+				);
+			});
+			
+			elem.datepicker("option", "region", "fr-FR");
+			$.each({
+				dayNames		: [ "dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi" ],
+				dayNamesMin		: [ "di", "lu", "ma", "me", "je", "ve", "sa" ],
+				dayNamesShort	: [ "dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam." ],
+				monthNames		: [ "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre", "" ],
+				monthNamesShort	: [ "janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc.", "" ],
+				firstDay		: 1,
+				shortYearCutoff : "+19",
+				dateFormat		: "dd/mm/yy"
+			}, function( name, value ){	
+				same(
+					elem.datepicker('option',name),
+					value,
+					"$('#datepicker01').datepicker('option','" + name + "') == '" + value + "'"
+				);
+			});
+
+			start();
+
+		});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">
+		<input type="text" id="datepicker01"/>
+	</div>
+</body>
+</html>

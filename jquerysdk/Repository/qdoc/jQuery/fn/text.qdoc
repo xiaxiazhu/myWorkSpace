@@ -1,0 +1,56 @@
+
+@plugin				jQuery.fn.text
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.text()                              | Get the combined text contents of each element in the set of matched elements, including their descendants. | method
+
+@categories			Attributes
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.text( [ getFirst ] )
+@added				1.0
+@param				getFirst                             | A Boolean indicating whether to get only the text contents the first element. in the set of matched elements. | Optional,Boolean
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        The <<.text(true)>> method allows to get only the text contents the first element in the set of matched elements.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Get text including contets.
+
+@html				<div class="demo-container">
+					  Start
+					  <div class="demo-box">Demonstration Box</div>
+					  <ul>
+					    <li>list <strong>item</strong> 1</li>
+					    <li>list <strong>item</strong> 2</li>
+					  </ul>
+					  End
+					</div>
+
+@code				$('div.demo-container').text();
+
+@results			Start Demonstration Box list item 1 list item 2 End
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Get text only from first mached element.
+
+@html				<div class="demo-container">
+					  Start
+					  <div class="demo-box">Demonstration Box</div>
+					  <ul>
+					    <li>list <strong>item</strong> 1</li>
+					    <li>list <strong>item</strong> 2</li>
+					  </ul>
+					  End
+					</div>
+
+@code				$('div.demo-container').text(true);
+
+@results			Start End

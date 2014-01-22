@@ -1,0 +1,138 @@
+
+@plugin				jQuery.ui.scrollbox
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				.scrollbox()                   | Apply the Scrollbox widget for each element in the set of matched elements. | method
+
+@categories			UI
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.scrollbox( [ options ] )
+@added				1.2
+@param				options                        | A map of additional options pass to the widget. | Optional,Object
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				disabled                       | Disables (true) or enables (false) the scrollbox. Can be set when initialising (first creating) the scrollbox. | Optional,Boolean
+@added				1.2
+@default			false
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				horizontal                     | A boolean indication whether to enable horizontal scrolling. | Optional,Boolean
+@added				1.2
+@default			.css("overflow-x")
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				lockAxis                       | A boolean indication whether to enable smart touch scrolling. When dragging starts on one axis the other is locked. | Optional,Boolean
+@added				1.2
+@default			false
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				vertical                       | A boolean indication whether to enable vertical scrolling. | Optional,Boolean
+@added				1.2
+@default			.css("overflow-y")
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Scrollbox changes the scroll UI of a content element. The element not longer has permanent visible scroll bars. Only 
+					the drag elements will be visible while scrolling, respectively for a short moment on enter the element. The drag 
+					elements don't reduce the content space of the element, they are just visual overlays.
+					
+					Different methods to scroll the content of the element are supported.
+					* scrolling with mousewheel or trackpad
+					* moving the drag elements via mouse
+					* moving the content with your finger on devices with touch support
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@example			Apply the Scrollbox widget for element with id="scrollbox".
+
+@html				<div id="scrollbox">
+					  <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, <br />
+					  sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, <br />
+					  no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
+					  <p style="white-space: nowrap;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </p>
+					  <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+					</div>
+
+@code				$('#scrollbox')
+					    .scrollbox({
+					        horizontal: true,
+					        vertical  : true,
+					        loackAxix : true
+					    });
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@event				create                         | This event is triggered when scrollbox is created.
+@added				1.2
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@method				destroy
+
+@syntax				.scrollbox( "destroy" )
+@added				1.2
+
+@description        Remove the scrollbox functionality completely. This will return the element back to its pre-init state.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@method				disable
+
+@syntax				.scrollbox( "disable" )
+@added				1.2
+
+@description        Disable the scrollbox.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@method				enable
+
+@syntax				.scrollbox( "enable" )
+@added				1.2
+
+@description        Enable the scrollbox.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@method				option
+
+@syntax				.scrollbox( "option", optionName , [ value ] )
+@added				1.2
+
+@description        Get or set any scrollbox option. If no value is specified, will act as a getter.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@method				option
+
+@syntax				.scrollbox( "option", options )
+@added				1.2
+
+@description        Set multiple dialog options at once by providing an options object.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@method				widget
+
+@syntax				.scrollbox( "widget" )
+@added				1.2
+
+@description        Returns the .ui-dialog element.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@method				widget
+
+@syntax				.scrollbox( "widget" )
+@added				1.2
+
+@description       Set multiple dialog options at once by providing an options object.

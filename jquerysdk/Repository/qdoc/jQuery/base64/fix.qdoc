@@ -1,0 +1,87 @@
+
+@plugin				jQuery.base64.fix
+@dependencies       jQuery.json | jQuery.utf8
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				jQuery.toBASE64()                    | Encrypt a text or object as base64 string. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				jQuery.toBASE64( object, [ traditional ] )
+@added				1.3
+@param				object                               | A object to encrypt | Array,Boolean,Number,Object,String
+@param				traditional                          | A boolean indicating whether to use the traditional mode else convert to json before encrypt. | Optional,Boolean
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        The <<jQuery.toBASE64()>> method encrypts objects to base64 string, is support not only strings,
+					because it converts the object to an json string before encrypt base64.
+					
+					The jQuery.base64.fix plugin is specially built, for browsers which don't support native base64 methods.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				jQuery.fromBASE64()                  | Decrypt a base64 string. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				jQuery.fromBASE64( string, [ traditional ] )
+@added				1.3
+@param				string                               | A string to decrypt | String
+@param				traditional                          | A boolean indicating whether to use the traditional mode else convert from json after encrypt. | Optional,Boolean
+@return				Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        The <<jQuery.fromBASE64()>> method decrypts strings from base64,
+					it converts the object from json string after encrypt base64.
+					
+					The jQuery.base64.fix plugin is specially built, for browsers which don't support native base64 methods.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				jQuery.encodeBASE64()                | Encrypt a text or object as base64 string. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				jQuery.encodeBASE64( object, [ traditional ] )
+@added				1.2
+@removed			1.3
+@param				object                               | A object to encrypt | Array,Boolean,Number,Object,String
+@param				traditional                          | A boolean indicating whether to use the traditional mode else convert to json before encrypt. | Optional,Boolean
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        '''Attention:''' The <<jQuery.encodeBASE64()>> method replaced by <<[[api:method:jQuery.toBASE64|jQuery.toBASE64()]]>>.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				jQuery.decodeBASE64()                | Decrypt a base64 string. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				jQuery.decodeBASE64( string, [ traditional ] )
+@added				1.2
+@removed			1.3
+@param				string                               | A string to decrypt | String
+@param				traditional                          | A boolean indicating whether to use the traditional mode else convert from json after encrypt. | Optional,Boolean
+@return				Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        '''Attention:''' The <<jQuery.decodeBASE64()>> method replaced by <<[[api:method:jQuery.fromBASE64|jQuery.fromBASE64()]]>>.

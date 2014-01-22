@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 3 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<style type="text/css">
+.drag {
+	position:    absolute;
+	margin:      15px;
+	border:      solid 5px;
+	padding:     10px;
+	width:       100px;
+	height:      100px
+}
+</style>
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.event.special.mouse");
+
+	asyncTest("jQuery.event.special.mouse", function() {
+
+		$.ready( 'jQuery.event.special.mouse', function($){
+
+			var elem = $('.drag'),
+				t;
+
+			// BIND
+			elem.on( 'mousedrag',  function(){
+					$(this).css({
+						top:	(event.pageY-75) +'px',
+						left:	(event.pageX-75) +'px'
+					});
+				})
+				.on( 'mousewheel', function(){
+
+				});
+
+			// BASE
+			elem.each(function(){
+				t = $._data(this,'events').mousedown;
+				equals(
+					t.length,
+					1,
+					"$(this).data('events').mousedown.length"
+				);
+				equals(
+					t[0].namespace,
+					'_specialMousedrag',
+					"$(this).data('events').mousedown[0].namespace"
+				);
+
+				t = $._data(this,'events').mousewheel;
+				equals(
+					t.length,
+					1,
+					"$(this).data('events').mousewheel.length"
+				);
+			});
+
+			// MOUSEDOWN
+			elem.trigger('mousedown');
+
+			t = $._data($('html')[0], 'events').mousemove;
+			equals(
+				t.length,
+				4,
+				"$._data($('html')[0], 'events').mousemove.length"
+			);
+			equals(
+				t[0].namespace,
+				'_specialMousedrag',
+				"$._data($('html')[0], 'events').mousemove[0].namespace"
+			);
+
+			t = $._data($('html')[0], 'events').mouseup;
+			equals(
+				t.length,
+				4,
+				"$._data($('html')[0], 'events').mouseupn.length"
+			);
+			equals(
+				t[0].namespace,
+				'_specialMousedrag',
+				"$._data($('html')[0], 'events').mouseup[0].namespace"
+			);
+
+			// MOUSEUP
+			elem.trigger('mouseup');
+
+			t = $._data($('html')[0], 'events');
+			equals(
+				t,
+				undefined,
+				"$._data($('html')[0], 'events')"
+			);
+
+			// UNBIND
+			elem.off('mousedrag');
+			elem.off('mousewheel');
+
+			elem.each(function(){
+				t = $._data(this,'events');
+				equals(
+					t,
+					undefined,
+					"$(this).data('events')"
+				);
+			});
+			start();
+		});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">
+		<div class="drag"></div>
+		<div class="drag"></div>
+		<div class="drag"></div>
+		<div class="drag"></div>
+	</div>
+</body>
+</html>

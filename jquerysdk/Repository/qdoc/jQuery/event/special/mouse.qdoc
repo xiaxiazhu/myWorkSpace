@@ -1,0 +1,57 @@
+
+@plugin				jQuery.event.special.mouse
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				mousedrag                      | Bind special event on mouse drag. | event
+
+@categories			Mouse Events
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.on( 'mousedrag', ... )
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This <<.on()>> implements a simple bind to the <<mousedrag>> interaction.
+
+					The <<mousedrag>> event starts with <<mousedown>> on each element in the set of matched elements, when the user moves
+					the mouse now while he is holding the <<mousedown>> the <<mousedrag>> event fires.
+
+					The recieved event object on <<mousedrag>> includes advanced properties:
+					* '''event.dragState''' A value which represents the current drag status (start / while / end).
+					* '''event.dragDeltaT''' Milliseconds between current and previous drag event state.
+					* '''event.dragDelta''' A float value which represents the diagonal pixel distance between the last and current position.
+					* '''event.dragDeltaX''' A float value which represents the pixel distance between the last and current position on the x-axis.
+					* '''event.dragDeltaY''' A float value which represents the pixel distance between the last and current position on the y-axis.
+
+					See the [[api:method:.on()]] and [[api:method:.off()]] method references for a way to bind/unbind event handlers.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				mousewheel                     | Bind special event on mouse wheel. | event
+
+@categories			Mouse Events
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.on( 'mousewheel', ... )
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This <<.on()>> implements a simple cross browser bind to the <<mousewheel>> interaction.
+
+					The <<mousewheel>> event isn't the same as <<onscroll>> event. The <<mousewheel>> event fires if the user rotate the mousewheel
+					or use the scroll handling of a trackpad.
+
+					The recieved event object on <<mousewheel>> includes advanced properties:
+					* '''event.wheelDelta''' A float value which represents the scroll step distance position on y- or x-axis.
+					* '''event.wheelDeltaX''' A float value which represents the scroll step distance on the x-axis.
+					* '''event.wheelDeltaY''' A float value which represents the scroll step distance on the y-axis.
+					* '''Attention not all browser supports separate wheelDelta for x- and y-axis.'''
+
+					See the [[api:method:.on()]] and [[api:method:.off()]] method references for a way to bind/unbind event handlers.

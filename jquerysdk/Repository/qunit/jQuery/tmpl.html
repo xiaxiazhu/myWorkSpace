@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 1 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script',
+		tmplRoot:	'qunit'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	// jQuerySubClass
+	jQuerySub = $.sub();
+	jQuerySub.fn.qunitTest = $.noop;
+
+	module("jQuery.tmpl");
+
+	asyncTest("jQuery.tmpl", function() {
+
+		$.ready({
+				plugin:	'jQuery.tmpl',
+				tmpl:	'jQuery.tmpl'
+			}, function($){
+				var data = {
+						rows: [
+							'line A',
+							'line B',
+							'line C',
+							'line D',
+							'line E'
+						]
+					},
+					div = $.tmpl('jQuery.tmpl',data),
+					ul;
+				
+				// first list
+				ul = div.find('ul:first');
+
+				equal(
+					ul.children().length,
+					5,
+					"ul.children().length"
+				);
+
+				equal(
+					ul.children(':eq(0)').text(),
+					'line A',
+					"ul.children(':eq(0)').text()"
+				);
+
+				equal(
+					ul.children(':eq(2)').text(),
+					'line C',
+					"ul.children(':eq(2)').text()"
+				);
+
+				equal(
+					$.isPlainObject( ul.tmplItem() ),
+					true,
+					"$.isPlainObject( ul.tmplItem() )"
+				);
+
+				same(
+					ul.tmplItem().data,
+					data,
+					"ul.tmplItem().data"
+				);
+
+				same(
+					ul.tmplItem('data'),
+					data,
+					"ul.tmplItem('data')"
+				);
+
+				equal(
+					$.isPlainObject( ul.tmplItem().elements ),
+					true,
+					"$.isPlainObject( ul.tmplItem().elements )"
+				);
+
+				equal(
+					$.isPlainObject( ul.tmplItem('elements') ),
+					true,
+					"$.isPlainObject( ul.tmplItem('elements') )"
+				);
+
+				equal(
+					ul.tmplItem('elements').list instanceof jQuerySub,
+					true,
+					"ul.tmplItem('elements').list instanceof jQuerySub"
+				);
+
+				equal(
+					ul.tmplItem('elements').listitem_0 instanceof jQuerySub,
+					false,
+					"ul.tmplItem('elements').listitem_0 instanceof jQuerySub"
+				);
+
+				equal(
+					ul.tmplItem('elements').listitem_0 instanceof jQuery,
+					true,
+					"ul.tmplItem('elements').listitem_0 instanceof jQuery"
+				);
+
+				equal(
+					ul.tmplItem('elements').listitem_0.is('li'),
+					true,
+					"ul.tmplItem('elements').listitem_0.is('li')"
+				);
+
+				equal(
+					ul.tmplItem('elements').listitem_1.is('li'),
+					true,
+					"ul.tmplItem('elements').listitem_1.is('li')"
+				);
+
+				equal(
+					ul.tmplItem('elements').listitem_2.is('li'),
+					true,
+					"ul.tmplItem('elements').listitem_2.is('li')"
+				);
+
+				equal(
+					ul.tmplItem('elements').listitem_3.is('li'),
+					true,
+					"ul.tmplItem('elements').listitem_3.is('li')"
+				);
+
+				equal(
+					ul.tmplItem('elements').listitem_4.is('li'),
+					true,
+					"ul.tmplItem('elements').listitem_4.is('li')"
+				);
+
+				equal(
+					ul.tmplItem('elements').listitem_5 == undefined,
+					true,
+					"ul.tmplItem('elements').listitem_5 == undefined"
+				);
+				
+				// second list
+				ul = div.find('ul:first');
+
+				equal(
+					ul.children().length,
+					5,
+					"ul.children().length"
+				);
+
+				equal(
+					ul.tmplItem('elements').listed instanceof $,
+					true,
+					"ul.tmplItem('elements').listed instanceof $"
+				);
+
+				equal(
+					ul.tmplItem('elements').listedItems instanceof $,
+					true,
+					"ul.tmplItem('elements').listedItems instanceof $"
+				);
+
+				equal(
+					ul.tmplItem('elements').listed.length,
+					1,
+					"ul.tmplItem('elements').listed.length"
+				);
+
+				equal(
+					ul.tmplItem('elements').listedItems.length,
+					5,
+					"ul.tmplItem('elements').listedItems.length"
+				);
+
+				equal(
+					ul.tmplItem('elements').listedItems.eq(0).text(),
+					'line A',
+					"ul.tmplItem('elements').listedItems.eq(0).text()"
+				);
+
+				equal(
+					ul.tmplItem('elements').listedItems.eq(1).text(),
+					'line B',
+					"ul.tmplItem('elements').listedItems.eq(1).text()"
+				);
+
+				equal(
+					ul.tmplItem('elements').listedItems.eq(2).text(),
+					'line C',
+					"ul.tmplItem('elements').listedItems.eq(2).text()"
+				);
+
+				equal(
+					ul.tmplItem('elements').listedItems.eq(3).text(),
+					'line D',
+					"ul.tmplItem('elements').listedItems.eq(3).text()"
+				);
+
+				equal(
+					ul.tmplItem('elements').listedItems.eq(4).text(),
+					'line E',
+					"ul.tmplItem('elements').listedItems.eq(4).text()"
+				);
+				
+				console.log( div.tmplItem('elements') )
+
+				start();
+			});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">test markup, will be hidden</div>
+</body>
+</html>

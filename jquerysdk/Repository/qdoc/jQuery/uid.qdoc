@@ -1,0 +1,38 @@
+
+@plugin				jQuery.uid
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				jQuery.uid()                   | Generate an unique id for a DOM element. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				jQuery.uid( [ prefix ] )
+@added				1.0
+@param				prefix                         | An id prefix . | Optional,String
+@return				Array
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        The <<jQuery.uid()>> method generates an id an checks whether the id is unique in the document.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Generate a simple unique id.
+
+@code				$.uid();
+
+@results			uid_14
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Generate a unique id with a specified prefix.
+
+@code				$.uid('myid');
+
+@results			myid_15
+
+

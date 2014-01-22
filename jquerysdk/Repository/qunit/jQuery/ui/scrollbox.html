@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0;">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 2 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/jQuery/ui/scrollbox.css" rel="stylesheet"/>
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<style type="text/css">
+.ui-scrollbox-drag-x,
+.ui-scrollbox-drag-y {
+		-webkit-border-radius: 5px;
+		-khtml-border-radius: 5px;
+		-moz-border-radius: 5px;
+		-o-border-radius: 5px;
+	border-radius: 5px;
+}
+.ui-scrollbox-light .ui-scrollbox-helper.ui-state-default {
+	border-color: #ccc;
+	background-color: #333;
+	background-color: rgba(0,0,0,0.5);
+}
+.ui-scrollbox-light .ui-scrollbox-helper.ui-state-hover,
+.ui-scrollbox-light .ui-scrollbox-helper.ui-state-active, 
+.ui-scrollbox-light .ui-scrollbox-helper.ui-state-focus {
+	background-color: #303030;
+	background-color: rgba(0,0,0,0.8);
+}
+.ui-scrollbox-dark .ui-scrollbox-helper.ui-state-default {
+	border-color: #666;
+	background-color: #fff;
+	background-color: rgba(255,255,255,0.5);
+}
+.ui-scrollbox-dark .ui-scrollbox-helper.ui-state-hover,
+.ui-scrollbox-dark .ui-scrollbox-helper.ui-state-active, 
+.ui-scrollbox-dark .ui-scrollbox-helper.ui-state-focus {
+	background-color: #f0f0f0;
+	background-color: rgba(255,255,255,0.8);
+}
+
+html, body {
+	margin: 0;
+}
+.qunit-scrollbox {
+	margin: 10px 0 0 0;
+	padding: 20px;
+	border: solid 1px black;
+	border-radius: 12px;
+	width: 278px;
+	height: 300px;
+	overflow: auto;
+	background: green;
+}
+</style>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.ui.scrollbox");
+
+	asyncTest('jQuery.ui.scrollbox', function() {
+
+		$.ready('jQuery.ui.scrollbox', function($){
+
+			var elem = $('#scrollbox')
+					.scrollbox({
+						lockAxis: true,
+						horizontal: true,
+						vertical: true
+					}),
+				node = elem[0];
+			
+			equals(
+				elem.find('.ui-scrollbox-drag-x').length,
+				1,
+				"$('#scrollbox').find('.ui-scrollbox-drag-x').length"		
+			);
+			equals(
+				elem.find('.ui-scrollbox-drag-y').length,
+				1,
+				"$('#scrollbox').find('.ui-scrollbox-drag-y').length"		
+			);
+			equals(
+				elem.find('.ui-scrollbox-padding-x').length,
+				1,
+				"$('#scrollbox').find('.ui-scrollbox-padding-x').length"		
+			);
+			equals(
+				elem.find('.ui-scrollbox-padding-y').length,
+				1,
+				"$('#scrollbox').find('.ui-scrollbox-padding-y').length"		
+			);
+			equals(
+				elem.find('.ui-scrollbox-layer').length,
+				1,
+				"$('#scrollbox').find('.ui-scrollbox-layer').length"		
+			);
+			equals(
+				elem.find('.ui-scrollbox-helper').length,
+				5,
+				"$('#scrollbox').find('.ui-scrollbox-helper').length"		
+			);
+				
+			equals(
+				$.type( $._data(node).events.touchdrag ),
+				$.support.touch ? 'array' : 'undefined',
+				"$.type( $._data(node).events.touchdrag ) == ($.support.touch ? 'array' : 'undefined')"		
+			);
+			equals(
+				$.type( $._data(node).events.mousewheel ),
+				!$.support.touch ? 'array' : 'undefined',
+				"$.type( $._data(node).events.mousewheel ) == (!$.support.touch ? 'array' : 'undefined')"		
+			);
+			equals(
+				$.type( $._data(elem.find('.ui-scrollbox-drag-x')[0]).events.mousedrag ),
+				'array',
+				"$.type( $._data(elem.find('.ui-scrollbox-drag-x')[0]).events.mousedrag ) == 'array'"		
+			);
+			equals(
+				$.type( $._data(elem.find('.ui-scrollbox-drag-y')[0]).events.mousedrag ),
+				'array',
+				"$.type( $._data(elem.find('.ui-scrollbox-drag-y')[0]).events.mousedrag ) == 'array'"		
+			);
+			
+			equals(
+				elem.find('.ui-scrollbox-padding-x').height(),
+				20,
+				"$('#scrollbox').find('.ui-scrollbox-padding-x').height()"		
+			);
+			
+			equals(
+				elem.find('.ui-scrollbox-padding-y').width(),
+				20,
+				"$('#scrollbox').find('.ui-scrollbox-padding-y').width()"		
+			);
+
+			start();
+
+		});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">
+		<div id="scrollbox" class="qunit-scrollbox">
+			<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, <br />
+			sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, <br />
+			no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
+			<p style="white-space: nowrap;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </p>
+			<p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+			<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, <br />
+			sed diam voluptua. <a href="#">Hyperlink</a> At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, <br />
+			no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
+			<p style="white-space: nowrap;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </p>
+			<p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+			<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, <br />
+			sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, <br />
+			no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
+			<p style="white-space: nowrap;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </p>
+			<p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+			<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, <br />
+			sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, <br />
+			no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
+			<p style="white-space: nowrap;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </p>
+			<p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+		</div>
+		<div id="scrollbox2" class="qunit-scrollbox">
+			<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, <br />
+			sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, <br />
+			no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
+			<p style="white-space: nowrap;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </p>
+			<p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+			<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, <br />
+			sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, <br />
+			no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
+			<p style="white-space: nowrap;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </p>
+			<p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+			<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, <br />
+			sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, <br />
+			no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
+			<p style="white-space: nowrap;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </p>
+			<p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+			<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, <br />
+			sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, <br />
+			no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
+			<p style="white-space: nowrap;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </p>
+			<p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+		</div>
+	</div>
+</body>
+</html>

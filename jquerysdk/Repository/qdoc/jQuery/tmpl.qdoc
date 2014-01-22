@@ -1,0 +1,398 @@
+
+@plugin				jQuery.tmpl
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.dependSettings          | Settings of the dependencies controller. | property
+
+@categories			Templates | Properties of the Global jQuery Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.dependSettings
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				tmplRoot                       | The path to the root directory of jQuery SDK template snippets.  | Optional,String
+@default			$.config.pluginRoot
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The jQuery.tmpl plugin extends the settings of the plugin/depencies controller.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				.tmplItem()                    | Return the named tmplItem data for the rendered template that the matched element is part of. | method
+
+@categories			Templates
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.tmplItem( key )
+@added				1.0
+@param				key                                  | Name of the item data stored. | String
+@return				Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Note: For information about how to render templates, see <<[[api:method:.tmpl()]]>> and <<[[api:method:jQuery.tmpl()|jQuery.tmpl()]]>>.
+
+					The <<$(selector).tmplItem(key)>> method provides access to the rendered template item by name of the data stored which the
+					target element of the selector is part of.
+
+					 var tmplItem = $( selector ).tmplItem();
+					 alert( "Description: " + tmplItem.data.description );
+
+					The above lines do the same as the following two lines:
+
+					 var tmplData = $( selector ).tmplItem('data');
+					 alert( "Description: " + tmplData.description );
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Access the template item of matched element, to modify CSS styles on the rendered template.
+
+@html				<tmpl id="movieTemplate" type="text/x-jquery-tmpl">
+					    <li>
+					        <b>${Name}</b>
+					    </li>
+					</tmpl>
+
+					<button id="lastItemBtn">Details of last movie</button>
+
+					<ul id="movieList"></ul>
+
+@code				var movies = [
+					    { Name: "The Red Violin", ReleaseYear: "1998" },
+					    { Name: "Eyes Wide Shut", ReleaseYear: "1999" },
+					    { Name: "The Inheritance", ReleaseYear: "1976" }
+					];
+					var color = "aqua";
+					/* Render the template with the movies data */
+					$( "#movieTemplate" ).tmpl( movies )
+					    .appendTo( "#movieList" );
+
+					$( "#lastItemBtn" ).click( function() {
+					    /* Flip the color */
+					    color = (color === "aqua" ? "yellow" : "aqua");
+
+					    /* Get the corresponding HTML nodes for the last
+					       template item in the list */
+					    var htmlNodes = $( "li:last" ).tmplItem('nodes');
+
+					    /* Switch the background color */
+					    $( htmlNodes ).css( "backgroundColor", color );
+					});
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.tmplItem()                    | Return the named tmplItem data for the rendered template that the specified element is part of. | method
+
+@categories			Templates
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.tmplItem( element, key )
+@added				1.0
+@param				element                              | An HTML element (or jQuery object that wraps an element). | Element,jQuery
+@param				key                                  | Name of the item data stored. | String
+@return				Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Note: For information about how to render templates, see <<[[api:method:.tmpl()]]>> and <<[[api:method:jQuery.tmpl()|jQuery.tmpl()]]>>.
+
+					The <<$.tmplItem( element, key )>> method provides access to the rendered template item by name of the data stored which the element is part of.
+
+					 $.tmplItem( element ).data;
+					 $.tmplItem( element, 'data' );
+
+					The above lines returns the same value.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Access the data, and set selection on the item.
+
+@html				<tmpl id="listItemTemplate" type="text/x-jquery-tmpl">
+					    <tr><td>
+					        ${firstName} ${lastName}
+					    </td></tr>
+					</tmpl>
+
+					<tmpl id="detailTemplate" type="text/x-jquery-tmpl">
+					    <div>
+					        <div>First Name: <em>${firstName}</em></div>
+					        <div>Last Name: <em>${lastName}</em></div>
+					    </div>
+					</tmpl>
+
+					<div style="float:left;">Click for details:<div>
+					<table><tbody id="peopleList"></tbody></table>
+
+					<div id="personDetail"></div>
+
+@code				var people = [
+					    { firstName: "Peter", lastName: "Jones" },
+					    { firstName: "Eva", lastName: "Smolinski" }
+					];
+
+					var selectedNodes = null;
+
+					function renderTemplate( container, template, data ) {
+					    $( container ).empty();
+					    $( template ).tmpl( data ).appendTo( container );
+					}
+
+					/* Render the list */
+					renderTemplate( "#peopleList", "#listItemTemplate", people );
+
+					$("#peopleList")
+					    .delegate( "tr", "click", function () {
+
+					        if ( selectedItem ) {
+					            $( selectedItem.nodes ).removeClass( "selected");
+					        }
+
+					        /* Set selection on the clicked item */
+					        selectedNodes = $.tmplItem( this, 'nodes' );
+					        $( selectedNodes ).addClass( "selected");
+					    });
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				elem                                 | Used for define a simple access on an element in the rendered template. | template-tag
+
+@categories			Templates | Template Tags
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				{{elem( jQueryClass ) identifier}}
+@added				1.0
+@param				jQueryClass                          | String specifying a global jQueryClass / jQuerySubClass name for the initial call. Default is "jQuery". | Optional,String
+@param				identifier                           | A unique identifier in the set of this template elements. | String
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				{{elem( jQueryClass ) identifier}}
+@added				1.3
+@param				jQueryClass                          | String specifying a global jQueryClass / jQuerySubClass name for the initial call. Default is "jQuery". | Optional,String
+@param				identifier                           | An identifier for the element. All elements with the same identifier in the template will be handled as a set of elements. | String
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Note: For information about how to render templates, see <<[[api:method:.tmpl()]]>> and <<[[api:method:jQuery.tmpl()|jQuery.tmpl()]]>>.
+
+					====Template Tags====
+					Template tags such as the <<{{elem}}>> tag can used within jQuery templates in addition to text and HTML markup, in order
+					to enable a number of scenarios such as composition of templates, iteration over hierarchical data, parameterization of
+					template rendering, etc.
+
+					Other available tags include: [[api:template-tag:equal|${}]], [[api:template-tag:if|{{if}}]], [[api:template-tag:else|{{else}}]]
+					, [[api:template-tag:html|{{html}}]], [[api:template-tag:tmpl|{{tmpl}}]] and [[api:template-tag:wrap|{{wrap}}]].
+					User-defined template tags can also be specified, by extending the jQuery.tmpl.tag map.
+
+					====Using the {{elem}} Template Tag====
+					Only one <<{{elem}}>> tag can be used for an element, use the <<{{elem}}>> tag like an element attribute such as class.
+					
+					Define an identifier named <<myButton>> for simple element access using {{elem 'identifier'}}.
+					 <div>
+					   <button {{elem 'myButton'}}>${title}</button>
+					 </div>
+					Access the my button element:
+					 .tmplItem('elements').myButton
+
+					====Includs use of jQuerySubClass <<jQuery.sub()>>====
+					Define a jQuerySubClass:
+					 jQuerySub = $.sub();
+
+					Use jQuerySubClass in template:
+					 <div>
+					   <button {{elem(jQuerySub) 'button'}}>${title}</button>
+					 </div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Access the data, and set selection on the item.
+
+@html				<tmpl id="boxTemplate" type="text/x-jquery-tmpl">
+					  <div>
+					    <div {{elem 'header'}}>${title}</div>
+					    <div {{elem 'content'}}>
+					      <ul>
+					      {{each(i, movie) movies}}
+					        <li {{elem 'movie_'+i}}>${movie.Name}</li>
+					      {{/each}}
+					    </div>
+					    <div {{elem 'footer'}}>${note}</div>
+					  </div>
+					</tmpl>
+
+@code				var data = [
+					    title: "My movie list"
+					    movies: {
+					        { Name: "Meet Joe Black" },
+					        { Name: "The Mighty" },
+					        { Name: "City Hunter" }
+					    },
+					    note: "A list of 3 movies."
+					];
+
+					$('#boxTemplate').tmpl(movies);
+
+					// access the elements list
+					var elemnts = $('#boxTemplate').tmplItem('elements');
+
+					// access the header element and modify css style
+					elements.header.css('background','red');
+
+					// access the second movie element in the list and modify css style
+					elements.movie_2.css('background','green');
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Access the data, and set selection on the item. (Using the {{elem}} tag movies as a set of elements.)
+
+@html				<tmpl id="boxTemplate" type="text/x-jquery-tmpl">
+					  <div>
+					    <div {{elem 'header'}}>${title}</div>
+					    <div {{elem 'content'}}>
+					      <ul>
+					      {{each(i, movie) movies}}
+					        <li {{elem 'movies}}>${movie.Name}</li>
+					      {{/each}}
+					    </div>
+					    <div {{elem 'footer'}}>${note}</div>
+					  </div>
+					</tmpl>
+
+@code				var data = [
+					    title: "My movie list"
+					    movies: {
+					        { Name: "Meet Joe Black" },
+					        { Name: "The Mighty" },
+					        { Name: "City Hunter" }
+					    },
+					    note: "A list of 3 movies."
+					];
+
+					$('#boxTemplate').tmpl(movies);
+
+					// access the elements list
+					var elemnts = $('#boxTemplate').tmplItem('elements');
+
+					// access the header element and modify css style
+					elements.header.css('background','red');
+
+					// access the second movie element in the list and modify css style
+					elements.movies.eq(2).css('background','green');
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.ready()                       | Specify a function to execute when required plugins are fully loaded. | method
+
+@categories			Templates
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.ready( options, function(jQuery) )
+@added				1.0
+@param				options                              | A set of type/name(s) pairs that define requirements for the ready call. | Object
+@param				function(jQuery)                     | A handler to execute after all required dependencies are ready. Receives jQuery as argument. | Function
+@return				Promise
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				tmpl                                 | A template name or an array of template names. | Optional,Array,String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.tmpl>> plugin extends the dependencies controller. So it is possible to load templates automatical with Ajax.
+
+					=====jQuery SDK file structure:=====
+					All templates are ''HTML files'' located in the script directory and dots in dictionary names represent subdirectories.
+					* ''project.example'' is ''script/project/example.tmpl.html''
+					* ''project.advanced'' is ''script/project/advanced.tmpl.html''
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Load this template 'proj/example.tmpl.html' and add it to the body.
+
+@code				jQuery.ready({
+					        plugin: ['jQuery.tmpl'],    // required plugins
+					        tmpl:   ['proj.example']    // specify required templates
+					    }, function($){
+
+					        // using the template
+
+					        $.tmpl('proj.example').appendTo('body');
+
+					    });
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.plugin()                      | Specify a plugin. | method
+
+@categories			Templates
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.plugin( id, [ options ], function(jQuery) )
+@added				1.0
+@param				id                                   | A unique plugin identifier associated to the jQuery SDK file structure. | String
+@param				options                              | A set of type/name(s) pairs that define requirements for this plugin. | Optional,Object
+@param				function(jQuery)                     | The plugin function to execute after all dependencies are ready. Receives jQuery as argument. | Function
+@return				Promise
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				tmpl                                 | A template name or an array of template names. | Optional,Array,String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.tmpl>> plugin extends the dependencies controller. So it is possible to load templates automatical with Ajax.
+
+					=====jQuery SDK file structure:=====
+					All templates are ''HTML files'' located in the script directory and dots in dictionary names represent subdirectories.
+					* ''project.example'' is ''script/project/example.tmpl.html''
+					* ''project.advanced'' is ''script/project/advanced.tmpl.html''
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.provide()                     | Provide a script. | method
+
+@categories			Templates
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.provide( id, [ options ], function(jQuery) )
+@added				1.0
+@param				id                                   | A unique identifier for the script to provide. | String
+@param				options                              | A set of type/name(s) pairs that define requirements for this script. | Optional,Object
+@param				function(jQuery)                     | The script code to execute after all dependencies are ready. Receives jQuery as argument. | Function
+@return				Promise
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				tmpl                                 | A template name or an array of template names. | Optional,Array,String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.tmpl>> plugin extends the dependencies controller. So it is possible to load templates automatical with Ajax.
+
+					=====jQuery SDK file structure:=====
+					All templates are ''HTML files'' located in the script directory and dots in dictionary names represent subdirectories.
+					* ''project.example'' is ''script/project/example.tmpl.html''
+					* ''project.advanced'' is ''script/project/advanced.tmpl.html''

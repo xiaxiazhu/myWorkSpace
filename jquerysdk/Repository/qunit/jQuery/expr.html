@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 1 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.expr");
+
+	asyncTest("jQuery.expr", function() {
+
+		$.ready('jQuery.expr', function($){
+
+			equal(
+				$('#qunit-fixture :readonly').length,
+				3,
+				"$('#qunit-fixture :readonly').length"
+			);
+
+			$(':input[name=t3]').prop('readonly',false);
+			equal(
+				$('#qunit-fixture :readonly').length,
+				2,
+				"$(':input[name=t3]').prop('readonly',false); $('#qunit-fixture :readonly').length"
+			);
+
+			$(':input[name=t3]').val('text 3');
+			equal(
+				$('#qunit-fixture :changed').length,
+				1,
+				"$(':input[name=t3]').val('text 3'); $('#qunit-fixture :changed').length"
+			);
+
+			$('option:eq(1)').prop('selected',true);
+			equal(
+				$('#qunit-fixture :changed').length,
+				2,
+				"$('option:eq(1)').prop('selected',true); $('#qunit-fixture :changed').length"
+			);
+
+			start();
+		});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">
+		<input type="text" name="t1" readonly="readonly"/>
+		<input type="text" name="t2"/>
+		<input type="text" name="t3" readonly="readonly"/>
+		<input type="radio" name="r1" readonly="readonly"/>
+		<input type="radio" name="r1"/>
+		<select name="s1">
+			<option selected="selected">A</option>
+			<option>B</option>
+			<option>C</option>
+			<option>D</option>
+		</select>
+		<div id="tab" tabIndex="0">
+		</div>
+	</div>
+</body>
+</html>

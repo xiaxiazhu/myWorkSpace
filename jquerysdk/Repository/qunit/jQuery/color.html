@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 1 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.color");
+
+	asyncTest("jQuery.color", function() {
+
+		$.ready("jQuery.color", function(){
+			 equals(
+				$.Color({red:255,green:125,blue:44}).toHexString(),
+				"#ff7d2c",
+				"$.Color({red:255,green:125,blue:44}).toHexString()"
+			);
+			equals(
+				$.Color({red:99,green:33,blue:66}).toHexString(),
+				"#632142",
+				"$.Color({red:99,green:33,blue:66}).toHexString()"
+			);
+	
+			same(
+				$.Color({red:255,green:125,blue:44}).hsla(),
+				[ 23, 1, 0.5862745098039216, 1 ],
+				"$.Color({red:255,green:125,blue:44}).hsla()"
+			);
+
+			same(
+				$.Color({red:99,green:33,blue:66}).hsla(),
+				[ 330, 0.4999999999999999, 0.25882352941176473, 1 ],
+				"$.Color({red:99,green:33,blue:66}).hsla()"
+			);
+	
+			same(
+				$.Color('#ff7d2c').rgba(),
+				[ 255, 125, 44, 1 ],
+				"$.Color('#ff7d2c').rgba()"
+			);
+			same(
+				$.Color('#632142').rgba(),
+				[ 99, 33, 66, 1 ],
+				"$.Color('#632142').rgba()"
+			);
+			same(
+				$.Color('#345').rgba(),
+				[ 51, 68, 85, 1 ],
+				"$.Color('#345').rgba()"
+			);
+			same(
+				$.Color('#').rgba(),
+				[],
+				"$.Color('#').rgba()"
+			);
+	
+			same(
+				$.Color('#ff7d2c').hsla(),
+				[ 23, 1, 0.5862745098039216, 1 ],
+				"$.Color('#ff7d2c').hsla()"
+			);
+			same(
+				$.Color('#632142').hsla(),
+				[ 330, 0.4999999999999999, 0.25882352941176473, 1 ],
+				"$.Color('#632142').hsla()"
+			);
+	
+			equals(
+				$.Color('green').toHexString(),
+				"#008000",
+				"$.Color('green').toHexString()"
+			);
+			equals(
+				$.Color('navy').toHexString(),
+				"#000080",
+				"$.Color('navy').toHexString()"
+			);
+	
+			equals(
+				$.Color('#0803').valid(),
+				false,
+				"$.Color('#0803').valid()"
+			);
+			equals(
+				$.Color('#080').valid(),
+				true,
+				"$.Color('#080').valid()"
+			);
+			equals(
+				$.Color('#000080').valid(),
+				true,
+				"$.Color('#000080').valid()"
+			);
+			equals(
+				$.Color('green').valid(),
+				true,
+				"$.Color('green').valid()"
+			);
+			equals(
+				$.Color('dark').valid(),
+				false,
+				"$.Color('dark').valid()"
+			);
+
+
+			start();
+		})
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">test markup, will be hidden</div>
+</body>
+</html>

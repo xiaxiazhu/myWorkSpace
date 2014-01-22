@@ -1,0 +1,34 @@
+<html>  
+<head>  
+<title>UTF8/GBK互转换工具</title>  
+<script> 
+function encode(obj){      
+   obj.value=obj.value.replace(/[^\-\?]/g,function($0){return escape($0).replace(/(%u)(\w{4})/gi,"\\u$2")}); 
+}   
+ 
+function deencode(obj){
+  obj.value=unescape(obj.value.replace(/\\u/g,'%u')); 
+}
+</script>
+</head>
+<body>
+<div align=center>  
+  <center>  
+  <table border=0 cellpadding=0 cellspacing=0 style="border-collapse: collapse" width=600  height=26>  
+    <tr>  
+      <td width=100% height=26>  
+      <p align=center><font face=黑体 size=5 color=#FF0000>UTF8/GBK互转换工具</font></p>  
+    </td>
+    </tr>  
+  </table>  
+  </center>  
+</div>  
+<p align=center>  
+<textarea cols=82 rows=10 id=code></textarea> </p>  
+<p align=center>  
+<input type=button onclick=deencode(code) value=UTF-8toGBK> 
+<input type=button onclick=encode(code) value=GBKtoUTF-8> 
+</p>
+</body>
+
+</html>

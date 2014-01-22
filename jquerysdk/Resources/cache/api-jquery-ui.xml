@@ -1,0 +1,2347 @@
+<?xml version="1.0"?>
+<api>
+  <categories>
+    <category name="plugins" title="Plugins">
+      <category name="jquery.ui.draggable" title="jQuery.ui.draggable"/>
+      <category name="jquery.ui.droppable" title="jQuery.ui.droppable"/>
+      <category name="jquery.ui.resizable" title="jQuery.ui.resizable"/>
+      <category name="jquery.ui.selectable" title="jQuery.ui.selectable"/>
+      <category name="jquery.ui.sortable" title="jQuery.ui.sortable"/>
+      <category name="jquery.ui.accordion" title="jQuery.ui.accordion"/>
+      <category name="jquery.ui.autocomplete" title="jQuery.ui.autocomplete"/>
+      <category name="jquery.ui.button" title="jQuery.ui.button"/>
+      <category name="jquery.ui.datepicker" title="jQuery.ui.datepicker"/>
+      <category name="jquery.ui.dialog" title="jQuery.ui.dialog"/>
+      <category name="jquery.ui.progressbar" title="jQuery.ui.progressbar"/>
+      <category name="jquery.ui.slider" title="jQuery.ui.slider"/>
+      <category name="jquery.ui.tabs" title="jQuery.ui.tabs"/>
+      <category name="jquery.ui.position" title="jQuery.ui.position"/>
+    </category>
+    <category name="ui" title="UI"/>
+  </categories>
+  <entries/>
+  <plugins>
+    <entry type="method" name="draggable" title=".draggable()" plugin="jquery.ui.draggable">
+      <depend name="jQuery.ui.core"/>
+      <depend name="jQuery.ui.widget"/>
+      <depend name="jQuery.ui.mouse"/>
+      <desc>Apply the Draggable widget for each element in the set of matched elements</desc>
+      <category name="version-1.0" title="Version 1.0"/>
+      <category name="ui" title="UI"/>
+      <signature title=".draggable( [ options ] )">
+        <added>1.0</added>
+        <argument name="options" type="Map" optional="true">
+          <desc>A map of additional options pass to the widget.</desc>
+        </argument>
+      </signature>
+      <longdesc><p>The jQuery UI Draggable plugin makes selected elements draggable by mouse.</p>
+<p>Draggable elements gets a class of <code>ui-draggable</code>. During drag the element also gets a class of <code>ui-draggable-dragging</code>. If you want not just drag, but drag-and-drop, see the jQuery UI Droppable plugin, which provides a drop target for draggables.</p>
+<p>All callbacks (start, stop, drag) receive two arguments: The original browser event and a prepared ui object, view below for a documentation of this object (if you name your second argument 'ui'):</p>
+<ul><li>
+<b>ui.helper</b> - the jQuery object representing the helper that's being dragged</li>
+<li>
+<b>ui.position</b> - current position of the helper as { top, left } object, relative to the offset element</li>
+<li>
+<b>ui.offset</b> - current absolute position of the helper as { top, left } object, relative to page</li>
+</ul><p><br/></p>
+<p>To manipulate the position of a draggable during drag, you can either <a href="http://jsbin.com/etako/edit" class="external text" title="http://jsbin.com/etako/edit">use a wrapper as the draggable helper</a> and position the wrapped element with absolute positioning, or  you can correct internal values like so: <code>$(this).data('draggable').offset.click.top -= x</code>.</p>
+    </longdesc>
+      <option name="disabled" type="Boolean" default="false">
+        <desc>Disables (true) or enables (false) the draggable. Can be set when initialising (first creating) the draggable.</desc>
+      </option>
+      <option name="addClasses" type="Boolean" default="true">
+        <desc>If set to false, will prevent the <code>ui-draggable</code> class from being added. This may be desired as a performance optimization when calling <code>.draggable()</code> init on many hundreds of elements.</desc>
+      </option>
+      <option name="appendTo" type="Element,Selector" default="'parent'">
+        <desc>The element passed to or selected by the <code>appendTo</code> option will be used as the draggable helper's container during dragging. By default, the helper is appended to the same container as the draggable.</desc>
+      </option>
+      <option name="axis" type="String" default="false">
+        <desc>Constrains dragging to either the horizontal (x) or vertical (y) axis. Possible values: 'x', 'y'.</desc>
+      </option>
+      <option name="cancel" type="Selector" default="':input,option'">
+        <desc>Prevents dragging from starting on specified elements.</desc>
+      </option>
+      <option name="connectToSortable" type="Selector" default="false">
+        <desc>Allows the draggable to be dropped onto the specified sortables. If this option is used (<code>helper</code> must be set to 'clone' in order to work flawlessly), a draggable can be dropped onto a sortable list and then becomes part of it.
+Note: Specifying this option as an array of selectors has been removed.</desc>
+      </option>
+      <option name="containment" type="Selector,Element,String,Array" default="false">
+        <desc>Constrains dragging to within the bounds of the specified element or region. Possible string values: 'parent', 'document', 'window', [x1, y1, x2, y2].</desc>
+      </option>
+      <option name="cursor" type="String" default="'auto'">
+        <desc>The css cursor during the drag operation.</desc>
+      </option>
+      <option name="cursorAt" type="Object" default="false">
+        <desc>Sets the offset of the dragging helper relative to the mouse cursor. Coordinates can be given as a hash using a combination of one or two keys: <code>{ top, left, right, bottom }</code>.</desc>
+      </option>
+      <option name="delay" type="Integer" default="0">
+        <desc>Time in milliseconds after mousedown until dragging should start. This option can be used to prevent unwanted drags when clicking on an element.</desc>
+      </option>
+      <option name="distance" type="Integer" default="1">
+        <desc>Distance in pixels after mousedown the mouse must move before dragging should start. This option can be used to prevent unwanted drags when clicking on an element.</desc>
+      </option>
+      <option name="grid" type="Array" default="false">
+        <desc>Snaps the dragging helper to a grid, every x and y pixels. Array values: [x, y]</desc>
+      </option>
+      <option name="handle" type="Element,Selector" default="false">
+        <desc>If specified, restricts drag start click to the specified element(s).</desc>
+      </option>
+      <option name="helper" type="String,Function" default="'original'">
+        <desc>Allows for a helper element to be used for dragging display. Possible values: 'original', 'clone', Function. If a function is specified, it must return a DOMElement.</desc>
+      </option>
+      <option name="iframeFix" type="Boolean,Selector" default="false">
+        <desc>Prevent iframes from capturing the mousemove events during a drag. Useful in combination with cursorAt, or in any case, if the mouse cursor is not over the helper. If set to true, transparent overlays will be placed over all iframes on the page. If a selector is supplied, the matched iframes will have an overlay placed over them.</desc>
+      </option>
+      <option name="opacity" type="Float" default="false">
+        <desc>Opacity for the helper while being dragged.</desc>
+      </option>
+      <option name="refreshPositions" type="Boolean" default="false">
+        <desc>If set to true, all droppable positions are calculated on every mousemove. Caution: This solves issues on highly dynamic pages, but dramatically decreases performance.</desc>
+      </option>
+      <option name="revert" type="Boolean,String" default="false">
+        <desc>If set to true, the element will return to its start position when dragging stops. Possible string values: 'valid', 'invalid'. If set to invalid, revert will only occur if the draggable has not been dropped on a droppable. For valid, it's the other way around.</desc>
+      </option>
+      <option name="revertDuration" type="Integer" default="500">
+        <desc>The duration of the revert animation, in milliseconds. Ignored if revert is false.</desc>
+      </option>
+      <option name="scope" type="String" default="'default'">
+        <desc>Used to group sets of draggable and droppable items, in addition to droppable's accept option. A draggable with the same scope value as a droppable will be accepted by the droppable.</desc>
+      </option>
+      <option name="scroll" type="Boolean" default="true">
+        <desc>If set to true, container auto-scrolls while dragging.</desc>
+      </option>
+      <option name="scrollSensitivity" type="Integer" default="20">
+        <desc>Distance in pixels from the edge of the viewport after which the viewport should scroll. Distance is relative to pointer, not the draggable.</desc>
+      </option>
+      <option name="scrollSpeed" type="Integer" default="20">
+        <desc>The speed at which the window should scroll once the mouse pointer gets within the <code>scrollSensitivity</code> distance.</desc>
+      </option>
+      <option name="snap" type="Boolean,Selector" default="false">
+        <desc>If set to a selector or to true (equivalent to '.ui-draggable'), the draggable will snap to the edges of the selected elements when near an edge of the element.</desc>
+      </option>
+      <option name="snapMode" type="String" default="'both'">
+        <desc>Determines which edges of snap elements the draggable will snap to. Ignored if snap is false. Possible values: 'inner', 'outer', 'both'</desc>
+      </option>
+      <option name="snapTolerance" type="Integer" default="20">
+        <desc>The distance in pixels from the snap element edges at which snapping should occur. Ignored if snap is false.</desc>
+      </option>
+      <option name="stack" type="Selector" default="false">
+        <desc>Controls the z-Index of the set of elements that match the selector, always brings to front the dragged item. Very useful in things like window managers.</desc>
+      </option>
+      <option name="zIndex" type="Integer" default="false">
+        <desc>z-index for the helper while being dragged.</desc>
+      </option>
+      <event name="create">
+        <desc>This event is triggered when draggable is created.</desc>
+      </event>
+      <event name="start">
+        <desc>This event is triggered when dragging starts.</desc>
+      </event>
+      <event name="drag">
+        <desc>This event is triggered when the mouse is moved during the dragging.</desc>
+      </event>
+      <event name="stop">
+        <desc>This event is triggered when dragging stops.</desc>
+      </event>
+      <method name="destroy">
+        <longdesc>
+          <p>Remove the draggable functionality completely. This will return the element back to its pre-init state.</p>
+        </longdesc>
+        <signature title=".draggable( &quot;destroy&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="disable">
+        <longdesc>
+          <p>Disable the draggable.</p>
+        </longdesc>
+        <signature title=".draggable( &quot;disable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="enable">
+        <longdesc>
+          <p>Enable the draggable.</p>
+        </longdesc>
+        <signature title=".draggable( &quot;enable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Get or set any draggable option. If no value is specified, will act as a getter.</p>
+        </longdesc>
+        <signature title=".draggable( &quot;option&quot; , optionName , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;value&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Set multiple draggable options at once by providing an options object.</p>
+        </longdesc>
+        <signature title=".draggable( &quot;option&quot; , options )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="widget">
+        <longdesc>
+          <p>Returns the .ui-draggable element.</p>
+        </longdesc>
+        <signature title=".draggable( &quot;widget&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+    </entry>
+    <entry type="method" name="droppable" title=".droppable()" plugin="jquery.ui.droppable">
+      <depend name="jQuery.ui.core"/>
+      <depend name="jQuery.ui.widget"/>
+      <depend name="jQuery.ui.mouse"/>
+      <depend name="jQuery.ui.draggable"/>
+      <desc>Apply the Droppable widget for each element in the set of matched elements</desc>
+      <category name="version-1.0" title="Version 1.0"/>
+      <category name="ui" title="UI"/>
+      <signature title=".droppable( [ options ] )">
+        <added>1.0</added>
+        <argument name="options" type="Map" optional="true">
+          <desc>A map of additional options pass to the widget.</desc>
+        </argument>
+      </signature>
+      <longdesc><p>The jQuery UI Droppable plugin makes selected elements droppable (meaning they accept being dropped on by draggables). You can specify which (individually) or which kind of draggables each will accept.</p>
+<p>All callbacks receive two arguments: The original browser event and a prepared ui object, view below for a documentation of this object (if you name your second argument 'ui'):</p>
+<ul><li> <b>ui.draggable</b> - current draggable element, a jQuery object.</li>
+ <li> <b>ui.helper</b> - current draggable helper, a jQuery object</li>
+ <li> <b>ui.position</b> - current position of the draggable helper { top: , left: }</li>
+ <li> <b>ui.offset</b> - current absolute position of the draggable helper { top: , left: }</li>
+</ul></longdesc>
+      <option name="disabled" type="Boolean" default="false">
+        <desc>Disables (true) or enables (false) the droppable. Can be set when initialising (first creating) the droppable.</desc>
+      </option>
+      <option name="accept" type="Selector,Function" default="'*'">
+        <desc>All draggables that match the selector will be accepted. If a function is specified, the function will be called for each draggable on the page (passed as the first argument to the function), to provide a custom filter. The function should return true if the draggable should be accepted.</desc>
+      </option>
+      <option name="activeClass" type="String" default="false">
+        <desc>If specified, the class will be added to the droppable while an acceptable draggable is being dragged.</desc>
+      </option>
+      <option name="addClasses" type="Boolean" default="true">
+        <desc>If set to false, will prevent the ui-droppable class from being added. This may be desired as a performance optimization when calling .droppable() init on many hundreds of elements.</desc>
+      </option>
+      <option name="greedy" type="Boolean" default="false">
+        <desc>If true, will prevent event propagation on nested droppables.</desc>
+      </option>
+      <option name="hoverClass" type="String" default="false">
+        <desc>If specified, the class will be added to the droppable while an acceptable draggable is being hovered.</desc>
+      </option>
+      <option name="scope" type="String" default="'default'">
+        <desc>Used to group sets of draggable and droppable items, in addition to droppable's accept option. A draggable with the same scope value as a droppable will be accepted.</desc>
+      </option>
+      <option name="tolerance" type="String" default="'intersect'">
+        <desc>Specifies which mode to use for testing whether a draggable is 'over' a droppable. Possible values: 'fit', 'intersect', 'pointer', 'touch'.</desc>
+      </option>
+      <event name="create">
+        <desc>This event is triggered when droppable is created.</desc>
+      </event>
+      <event name="activate">
+        <desc>This event is triggered any time an accepted draggable starts dragging. This can be useful if you want to make the droppable 'light up' when it can be dropped on.</desc>
+      </event>
+      <event name="deactivate">
+        <desc>This event is triggered any time an accepted draggable stops dragging.</desc>
+      </event>
+      <event name="over">
+        <desc>This event is triggered as an accepted draggable is dragged 'over' (within the tolerance of) this droppable.</desc>
+      </event>
+      <event name="out">
+        <desc>This event is triggered when an accepted draggable is dragged out (within the tolerance of) this droppable.</desc>
+      </event>
+      <event name="drop">
+        <desc>This event is triggered when an accepted draggable is dropped 'over' (within the tolerance of) this droppable. In the callback, $(this) represents the droppable the draggable is dropped on.
+ui.draggable represents the draggable.</desc>
+      </event>
+      <method name="destroy">
+        <longdesc>
+          <p>Remove the droppable functionality completely. This will return the element back to its pre-init state.</p>
+        </longdesc>
+        <signature title=".droppable( &quot;destroy&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="disable">
+        <longdesc>
+          <p>Disable the droppable.</p>
+        </longdesc>
+        <signature title=".droppable( &quot;disable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="enable">
+        <longdesc>
+          <p>Enable the droppable.</p>
+        </longdesc>
+        <signature title=".droppable( &quot;enable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Get or set any droppable option. If no value is specified, will act as a getter.</p>
+        </longdesc>
+        <signature title=".droppable( &quot;option&quot; , optionName , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;value&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Set multiple droppable options at once by providing an options object.</p>
+        </longdesc>
+        <signature title=".droppable( &quot;option&quot; , options )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="widget">
+        <longdesc>
+          <p>Returns the .ui-droppable element.</p>
+        </longdesc>
+        <signature title=".droppable( &quot;widget&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+    </entry>
+    <entry type="method" name="resizable" title=".resizable()" plugin="jquery.ui.resizable">
+      <depend name="jQuery.ui.core"/>
+      <depend name="jQuery.ui.widget"/>
+      <depend name="jQuery.ui.mouse"/>
+      <desc>Apply the Resizable widget for each element in the set of matched elements</desc>
+      <category name="version-1.0" title="Version 1.0"/>
+      <category name="ui" title="UI"/>
+      <signature title=".resizable( [ options ] )">
+        <added>1.0</added>
+        <argument name="options" type="Map" optional="true">
+          <desc>A map of additional options pass to the widget.</desc>
+        </argument>
+      </signature>
+      <longdesc><p>The jQuery UI Resizable plugin makes selected elements resizable (meaning they have draggable resize handles). You can specify one or more handles as well as min and max width and height.</p>
+<p>All callbacks (start,stop,resize) receive two arguments: The original browser event and a prepared ui object.  The ui object has the following fields:</p>
+<ul><li>
+<b>ui.helper</b> - a jQuery object containing the helper element</li>
+<li>
+<b>ui.originalPosition</b> - {top, left} before resizing started</li>
+<li>
+<b>ui.originalSize</b> - {width, height} before resizing started</li>
+<li>
+<b>ui.position</b> - {top, left} current position</li>
+<li>
+<b>ui.size</b> - {width, height} current size</li>
+</ul></longdesc>
+      <option name="disabled" type="Boolean" default="false">
+        <desc>Disables (true) or enables (false) the resizable. Can be set when initialising (first creating) the resizable.</desc>
+      </option>
+      <option name="alsoResize" type="Selector,jQuery,Element" default="false">
+        <desc>Resize these elements synchronous when resizing.</desc>
+      </option>
+      <option name="animate" type="Boolean" default="false">
+        <desc>Animates to the final size after resizing.</desc>
+      </option>
+      <option name="animateDuration" type="Integer,String" default="'slow'">
+        <desc>Duration time for animating, in milliseconds. Other possible values: 'slow', 'normal', 'fast'.</desc>
+      </option>
+      <option name="animateEasing" type="String" default="'swing'">
+        <desc>Easing effect for animating.</desc>
+      </option>
+      <option name="aspectRatio" type="Boolean,Float" default="false">
+        <desc>If set to true, resizing is constrained by the original aspect ratio. Otherwise a custom aspect ratio can be specified, such as 9 / 16, or 0.5.</desc>
+      </option>
+      <option name="autoHide" type="Boolean" default="false">
+        <desc>If set to true, automatically hides the handles except when the mouse hovers over the element.</desc>
+      </option>
+      <option name="cancel" type="Selector" default="':input,option'">
+        <desc>Prevents resizing if you start on elements matching the selector.</desc>
+      </option>
+      <option name="containment" type="String,Element,Selector" default="false">
+        <desc>Constrains resizing to within the bounds of the specified element. Possible values: 'parent', 'document', a DOMElement, or a Selector.</desc>
+      </option>
+      <option name="delay" type="Integer" default="0">
+        <desc>Tolerance, in milliseconds, for when resizing should start. If specified, resizing will not start until after mouse is moved beyond duration. This can help prevent unintended resizing when clicking on an element.</desc>
+      </option>
+      <option name="distance" type="Integer" default="1">
+        <desc>Tolerance, in pixels, for when resizing should start. If specified, resizing will not start until after mouse is moved beyond distance. This can help prevent unintended resizing when clicking on an element.</desc>
+      </option>
+      <option name="ghost" type="Boolean" default="false">
+        <desc>If set to true, a semi-transparent helper element is shown for resizing.</desc>
+      </option>
+      <option name="grid" type="Array" default="false">
+        <desc>Snaps the resizing element to a grid, every x and y pixels. Array values: [x, y]</desc>
+      </option>
+      <option name="handles" type="String,Object" default="'e, s, se'">
+        <desc>If specified as a string, should be a comma-split list of any of the following: 'n, e, s, w, ne, se, sw, nw, all'. The necessary handles will be auto-generated by the plugin.
+If specified as an object, the following keys are supported: { n, e, s, w, ne, se, sw, nw }. The value of any specified should be a jQuery selector matching the child element of the resizable to use as that handle. If the handle is not a child of the resizable, you can pass in the DOMElement or a valid jQuery object directly.</desc>
+      </option>
+      <option name="helper" type="String" default="false">
+        <desc>This is the css class that will be added to a proxy element to outline the resize during the drag of the resize handle. Once the resize is complete, the original element is sized.</desc>
+      </option>
+      <option name="maxHeight" type="Integer" default="null">
+        <desc>This is the maximum height the resizable should be allowed to resize to.</desc>
+      </option>
+      <option name="maxWidth" type="Integer" default="null">
+        <desc>This is the maximum width the resizable should be allowed to resize to.</desc>
+      </option>
+      <option name="minHeight" type="Integer" default="10">
+        <desc>This is the minimum height the resizable should be allowed to resize to.</desc>
+      </option>
+      <option name="minWidth" type="Integer" default="10">
+        <desc>This is the minimum width the resizable should be allowed to resize to.</desc>
+      </option>
+      <event name="create">
+        <desc>This event is triggered when resizable is created.</desc>
+      </event>
+      <event name="start">
+        <desc>This event is triggered at the start of a resize operation.</desc>
+      </event>
+      <event name="resize">
+        <desc>This event is triggered during the resize, on the drag of the resize handler.</desc>
+      </event>
+      <event name="stop">
+        <desc>This event is triggered at the end of a resize operation.</desc>
+      </event>
+      <method name="destroy">
+        <longdesc>
+          <p>Remove the resizable functionality completely. This will return the element back to its pre-init state.</p>
+        </longdesc>
+        <signature title=".resizable( &quot;destroy&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="disable">
+        <longdesc>
+          <p>Disable the resizable.</p>
+        </longdesc>
+        <signature title=".resizable( &quot;disable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="enable">
+        <longdesc>
+          <p>Enable the resizable.</p>
+        </longdesc>
+        <signature title=".resizable( &quot;enable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Get or set any resizable option. If no value is specified, will act as a getter.</p>
+        </longdesc>
+        <signature title=".resizable( &quot;option&quot; , optionName , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;value&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Set multiple resizable options at once by providing an options object.</p>
+        </longdesc>
+        <signature title=".resizable( &quot;option&quot; , options )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="widget">
+        <longdesc>
+          <p>Returns the .ui-resizable element.</p>
+        </longdesc>
+        <signature title=".resizable( &quot;widget&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+    </entry>
+    <entry type="method" name="selectable" title=".selectable()" plugin="jquery.ui.selectable">
+      <depend name="jQuery.ui.core"/>
+      <depend name="jQuery.ui.widget"/>
+      <depend name="jQuery.ui.mouse"/>
+      <desc>Apply the Selectable widget for each element in the set of matched elements</desc>
+      <category name="version-1.0" title="Version 1.0"/>
+      <category name="ui" title="UI"/>
+      <signature title=".selectable( [ options ] )">
+        <added>1.0</added>
+        <argument name="options" type="Map" optional="true">
+          <desc>A map of additional options pass to the widget.</desc>
+        </argument>
+      </signature>
+      <longdesc><p>The jQuery UI Selectable plugin allows for elements to be selected by dragging a box (sometimes called a lasso) with the mouse over the elements. Also, elements can be selected by click or drag while holding the Ctrl/Meta key, allowing for multiple (non-contiguous) selections.</p>
+    </longdesc>
+      <option name="disabled" type="Boolean" default="false">
+        <desc>Disables (true) or enables (false) the selectable. Can be set when initialising (first creating) the selectable.</desc>
+      </option>
+      <option name="autoRefresh" type="Boolean" default="true">
+        <desc>This determines whether to refresh (recalculate) the position and size of each selectee at the beginning of each select operation. If you have many many items, you may want to set this to false and call the refresh method manually.</desc>
+      </option>
+      <option name="cancel" type="Selector" default="':input,option'">
+        <desc>Prevents selecting if you start on elements matching the selector.</desc>
+      </option>
+      <option name="delay" type="Integer" default="0">
+        <desc>Time in milliseconds to define when the selecting should start. It helps preventing unwanted selections when clicking on an element.</desc>
+      </option>
+      <option name="distance" type="Integer" default="0">
+        <desc>Tolerance, in pixels, for when selecting should start. If specified, selecting will not start until after mouse is dragged beyond distance.</desc>
+      </option>
+      <option name="filter" type="Selector" default="'*'">
+        <desc>The matching child elements will be made selectees (able to be selected).</desc>
+      </option>
+      <option name="tolerance" type="String" default="'touch'">
+        <desc>Possible values: 'touch', 'fit'.</desc>
+      </option>
+      <event name="create">
+        <desc>This event is triggered when selectable is created.</desc>
+      </event>
+      <event name="selected">
+        <desc>This event is triggered at the end of the select operation, on each element added to the selection.</desc>
+      </event>
+      <event name="selecting">
+        <desc>This event is triggered during the select operation, on each element added to the selection.</desc>
+      </event>
+      <event name="start">
+        <desc>This event is triggered at the beginning of the select operation.</desc>
+      </event>
+      <event name="stop">
+        <desc>This event is triggered at the end of the select operation.</desc>
+      </event>
+      <event name="unselected">
+        <desc>This event is triggered at the end of the select operation, on each element removed from the selection.</desc>
+      </event>
+      <event name="unselecting">
+        <desc>This event is triggered during the select operation, on each element removed from the selection.</desc>
+      </event>
+      <method name="destroy">
+        <longdesc>
+          <p>Remove the selectable functionality completely. This will return the element back to its pre-init state.</p>
+        </longdesc>
+        <signature title=".selectable( &quot;destroy&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="disable">
+        <longdesc>
+          <p>Disable the selectable.</p>
+        </longdesc>
+        <signature title=".selectable( &quot;disable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="enable">
+        <longdesc>
+          <p>Enable the selectable.</p>
+        </longdesc>
+        <signature title=".selectable( &quot;enable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Get or set any selectable option. If no value is specified, will act as a getter.</p>
+        </longdesc>
+        <signature title=".selectable( &quot;option&quot; , optionName , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;value&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Set multiple selectable options at once by providing an options object.</p>
+        </longdesc>
+        <signature title=".selectable( &quot;option&quot; , options )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="widget">
+        <longdesc>
+          <p>Returns the .ui-selectable element.</p>
+        </longdesc>
+        <signature title=".selectable( &quot;widget&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="refresh">
+        <longdesc>
+          <p>Refresh the position and size of each selectee element. This method can be used to manually recalculate the position and size of each selectee element. Very useful if autoRefresh is set to false.</p>
+        </longdesc>
+        <signature title=".selectable( &quot;refresh&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+    </entry>
+    <entry type="method" name="sortable" title=".sortable()" plugin="jquery.ui.sortable">
+      <depend name="jQuery.ui.core"/>
+      <depend name="jQuery.ui.widget"/>
+      <depend name="jQuery.ui.mouse"/>
+      <desc>Apply the Sortable widget for each element in the set of matched elements</desc>
+      <category name="version-1.0" title="Version 1.0"/>
+      <category name="ui" title="UI"/>
+      <signature title=".sortable( [ options ] )">
+        <added>1.0</added>
+        <argument name="options" type="Map" optional="true">
+          <desc>A map of additional options pass to the widget.</desc>
+        </argument>
+      </signature>
+      <longdesc><p>The jQuery UI Sortable plugin makes selected elements sortable by dragging with the mouse.</p>
+<p>All callbacks receive two arguments: The original browser event and a prepared ui object, view below for a documentation of this object (if you name your second argument 'ui'):</p>
+<ul><li>
+<b>ui.helper</b> - the current helper element (most often a clone of the item)</li>
+<li>
+<b>ui.position</b> - current position of the helper</li>
+<li>
+<b>ui.offset</b> - current absolute position of the helper</li>
+<li>
+<b>ui.item</b> - the current dragged element</li>
+<li>
+<b>ui.placeholder</b> - the placeholder (if you defined one)</li>
+<li>
+<b>ui.sender</b> - the sortable where the item comes from (only exists if you move from one connected list to another)</li>
+</ul></longdesc>
+      <option name="disabled" type="Boolean" default="false">
+        <desc>Disables (true) or enables (false) the sortable. Can be set when initialising (first creating) the sortable.</desc>
+      </option>
+      <option name="appendTo" type="String" default="'parent'">
+        <desc>Defines where the helper that moves with the mouse is being appended to during the drag (for example, to resolve overlap/zIndex issues).</desc>
+      </option>
+      <option name="axis" type="String" default="false">
+        <desc>If defined, the items can be dragged only horizontally or vertically. Possible values:'x', 'y'.</desc>
+      </option>
+      <option name="cancel" type="Selector" default="':input,button'">
+        <desc>Prevents sorting if you start on elements matching the selector.</desc>
+      </option>
+      <option name="connectWith" type="Selector" default="false">
+        <desc>Takes a jQuery selector with items that also have sortables applied. If used, the sortable is now connected to the other one-way, so you can drag from this sortable to the other.</desc>
+      </option>
+      <option name="containment" type="Element,String,Selector" default="false">
+        <desc>Constrains dragging to within the bounds of the specified element - can be a DOM element, 'parent', 'document', 'window', or a jQuery selector.
+Note: the element specified for containment must have a calculated width and height (though it need not be explicit), so for example, if you have float:left sortable children and specify containment:'parent' be sure to have float:left on the sortable/parent container as well or it will have height: 0, causing undefined behavior.</desc>
+      </option>
+      <option name="cursor" type="String" default="'auto'">
+        <desc>Defines the cursor that is being shown while sorting.</desc>
+      </option>
+      <option name="cursorAt" type="Object" default="false">
+        <desc>Moves the sorting element or helper so the cursor always appears to drag from the same position. Coordinates can be given as a hash using a combination of one or two keys: <code>{ top, left, right, bottom }</code>.</desc>
+      </option>
+      <option name="delay" type="Integer" default="0">
+        <desc>Time in milliseconds to define when the sorting should start. It helps preventing unwanted drags when clicking on an element.</desc>
+      </option>
+      <option name="distance" type="Integer" default="1">
+        <desc>Tolerance, in pixels, for when sorting should start. If specified, sorting will not start until after mouse is dragged beyond distance. Can be used to allow for clicks on elements within a handle.</desc>
+      </option>
+      <option name="dropOnEmpty" type="Boolean" default="true">
+        <desc>If false items from this sortable can't be dropped to an empty linked sortable.</desc>
+      </option>
+      <option name="forceHelperSize" type="Boolean" default="false">
+        <desc>If true, forces the helper to have a size.</desc>
+      </option>
+      <option name="forcePlaceholderSize" type="Boolean" default="false">
+        <desc>If true, forces the placeholder to have a size.</desc>
+      </option>
+      <option name="grid" type="Array" default="false">
+        <desc>Snaps the sorting element or helper to a grid, every x and y pixels. Array values: [x, y]</desc>
+      </option>
+      <option name="handle" type="Selector,Element" default="false">
+        <desc>Restricts sort start click to the specified element.</desc>
+      </option>
+      <option name="helper" type="String,Function" default="'original'">
+        <desc>Allows for a helper element to be used for dragging display. The supplied function receives the event and the element being sorted, and should return a DOMElement to be used as a custom proxy helper. Possible values: 'original', 'clone'</desc>
+      </option>
+      <option name="items" type="Selector" default="'&gt; *'">
+        <desc>Specifies which items inside the element should be sortable.</desc>
+      </option>
+      <option name="opacity" type="Float" default="false">
+        <desc>Defines the opacity of the helper while sorting. From 0.01 to 1</desc>
+      </option>
+      <option name="placeholder" type="String" default="false">
+        <desc>Class that gets applied to the otherwise white space.</desc>
+      </option>
+      <option name="revert" type="Boolean/Integer" default="false">
+        <desc>If set to true, the item will be reverted to its new DOM position with a smooth animation. Optionally, it can also be set to a number that controls the duration of the animation in ms.</desc>
+      </option>
+      <option name="scroll" type="Boolean" default="true">
+        <desc>If set to true, the page scrolls when coming to an edge.</desc>
+      </option>
+      <option name="scrollSensitivity" type="Integer" default="20">
+        <desc>Defines how near the mouse must be to an edge to start scrolling.</desc>
+      </option>
+      <option name="scrollSpeed" type="Integer" default="20">
+        <desc>The speed at which the window should scroll once the mouse pointer gets within the scrollSensitivity distance.</desc>
+      </option>
+      <option name="tolerance" type="String" default="'intersect'">
+        <desc>This is the way the reordering behaves during drag. Possible values: 'intersect', 'pointer'. In some setups, 'pointer' is more natural.</desc>
+      </option>
+      <option name="zIndex" type="Integer" default="1000">
+        <desc>Z-index for element/helper while being sorted.</desc>
+      </option>
+      <event name="create">
+        <desc>This event is triggered when sortable is created.</desc>
+      </event>
+      <event name="start">
+        <desc>This event is triggered when sorting starts.</desc>
+      </event>
+      <event name="sort">
+        <desc>This event is triggered during sorting.</desc>
+      </event>
+      <event name="change">
+        <desc>This event is triggered during sorting, but only when the DOM position has changed.</desc>
+      </event>
+      <event name="beforeStop">
+        <desc>This event is triggered when sorting stops, but when the placeholder/helper is still available.</desc>
+      </event>
+      <event name="stop">
+        <desc>This event is triggered when sorting has stopped.</desc>
+      </event>
+      <event name="update">
+        <desc>This event is triggered when the user stopped sorting and the DOM position has changed.</desc>
+      </event>
+      <event name="receive">
+        <desc>This event is triggered when a connected sortable list has received an item from another list.</desc>
+      </event>
+      <event name="remove">
+        <desc>This event is triggered when a sortable item has been dragged out from the list and into another.</desc>
+      </event>
+      <event name="over">
+        <desc>This event is triggered when a sortable item is moved into a connected list.</desc>
+      </event>
+      <event name="out">
+        <desc>This event is triggered when a sortable item is moved away from a connected list.</desc>
+      </event>
+      <event name="activate">
+        <desc>This event is triggered when using connected lists, every connected list on drag start receives it.</desc>
+      </event>
+      <event name="deactivate">
+        <desc>This event is triggered when sorting was stopped, is propagated to all possible connected lists.</desc>
+      </event>
+      <method name="destroy">
+        <longdesc>
+          <p>Remove the sortable functionality completely. This will return the element back to its pre-init state.</p>
+        </longdesc>
+        <signature title=".sortable( &quot;destroy&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="disable">
+        <longdesc>
+          <p>Disable the sortable.</p>
+        </longdesc>
+        <signature title=".sortable( &quot;disable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="enable">
+        <longdesc>
+          <p>Enable the sortable.</p>
+        </longdesc>
+        <signature title=".sortable( &quot;enable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Get or set any sortable option. If no value is specified, will act as a getter.</p>
+        </longdesc>
+        <signature title=".sortable( &quot;option&quot; , optionName , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;value&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Set multiple sortable options at once by providing an options object.</p>
+        </longdesc>
+        <signature title=".sortable( &quot;option&quot; , options )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="widget">
+        <longdesc>
+          <p>Returns the .ui-sortable element.</p>
+        </longdesc>
+        <signature title=".sortable( &quot;widget&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="serialize">
+        <longdesc><p>Serializes the sortable's item id's into a form/ajax submittable string. Calling this method produces a hash that can be appended to any url to easily submit a new item order back to the server.
+</p>
+<p>It works by default by looking at the id of each item in the format 'setname_number', and it spits out a hash like "setname[]=number&amp;setname[]=number".
+</p>
+<p>You can also give in a option hash as second argument to custom define how the function works. The possible options are: 'key' (replaces part1[] with whatever you want), 'attribute' (test another attribute than 'id') and 'expression' (use your own regexp).
+</p>
+<p>If serialize returns an empty string, make sure the id attributes include an underscore.  They must be in the form: "set_number" For example, a 3 element list with id attributes foo_1, foo_5, foo_2 will serialize to foo[]=1&amp;foo[]=5&amp;foo[]=2. You can use an underscore, equal sign or hyphen to separate the set and number.  For example foo=1 or foo-1 or foo_1 all serialize to foo[]=1.</p></longdesc>
+        <signature title=".sortable( &quot;serialize&quot; , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;options&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="toArray">
+        <longdesc><p>Serializes the sortable's item id's into an array of string. If you have
+</p>
+<pre>
+&lt;ul id="a_sortable"&gt;&lt;br&gt;
+&lt;li id="hello"&gt;Hello&lt;/li&gt;&lt;br&gt;
+&lt;li id="goodbye"&gt;Good bye&lt;/li&gt;&lt;br&gt;
+&lt;/ul&gt;
+</pre>
+<p>and do
+</p>
+<pre>var result = $('#a_sortable').sortable('toArray');</pre>
+<p>then
+</p>
+<pre>result[0] will contain "hello" and result[1] will contain "goodbye".</pre></longdesc>
+        <signature title=".sortable( &quot;toArray&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="refresh">
+        <longdesc>
+          <p>Refresh the sortable items. Custom trigger the reloading of all sortable items, causing new items to be recognized.</p>
+        </longdesc>
+        <signature title=".sortable( &quot;refresh&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="refreshPositions">
+        <longdesc>
+          <p>Refresh the cached positions of the sortables' items. Calling this method refreshes the cached item positions of all sortables. This is usually done automatically by the script and slows down performance. Use wisely.</p>
+        </longdesc>
+        <signature title=".sortable( &quot;refreshPositions&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="cancel">
+        <longdesc><p>Cancels a change in the current sortable and reverts it back to how it was before the current sort started. Useful in the stop and receive callback functions.
+</p>
+<p>If the sortable item is not being moved from one connected sortable to another:
+</p>
+<pre>$(this).sortable('cancel');</pre>
+<p>will cancel the change.
+</p>
+<p>If the sortable item is being moved from one connected sortable to another:
+</p>
+<pre>$(ui.sender).sortable('cancel');</pre>
+<p>will cancel the change. Useful in the 'receive' callback.</p></longdesc>
+        <signature title=".sortable( &quot;cancel&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+    </entry>
+    <entry type="method" name="accordion" title=".accordion()" plugin="jquery.ui.accordion">
+      <depend name="jQuery.ui.core"/>
+      <depend name="jQuery.ui.widget"/>
+      <desc>Apply the Accordion widget for each element in the set of matched elements</desc>
+      <category name="version-1.0" title="Version 1.0"/>
+      <category name="ui" title="UI"/>
+      <signature title=".accordion( [ options ] )">
+        <added>1.0</added>
+        <argument name="options" type="Map" optional="true">
+          <desc>A map of additional options pass to the widget.</desc>
+        </argument>
+      </signature>
+      <longdesc><p>Make the selected elements Accordion widgets. Semantic requirements:</p>
+<p>The markup of your accordion container needs pairs of headers and content panels:</p>
+<pre>&lt;div id="accordion"&gt;
+    &lt;h3&gt;&lt;a href="#"&gt;First header&lt;/a&gt;&lt;/h3&gt;
+    &lt;div&gt;First content&lt;/div&gt;
+    &lt;h3&gt;&lt;a href="#"&gt;Second header&lt;/a&gt;&lt;/h3&gt;
+    &lt;div&gt;Second content&lt;/div&gt;
+&lt;/div&gt;</pre>
+<p>If you use a different element for the header, specify the header-option with an appropriate selector, eg. header: 'a.header'. The content element must be always next to its header.</p>
+<p>If you have links inside the accordion content and use a-elements as headers, add a class to them and use that as the header, eg. header: 'a.header'.</p>
+<p>Use activate(Number) to change the active content programmatically.</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="http://docs.jquery.com/action/edit/UI/API/1.8/Accordion?section=1" title="Edit section: NOTE: If you want multiple sections open at once, don't use an accordion">edit</a>]</div>
+<a name="NOTE:_If_you_want_multiple_sections_open_at_once.2C_don.27t_use_an_accordion"/><h4>NOTE: If you want multiple sections open at once, don't use an accordion</h4>
+<p>An accordion doesn't allow more than one content panel to be open at the same time, and it takes a lot of effort to do that. If you are looking for a widget that allows more than one content panel to be open, don't use this. Usually it can be written with a few lines of jQuery instead, something like this:</p>
+<pre>jQuery(document).ready(function(){
+	$('.accordion .head').click(function() {
+		$(this).next().toggle();
+		return false;
+	}).next().hide();
+});</pre>
+<p>Or animated:</p>
+<pre>jQuery(document).ready(function(){
+	$('.accordion .head').click(function() {
+		$(this).next().toggle('slow');
+		return false;
+	}).next().hide();
+});</pre>
+    </longdesc>
+      <option name="disabled" type="Boolean" default="false">
+        <desc>Disables (true) or enables (false) the accordion. Can be set when initialising (first creating) the accordion.</desc>
+      </option>
+      <option name="active" type="Selector,Element,jQuery,Boolean,Number" default="first child">
+        <desc>Selector for the active element. Set to false to display none at start. Needs <code>collapsible: true</code>.</desc>
+      </option>
+      <option name="animated" type="Boolean,String" default="'slide'">
+        <desc>Choose your favorite animation, or disable them (set to false). In addition to the default, 'bounceslide' and all defined easing methods are supported ('bounceslide' requires UI Effects Core).</desc>
+      </option>
+      <option name="autoHeight" type="Boolean" default="true">
+        <desc>If set, the highest content part is used as height reference for all other parts. Provides more consistent animations.</desc>
+      </option>
+      <option name="clearStyle" type="Boolean" default="false">
+        <desc>If set, clears height and overflow styles after finishing animations. This enables accordions to work with dynamic content. Won't work together with autoHeight.</desc>
+      </option>
+      <option name="collapsible" type="Boolean" default="false">
+        <desc>Whether all the sections can be closed at once. Allows collapsing the active section by the triggering event (click is the default).</desc>
+      </option>
+      <option name="event" type="String" default="'click'">
+        <desc>The event on which to trigger the accordion.</desc>
+      </option>
+      <option name="fillSpace" type="Boolean" default="false">
+        <desc>If set, the accordion completely fills the height of the parent element. Overrides autoheight.</desc>
+      </option>
+      <option name="header" type="Selector,jQuery" default="'&gt; li &gt;&#xA0;:first-child,&gt;&#xA0;:not(li):even'">
+        <desc>Selector for the header element.</desc>
+      </option>
+      <option name="icons" type="Object" default="{ 'header': 'ui-icon-triangle-1-e', 'headerSelected': 'ui-icon-triangle-1-s' }">
+        <desc>Icons to use for headers. Icons may be specified for 'header' and 'headerSelected', and we recommend using the icons native to the jQuery UI CSS Framework manipulated by <a href="http://www.themeroller.com" class="external text" title="http://www.themeroller.com">jQuery UI ThemeRoller</a>. Set to false to have no icons displayed.</desc>
+      </option>
+      <option name="navigation" type="Boolean" default="false">
+        <desc>If set, looks for the anchor that matches location.href and activates it. Great for href-based state-saving. Use navigationFilter to implement your own matcher.</desc>
+      </option>
+      <option name="navigationFilter" type="Function" default="">
+        <desc>Overwrite the default location.href-matching with your own matcher.</desc>
+      </option>
+      <event name="create">
+        <desc>This event is triggered when accordion is created.</desc>
+      </event>
+      <event name="change">
+        <desc>This event is triggered every time the accordion changes. If the accordion is animated, the event will be triggered upon completion of the animation; otherwise, it is triggered immediately.</desc>
+      </event>
+      <event name="changestart">
+        <desc>This event is triggered every time the accordion starts to change.</desc>
+      </event>
+      <method name="destroy">
+        <longdesc>
+          <p>Remove the accordion functionality completely. This will return the element back to its pre-init state.</p>
+        </longdesc>
+        <signature title=".accordion( &quot;destroy&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="disable">
+        <longdesc>
+          <p>Disable the accordion.</p>
+        </longdesc>
+        <signature title=".accordion( &quot;disable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="enable">
+        <longdesc>
+          <p>Enable the accordion.</p>
+        </longdesc>
+        <signature title=".accordion( &quot;enable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Get or set any accordion option. If no value is specified, will act as a getter.</p>
+        </longdesc>
+        <signature title=".accordion( &quot;option&quot; , optionName , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;value&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Set multiple accordion options at once by providing an options object.</p>
+        </longdesc>
+        <signature title=".accordion( &quot;option&quot; , options )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="widget">
+        <longdesc>
+          <p>Returns the .ui-accordion element.</p>
+        </longdesc>
+        <signature title=".accordion( &quot;widget&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="activate">
+        <longdesc>
+          <p>Activate a content part of the Accordion programmatically. The index can be a zero-indexed number to match the position of the header to close or a Selector matching an element. Pass <code>false</code> to close all (only possible with <code>collapsible:true</code>).</p>
+        </longdesc>
+        <signature title=".accordion( &quot;activate&quot; , index )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="resize">
+        <longdesc>
+          <p>Recompute heights of the accordion contents when using the fillSpace option and the container height changed. For example, when the container is a resizable, this method should be called by its resize-event.</p>
+        </longdesc>
+        <signature title=".accordion( &quot;resize&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+    </entry>
+    <entry type="method" name="autocomplete" title=".autocomplete()" plugin="jquery.ui.autocomplete">
+      <depend name="jQuery.ui.core"/>
+      <depend name="jQuery.ui.widget"/>
+      <depend name="jQuery.ui.position"/>
+      <desc>Apply the Autocomplete widget for each element in the set of matched elements</desc>
+      <category name="version-1.0" title="Version 1.0"/>
+      <category name="ui" title="UI"/>
+      <signature title=".autocomplete( [ options ] )">
+        <added>1.0</added>
+        <argument name="options" type="Map" optional="true">
+          <desc>A map of additional options pass to the widget.</desc>
+        </argument>
+      </signature>
+      <longdesc><p>Autocomplete, when added to an input field, enables users to quickly find and select from a pre-populated list of values as they type, leveraging searching and filtering.</p>
+<p>By giving an Autocomplete field focus or entering something into it, the plugin starts searching for entries that match and displays a list of values to choose from. By entering more characters, the user can filter down the list to better matches.</p>
+<p>This can be used to enter previous selected values, for example you could use Autocomplete for entering tags, to complete an address, you could enter a city name and get the zip code, or maybe enter email addresses from an address book.</p>
+<p>You can pull data in from a local and/or a remote source: Local is good for small data sets (like an address book with 50 entries), remote is necessary for big data sets, like a database with hundreds or millions of entries to select from.</p>
+<p>Autocomplete can be customized to work with various data sources, by just specifying the source option. A data source can be:</p>
+<ul><li>an Array with local data</li>
+<li>a String, specifying a URL</li>
+<li>a Callback</li>
+</ul><p><b>Expected data format</b></p>
+<p>The data from local data, a url or a callback can come in two variants:</p>
+<ul><li>An Array of Strings:<br/><code>[ "Choice1", "Choice2" ]</code>
+</li>
+<li>An Array of Objects with label and value properties:<br/><code>[ { label: "Choice1", value: "value1" }, ... ]</code>
+</li>
+</ul><p>The label property is displayed in the suggestion menu. The value will be inserted into the input element after the user selected something from the menu. If just one property is specified, it will be used for both, eg. if you provide only value-properties, the value will also be used as the label.</p>
+<p>When a String is used, the Autocomplete plugin expects that string to point to a URL resource that will return JSON data. It can be on the same host or on a different one (must provide JSONP). The Autocomplete plugin does not filter the results, instead the request parameter "term" gets added to the URL, which the server-side script should use for filtering the results. The data itself can be in the same format as the local data described above.</p>
+<p>The third variation, the callback, provides the most flexibility, and can be used to connect any data source to Autocomplete. The callback gets two arguments:</p>
+<ul><li>A request object, with a single property called "term", which refers to the value currently in the text input. For example, when the user entered "new yo" in a city field, the Autocomplete term will equal "new yo".</li>
+<li>A response callback, which expects a single argument to contain the data to suggest to the user. This data should be filtered based on the provided term, and can be in any of the formats described above for simple local data (String-Array or Object-Array with label/value/both properties). It's important when providing a custom source callback to handle errors during the request. You must always call the response callback even if you encounter an error. This ensures that the widget always has the correct state.</li>
+</ul><p>The label is always treated as text, if you want the label to be treated as html you can use <a href="https://github.com/scottgonzalez/jquery-ui-extensions/blob/master/autocomplete/jquery.ui.autocomplete.html.js" class="external text" title="https://github.com/scottgonzalez/jquery-ui-extensions/blob/master/autocomplete/jquery.ui.autocomplete.html.js">Scott Gonz&#xE1;lez' html extension</a>. The demos all focus on different variations of the source-option - look for the one that matches your use case, and take a look at the code.</p>
+    </longdesc>
+      <option name="disabled" type="Boolean" default="false">
+        <desc>Disables (true) or enables (false) the autocomplete. Can be set when initialising (first creating) the autocomplete.</desc>
+      </option>
+      <option name="appendTo" type="Selector" default="'body'">
+        <desc>Which element the menu should be appended to.</desc>
+      </option>
+      <option name="autoFocus" type="Boolean" default="false">
+        <desc>If set to true the first item will be automatically focused.</desc>
+      </option>
+      <option name="delay" type="Integer" default="300">
+        <desc>The delay in milliseconds the Autocomplete waits after a keystroke to activate itself. A zero-delay makes sense for local data (more responsive), but can produce a lot of load for remote data, while being less responsive.</desc>
+      </option>
+      <option name="minLength" type="Integer" default="1">
+        <desc>The minimum number of characters a user has to type before the Autocomplete activates. Zero is useful for local data with just a few items. Should be increased when there are a lot of items, where a single character would match a few thousand items.</desc>
+      </option>
+      <option name="position" type="Object" default="{ my: 'left top', at: 'left bottom', collision: 'none' }">
+        <desc>Identifies the position of the Autocomplete widget in relation to the associated input element. The "of" option defaults to the input element, but you can specify another element to position against. You can refer to the <a href="http://docs.jquery.com/UI/Position" class="external text" title="http://docs.jquery.com/UI/Position">jQuery UI Position</a> utility for more details about the various options.</desc>
+      </option>
+      <option name="source" type="String,Array,Callback" default="none, must be specified">
+        <desc>Defines the data to use, must be specified. See Overview section for more details, and look at the various demos.</desc>
+      </option>
+      <event name="create">
+        <desc>This event is triggered when autocomplete is created.</desc>
+      </event>
+      <event name="search">
+        <desc>Before a request (source-option) is started, after minLength and delay are met. Can be canceled (return false), then no request will be started and no items suggested.</desc>
+      </event>
+      <event name="open">
+        <desc>Triggered when the suggestion menu is opened.</desc>
+      </event>
+      <event name="focus">
+        <desc>Before focus is moved to an item (not selecting), ui.item refers to the focused item. The default action of focus is to replace the text field's value with the value of the focused item, though only if the focus event was triggered by a keyboard interaction. Canceling this event prevents the value from being updated, but does not prevent the menu item from being focused.</desc>
+      </event>
+      <event name="select">
+        <desc>Triggered when an item is selected from the menu; ui.item refers to the selected item. The default action of select is to replace the text field's value with the value of the selected item. Canceling this event prevents the value from being updated, but does not prevent the menu from closing.</desc>
+      </event>
+      <event name="close">
+        <desc>When the list is hidden - doesn't have to occur together with a change.</desc>
+      </event>
+      <event name="change">
+        <desc>Triggered when the field is blurred, if the value has changed; ui.item refers to the selected item.</desc>
+      </event>
+      <method name="destroy">
+        <longdesc>
+          <p>Remove the autocomplete functionality completely. This will return the element back to its pre-init state.</p>
+        </longdesc>
+        <signature title=".autocomplete( &quot;destroy&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="disable">
+        <longdesc>
+          <p>Disable the autocomplete.</p>
+        </longdesc>
+        <signature title=".autocomplete( &quot;disable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="enable">
+        <longdesc>
+          <p>Enable the autocomplete.</p>
+        </longdesc>
+        <signature title=".autocomplete( &quot;enable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Get or set any autocomplete option. If no value is specified, will act as a getter.</p>
+        </longdesc>
+        <signature title=".autocomplete( &quot;option&quot; , optionName , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;value&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Set multiple autocomplete options at once by providing an options object.</p>
+        </longdesc>
+        <signature title=".autocomplete( &quot;option&quot; , options )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="widget">
+        <longdesc>
+          <p>Returns the .ui-autocomplete element.</p>
+        </longdesc>
+        <signature title=".autocomplete( &quot;widget&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="search">
+        <longdesc>
+          <p>Triggers a search event, which, when data is available, then will display the suggestions; can be used by a selectbox-like button to open the suggestions when clicked. If no value argument is specified, the current input's value is used. Can be called with an empty string and minLength: 0 to display all items.</p>
+        </longdesc>
+        <signature title=".autocomplete( &quot;search&quot; , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;value&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="close">
+        <longdesc>
+          <p>Close the Autocomplete menu. Useful in combination with the search method, to close the open menu.</p>
+        </longdesc>
+        <signature title=".autocomplete( &quot;close&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+    </entry>
+    <entry type="method" name="button" title=".button()" plugin="jquery.ui.button">
+      <depend name="jQuery.ui.core"/>
+      <depend name="jQuery.ui.widget"/>
+      <desc>Apply the Button widget for each element in the set of matched elements</desc>
+      <category name="version-1.0" title="Version 1.0"/>
+      <category name="ui" title="UI"/>
+      <signature title=".button( [ options ] )">
+        <added>1.0</added>
+        <argument name="options" type="Map" optional="true">
+          <desc>A map of additional options pass to the widget.</desc>
+        </argument>
+      </signature>
+      <longdesc><p>Button enhances standard form elements like button, input of type submit or reset or anchors to themable buttons with appropiate mouseover and active styles.</p>
+<p>In addition to basic push buttons, radio buttons and checkboxes (inputs of type radio and checkbox) can be converted to buttons: Their associated label is styled to appear as the button, while the underlying input is updated on click.</p>
+<p>In order to group radio buttons, Button also provides an additional widget-method, called Buttonset. Its used by selecting a container element (which contains the radio buttons) and calling buttonset(). Buttonset will also provide visual grouping, and therefore should be used whenever you have a group of buttons. It works by selecting all descendents and applying button() to them. You can enable and disable a buttonset, which will enable and disable all contained buttons. Destroying a buttonset also calls the button's destroy method.</p>
+<p>When using an input of type button, submit or reset, support is limited to plain text labels with no icons.</p>
+    </longdesc>
+      <option name="disabled" type="Boolean" default="false">
+        <desc>Disables (true) or enables (false) the button. Can be set when initialising (first creating) the button.</desc>
+      </option>
+      <option name="text" type="Boolean" default="true">
+        <desc>Whether to show any text - when set to false (display no text), icons (see icons option) must be enabled, otherwise it'll be ignored.</desc>
+      </option>
+      <option name="icons" type="Options" default="{ primary: null, secondary: null }">
+        <desc>Icons to display, with or without text (see text option). The primary icon is displayed by default on the left of the label text, the secondary by default is on the right. Value for the primary and secondary properties must be a classname (String), eg. "ui-icon-gear". For using only one icon: icons: {primary:'ui-icon-locked'}. For using two icons: icons: {primary:'ui-icon-gear',secondary:'ui-icon-triangle-1-s'}</desc>
+      </option>
+      <option name="label" type="String" default="HTML content of the button, or value attribute">
+        <desc>Text to show on the button. When not specified (null), the element's html content is used, or its value attribute when it's an input element of type submit or reset; or the html content of the associated label element if its an input of type radio or checkbox</desc>
+      </option>
+      <event name="create">
+        <desc>This event is triggered when button is created.</desc>
+      </event>
+      <method name="destroy">
+        <longdesc>
+          <p>Remove the button functionality completely. This will return the element back to its pre-init state.</p>
+        </longdesc>
+        <signature title=".button( &quot;destroy&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="disable">
+        <longdesc>
+          <p>Disable the button.</p>
+        </longdesc>
+        <signature title=".button( &quot;disable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="enable">
+        <longdesc>
+          <p>Enable the button.</p>
+        </longdesc>
+        <signature title=".button( &quot;enable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Get or set any button option. If no value is specified, will act as a getter.</p>
+        </longdesc>
+        <signature title=".button( &quot;option&quot; , optionName , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;value&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Set multiple button options at once by providing an options object.</p>
+        </longdesc>
+        <signature title=".button( &quot;option&quot; , options )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="widget">
+        <longdesc>
+          <p>Returns the .ui-button element.</p>
+        </longdesc>
+        <signature title=".button( &quot;widget&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="refresh">
+        <longdesc>
+          <p>Refreshes the visual state of the button. Useful for updating button state after the native element's checked or disabled state is changed programatically.</p>
+        </longdesc>
+        <signature title=".button( &quot;refresh&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+    </entry>
+    <entry type="method" name="datepicker" title=".datepicker()" plugin="jquery.ui.datepicker">
+      <depend name="jQuery.ui.core"/>
+      <desc>Apply the Datepicker widget for each element in the set of matched elements</desc>
+      <category name="version-1.0" title="Version 1.0"/>
+      <category name="ui" title="UI"/>
+      <signature title=".datepicker( [ options ] )">
+        <added>1.0</added>
+        <argument name="options" type="Map" optional="true">
+          <desc>A map of additional options pass to the widget.</desc>
+        </argument>
+      </signature>
+      <longdesc><p>The jQuery UI Datepicker is a highly configurable plugin that adds datepicker functionality to your pages. You can customize the date format and language, restrict the selectable date ranges and add in buttons and other navigation options easily.</p>
+<p>By default, the datepicker calendar opens in a small overlay onFocus and closes automatically onBlur or when a date is selected. For an inline calendar, simply attach the datepicker to a div or span.
+</p>
+<p>You can use keyboard shortcuts to drive the datepicker:
+</p>
+<ul><li>page up/down - previous/next month</li>
+ <li>ctrl+page up/down - previous/next year</li>
+ <li>ctrl+home - current month or open when closed</li>
+ <li>ctrl+left/right - previous/next day</li>
+ <li>ctrl+up/down - previous/next week</li>
+ <li>enter - accept the selected date</li>
+ <li>ctrl+end - close and erase the date</li>
+ <li>escape - close the datepicker without selection</li>
+</ul><div class="editsection" style="float:right;margin-left:5px;">[<a href="http://docs.jquery.com/action/edit/UI/API/1.8/Datepicker?section=1" title="Edit section: Utility functions">edit</a>]</div>
+<a name="Utility_functions"/><h3 id="utility-functions">Utility functions</h3>
+<ul><li>
+<a href="http://docs.jquery.com/UI/Datepicker/setDefaults" title="UI/Datepicker/setDefaults">$.datepicker.setDefaults( settings )</a> - Set settings for all datepicker instances.</li>
+ <li>
+<a href="http://docs.jquery.com/UI/Datepicker/formatDate" title="UI/Datepicker/formatDate">$.datepicker.formatDate( format, date, settings )</a> - Format a date into a string value with a specified format.</li>
+ <li>
+<a href="http://docs.jquery.com/UI/Datepicker/parseDate" title="UI/Datepicker/parseDate">$.datepicker.parseDate( format, value, settings ) </a> - Extract a date from a string value with a specified format.</li>
+ <li>
+<a href="http://docs.jquery.com/UI/Datepicker/iso8601Week" title="UI/Datepicker/iso8601Week">$.datepicker.iso8601Week( date )</a> - Determine the week of the year for a given date: 1 to 53.</li>
+ <li>
+<a href="http://docs.jquery.com/UI/Datepicker/noWeekends" title="UI/Datepicker/noWeekends">$.datepicker.noWeekends</a> - Set as beforeShowDay function to prevent selection of weekends.</li>
+</ul><div class="editsection" style="float:right;margin-left:5px;">[<a href="http://docs.jquery.com/action/edit/UI/API/1.8/Datepicker?section=2" title="Edit section: Localization">edit</a>]</div>
+<a name="Localization"/><h3>Localization</h3>
+<p>Datepicker provides support for localizing its content to cater for different languages
+	and date formats. Each localization is contained within its own file with the 
+	language code appended to the name, e.g. <code>jquery.ui.datepicker-fr.js</code> for French.
+	The desired localization file should be included after the main datepicker code. They add their settings to the set
+	of available localizations and automatically apply them as defaults for all instances.</p>
+<p>The <code>$.datepicker.regional</code> attribute holds an array of localizations,
+	indexed by language code, with "" referring to the default (English). Each entry is
+	an object with the following attributes: <code>closeText</code>, <code>prevText</code>,
+	<code>nextText</code>, <code>currentText</code>, <code>monthNames</code>,
+	<code>monthNamesShort</code>, <code>dayNames</code>, <code>dayNamesShort</code>, 
+	<code>dayNamesMin</code>, <code>weekHeader</code>, <code>dateFormat</code>,
+	<code>firstDay</code>, <code>isRTL</code>, <code>showMonthAfterYear</code>,
+	and <code>yearSuffix</code>.</p>
+<p>You can restore the default localizations with:</p>
+<p><code>$.datepicker.setDefaults($.datepicker.regional[""]);</code>
+</p>
+<p>And can then override an individual datepicker for a specific locale:</p>
+<p><code>$(selector).datepicker($.datepicker.regional['fr']);</code>
+</p>
+The localization files are included when using the <a href="http://jqueryui.com/download/" class="external text" title="http://jqueryui.com/download/">jQuery UI download builder</a>.
+    </longdesc>
+      <option name="disabled" type="Boolean" default="false">
+        <desc>Disables (true) or enables (false) the datepicker. Can be set when initialising (first creating) the datepicker.</desc>
+      </option>
+      <option name="altField" type="Selector,jQuery,Element" default="''">
+        <desc>The jQuery selector for another field that is to be updated with the selected date from the datepicker. Use the <code><a href="http://docs.jquery.com/UI/Datepicker#option-altFormat" title="UI/Datepicker">altFormat</a></code> setting to change the format of the date within this field. Leave as blank for no alternate field.</desc>
+      </option>
+      <option name="altFormat" type="String" default="''">
+        <desc>The <code><a href="http://docs.jquery.com/UI/Datepicker#option-dateFormat" title="UI/Datepicker">dateFormat</a></code> to be used for the <code><a href="http://docs.jquery.com/UI/Datepicker#option-altField" title="UI/Datepicker">altField</a></code> option. This allows one date format to be shown to the user for selection purposes, while a different format is actually sent behind the scenes. For a full list of the possible formats see the <a href="http://docs.jquery.com/UI/Datepicker/formatDate" title="UI/Datepicker/formatDate">formatDate</a> function</desc>
+      </option>
+      <option name="appendText" type="String" default="''">
+        <desc>The text to display after each date field, e.g. to show the required format.</desc>
+      </option>
+      <option name="autoSize" type="Boolean" default="false">
+        <desc>Set to true to automatically resize the input field to accommodate dates in the current <code><a href="http://docs.jquery.com/UI/Datepicker#option-dateFormat" title="UI/Datepicker">dateFormat</a></code>.</desc>
+      </option>
+      <option name="buttonImage" type="String" default="''">
+        <desc>The URL for the popup button image. If set, <code><a href="http://docs.jquery.com/UI/Datepicker#option-buttonText" title="UI/Datepicker">buttonText</a></code> becomes the <i>alt</i> value and is not directly displayed.</desc>
+      </option>
+      <option name="buttonImageOnly" type="Boolean" default="false">
+        <desc>Set to true to place an image after the field to use as the trigger without it appearing on a button.</desc>
+      </option>
+      <option name="buttonText" type="String" default="'...'">
+        <desc>The text to display on the trigger button. Use in conjunction with <code><a href="http://docs.jquery.com/UI/Datepicker#option-showOn" title="UI/Datepicker">showOn</a></code> equal to 'button' or 'both'.</desc>
+      </option>
+      <option name="calculateWeek" type="Function" default="$.datepicker.iso8601Week">
+        <desc>A function to calculate the week of the year for a given date. The default implementation uses the ISO 8601 definition: weeks start on a Monday; the first week of the year contains the first Thursday of the year.</desc>
+      </option>
+      <option name="changeMonth" type="Boolean" default="false">
+        <desc>Allows you to change the month by selecting from a drop-down list. You can enable this feature by setting the attribute to true.</desc>
+      </option>
+      <option name="changeYear" type="Boolean" default="false">
+        <desc>Allows you to change the year by selecting from a drop-down list. You can enable this feature by setting the attribute to true. Use the <code><a href="http://docs.jquery.com/UI/Datepicker#option-yearRange" title="UI/Datepicker">yearRange</a></code> option to control which years are made available for selection.</desc>
+      </option>
+      <option name="closeText" type="String" default="'Done'">
+        <desc>The text to display for the close link. This attribute is one of the regionalisation attributes. Use the <code><a href="http://docs.jquery.com/UI/Datepicker#option-showButtonPanel" title="UI/Datepicker">showButtonPanel</a></code> to display this button.</desc>
+      </option>
+      <option name="constrainInput" type="Boolean" default="true">
+        <desc>When true entry in the input field is constrained to those characters allowed by the current <code><a href="http://docs.jquery.com/UI/Datepicker#option-dateFormat" title="UI/Datepicker">dateFormat</a></code>.</desc>
+      </option>
+      <option name="currentText" type="String" default="'Today'">
+        <desc>The text to display for the current day link. This attribute is one of the regionalisation attributes. Use the <code><a href="http://docs.jquery.com/UI/Datepicker#option-showButtonPanel" title="UI/Datepicker">showButtonPanel</a></code> to display this button.</desc>
+      </option>
+      <option name="dateFormat" type="String" default="'mm/dd/yy'">
+        <desc>The format for parsed and displayed dates. This attribute is one of the regionalisation attributes. For a full list of the possible formats see the <code><a href="http://docs.jquery.com/UI/Datepicker/formatDate" title="UI/Datepicker/formatDate">formatDate</a></code> function.</desc>
+      </option>
+      <option name="dayNames" type="Array" default="['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']">
+        <desc>The list of long day names, starting from Sunday, for use as requested via the <code><a href="http://docs.jquery.com/UI/Datepicker#option-dateFormat" title="UI/Datepicker">dateFormat</a></code> setting. They also appear as popup hints when hovering over the corresponding column headings. This attribute is one of the regionalisation attributes.</desc>
+      </option>
+      <option name="dayNamesMin" type="Array" default="['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']">
+        <desc>The list of minimised day names, starting from Sunday, for use as column headers within the datepicker. This attribute is one of the regionalisation attributes.</desc>
+      </option>
+      <option name="dayNamesShort" type="Array" default="['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']">
+        <desc>The list of abbreviated day names, starting from Sunday, for use as requested via the <code><a href="http://docs.jquery.com/UI/Datepicker#option-dateFormat" title="UI/Datepicker">dateFormat</a></code> setting. This attribute is one of the regionalisation attributes.</desc>
+      </option>
+      <option name="defaultDate" type="Date,Number,String" default="null">
+        <desc>Set the date to highlight on first opening if the field is blank. Specify either an actual date via a Date object or as a string in the current <code><a href="http://docs.jquery.com/UI/Datepicker#option-dateFormat" title="UI/Datepicker">dateFormat</a></code>, or a number of days from today (e.g. +7) or a string of values and periods ('y' for years, 'm' for months, 'w' for weeks, 'd' for days, e.g. '+1m +7d'), or null for today.</desc>
+      </option>
+      <option name="duration" type="String,Number" default="'normal'">
+        <desc>Control the speed at which the datepicker appears, it may be a time in milliseconds or a string representing one of the three predefined speeds ("slow", "normal", "fast").</desc>
+      </option>
+      <option name="firstDay" type="Number" default="0">
+        <desc>Set the first day of the week: Sunday is 0, Monday is 1, ... This attribute is one of the regionalisation attributes.</desc>
+      </option>
+      <option name="gotoCurrent" type="Boolean" default="false">
+        <desc>When true the current day link moves to the currently selected date instead of today.</desc>
+      </option>
+      <option name="hideIfNoPrevNext" type="Boolean" default="false">
+        <desc>Normally the previous and next links are disabled when not applicable (see <code><a href="http://docs.jquery.com/UI/Datepicker#option-minDate" title="UI/Datepicker">minDate</a></code>/<code><a href="http://docs.jquery.com/UI/Datepicker#option-maxDate" title="UI/Datepicker">maxDate</a></code>). You can hide them altogether by setting this attribute to true.</desc>
+      </option>
+      <option name="isRTL" type="Boolean" default="false">
+        <desc>True if the current language is drawn from right to left. This attribute is one of the regionalisation attributes.</desc>
+      </option>
+      <option name="maxDate" type="Date,Number,String" default="null">
+        <desc>Set a maximum selectable date via a Date object or as a string in the current <code><a href="http://docs.jquery.com/UI/Datepicker#option-dateFormat" title="UI/Datepicker">dateFormat</a></code>, or a number of days from today (e.g. +7) or a string of values and periods ('y' for years, 'm' for months, 'w' for weeks, 'd' for days, e.g. '+1m +1w'), or null for no limit.</desc>
+      </option>
+      <option name="minDate" type="Date,Number,String" default="null">
+        <desc>Set a minimum selectable date via a Date object or as a string in the current <code><a href="http://docs.jquery.com/UI/Datepicker#option-dateFormat" title="UI/Datepicker">dateFormat</a></code>, or a number of days from today (e.g. +7) or a string of values and periods ('y' for years, 'm' for months, 'w' for weeks, 'd' for days, e.g. '-1y -1m'), or null for no limit.</desc>
+      </option>
+      <option name="monthNames" type="Array" default="['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']">
+        <desc>The list of full month names, for use as requested via the <code><a href="http://docs.jquery.com/UI/Datepicker#option-dateFormat" title="UI/Datepicker">dateFormat</a></code> setting. This attribute is one of the regionalisation attributes.</desc>
+      </option>
+      <option name="monthNamesShort" type="Array" default="['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']">
+        <desc>The list of abbreviated month names, as used in the month header on each datepicker and as requested via the <code><a href="http://docs.jquery.com/UI/Datepicker#option-dateFormat" title="UI/Datepicker">dateFormat</a></code> setting. This attribute is one of the regionalisation attributes.</desc>
+      </option>
+      <option name="navigationAsDateFormat" type="Boolean" default="false">
+        <desc>When true the <code><a href="http://docs.jquery.com/UI/Datepicker/formatDate" title="UI/Datepicker/formatDate">formatDate</a></code> function is applied to the <code><a href="http://docs.jquery.com/UI/Datepicker#option-prevText" title="UI/Datepicker">prevText</a></code>, <code><a href="http://docs.jquery.com/UI/Datepicker#option-nextText" title="UI/Datepicker">nextText</a></code>, and <code><a href="http://docs.jquery.com/UI/Datepicker#option-currentText" title="UI/Datepicker">currentText</a></code> values before display, allowing them to display the target month names for example.</desc>
+      </option>
+      <option name="nextText" type="String" default="'Next'">
+        <desc>The text to display for the next month link. This attribute is one of the regionalisation attributes. With the standard ThemeRoller styling, this value is replaced by an icon.</desc>
+      </option>
+      <option name="numberOfMonths" type="Number,Array" default="1">
+        <desc>Set how many months to show at once. The value can be a straight integer, or can be a two-element array to define the number of rows and columns to display.</desc>
+      </option>
+      <option name="prevText" type="String" default="'Prev'">
+        <desc>The text to display for the previous month link. This attribute is one of the regionalisation attributes. With the standard ThemeRoller styling, this value is replaced by an icon.</desc>
+      </option>
+      <option name="selectOtherMonths" type="Boolean" default="false">
+        <desc>When true days in other months shown before or after the current month are selectable. This only applies if <code><a href="http://docs.jquery.com/UI/Datepicker#option-showOtherMonths" title="UI/Datepicker">showOtherMonths</a></code> is also true.</desc>
+      </option>
+      <option name="shortYearCutoff" type="String,Number" default="'+10'">
+        <desc>Set the cutoff year for determining the century for a date (used in conjunction with <code><a href="http://docs.jquery.com/UI/Datepicker#option-dateFormat" title="UI/Datepicker">dateFormat</a></code> 'y'). If a numeric value (0-99) is provided then this value is used directly. If a string value is provided then it is converted to a number and added to the current year. Once the cutoff year is calculated, any dates entered with a year value less than or equal to it are considered to be in the current century, while those greater than it are deemed to be in the previous century.</desc>
+      </option>
+      <option name="showAnim" type="String" default="'show'">
+        <desc>Set the name of the animation used to show/hide the datepicker. Use 'show' (the default), 'slideDown', 'fadeIn', any of the show/hide <a href="http://docs.jquery.com/UI/Effects" class="external text" title="http://docs.jquery.com/UI/Effects">jQuery UI effects</a>, or "" for no animation.</desc>
+      </option>
+      <option name="showButtonPanel" type="Boolean" default="false">
+        <desc>Whether to show the button panel.</desc>
+      </option>
+      <option name="showCurrentAtPos" type="Number" default="0">
+        <desc>Specify where in a <a href="http://docs.jquery.com/UI/Datepicker#option-numberOfMonths" title="UI/Datepicker">multi-month</a> display the current month shows, starting from 0 at the top/left.</desc>
+      </option>
+      <option name="showMonthAfterYear" type="Boolean" default="false">
+        <desc>Whether to show the month after the year in the header. This attribute is one of the regionalisation attributes.</desc>
+      </option>
+      <option name="showOn" type="String" default="'focus'">
+        <desc>Have the datepicker appear automatically when the field receives focus ("focus"), appear only when a button is clicked ("button"), or appear when either event taks place ("both").</desc>
+      </option>
+      <option name="showOptions" type="Options" default="{}">
+        <desc>If using one of the jQuery UI effects for <code><a href="http://docs.jquery.com/UI/Datepicker#option-showAnim" title="UI/Datepicker">showAnim</a></code>, you can provide additional settings for that animation via this option.</desc>
+      </option>
+      <option name="showOtherMonths" type="Boolean" default="false">
+        <desc>Display dates in other months (non-selectable) at the start or end of the current month. To make these days selectable use <code><a href="http://docs.jquery.com/UI/Datepicker#option-selectOtherMonths" title="UI/Datepicker">selectOtherMonths</a></code>.</desc>
+      </option>
+      <option name="showWeek" type="Boolean" default="false">
+        <desc>When true a column is added to show the week of the year. The <code><a href="http://docs.jquery.com/UI/Datepicker#option-calculateWeek" title="UI/Datepicker">calculateWeek</a></code> option determines how the week of the year is calculated. You may also want to change the <code><a href="http://docs.jquery.com/UI/Datepicker#option-firstDay" title="UI/Datepicker">firstDay</a></code> option.</desc>
+      </option>
+      <option name="stepMonths" type="Number" default="1">
+        <desc>Set how many months to move when clicking the Previous/Next links.</desc>
+      </option>
+      <option name="weekHeader" type="String" default="'Wk'">
+        <desc>The text to display for the week of the year column heading. This attribute is one of the regionalisation attributes. Use <code><a href="http://docs.jquery.com/UI/Datepicker#option-showWeek" title="UI/Datepicker">showWeek</a></code> to display this column.</desc>
+      </option>
+      <option name="yearRange" type="String" default="'c-10:c+10'">
+        <desc>Control the range of years displayed in the year drop-down: either relative to today's year (-nn:+nn), relative to the currently selected year (c-nn:c+nn), absolute (nnnn:nnnn), or combinations of these formats (nnnn:-nn). Note that this option only affects what appears in the drop-down, to restrict which dates may be selected use the <code><a href="http://docs.jquery.com/UI/Datepicker#option-minDate" title="UI/Datepicker">minDate</a></code> and/or <code><a href="http://docs.jquery.com/UI/Datepicker#option-maxDate" title="UI/Datepicker">maxDate</a></code> options.</desc>
+      </option>
+      <option name="yearSuffix" type="String" default="''">
+        <desc>Additional text to display after the year in the month headers. This attribute is one of the regionalisation attributes.</desc>
+      </option>
+      <event name="beforeShow">
+        <desc>Can be a function that takes an input field and current datepicker instance and returns an options object to update the datepicker with. It is called just before the datepicker is displayed.</desc>
+      </event>
+      <event name="beforeShowDay">
+        <desc>The function takes a date as a parameter and must return an array with [0] equal to true/false indicating whether or not this date is selectable, [1] equal to a CSS class name(s) or "" for the default presentation, and [2] an optional popup tooltip for this date. It is called for each day in the datepicker before it is displayed.</desc>
+      </event>
+      <event name="onChangeMonthYear">
+        <desc>Allows you to define your own event when the datepicker moves to a new month and/or year. The function receives the selected year, month (1-12), and the datepicker instance as parameters. <code>this</code> refers to the associated input field.</desc>
+      </event>
+      <event name="onClose">
+        <desc>Allows you to define your own event when the datepicker is closed, whether or not a date is selected. The function receives the selected date as text ("" if none) and the datepicker instance as parameters. <code>this</code> refers to the associated input field.</desc>
+      </event>
+      <event name="onSelect">
+        <desc>Allows you to define your own event when the datepicker is selected. The function receives the selected date as text and the datepicker instance as parameters. <code>this</code> refers to the associated input field.</desc>
+      </event>
+      <method name="destroy">
+        <longdesc>
+          <p>Remove the datepicker functionality completely. This will return the element back to its pre-init state.</p>
+        </longdesc>
+        <signature title=".datepicker( &quot;destroy&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="disable">
+        <longdesc>
+          <p>Disable the datepicker.</p>
+        </longdesc>
+        <signature title=".datepicker( &quot;disable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="enable">
+        <longdesc>
+          <p>Enable the datepicker.</p>
+        </longdesc>
+        <signature title=".datepicker( &quot;enable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Get or set any datepicker option. If no value is specified, will act as a getter.</p>
+        </longdesc>
+        <signature title=".datepicker( &quot;option&quot; , optionName , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;value&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Set multiple datepicker options at once by providing an options object.</p>
+        </longdesc>
+        <signature title=".datepicker( &quot;option&quot; , options )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="widget">
+        <longdesc>
+          <p>Returns the .ui-datepicker element.</p>
+        </longdesc>
+        <signature title=".datepicker( &quot;widget&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="dialog">
+        <longdesc><p>Open a datepicker in a "dialog" box.
+</p>
+<p>dateText: the initial date for the date picker as either a Date or a string in the current date format.
+</p>
+<p>onSelect: A callback function when a date is selected. The function receives the date text and date picker instance as parameters.
+</p>
+<p>settings: The new settings for the date picker.
+</p>
+<p>pos: The position of the top/left of the dialog as [x, y] or a MouseEvent that contains the coordinates. If not specified the dialog is centered on the screen.</p></longdesc>
+        <signature title=".datepicker( &quot;dialog&quot; , date , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;onSelect&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;settings&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;pos&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt;)">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="isDisabled">
+        <longdesc>
+          <p>Determine whether a date picker has been disabled.</p>
+        </longdesc>
+        <signature title=".datepicker( &quot;isDisabled&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="hide">
+        <longdesc>
+          <p>Close a previously opened date picker.</p>
+        </longdesc>
+        <signature title=".datepicker( &quot;hide&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="show">
+        <longdesc>
+          <p>Call up a previously attached date picker. If the datepicker is attached to an input, the input must be visible for the datepicker to be shown.</p>
+        </longdesc>
+        <signature title=".datepicker( &quot;show&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="refresh">
+        <longdesc>
+          <p>Redraw a date picker, after having made some external modifications.</p>
+        </longdesc>
+        <signature title=".datepicker( &quot;refresh&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="getDate">
+        <longdesc>
+          <p>Returns the current date for the datepicker or null if no date has been selected.</p>
+        </longdesc>
+        <signature title=".datepicker( &quot;getDate&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="setDate">
+        <longdesc>
+          <p>Sets the current date for the datepicker. The new date may be a Date object or a string in the current <a href="http://docs.jquery.com/UI/Datepicker#option-dateFormat" title="UI/Datepicker">date format</a> (e.g. '01/26/2009'), a number of days from today (e.g. +7) or a string of values and periods ('y' for years, 'm' for months, 'w' for weeks, 'd' for days, e.g. '+1m +7d'), or null to clear the selected date.</p>
+        </longdesc>
+        <signature title=".datepicker( &quot;setDate&quot; , date )">
+          <added>1.0</added>
+        </signature>
+      </method>
+    </entry>
+    <entry type="method" name="dialog" title=".dialog()" plugin="jquery.ui.dialog">
+      <depend name="jQuery.ui.core"/>
+      <depend name="jQuery.ui.position"/>
+      <depend name="jQuery.ui.widget"/>
+      <desc>Apply the Dialog widget for each element in the set of matched elements</desc>
+      <category name="version-1.0" title="Version 1.0"/>
+      <category name="ui" title="UI"/>
+      <signature title=".dialog( [ options ] )">
+        <added>1.0</added>
+        <argument name="options" type="Map" optional="true">
+          <desc>A map of additional options pass to the widget.</desc>
+        </argument>
+      </signature>
+      <longdesc><p>A dialog is a floating window that contains a title bar and a content area. The dialog window can be moved, resized and closed with the 'x' icon by default.</p>
+<p>If the content length exceeds the maximum height, a scrollbar will automatically appear.</p>
+<p>A bottom button bar and semi-transparent modal overlay layer are common options that can be added.</p>
+<p>A call to <code>$(foo).dialog()</code> will initialize a dialog instance and will auto-open the dialog by default. If you want to reuse a dialog, the easiest way is to disable the "auto-open" option with: <code>$(foo).dialog({ autoOpen: false })</code> and open it with <code>$(foo).dialog('open')</code>. To close it, use <code>$(foo).dialog('close')</code>. A more in-depth explanation with a full demo is available on <a href="http://blog.nemikor.com/2009/04/08/basic-usage-of-the-jquery-ui-dialog/" class="external text" title="http://blog.nemikor.com/2009/04/08/basic-usage-of-the-jquery-ui-dialog/">the Nemikor blog</a>.</p>
+    </longdesc>
+      <option name="disabled" type="Boolean" default="false">
+        <desc>Disables (true) or enables (false) the dialog. Can be set when initialising (first creating) the dialog.</desc>
+      </option>
+      <option name="autoOpen" type="Boolean" default="true">
+        <desc>When <i>autoOpen</i> is <i>true</i> the dialog will open automatically when <i>dialog</i> is called. If <i>false</i> it will stay hidden until <i>.dialog("open")</i> is called on it.</desc>
+      </option>
+      <option name="buttons" type="Object" default="{ }">
+        <desc>Specifies which buttons should be displayed on the dialog. The property key is the text of the button. The value is the callback function for when the button is clicked.  The context of the callback is the dialog element; if you need access to the button, it is available as the target of the event object.</desc>
+      </option>
+      <option name="buttons" type="Array" default="[ ]">
+        <desc>Specifies which buttons should be displayed on the dialog. Each element of the array must be an Object defining the properties to set on the button.</desc>
+      </option>
+      <option name="closeOnEscape" type="Boolean" default="true">
+        <desc>Specifies whether the dialog should close when it has focus and the user presses the esacpe (ESC) key.</desc>
+      </option>
+      <option name="closeText" type="String" default="'close'">
+        <desc>Specifies the text for the close button. Note that the close text is visibly hidden when using a standard theme.</desc>
+      </option>
+      <option name="dialogClass" type="String" default="''">
+        <desc>The specified class name(s) will be added to the dialog, for additional theming.</desc>
+      </option>
+      <option name="draggable" type="Boolean" default="true">
+        <desc>If set to true, the dialog will be draggable will be draggable by the titlebar.</desc>
+      </option>
+      <option name="height" type="Number" default="'auto'">
+        <desc>The height of the dialog, in pixels. Specifying 'auto' is also supported to make the dialog adjust based on its content.</desc>
+      </option>
+      <option name="hide" type="String" default="null">
+        <desc>The effect to be used when the dialog is closed.</desc>
+      </option>
+      <option name="hide" type="Object" default="null">
+        <desc>The effect to be used when the dialog is closed.</desc>
+      </option>
+      <option name="maxHeight" type="Number" default="false">
+        <desc>The maximum height to which the dialog can be resized, in pixels.</desc>
+      </option>
+      <option name="maxWidth" type="Number" default="false">
+        <desc>The maximum width to which the dialog can be resized, in pixels.</desc>
+      </option>
+      <option name="minHeight" type="Number" default="150">
+        <desc>The minimum height to which the dialog can be resized, in pixels.</desc>
+      </option>
+      <option name="minWidth" type="Number" default="150">
+        <desc>The minimum width to which the dialog can be resized, in pixels.</desc>
+      </option>
+      <option name="modal" type="Boolean" default="false">
+        <desc>If set to true, the dialog will have modal behavior; other items on the page will be disabled (i.e. cannot be interacted with). Modal dialogs create an overlay below the dialog but above other page elements.</desc>
+      </option>
+      <option name="position" type="String,Array" default="'center'">
+        <desc>Specifies where the dialog should be displayed. Possible values: <br/>1) a single string representing position within viewport: 'center', 'left', 'right', 'top', 'bottom'. <br/>2) an array containing an <em>x,y</em> coordinate pair in pixel offset from left, top corner of viewport (e.g. [350,100]) <br/>3) an array containing <em>x,y</em> position string values (e.g. ['right','top'] for top right corner).</desc>
+      </option>
+      <option name="resizable" type="Boolean" default="true">
+        <desc>If set to true, the dialog will be resizable.</desc>
+      </option>
+      <option name="show" type="String" default="null">
+        <desc>The effect to be used when the dialog is opened.</desc>
+      </option>
+      <option name="show" type="Object" default="null">
+        <desc>The effect to be used when the dialog is opened.</desc>
+      </option>
+      <option name="stack" type="Boolean" default="true">
+        <desc>Specifies whether the dialog will stack on top of other dialogs. This will cause the dialog to move to the front of other dialogs when it gains focus.</desc>
+      </option>
+      <option name="title" type="String" default="''">
+        <desc>Specifies the title of the dialog. Any valid HTML may be set as the title. The title can also be specified by the title attribute on the dialog source element.</desc>
+      </option>
+      <option name="width" type="Number" default="300">
+        <desc>The width of the dialog, in pixels.</desc>
+      </option>
+      <option name="zIndex" type="Integer" default="1000">
+        <desc>The starting z-index for the dialog.</desc>
+      </option>
+      <event name="create">
+        <desc>This event is triggered when dialog is created.</desc>
+      </event>
+      <event name="beforeClose">
+        <desc>This event is triggered when a dialog attempts to close. If the beforeClose event handler (callback function) returns false, the close will be prevented.</desc>
+      </event>
+      <event name="open">
+        <desc>This event is triggered when dialog is opened.</desc>
+      </event>
+      <event name="focus">
+        <desc>This event is triggered when the dialog gains focus.</desc>
+      </event>
+      <event name="dragStart">
+        <desc>This event is triggered at the beginning of the dialog being dragged.</desc>
+      </event>
+      <event name="drag">
+        <desc>This event is triggered when the dialog is dragged.</desc>
+      </event>
+      <event name="dragStop">
+        <desc>This event is triggered after the dialog has been dragged.</desc>
+      </event>
+      <event name="resizeStart">
+        <desc>This event is triggered at the beginning of the dialog being resized.</desc>
+      </event>
+      <event name="resize">
+        <desc>This event is triggered when the dialog is resized. <a href="http://www.jsfiddle.net/Jp7TM/18/" class="external text" title="http://www.jsfiddle.net/Jp7TM/18/">demo</a></desc>
+      </event>
+      <event name="resizeStop">
+        <desc>This event is triggered after the dialog has been resized.</desc>
+      </event>
+      <event name="close">
+        <desc>This event is triggered when the dialog is closed.</desc>
+      </event>
+      <method name="destroy">
+        <longdesc>
+          <p>Remove the dialog functionality completely. This will return the element back to its pre-init state.</p>
+        </longdesc>
+        <signature title=".dialog( &quot;destroy&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="disable">
+        <longdesc>
+          <p>Disable the dialog.</p>
+        </longdesc>
+        <signature title=".dialog( &quot;disable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="enable">
+        <longdesc>
+          <p>Enable the dialog.</p>
+        </longdesc>
+        <signature title=".dialog( &quot;enable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Get or set any dialog option. If no value is specified, will act as a getter.</p>
+        </longdesc>
+        <signature title=".dialog( &quot;option&quot; , optionName , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;value&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Set multiple dialog options at once by providing an options object.</p>
+        </longdesc>
+        <signature title=".dialog( &quot;option&quot; , options )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="widget">
+        <longdesc>
+          <p>Returns the .ui-dialog element.</p>
+        </longdesc>
+        <signature title=".dialog( &quot;widget&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="close">
+        <longdesc>
+          <p>Close the dialog.</p>
+        </longdesc>
+        <signature title=".dialog( &quot;close&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="isOpen">
+        <longdesc>
+          <p>Returns true if the dialog is currently open.</p>
+        </longdesc>
+        <signature title=".dialog( &quot;isOpen&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="moveToTop">
+        <longdesc>
+          <p>Move the dialog to the top of the dialogs stack.</p>
+        </longdesc>
+        <signature title=".dialog( &quot;moveToTop&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="open">
+        <longdesc>
+          <p>Open the dialog.</p>
+        </longdesc>
+        <signature title=".dialog( &quot;open&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+    </entry>
+    <entry type="method" name="progressbar" title=".progressbar()" plugin="jquery.ui.progressbar">
+      <depend name="jQuery.ui.core"/>
+      <depend name="jQuery.ui.widget"/>
+      <desc>Apply the Progressbar widget for each element in the set of matched elements</desc>
+      <category name="version-1.0" title="Version 1.0"/>
+      <category name="ui" title="UI"/>
+      <signature title=".progressbar( [ options ] )">
+        <added>1.0</added>
+        <argument name="options" type="Map" optional="true">
+          <desc>A map of additional options pass to the widget.</desc>
+        </argument>
+      </signature>
+      <longdesc><p>
+The progress bar is designed to simply display the current % complete for a process. The bar is coded to be flexibly sized through CSS and will scale to fit inside it's parent container by default.
+</p>
+<p>
+This is a determinate progress bar, meaning that it should only be used in situations where the system can accurately update the current status complete. A determinate progress bar should never fill from left to right, then loop back to empty for a single process -- if the actual percent complete status cannot be calculated, an indeterminate progress bar (coming soon) or spinner animation is a better way to provide user feedback.
+</p>
+    </longdesc>
+      <option name="disabled" type="Boolean" default="false">
+        <desc>Disables (true) or enables (false) the progressbar. Can be set when initialising (first creating) the progressbar.</desc>
+      </option>
+      <option name="value" type="Number" default="0">
+        <desc>The value of the progressbar.</desc>
+      </option>
+      <event name="create">
+        <desc>This event is triggered when progressbar is created.</desc>
+      </event>
+      <event name="change">
+        <desc>This event is triggered when the value of the progressbar changes.</desc>
+      </event>
+      <event name="complete">
+        <desc>This event is triggered when the value of the progressbar reaches the maximum value of 100.</desc>
+      </event>
+      <method name="destroy">
+        <longdesc>
+          <p>Remove the progressbar functionality completely. This will return the element back to its pre-init state.</p>
+        </longdesc>
+        <signature title=".progressbar( &quot;destroy&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="disable">
+        <longdesc>
+          <p>Disable the progressbar.</p>
+        </longdesc>
+        <signature title=".progressbar( &quot;disable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="enable">
+        <longdesc>
+          <p>Enable the progressbar.</p>
+        </longdesc>
+        <signature title=".progressbar( &quot;enable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Get or set any progressbar option. If no value is specified, will act as a getter.</p>
+        </longdesc>
+        <signature title=".progressbar( &quot;option&quot; , optionName , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;value&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Set multiple progressbar options at once by providing an options object.</p>
+        </longdesc>
+        <signature title=".progressbar( &quot;option&quot; , options )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="widget">
+        <longdesc>
+          <p>Returns the .ui-progressbar element.</p>
+        </longdesc>
+        <signature title=".progressbar( &quot;widget&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="value">
+        <longdesc>
+          <p>This method gets or sets the current value of the progressbar.</p>
+        </longdesc>
+        <signature title=".progressbar( &quot;value&quot; , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;value&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+    </entry>
+    <entry type="method" name="slider" title=".slider()" plugin="jquery.ui.slider">
+      <depend name="jQuery.ui.core"/>
+      <depend name="jQuery.ui.widget"/>
+      <depend name="jQuery.ui.mouse"/>
+      <desc>Apply the Slider widget for each element in the set of matched elements</desc>
+      <category name="version-1.0" title="Version 1.0"/>
+      <category name="ui" title="UI"/>
+      <signature title=".slider( [ options ] )">
+        <added>1.0</added>
+        <argument name="options" type="Map" optional="true">
+          <desc>A map of additional options pass to the widget.</desc>
+        </argument>
+      </signature>
+      <longdesc><p>The jQuery UI Slider plugin makes selected elements into sliders. There are various options such as multiple handles, and ranges. The handle can be moved with the mouse or the arrow keys.</p>
+<p>The start, slide, and stop callbacks receive two arguments: The original browser event and a prepared ui object, view below for a documentation of this object (if you name your second argument 'ui'):
+</p>
+<p>The slider widget will create handle elements with the class 'ui-slider-handle' on initialization. You can specify custom handle elements by creating and appending the elements and adding the 'ui-slider-handle' class before init. It will only create the number of handles needed to match the length of value/values. For example, if you specify 'values: [1, 5, 18]' and create one custom handle, the plugin will create the other two.
+</p>
+<ul><li>
+<b>ui.handle</b>: DOMElement - the current focused handle</li>
+  <li>
+<b>ui.value</b>: Integer - the current handle's value</li>
+</ul></longdesc>
+      <option name="disabled" type="Boolean" default="false">
+        <desc>Disables (true) or enables (false) the slider. Can be set when initialising (first creating) the slider.</desc>
+      </option>
+      <option name="animate" type="Boolean,String,Number" default="false">
+        <desc>Whether to slide handle smoothly when user click outside handle on the bar. Will also accept a string representing one of the three predefined speeds ("slow", "normal", or "fast") or the number of milliseconds to run the animation (e.g. 1000).</desc>
+      </option>
+      <option name="max" type="Number" default="100">
+        <desc>The maximum value of the slider.</desc>
+      </option>
+      <option name="min" type="Number" default="0">
+        <desc>The minimum value of the slider.</desc>
+      </option>
+      <option name="orientation" type="String" default="'horizontal'">
+        <desc>This option determines whether the slider has the min at the left, the max at the right or the min at the bottom, the max at the top. Possible values: 'horizontal', 'vertical'.</desc>
+      </option>
+      <option name="range" type="Boolean,String" default="false">
+        <desc>If set to true, the slider will detect if you have two handles and create a stylable range element between these two. Two other possible values are 'min' and 'max'. A min range goes from the slider min to one handle. A max range goes from one handle to the slider max.</desc>
+      </option>
+      <option name="step" type="Number" default="1">
+        <desc>Determines the size or amount of each interval or step the slider takes between min and max. The full specified value range of the slider (max - min) needs to be evenly divisible by the step.</desc>
+      </option>
+      <option name="value" type="Number" default="0">
+        <desc>Determines the value of the slider, if there's only one handle. If there is more than one handle, determines the value of the first handle.</desc>
+      </option>
+      <option name="values" type="Array" default="null">
+        <desc>This option can be used to specify multiple handles. If range is set to true, the length of 'values' should be 2.</desc>
+      </option>
+      <event name="create">
+        <desc>This event is triggered when slider is created.</desc>
+      </event>
+      <event name="start">
+        <desc>This event is triggered when the user starts sliding.</desc>
+      </event>
+      <event name="slide">
+        <desc>This event is triggered on every mouse move during slide. Use ui.value (single-handled sliders) to obtain the value of the current handle, $(..).slider('value', index) to get another handles' value.
+Return false in order to prevent a slide, based on ui.value.</desc>
+      </event>
+      <event name="change">
+        <desc>This event is triggered on slide stop, or if the value is changed programmatically (by the <code>value</code> method).  Takes arguments event and ui.  Use event.originalEvent to detect whether the value changed by mouse, keyboard, or programmatically. Use ui.value (single-handled sliders) to obtain the value of the current handle, $(this).slider('values', index) to get another handle's value.</desc>
+      </event>
+      <event name="stop">
+        <desc>This event is triggered when the user stops sliding.</desc>
+      </event>
+      <method name="destroy">
+        <longdesc>
+          <p>Remove the slider functionality completely. This will return the element back to its pre-init state.</p>
+        </longdesc>
+        <signature title=".slider( &quot;destroy&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="disable">
+        <longdesc>
+          <p>Disable the slider.</p>
+        </longdesc>
+        <signature title=".slider( &quot;disable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="enable">
+        <longdesc>
+          <p>Enable the slider.</p>
+        </longdesc>
+        <signature title=".slider( &quot;enable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Get or set any slider option. If no value is specified, will act as a getter.</p>
+        </longdesc>
+        <signature title=".slider( &quot;option&quot; , optionName , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;value&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Set multiple slider options at once by providing an options object.</p>
+        </longdesc>
+        <signature title=".slider( &quot;option&quot; , options )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="widget">
+        <longdesc>
+          <p>Returns the .ui-slider element.</p>
+        </longdesc>
+        <signature title=".slider( &quot;widget&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="value">
+        <longdesc>
+          <p>Gets or sets the value of the slider. For single handle sliders.</p>
+        </longdesc>
+        <signature title=".slider( &quot;value&quot; , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;value&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="values">
+        <longdesc>
+          <p>Gets or sets the values of the slider. For multiple handle or range sliders.</p>
+        </longdesc>
+        <signature title=".slider( &quot;values&quot; , index , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;value&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+    </entry>
+    <entry type="method" name="tabs" title=".tabs()" plugin="jquery.ui.tabs">
+      <depend name="jQuery.ui.core"/>
+      <depend name="jQuery.ui.widget"/>
+      <desc>Apply the Tabs widget for each element in the set of matched elements</desc>
+      <category name="version-1.0" title="Version 1.0"/>
+      <category name="ui" title="UI"/>
+      <signature title=".tabs( [ options ] )">
+        <added>1.0</added>
+        <argument name="options" type="Map" optional="true">
+          <desc>A map of additional options pass to the widget.</desc>
+        </argument>
+      </signature>
+      <longdesc><p>Tabs are generally used to break content into multiple sections that can be swapped to save space, much like an accordion.</p>
+<p>By default a tab widget will swap between tabbed sections onClick, but the events can be changed to onHover through an option. Tab content can be loaded via Ajax by setting an href on a tab.</p>
+<p><em>NOTE: Tabs created dynamically using .tabs( "add", ... ) are given an id of ui-tabs-NUM, where NUM is an auto-incrementing id. If you use this naming convention for your own elements, you may encounter problems.</em></p>
+<table id="toc" class="toc" summary="Contents"><tr><td>
+<div id="toctitle"><h2>Contents</h2></div>
+<ul><li class="toclevel-1"><a href="#Events"><span class="tocnumber">1</span> <span class="toctext">Events</span></a></li>
+<li class="toclevel-1">
+<a href="#Ajax_mode"><span class="tocnumber">2</span> <span class="toctext">Ajax mode</span></a>
+<ul><li class="toclevel-2"><a href="#Back_button_and_bookmarking"><span class="tocnumber">2.1</span> <span class="toctext">Back button and bookmarking</span></a></li>
+</ul></li>
+<li class="toclevel-1">
+<a href="#How_to..."><span class="tocnumber">3</span> <span class="toctext">How to...</span></a>
+<ul><li class="toclevel-2"><a href="#...retrieve_the_index_of_the_currently_selected_tab"><span class="tocnumber">3.1</span> <span class="toctext">...retrieve the index of the currently selected tab</span></a></li>
+<li class="toclevel-2"><a href="#...open_links_in_the_current_tab_instead_of_leaving_the_page"><span class="tocnumber">3.2</span> <span class="toctext">...open links in the current tab instead of leaving the page</span></a></li>
+<li class="toclevel-2"><a href="#...select_a_tab_from_a_text_link_instead_of_clicking_a_tab_itself"><span class="tocnumber">3.3</span> <span class="toctext">...select a tab from a text link instead of clicking a tab itself</span></a></li>
+<li class="toclevel-2"><a href="#...prevent_switching_to_the_tab_on_click_depending_on_form_validation"><span class="tocnumber">3.4</span> <span class="toctext">...prevent switching to the tab on click depending on form validation</span></a></li>
+<li class="toclevel-2"><a href="#...immediately_select_a_just_added_tab"><span class="tocnumber">3.5</span> <span class="toctext">...immediately select a just added tab</span></a></li>
+<li class="toclevel-2"><a href="#...prevent_a_FOUC_.28Flash_of_Unstyled_Content.29_before_tabs_are_initialized"><span class="tocnumber">3.6</span> <span class="toctext">...prevent a FOUC (Flash of Unstyled Content) before tabs are initialized</span></a></li>
+</ul></li>
+<li class="toclevel-1">
+<a href="#Why_does..."><span class="tocnumber">4</span> <span class="toctext">Why does...</span></a>
+<ul><li class="toclevel-2"><a href="#...my_slider.2C_Google_Map.2C_sIFR_etc._not_work_when_placed_in_a_hidden_.28inactive.29_tab.3F"><span class="tocnumber">4.1</span> <span class="toctext">...my slider, Google Map, sIFR etc. not work when placed in a hidden (inactive) tab?</span></a></li>
+</ul></li>
+</ul></td></tr></table><div class="editsection" style="float:right;margin-left:5px;">[<a href="http://docs.jquery.com/action/edit/Template:UIAPIPlugin?section=1" title="Template:UIAPIPlugin">edit</a>]</div>
+<a name="Events"/><h2>Events</h2>
+<p>A series of events fire when interacting with a tabs interface:
+</p>
+<ul><li> tabsselect, tabsload, tabsshow (in that order)
+</li>
+<li> tabsadd, tabsremove
+</li>
+<li> tabsenable, tabsdisable
+</li>
+</ul><p>Event binding example:
+</p>
+<pre>$('#example').bind('tabsselect', function(event, ui) {
+
+    // Objects available in the function context:
+    ui.tab     // anchor element of the selected (clicked) tab
+    ui.panel   // element, that contains the selected/clicked tab contents
+    ui.index   // zero-based index of the selected (clicked) tab
+
+});</pre>
+<p>Note that if a handler for the tabsselect event returns false, the clicked tab will not become selected (useful for example if switching to the next tab requires a form validation).
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="http://docs.jquery.com/action/edit/Template:UIAPIPlugin?section=2" title="Template:UIAPIPlugin">edit</a>]</div>
+<a name="Ajax_mode"/><h2> Ajax mode </h2>
+<p>Tabs supports loading tab content via Ajax in an unobtrusive manner.
+</p>
+<p>The HTML you need is slightly different from the one that is used for static tabs: A list of links pointing to existing resources (from where the content gets loaded) and no additional containers at all (unobtrusive!). The containers' markup is going to be created on the fly:
+</p>
+<pre>
+&lt;div id="example"&gt;
+     &lt;ul&gt;
+         &lt;li&gt;&lt;a href="ahah_1.html"&gt;&lt;span&gt;Content 1&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+         &lt;li&gt;&lt;a href="ahah_2.html"&gt;&lt;span&gt;Content 2&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+         &lt;li&gt;&lt;a href="ahah_3.html"&gt;&lt;span&gt;Content 3&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+     &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+<p>Obviously this degrades gracefully - the links, e.g. the content, will still be accessible with JavaScript disabled.
+</p>
+<p>Note that if you wish to reuse an existing container, you
+could do so by matching a title attribute and the container's id:
+</p>
+<pre>
+&lt;li&gt;&lt;a href="hello/world.html" title="Todo Overview"&gt; ... &lt;/a&gt;&lt;/li&gt;
+</pre>
+<p>and a container like:
+</p>
+<pre>
+&lt;div id="Todo_Overview"&gt; ... &lt;/div&gt;
+</pre>
+<p>(Note how white space is replaced with an underscore)
+</p>
+<p>This is useful if you want a human readable hash in the URL instead of
+a cryptic generated one.
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="http://docs.jquery.com/action/edit/Template:UIAPIPlugin?section=3" title="Template:UIAPIPlugin">edit</a>]</div>
+<a name="Back_button_and_bookmarking"/><h3>Back button and bookmarking</h3>
+<p>Tabs 2 already supported this functionality, although the history plugin needs a rewrite first (it doesn't support Safari 3 and is in general a little inflexible) before it can be build back into the tabs. It is planned and Klaus is working on it whenever he finds the time. Actual bugs in the UI Tabs plugin itself always have higher priority though.
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="http://docs.jquery.com/action/edit/Template:UIAPIPlugin?section=4" title="Template:UIAPIPlugin">edit</a>]</div>
+<a name="How_to..."/><h2>How to...</h2>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="http://docs.jquery.com/action/edit/Template:UIAPIPlugin?section=5" title="Template:UIAPIPlugin">edit</a>]</div>
+<a name="...retrieve_the_index_of_the_currently_selected_tab"/><h3>...retrieve the index of the currently selected tab</h3>
+<pre>var $tabs = $('#example').tabs();
+var selected = $tabs.tabs('option', 'selected'); // =&gt; 0</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="http://docs.jquery.com/action/edit/Template:UIAPIPlugin?section=6" title="Template:UIAPIPlugin">edit</a>]</div>
+<a name="...open_links_in_the_current_tab_instead_of_leaving_the_page"/><h3>...open links in the current tab instead of leaving the page</h3>
+<p>"Hijax" links after tab content has been loaded:
+</p>
+<pre>$('#example').tabs({
+    load: function(event, ui) {
+        $(ui.panel).delegate('a', 'click', function(event) {
+            $(ui.panel).load(this.href);
+            event.preventDefault();
+        });
+    }
+});</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="http://docs.jquery.com/action/edit/Template:UIAPIPlugin?section=7" title="Template:UIAPIPlugin">edit</a>]</div>
+<a name="...select_a_tab_from_a_text_link_instead_of_clicking_a_tab_itself"/><h3>...select a tab from a text link instead of clicking a tab itself</h3>
+<pre>var $tabs = $('#example').tabs(); // first tab selected
+
+$('#my-text-link').click(function() { // bind click event to link
+    $tabs.tabs('select', 2); // switch to third tab
+    return false;
+});</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="http://docs.jquery.com/action/edit/Template:UIAPIPlugin?section=8" title="Template:UIAPIPlugin">edit</a>]</div>
+<a name="...prevent_switching_to_the_tab_on_click_depending_on_form_validation"/><h3>...prevent switching to the tab on click depending on form validation</h3>
+<p>Returning false in the tabs select handler prevents the clicked tab from becoming selected.
+</p>
+<pre>$('#example').tabs({
+    select: function(event, ui) {
+        var isValid = ... // form validation returning true or false
+        return isValid;
+    }
+});</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="http://docs.jquery.com/action/edit/Template:UIAPIPlugin?section=9" title="Template:UIAPIPlugin">edit</a>]</div>
+<a name="...immediately_select_a_just_added_tab"/><h3>...immediately select a just added tab</h3>
+<pre>var $tabs = $('#example').tabs({
+    add: function(event, ui) {
+        $tabs.tabs('select', '#' + ui.panel.id);
+    }
+});</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="http://docs.jquery.com/action/edit/Template:UIAPIPlugin?section=10" title="Template:UIAPIPlugin">edit</a>]</div>
+<a name="...prevent_a_FOUC_.28Flash_of_Unstyled_Content.29_before_tabs_are_initialized"/><h3>...prevent a FOUC (Flash of Unstyled Content) before tabs are initialized</h3>
+<p>Add the necessary classes to hide an inactive tab panel to the HTML right away - note that this will <b>not</b> degrade gracefully with JavaScript being disabled:
+</p>
+<pre>&lt;div id="example" class="ui-tabs"&gt;
+  ...
+  &lt;div id="a-tab-panel" class="ui-tabs-hide"&gt; &lt;/div&gt;
+  ...
+&lt;/div&gt;</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="http://docs.jquery.com/action/edit/Template:UIAPIPlugin?section=11" title="Template:UIAPIPlugin">edit</a>]</div>
+<a name="Why_does..."/><h2>Why does...</h2>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="http://docs.jquery.com/action/edit/Template:UIAPIPlugin?section=12" title="Template:UIAPIPlugin">edit</a>]</div>
+<a name="...my_slider.2C_Google_Map.2C_sIFR_etc._not_work_when_placed_in_a_hidden_.28inactive.29_tab.3F"/><h3>...my slider, Google Map, sIFR etc. not work when placed in a hidden (inactive) tab?</h3>
+<p>Any component that requires some dimensional computation for its initialization won't work in a hidden tab, because the tab panel itself is hidden via <code>display: none</code> so that any elements inside won't report their actual width and height (0 in most browsers).
+</p>
+<p>There's an easy workaround. Use the <em>off-left technique</em> for hiding inactive tab panels. E.g. in your style sheet replace the rule for the class selector ".ui-tabs .ui-tabs-hide" with
+</p>
+<pre>.ui-tabs .ui-tabs-hide {
+    position: absolute;
+    left: -10000px;
+}</pre>
+<p>For Google maps you can also resize the map once the tab is displayed like this:
+</p>
+<pre>$('#example').bind('tabsshow', function(event, ui) {
+    if (ui.panel.id == "map-tab") {
+        resizeMap();
+    }
+});</pre>
+resizeMap() will call Google Maps' checkResize() on the particular map.
+    </longdesc>
+      <option name="disabled" type="Boolean" default="false">
+        <desc>Disables (true) or enables (false) the tabs. Can be set when initialising (first creating) the tabs.</desc>
+      </option>
+      <option name="ajaxOptions" type="Options" default="null">
+        <desc>Additional Ajax options to consider when loading tab content (see $.ajax).</desc>
+      </option>
+      <option name="cache" type="Boolean" default="false">
+        <desc>Whether or not to cache remote tabs content, e.g. load only once or with every click. Cached content is being lazy loaded, e.g once and only once for the first click. Note that to prevent the actual Ajax requests from being cached by the browser you need to provide an extra cache: false flag to ajaxOptions.</desc>
+      </option>
+      <option name="collapsible" type="Boolean" default="false">
+        <desc>Set to true to allow an already selected tab to become unselected again upon reselection.</desc>
+      </option>
+      <option name="cookie" type="Object" default="null">
+        <desc>Store the latest selected tab in a cookie. The cookie is then used to determine the initially selected tab if the <i>selected</i> option is not defined. Requires <a href="http://plugins.jquery.com/project/cookie" class="external text" title="http://plugins.jquery.com/project/cookie">cookie plugin</a>, which can also be found in the development-bundle&gt;external folder from the download builder. The object needs to have key/value pairs of the form the cookie plugin expects as options. Available options (example): { expires: 7, path: '/', domain: 'jquery.com', secure: true }. Since jQuery UI 1.7 it is also possible to define the cookie name being used via <i>name</i> property.</desc>
+      </option>
+      <option name="deselectable" type="Boolean" default="false">
+        <desc>deprecated in jQuery UI 1.7, use collapsible.</desc>
+      </option>
+      <option name="disabled" type="Array&lt;Number&gt;" default="[]">
+        <desc>An array containing the position of the tabs (zero-based index) that should be disabled on initialization.</desc>
+      </option>
+      <option name="event" type="String" default="'click'">
+        <desc>The type of event to be used for selecting a tab.</desc>
+      </option>
+      <option name="fx" type="Options,Array&lt;Options&gt;" default="null">
+        <desc>Enable animations for hiding and showing tab panels. The duration option can be a string representing one of the three predefined speeds ("slow", "normal", "fast") or the duration in milliseconds to run an animation (default is "normal").</desc>
+      </option>
+      <option name="idPrefix" type="String" default="'ui-tabs-'">
+        <desc>If the remote tab, its anchor element that is, has no title attribute to generate an id from, an id/fragment identifier is created from this prefix and a unique id returned by $.data(el), for example "ui-tabs-54".</desc>
+      </option>
+      <option name="panelTemplate" type="String" default="'&lt;div&gt;&lt;/div&gt;'">
+        <desc>HTML template from which a new tab panel is created in case of adding a tab with the add method or when creating a panel for a remote tab on the fly.</desc>
+      </option>
+      <option name="selected" type="Number" default="0">
+        <desc>Zero-based index of the tab to be selected on initialization. To set all tabs to unselected pass -1 as value.</desc>
+      </option>
+      <option name="spinner" type="String" default="'&lt;em&gt;Loading&amp;#8230;&lt;/em&gt;'">
+        <desc>The HTML content of this string is shown in a tab title while remote content is loading. Pass in empty string to deactivate that behavior. An span element must be present in the A tag of the title, for the spinner content to be visible.</desc>
+      </option>
+      <option name="tabTemplate" type="String" default="'&lt;li&gt;&lt;a href='#{href}'&gt;&lt;span&gt;#{label}&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;'">
+        <desc>HTML template from which a new tab is created and added. The placeholders #{href} and #{label} are replaced with the url and tab label that are passed as arguments to the add method.</desc>
+      </option>
+      <event name="create">
+        <desc>This event is triggered when tabs is created.</desc>
+      </event>
+      <event name="select">
+        <desc>This event is triggered when clicking a tab.</desc>
+      </event>
+      <event name="load">
+        <desc>This event is triggered after the content of a remote tab has been loaded.</desc>
+      </event>
+      <event name="show">
+        <desc>This event is triggered when a tab is shown.</desc>
+      </event>
+      <event name="add">
+        <desc>This event is triggered when a tab is added.</desc>
+      </event>
+      <event name="remove">
+        <desc>This event is triggered when a tab is removed.</desc>
+      </event>
+      <event name="enable">
+        <desc>This event is triggered when a tab is enabled.</desc>
+      </event>
+      <event name="disable">
+        <desc>This event is triggered when a tab is disabled.</desc>
+      </event>
+      <method name="destroy">
+        <longdesc>
+          <p>Remove the tabs functionality completely. This will return the element back to its pre-init state.</p>
+        </longdesc>
+        <signature title=".tabs( &quot;destroy&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="disable">
+        <longdesc>
+          <p>Disable the tabs.</p>
+        </longdesc>
+        <signature title=".tabs( &quot;disable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="enable">
+        <longdesc>
+          <p>Enable the tabs.</p>
+        </longdesc>
+        <signature title=".tabs( &quot;enable&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Get or set any tabs option. If no value is specified, will act as a getter.</p>
+        </longdesc>
+        <signature title=".tabs( &quot;option&quot; , optionName , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;value&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="option">
+        <longdesc>
+          <p>Set multiple tabs options at once by providing an options object.</p>
+        </longdesc>
+        <signature title=".tabs( &quot;option&quot; , options )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="widget">
+        <longdesc>
+          <p>Returns the .ui-tabs element.</p>
+        </longdesc>
+        <signature title=".tabs( &quot;widget&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="add">
+        <longdesc>
+          <p>Add a new tab. The second argument is either a URL consisting of a fragment identifier only to create an in-page tab or a full url (relative or absolute, no cross-domain support) to turn the new tab into an Ajax (remote) tab. The third is the zero-based position where to insert the new tab. Optional, by default a new tab is appended at the end.</p>
+        </longdesc>
+        <signature title=".tabs( &quot;add&quot; , url , label , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;index&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="remove">
+        <longdesc>
+          <p>Remove a tab. The second argument is the zero-based index of the tab to be removed. Instead of an index, the href of the tab may be passed.</p>
+        </longdesc>
+        <signature title=".tabs( &quot;remove&quot; , index )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="enable">
+        <longdesc>
+          <p>Enable a disabled tab.  To enable more than one tab at once reset the disabled property like: <code>$('#example').tabs("option","disabled",[]);</code>. The second argument is the zero-based index of the tab to be enabled. Instead of an index, the href of the tab may be passed.</p>
+        </longdesc>
+        <signature title=".tabs( &quot;enable&quot; , index )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="disable">
+        <longdesc>
+          <p>Disable a tab. The selected tab cannot be disabled. To disable more than one tab at once use: <code>$('#example').tabs("option","disabled", [1, 2, 3]);</code>  The second argument is the zero-based index of the tab to be disabled. Instead of an index, the href of the tab may be passed.</p>
+        </longdesc>
+        <signature title=".tabs( &quot;disable&quot; , index )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="select">
+        <longdesc>
+          <p>Select a tab, as if it were clicked. The second argument is the zero-based index of the tab to be selected or the id selector of the panel the tab is associated with (the tab's href fragment identifier, e.g. hash, points to the panel's id).</p>
+        </longdesc>
+        <signature title=".tabs( &quot;select&quot; , index )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="load">
+        <longdesc>
+          <p>Reload the content of an Ajax tab programmatically. This method always loads the tab content from the remote location, even if cache is set to true. The second argument is the zero-based index of the tab to be reloaded.</p>
+        </longdesc>
+        <signature title=".tabs( &quot;load&quot; , index )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="url">
+        <longdesc>
+          <p>Change the url from which an Ajax (remote) tab will be loaded. The specified URL will be used for subsequent loads. Note that you can not only change the URL for an existing remote tab with this method, but also turn an in-page tab into a remote tab.  The second argument is the zero-based index of the tab of which its URL is to be updated.  The third is a URL the content of the tab is loaded from.</p>
+        </longdesc>
+        <signature title=".tabs( &quot;url&quot; , index , url )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="length">
+        <longdesc>
+          <p>Retrieve the number of tabs of the first matched tab pane.</p>
+        </longdesc>
+        <signature title=".tabs( &quot;length&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="abort">
+        <longdesc>
+          <p>Terminate all running tab ajax requests and animations.</p>
+        </longdesc>
+        <signature title=".tabs( &quot;abort&quot; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+      <method name="rotate">
+        <longdesc>
+          <p>Set up an automatic rotation through tabs of a tab pane.  The second argument is an amount of time in milliseconds until the next tab in the cycle gets activated. Use 0 or null to stop the rotation.  The third controls whether or not to continue the rotation after a tab has been selected by a user. Default: false.</p>
+        </longdesc>
+        <signature title=".tabs( &quot;rotate&quot; , ms , &lt;span class=&quot;optional&quot;&gt;[&lt;/span&gt;continuing&lt;span class=&quot;optional&quot;&gt;] &lt;/span&gt; )">
+          <added>1.0</added>
+        </signature>
+      </method>
+    </entry>
+    <entry type="method" name="position" title=".position()" plugin="jquery.ui.position">
+      <desc>Apply the Position widget for each element in the set of matched elements</desc>
+      <category name="version-1.0" title="Version 1.0"/>
+      <category name="ui" title="UI"/>
+      <signature title=".position( [ options ] )">
+        <added>1.0</added>
+        <argument name="options" type="Map" optional="true">
+          <desc>A map of additional options pass to the widget.</desc>
+        </argument>
+      </signature>
+      <longdesc><p>Utility script for positioning any widget relative to the window, document, a particular element, or the cursor/mouse.</p>
+<p><em>Note: jQuery UI does not support positioning hidden elements.</em></p>
+<p>Does not need ui.core.js or effects.core.js.</p>
+    </longdesc>
+      <option name="my" type="String" default="'center'">
+        <desc>Defines which position on <b>the element being positioned</b> to align with the target element: "horizontal vertical" alignment. A single value such as "right" will default to "right center", "top" will default to "center top" (following CSS convention). Acceptable values: "top", "center", "bottom", "left", "right". Example: "left top" or "center center"</desc>
+      </option>
+      <option name="at" type="String" default="'center'">
+        <desc>Defines which position on <b>the target element</b> to align the positioned element against: "horizontal vertical" alignment. A single value such as "right" will default to "right center", "top" will default to "center top" (following CSS convention). Acceptable values: "top", "center", "bottom", "left", "right". Example: "left top" or "center center"</desc>
+      </option>
+      <option name="of" type="Selector,Element,jQuery,Event" default="null">
+        <desc>Element to position against. If you provide a selector, the first matching element will be used. If you provide a jQuery object, the first element will be used. If you provide an event object, the pageX and pageY properties will be used. Example: "#top-menu"</desc>
+      </option>
+      <option name="offset" type="String" default="null">
+        <desc>Add these left-top values to the calculated position, eg. "50 50" (left top) A single value such as "50" will apply to both.</desc>
+      </option>
+      <option name="collision" type="String" default="'flip'">
+        <desc>When the positioned element overflows the window in some direction, move it to an alternative position. Similar to my and at, this accepts a single value or a pair for horizontal/vertical, eg. "flip", "fit", "fit flip", "fit none".</desc>
+      </option>
+      <option name="using" type="Function" default="null">
+        <desc>When specified the actual property setting is delegated to this callback. Receives a single parameter which is a hash of top and left values for the position that should be set.</desc>
+      </option>
+    </entry>
+  </plugins>
+</api>

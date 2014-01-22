@@ -1,0 +1,562 @@
+
+@plugin				jQuery.color
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.Color()                       | Create a manipulable color object. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.Color( [ color ] )
+@added				1.2
+@param				cssProperty                          | A valid processable color. | Array,Color,Object,String
+@return				Color
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.Color( red, green, blue, alpha )
+@added				1.2
+@param				red                                  | A valid red value (Integer 0 - 255). | Integer
+@param				green                                | A valid green value (Integer 0 - 255). | Integer
+@param				blue                                 | A valid blue value (Integer 0 - 255). | Integer
+@param				alpha                                | A valid alpha transparency value (Number 0.0 - 1.0). | Number
+@return				Color
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.Color( element, cssProperty )
+@added				1.2
+@param				element                              | The DOM element to query for the color. | Elemenr
+@param				cssProperty                          | A css color property of the element to query for the color. | String
+@return				Color
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<$.Color()>> function allows you to create and manipulate color objects that are accepted by jQuery's <<.animate()>>
+					and <<.css()>> functions via supplied cssHooks.
+
+					Returns a new Color object, similar to <<$()>> or <<$.Event>>.
+
+					Processable colors:
+					* A other Color a copy of the color object.
+					* A valid css color string (name, hex, rgb, rgba).
+					* A rgba color tuple. Example: <<[ red, green, blue, alpha ]>>
+					* A rgba color map. Example: <<{ red: red, green: green, blue: blue, alpha: alpha }>>
+					* A hsla color map. Example: <<{ hue: hue, saturation: saturation, lightness: lightness, alpha: alpha }>>
+
+					<<undefined>> / <<null>> values for colors indicate non-existence. This signals the <<.transition()>> function to keep
+					whatever value was set in the other end of the transition. For example, animating to <<$.Color([ 255, null, null, 1 ])>>
+					would only animate the red and alpha values of the color.
+					
+					If a color is created using any of the HSLA functions or parsers, it will keep the <<_rgba>> array up to date as well as 
+					having a <<_hsla>> array. Once an RGBA operation is performed on HSLA, however, the <<_hsla>> cache is removed and all 
+					operations will continue based off of rgb (unless you go back into HSLA). The <<._hsla>> array follows the same format 
+					as <<._rbga>>, <<[hue, saturation, lightness, alpha ]>>. If you need to build an HSLA color from an HSLA array, 
+					<<$.Color().hsla( array )>> works for that purpose.
+					
+					'''Colors with 0 saturation, or 100%/0% lightness will be stored with a hue of 0.'''
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Animate to greyscale background.
+
+@html				<button id="go">Simple</button>
+					<button id="sat">Grayscale</button>
+					<div id="block">Hello!</div>
+
+@css				div {
+					    background-color:#bada55;
+					    width:100px;
+					    border:1px solid green;
+					}
+
+@code				$("#go").click(function(){
+					    $("#block").animate({
+					        backgroundColor: "#abcdef"
+					    }, 1500 );
+					});
+
+					$("#sat").click(function(){
+					    $("#block").animate({
+					        backgroundColor: $.Color({ saturation: 0 })
+					    }, 1500 );
+					});
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.valid()                        | Check whether the parsed css color is valid. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.valid()
+@added				1.2
+@return				Boolean
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        If <<jQuery.Color()>> method initally parsed a color string it could be an invalid css color. The <<.valid()>> method
+					returns whether the parsed string is valid.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.toRgbaString()                 | Get rgba color string. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.toRgbaString()
+@added				1.2
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Returns a "rgba" css string "rgba(255, 255, 255, 1)" of the color.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.toHslaString()                 | Get hsla color string. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.toHslaString()
+@added				1.2
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Returns a "hsla" css string "hsla(330, 75%, 25%, 1)" of the color.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.toHexString()                  | Get hex color string. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.toHexString( [ includeAlpha ] )
+@added				1.2
+@param				includeAlpha                         | A boolean indication whether to include the alpha value. | Boolean
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Returns a "hex" css string "#abcdef", with includeAlpha uses "#rrggbbaa" (alpha *= 255).
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.red()                          | Get the "red" component of the color. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.red()
+@added				1.2
+@return				Integer
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Returns the "red" component of the color ( Integer from 0 - 255 ).
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.red()                          | Set the "red" component of the color. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.red( value )
+@added				1.2
+@param				value                                | A value for the "red" component of the color ( Integer from 0 - 255 ). | Integer
+@return				Color
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Returns a copy of the color object with the red set to val.
+					For increase or decrease the value can also take a string in the format of "+=1" or "-=1".
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.green()                        | Get the "green" component of the color. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.green()
+@added				1.2
+@return				Integer
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.green( value )
+@added				1.2
+@param				value                                | A value for the "green" component of the color ( Integer from 0 - 255 ). | Integer
+@return				Color
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<.green()>> method is a setter and getter of the "green" component of the color.
+
+					The getter returns the "green" component of the color ( Integer from 0 - 255 ).
+					The setter returns a copy of the color object with the green set to val.
+					For increase or decrease the value can also take a string in the format of "+=1" or "-=1".
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.green()                        | Get the "green" component of the color. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.green()
+@added				1.2
+@return				Integer
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Returns the "green" component of the color ( Integer from 0 - 255 ).
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.blue()                         | Set the "blue" component of the color. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.blue( value )
+@added				1.2
+@param				value                                | A value for the "blue" component of the color ( Integer from 0 - 255 ). | Integer
+@return				Color
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Returns a copy of the color object with the blue set to val.
+					For increase or decrease the value can also take a string in the format of "+=1" or "-=1".
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.alpha()                        | Get the "alpha" component of the color. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.alpha()
+@added				1.2
+@return				Integer
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Returns the "alpha" component of the color ( Number from 0.0 - 1.0 ).
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.alpha()                        | Set the "alpha" component of the color. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.alpha( value )
+@added				1.2
+@param				value                                | A value for the "alpha" component of the color ( Number from 0.0 - 1.0 ). | Number
+@return				Color
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Returns a copy of the color object with the alpha set to val.
+					For increase or decrease the value can also take a string in the format of "+=0.1" or "-=0.1".
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.hue()                          | Get the "hue" component of the color. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.hue()
+@added				1.2
+@return				Integer
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Returns the "hue" component of the color ( Integer from 0 - 359 ).
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.hue()                          | Set the "hue" component of the color. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.hue( value )
+@added				1.2
+@param				value                                | A value for the "hue" component of the color ( Integer from 0 - 359 ). | Integer
+@return				Color
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Returns a copy of the color object with the hue set to val.
+					For increase or decrease the value can also take a string in the format of "+=1" or "-=1".
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.saturation()                   | Get the "saturation" component of the color. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.saturation()
+@added				1.2
+@return				Integer
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Returns the "saturation" component of the color ( Number from 0.0 - 1.0 ).
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.saturation()                   | Set the "saturation" component of the color. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.saturation( value )
+@added				1.2
+@param				value                                | A value for the "saturation" component of the color ( Number from 0.0 - 1.0 ). | Number
+@return				Color
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Returns a copy of the color object with the saturation set to val.
+					For increase or decrease the value can also take a string in the format of "+=0.1" or "-=0.1".
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.lightness()                    | Get the "lightness" component of the color. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.lightness()
+@added				1.2
+@return				Integer
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Returns the "lightness" component of the color ( Number from 0.0 - 1.0 ).
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.lightness()                    | Set the "lightness" component of the color. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.lightness( value )
+@added				1.2
+@param				value                                | A value for the "lightness" component of the color ( Number from 0.0 - 1.0 ). | Number
+@return				Color
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Returns a copy of the color object with the lightness set to val.
+					For increase or decrease the value can also take a string in the format of "+=0.1" or "-=0.1".
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.rgba()                         | Get the "rgbs" components of the color. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.rgba()
+@added				1.2
+@return				Array
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Returns a "rgba" tuple <<[ red, green, blue, alpha ]>>.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.rgba()                         | Set the "rgbs" components of the color. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.rgba( red, green, blue, alpha )
+@added				1.2
+@param				red                                  | A valid red value (Integer 0 - 255). | Integer
+@param				green                                | A valid green value (Integer 0 - 255). | Integer
+@param				blue                                 | A valid blue value (Integer 0 - 255). | Integer
+@param				alpha                                | A valid alpha transparency value (Number 0.0 - 1.0). | Number
+@return				Color
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.rgba( rgba )
+@added				1.2
+@param				rgba                                 | A rgba color map. Example: { red: red, green: green, blue: blue, alpha: alpha }. | Object
+@return				Color
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.rgba( rgba )
+@added				1.2
+@param				rgba                                 | A rgba color tuple. Example: [ red, green, blue, alpha ]. | Array
+@return				Color
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Returns a copy of the color with any defined values set to the new value.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.hsla()                         | Get the "hsla" component of the color. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.hsla()
+@added				1.2
+@return				Array
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Returns a "rgba" tuple <<[ hue, saturation, lightness, alpha ]>>.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.hsla()                         | Set the "hsla" component of the color. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.hsla( hue, saturation, lightness, alpha )
+@added				1.2
+@param				hue                                  | A valid hue value (Integer 0 - 359). | Integer
+@param				saturation                           | A valid saturation value (Number 0.0 - 1.0). | Number
+@param				lightness                            | A valid lightness value (Number 0.0 - 1.0). | Number
+@param				alpha                                | A valid alpha transparency value (Number 0.0 - 1.0). | Number
+@return				Color
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.hsla( hsla )
+@added				1.2
+@param				hsla                                 | A hsla color map. Example: { hue: hue, saturation: saturation, lightness: lightness, alpha: alpha }. | Object
+@return				Color
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.hsla( hsla )
+@added				1.2
+@param				rgba                                 | A hsla color tuple. Example: [ hue, saturation, lightness, alpha ]. | Array
+@return				Color
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Returns a copy of the color with any defined values set to the new value.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.transition()                   | Transform the color. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.transition( othercolor, distance )
+@added				1.2
+@param				othercolor                           | A valid processable color. | Array,Color,Object,String
+@param				distance                             | A distance value of the transition (Number 0.0 - 1.0). | Number
+@return				Color
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Will apply this color on the way to the other color using the given distance.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.blend()                        | Blend the color. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.blend( othercolor )
+@added				1.2
+@param				othercolor                           | A valid processable color. | Array,Color,Object,String
+@return				Color
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Will apply this color on top of the other color using alpha blending.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				color.is()                           | Check whether the color is equal to an other color. | method
+
+@categories			CSS | Color Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				color.is( othercolor )
+@added				1.2
+@param				othercolor                           | A valid processable color. | Array,Color,Object,String
+@return				Color
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Will determine if this color is equal to all defined properties of othercolor.
+

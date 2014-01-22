@@ -1,0 +1,18 @@
+
+@plugin				jQuery.support.placeholder
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				jQuery.support.placeholder           | Support of placeholder attribute for input elements. | property
+
+@categories			Utilities | Properties of the Global jQuery Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				jQuery.support.placeholder
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        A boolean indication whether the browser supports the HTML5 placeholder attribute for input elements.

@@ -1,0 +1,283 @@
+#!/usr/bin/php
+<?php require_once('Resources/php/__config.php');
+
+error_reporting(0);
+
+use CLI						as CLI;
+use CLI\Menu				as Menu;
+use File					as File;
+use jQuerySDK\XML\API		as API;
+use jQuerySDK\XML\API\RAW	as RAW;
+use jQuerySDK\XML\API\UI	as UI;
+use jQuerySDK\XML\API\QDoc	as QDoc;
+use jQuerySDK\Build			as Build;
+
+# Menu Actions
+
+	// Project > Create
+	function project_create( $menu, $path ){
+		$args = func_get_args();
+
+		CLI::cli_textBox('Select a name for your project.');
+
+		CLI::cli_question('Name: ','project_createCallback', $args );
+	}
+	function project_createCallback( $project, $args ){
+		$project = trim($project);
+
+		if( preg_match('/^[A-Za-z0-9-]+$/',$project) ){
+			if( is_dir("Projects/$project") || is_file("Projects/$project") ){
+				CLI::cli_textBox("Project '$project' could not created. \nProject '$project'already esixtiert.");
+			}
+			else{
+				mkdir( "Projects/$project", 0777, true );
+				$Build = new Build( $project, dirname(__file__).'/Projects' );
+				$Build->updateRepositoryLinks( dirname(__file__).'/Repository' );
+				$Build->copyDemoProject( dirname(__file__).'/Resources/demo' );
+				menu_update_project( $args[0] );
+
+				CLI::cli_textBox("Project '$project' has been created successfully.");
+			}
+		}
+		else{
+			CLI::cli_textBox("Project '$project' could not be created. \nUse only alphanumeric characters for project name.");
+		}
+
+		menu_continue($args);
+	}
+
+	// Project > Update
+	function project_update( $menu, $path ){
+		$args = func_get_args();
+		$project = helper_getProjectName($path);
+
+		$Build = new Build( $project, dirname(__file__).'/Projects' );
+		$Build->updateRepositoryLinks( dirname(__file__).'/Repository' );
+		$Build->copyDemoProject( dirname(__file__).'/Resources/demo' );
+		menu_update_project( $menu );
+
+		CLI::cli_textBox("Project '$project' has been updated successfully.");
+
+		menu_continue($args);
+	}
+
+	// Project > Build
+	function project_build( $menu, $path ){
+		$args = func_get_args();
+		$project = helper_getProjectName($path);
+
+		// Build
+		$Build = new Build( $project, dirname(__file__).'/Projects' );
+		$errors = $Build->buildProject();
+		// ERROR
+		if( sizeof($errors) )
+			CLI::cli_textBox("Files are the following error occurred:\n\n  ".join("\n  ",$errors) );
+		// SUCCESS
+		else
+			CLI::cli_textBox("Project '$project' has been built successfully.");
+
+		menu_continue($args);
+	}
+
+	// Project > Docu
+	function project_docu( $menu, $path ){
+		$args = func_get_args();
+
+		CLI::cli_textBox('Select a file to save XML.');
+
+		CLI::cli_question('File: ','project_docuCallback', $args );
+	}
+	function project_docuCallback( $input, $args ){
+		$target = trim($input);
+		$project = helper_getProjectName($args[1]);
+
+		$QDoc = new QDoc();
+		foreach( preg_grep( '/^.*?\.qdoc$/', File::file_get_list('Projects/'.$project.'/qdoc',true) ) as $file ){
+			$QDoc->parseFile($file);
+		}
+
+		if( !is_readable('Resources/cache/api-jquery-core.xml') )
+			helper_cacheDocuCore();
+		if( !is_readable('Resources/cache/api-jquery-ui.xml') )
+			helper_cacheDocuUI();
+
+		$API = new API();
+		$API->loadFile(		'Resources/cache/api-jquery-core.xml');
+		$API->mergeFile(	'Resources/cache/api-jquery-ui.xml');
+		$API->mergeString(	$QDoc->getXML() );
+
+		// save XML
+		File::file_write_contents( $target, $API->getXML() );
+
+		// compress XML
+		$escTarget = preg_replace( '/ /', '\ ', $target );
+		exec("java -jar Resources/java/htmlcompressor.jar -o ".$escTarget." ".$escTarget );
+
+		CLI::cli_textBox("Documentaion XML was saved to:\n  '".$target."'");
+
+		menu_continue($args);
+	}
+
+	// Repository > Update cache of minified files
+	function repository_update( $menu, $path ){
+		$args = func_get_args();
+
+		$errors = Build::minify('Repository');
+		if( sizeof($errors) )
+			CLI::cli_textBox("Files are the following error occurred:\n\n  ".join("\n  ",$errors) );
+		else
+			CLI::cli_textBox('Repository has been updated successfully.');
+
+		menu_continue($args);
+	}
+
+	// Extras > Update cache of jQuery Core documentation source
+	function extras_updateCore( $menu, $path ){
+		$args = func_get_args();
+
+		helper_cacheDocuCore();
+		CLI::cli_textBox('jQuery Documentation has been updated successfully.');
+
+		menu_continue($args);
+	}
+
+	// Extras > Update cache of jQuery UI documentation source
+	function extras_updateUI( $menu, $path ){
+		$args = func_get_args();
+
+		helper_cacheDocuUI();
+		CLI::cli_textBox('jQuery UI Documentation has been updated successfully.');
+
+		menu_continue($args);
+	}
+
+	// Extras > Delete cache
+	function extras_deleteCache( $menu, $path ){
+		$args = func_get_args();
+
+		File::rdelete('Resources/cache');
+		mkdir('Resources/cache');
+
+		CLI::cli_textBox('Cache has been deleted successfully.');
+
+		menu_continue($args);
+	}
+
+# Helper
+	// getName Project name from path
+	function helper_getProjectName( $path ){
+		return preg_replace( '/^\d+\s*/', '', array_pop( preg_split('/\s*>\s*/',$path) ) );
+	}
+	// Cache Docu XML jQuery Core
+	function helper_cacheDocuCore(){
+		$RAW = new RAW();
+		$RAW->parseFile('http://api.jquery.com/api/');
+		File::file_write_contents( 'Resources/cache/api-jquery-core.xml', $RAW->getXML() );
+		// cache images
+		$imageCache = 'Resources/cache/images';
+		if( !is_dir($imageCache) )
+			mkdir($imageCache);
+		foreach( $RAW->getImages() as $img ){
+			$imgData = file_get_contents($img);
+			if( $imgData ){
+				File::file_write_contents( $imageCache.'/'.basename($img), $imgData );
+			}
+
+		}
+
+	}
+	// Cache Docu XML jQuery UI
+	function helper_cacheDocuUI(){
+		$UI = new UI();
+		foreach( split(' ','draggable droppable resizable selectable sortable accordion autocomplete button datepicker dialog progressbar slider tabs position') as $name ){
+			$UI->parseSite('http://jqueryui.com/demos/'.$name);
+		}
+		File::file_write_contents( 'Resources/cache/api-jquery-ui.xml', $UI->getXML() );
+	}
+
+
+
+
+# Menu Basic
+	// continue handle
+	function menu_continue( $args ){
+		CLI::cli_question('Press enter to continue ...','menu_continueCallback', $args );
+	}
+	function menu_continueCallback( $input, $args ){
+		$args[1] = preg_split('/\s*>\s*/',$args[1]);
+		array_pop($args[1]);
+		$args[1] = join(' > ',$args[1]);
+
+		$args[0]->open($args[1]);
+	}
+	// update menu items
+	function menu_update_project( $menu ){
+		$menuProject = array(
+			'[C]reate'								=>'project_create'
+		);
+
+		$update = array();
+		$build = array();
+		$docu = array();
+
+		if( !is_dir('Projects') )
+			mkdir('Projects');
+
+		$e=0;
+		foreach( File::dir_get_list('Projects') as $i=>$file ){
+			$name = basename($file);
+
+			if( preg_match('/^[A-Za-z0-9-]+$/',$name) ){
+				$i -= $e;
+				$update['['.$i.'] '.$name] = 'project_update';
+				$build['['.$i.'] '.$name] = 'project_build';
+				$docu['['.$i.'] '.$name] = 'project_docu';
+			}
+			else{
+				$e++;
+			}
+		}
+
+		if( sizeof($update) ){
+			$menuProject['[U]pdate (repository connection)'] = $update;
+			$menuProject['[B]uild'] = $build;
+			$menuProject['[S]ave documentation XML'] = $docu;
+		}
+
+		$menu->update( 'Main > Project', $menuProject );
+	}
+
+# Menu Build
+	$menu = new Menu(array(
+		'[P]roject'								=>array(
+			'[C]reate'								=>'project_create'
+		),
+		'[R]epository'							=>array(
+			'[U]pdate cache of minified files'						=>'repository_update'
+		),
+		'[E]xtras'								=>array(
+			'Update cache of jQuery [C]ore documentation source'	=>'extras_updateCore',
+			'Update cache of jQuery [U]I documentation source'		=>'extras_updateUI',
+			'[D]elete cache'										=>'extras_deleteCache'
+		)
+	));
+	menu_update_project( $menu );
+
+# Display Logo
+	print "\n";
+	CLI::cli_textBox(
+		"                                                                        v1.4\n".
+		"        ┏━━━━━━━━━┓      ┏━┓ ┏━━━━━┓                                        \n".
+		"        ┃         ┃      ┗━┛ ┃ ┏━┓ ┃                                        \n".
+		"        ┗━┓       ┗━┓    ┏━┓ ┃ ┃ ┃ ┃ ┏━┓ ┏━┓ ┏━━━━━┓ ┏━━━┓ ┏━┓ ┏━┓          \n".
+		"        ┏━┛       ┏━┛    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┏━┓ ┃ ┃ ┏━┛ ┃ ┃ ┃ ┃          \n".
+		"        ┃     SDK ┃    ┏━┛ ┃ ┃ ┗━╋━┫ ┃ ┗━┛ ┃ ┃ ━━━━┫ ┃ ┃   ┃ ┗━┛ ┃          \n".
+		"        ┗━━━━━━━━━┛    ┗━━━┛ ┗━━━┻━┛ ┗━━━━━┛ ┗━━━━━┛ ┗━┛   ┣━━━━ ┃          \n".
+		"                        Software   Development   Kit       ┗━━━━━┛          \n".
+		"                                                                            "
+	);
+	print "\n";
+
+# Start
+	$menu->open();
+?>

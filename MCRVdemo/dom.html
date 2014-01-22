@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=7" />
+        <title>MCRV 设计模式 Demo</title>
+        <style type="text/css">
+            /********表现*********/
+            table{width:100%;border-collapse: collapse;}
+            td{border: 1px solid black;padding: 2px;}
+            #container {width:800px;margin:0px auto;}
+            #tbUsers{margin:20px auto;}
+            #tbUsers th{background-color: navy;color:white;text-align: center;vertical-align: middle;border:1px solid navy}
+             #tbUsers td{text-align: center;}
+            .editCaption{width:100px;text-align: right;}
+            .buttonMargin{margin:0px 20px;}
+            .buttonContainer{text-align: center;vertical-align: middle;height:50px}
+        </style>
+        <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" src="mcrv.js" charset="utf-8"></script>
+</head>
+<body>
+    <!-------结构------- -->
+    <div id="container">
+        <table id="tbUsers">
+            <thead><th>id</th><th>姓名</th><th>年龄</th><th>修改</th></thead>
+            <tbody/>
+        </table>
+        <div style="display: none;" id="dvEditPanel">
+            <form id="frmModify" name="frmModify">
+                <table>
+                <tr>
+                    <td class="editCaption"> id: </td>
+                    <td><span id="spID"></span></td>
+                </tr>
+                <tr>
+                    <td class="editCaption"> 姓名: </td>
+                    <td><input type="text" size="20" id="txtName"/></td>
+                </tr>
+                <tr>
+                    <td class="editCaption"> 年龄: </td>
+                    <td><input type="text" size="20" id="txtAge"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2"  class="buttonContainer">
+                        <button id="btnSubmitModify" class="buttonMargin" type="button">提交</button>
+                        <button id="btnCancelModify" class="buttonMargin" type="button">取消</button>
+                    </td>
+                </tr>
+              </table>
+            </form> 
+
+        </div>
+    </div>
+    </body>
+</html>

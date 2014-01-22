@@ -1,0 +1,245 @@
+
+@plugin				jQuery.event.special.touch
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				touchdrag                      | Bind special event on touch drag. | event
+
+@categories			Touch Events
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.on( 'touchdrag', ... )
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This <<.on()>> implements a simple bind to the <<touchdrag>> interaction.
+
+					The <<touchdrag>> event starts with <<touchstart>> on each element in the set of matched elements, while the user moves
+					the finger the <<touchdrag>> event fires.
+
+					The recieved event object on <<touchdrag>> includes advanced properties:
+					* '''event.dragState''' A value which represents the current drag status (start / while / end).
+					* '''event.dragDeltaT''' Milliseconds between current and previous drag event state.
+					* '''event.dragDelta''' A float value which represents the diagonal pixel distance between the last and current position.
+					* '''event.dragDeltaX''' A float value which represents the pixel distance between the last and current position on the x-axis.
+					* '''event.dragDeltaY''' A float value which represents the pixel distance between the last and current position on the y-axis.
+
+					See the [[api:method:.on()]] and [[api:method:.off()]] method references for a way to bind/unbind event handlers.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				touchswipeup                   | Bind special event on touch swipeup. | event
+
+@categories			Touch Events
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.on( 'touchswipeup', ... )
+@added				1.2
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This <<.on()>> implements a simple bind to the <<touchswipeup>> interaction.
+
+					The <<touchswipeup>> event fires, when the user moves the finger directly from bottom to top.
+
+					The recieved event object on <<touchswipeup>> includes advanced properties:
+					* '''event.dragDeltaT''' Milliseconds between start and end of the swipe.
+					* '''event.dragDelta''' A float value which represents the diagonal pixel distance between the start and end position.
+					* '''event.dragDeltaX''' A float value which represents the pixel distance between the start and end position on the x-axis.
+					* '''event.dragDeltaY''' A float value which represents the pixel distance between the start and end position on the y-axis.
+
+					See the [[api:method:.on()]] and [[api:method:.off()]] method references for a way to bind/unbind event handlers.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				touchswiperight                | Bind special event on touch swiperight. | event
+
+@categories			Touch Events
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.on( 'touchswiperight', ... )
+@added				1.2
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This <<.on()>> implements a simple bind to the <<touchswiperight>> interaction.
+
+					The <<touchswiperight>> event fires, when the user moves the finger directly from left to rigth.
+
+					The recieved event object on <<touchswiperight>> includes advanced properties:
+					* '''event.dragDeltaT''' Milliseconds between start and end of the swipe.
+					* '''event.dragDelta''' A float value which represents the diagonal pixel distance between the start and end position.
+					* '''event.dragDeltaX''' A float value which represents the pixel distance between the start and end position on the x-axis.
+					* '''event.dragDeltaY''' A float value which represents the pixel distance between the start and end position on the y-axis.
+
+					See the [[api:method:.on()]] and [[api:method:.off()]] method references for a way to bind/unbind event handlers.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				touchswipedown                 | Bind special event on touch swipedown. | event
+
+@categories			Touch Events
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.on( 'touchswipedown', ... )
+@added				1.2
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This <<.on()>> implements a simple bind to the <<touchswipedown>> interaction.
+
+					The <<touchswipedown>> event fires, when the user moves the finger directly from top to bottom.
+
+					The recieved event object on <<touchswipedown>> includes advanced properties:
+					* '''event.dragDeltaT''' Milliseconds between start and end of the swipe.
+					* '''event.dragDelta''' A float value which represents the diagonal pixel distance between the start and end position.
+					* '''event.dragDeltaX''' A float value which represents the pixel distance between the start and end position on the x-axis.
+					* '''event.dragDeltaY''' A float value which represents the pixel distance between the start and end position on the y-axis.
+
+					See the [[api:method:.on()]] and [[api:method:.off()]] method references for a way to bind/unbind event handlers.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				touchswipeleft                 | Bind special event on touch swipeleft. | event
+
+@categories			Touch Events
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.on( 'touchswipeleft', ... )
+@added				1.2
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This <<.on()>> implements a simple bind to the <<touchswipeleft>> interaction.
+
+					The <<touchswipeleft>> event fires, when the user moves the finger directly from left to right.
+
+					The recieved event object on <<touchswipeup>> includes advanced properties:
+					* '''event.dragDeltaT''' Milliseconds between start and end of the swipe.
+					* '''event.dragDelta''' A float value which represents the diagonal pixel distance between the start and end position.
+					* '''event.dragDeltaX''' A float value which represents the pixel distance between the start and end position on the x-axis.
+					* '''event.dragDeltaY''' A float value which represents the pixel distance between the start and end position on the y-axis.
+
+					See the [[api:method:.on()]] and [[api:method:.off()]] method references for a way to bind/unbind event handlers.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				touchpinch                     | Bind special pinch event on touch interaction. | event
+
+@categories			Touch Events
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.on( 'touchpinch', ... )
+@added				1.3
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This <<.on()>> implements a simple bind to the <<touchpinch>> interaction.
+
+					The <<touchpinch>> event fires while the user drag together / apart two fingers.
+
+					The recieved event object on <<touchzoom>> includes advanced properties:
+					* '''event.pinchState''' A value which represents the current pinch status (start / while / end).
+					* '''event.pinchDeltaT''' Milliseconds between current and previous drag event state.
+					* '''event.pinchDelta''' A float value which represents the diagonal pixel distance between the last and current distance of the fingers.
+					* '''event.pinchDeltaX''' A float value which represents the pixel distance between the last and current distance of the fingers on the x-axis.
+					* '''event.pinchDeltaY''' A float value which represents the pixel distance between the last and current distance of the fingers on the y-axis.
+
+					See the [[api:method:.on()]] and [[api:method:.off()]] method references for a way to bind/unbind event handlers.
+
+					'''The <<touchpinch>> special event was replaced by the <<touchpinch>> event in version 1.3.'''
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				touchpinchin                   | Bind special event on touch pinch in. | event
+
+@categories			Touch Events
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.on( 'touchpinchin', ... )
+@added				1.3
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This <<.on()>> implements a simple bind to the <<touchpinchin>> interaction.
+
+					The <<touchpinchin>> event fires if the user drag apart two fingers.
+
+					The recieved event object on <<touchpinchin>> includes advanced properties:
+					* '''event.pinchDeltaT''' Milliseconds between start and end pinch event state.
+					* '''event.pinchDelta''' A float value which represents the diagonal pixel distance between the start and end distance of the fingers.
+					* '''event.pinchDeltaX''' A float value which represents the pixel distance between the start and end distance of the fingers on the x-axis.
+					* '''event.pinchDeltaY''' A float value which represents the pixel distance between the start and end distance of the fingers on the y-axis.
+
+					See the [[api:method:.on()]] and [[api:method:.off()]] method references for a way to bind/unbind event handlers.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				touchpinchout                  | Bind special event on touch pinch out. | event
+
+@categories			Touch Events
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.on( 'touchpinchout', ... )
+@added				1.3
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This <<.on()>> implements a simple bind to the <<touchpinchin>> interaction.
+
+					The <<touchpinchout>> event fires if the user drag together two fingers.
+
+					The recieved event object on <<touchpinchin>> includes advanced properties:
+					* '''event.pinchDeltaT''' Milliseconds between start and end pinch event state.
+					* '''event.pinchDelta''' A float value which represents the diagonal pixel distance between the start and end distance of the fingers.
+					* '''event.pinchDeltaX''' A float value which represents the pixel distance between the start and end distance of the fingers on the x-axis.
+					* '''event.pinchDeltaY''' A float value which represents the pixel distance between the start and end distance of the fingers on the y-axis.
+
+					See the [[api:method:.on()]] and [[api:method:.off()]] method references for a way to bind/unbind event handlers.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				touchzoom                      | Bind special zoom event on touch interaction. | event
+
+@categories			Touch Events
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.on( 'touchzoom', ... )
+@added				1.0
+@deprecated			1.3
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        '''The <<touchzoom>> special event was replaced by the <<touchpinch>> event in version 1.3.'''
+
+					This <<.on()>> implements a simple bind to the <<touchzoom>> interaction.
+
+					The <<touchzoom>> event fires if the user drag together / apart two fingers.
+
+					The recieved event object on <<touchzoom>> includes advanced properties:
+					* '''event.zoomState''' A value which represents the current zoom status (start / while / end).
+					* '''event.zoomDeltaT''' Milliseconds between current and previous zoom event state.
+					* '''event.zoomDelta''' A float value which represents the diagonal pixel distance between the last and current distance of the fingers.
+					* '''event.zoomDeltaX''' A float value which represents the pixel distance between the last and current distance of the fingers on the x-axis.
+					* '''event.zoomDeltaY''' A float value which represents the pixel distance between the last and current distance of the fingers on the y-axis.
+
+					See the [[api:method:.on()]] and [[api:method:.off()]] method references for a way to bind/unbind event handlers.

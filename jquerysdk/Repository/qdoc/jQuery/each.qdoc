@@ -1,0 +1,98 @@
+
+@plugin				jQuery.each
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				jQuery.each()                  | A generic iterator function, which can be used to seamlessly iterate over both objects and arrays. Arrays and array-like objects with a length property (such as a function's arguments object) are iterated by numeric index, from 0 to length-1. Other objects are iterated via their named properties. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				jQuery.each( collection, [ overwrite ], callback(indexInArray, valueOfElement) )
+@added				1.0
+@param				collection                     | The object or array to iterate over. | Array,Object
+@param				overwrite                      | A boolean indication whether to overwrite every object by the return value. | Optional,Boolean
+@param				callback(indexInArray, valueOfElement) | The function that will be executed on every object. | Function
+@return				Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        The <<$.each()>> function is not the same as <<.each()>>, which is used to iterate, exclusively, over a
+					jQuery object. The <<$.each()>> function can be used to iterate over any collection, whether it is a map
+					(JavaScript object) or an array. In the case of an array, the callback is passed an array index and a
+					corresponding array value each time. (The value can also be accessed through the this keyword, but
+					Javascript will always wrap the <<this>> value as an Object even if it is a simple string or number value.)
+					The method returns its first argument, the object that was iterated.
+
+					We can break the <<$.each()>> loop at a particular iteration by making the callback function return false.
+					Returning non-false is the same as a continue statement in a for loop; it will skip immediately to the next
+					iteration.
+
+					If we set the overwrite argument, returning non-false and non-undefined will set a new value to current item.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Iterates over the properties in an object, accessing both the current item and its key.
+
+@code				$.each( { a: 0, b: 1, c: 2, d: 3, e: 4 }, true, function(key, value){
+					    alert( "Key: " + key + ", Value: " + value );
+
+					    return value >= 2 ? value+1 : false;
+					});
+
+@results			{ a: 1, b: 2, c: 3, d: 3, e: 4 }
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.each()                        | Iterate over a jQuery object, executing a function for each matched element. | method
+
+@categories			Collection Manipulation | Traversing
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.each( [ overwrite ], callback(indexInArray, valueOfElement) )
+@added				1.0
+@param				overwrite                      | A boolean indication whether to overwrite every object by the return element. | Optional,Boolean
+@param				callback(index, element)       | A function to execute for each matched element. | Function
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        The <<.each()>> method is designed to make DOM looping constructs concise and less error-prone. When called it
+					iterates over the DOM elements that are part of the jQuery object. Each time the callback runs, it is
+					passed the current loop iteration, beginning from 0. More importantly, the callback is fired in the context
+					of the current DOM element, so the keyword <<this>> refers to the element.
+
+					We can break the <<.each()>> loop at a particular iteration by making the callback function return false.
+					Returning non-false is the same as a continue statement in a for loop; it will skip immediately to the next
+					iteration.
+
+					If we set the overwrite argument, returning non-false and non-undefined will set a new value to current item.
+					The overwrite argument is very usefull if we want to replace an element, so we can work in chain on the
+					new elements.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Replace all password inputs with empty text inputs and toogle each element of matched elements.
+
+@code				$(':input')
+					    .each( true, function(){
+					        if( elem.attr('type') === 'password' ){
+					        	var elem = $(this),
+					        	    repl = elem
+					        	             .clone()
+					        	             .attr({
+					        	                 'type': 'text',
+					        	                 'value': ''
+					        	             })
+					        	             .insertBefore( elem );
+
+					        	elem.remove();
+
+					        	return repl;
+					        }
+					    })
+					    .toggle();

@@ -1,0 +1,82 @@
+
+@plugin				jQuery.compareVersion
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				Compare version                | Configure default values for future compare version calls. | config
+
+@categories			Utilities | Properties of jQueryConfig
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQueryConfig.compareVersion
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        All subsequent <<[[api:method:jQuery.compareVersion()|$.compareVersion()]]>> calls will use the configuration.
+
+					Configure <<jQueryConfig.compareVersion>> to define an additional map of key/value pairs of integer values for special
+					letters or words in a version string.
+
+					=====Default map:=====
+					 {
+					     alpha:  -10,
+					     a:      -10,
+					     beta:    -8,
+					     b:       -8,
+					     release: -2
+					     r:       -2,
+					     rc:      -4
+					 }
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.compareVersion()        | Compare versions controls. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.compareVersion( versionA, versionB )
+@added				1.0
+@param				versionA                       | A version control number. | String
+@param				versionB                       | A version control number. | String
+@return				Integer
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        In most cases a version control number isn't a simple number.
+					Maybe it is a string with some dots for subversions or includes letters like ''b'' for beta or ''a'' for alpha.
+
+					This method compares 2 versions in consideration of subversions and meanings of letters.
+					* versionA > versionB = 1
+					* versionA == versionB = 0
+					* versionA < versionB = -1
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Compare some versions control numbers.
+
+@code				$.compareVersion( '2.11.5', '2.11.4' );
+					// results: 1
+
+					$.compareVersion( '2.11.4.0', '2.11.4' );
+					// results: 0
+
+					$.compareVersion( '2.11.4', '2.11.7' );
+					// results: -1
+
+					$.compareVersion( '2.11.4b', '2.11.4' );
+					// results: -1
+
+					$.compareVersion( '2.11.4b', '2.11.4a' );
+					// results: 1
+
+					$.compareVersion( '2.11.4.b', '2.11.4a' );
+					// results: 1
+
+					$.compareVersion( '2.11.4beta', '2.11.4alpha' );
+					// results: 1

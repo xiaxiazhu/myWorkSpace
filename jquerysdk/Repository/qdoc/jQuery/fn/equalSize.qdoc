@@ -1,0 +1,433 @@
+
+@plugin				jQuery.fn.equalSize
+@dependencies       jQuery.fn.size
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.equalWidth()                        | Set the width of a broadest element in the set of matched elements to each of the set of matched elements. | method
+
+@categories			CSS | Dimensions
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.equalWidth()
+@added				1.0
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        The <<.equalHeight()>> method equals the width to each of the set of matched elements
+					to the width from the the broadest one.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Equal the width of all div elements.
+
+@css				.box_1 {
+					    position:    absolute,
+					    margin:      15px,
+					    border:      solid 5px,
+					    padding:     10px,
+					    width:       100px,
+					    height:      100px
+					}
+					.box_2 {
+					    position:    absolute,
+					    margin:      30px,
+					    border:      solid 10px,
+					    padding:     20px,
+					    width:       200px,
+					    height:      200px
+					}
+					.box_3 {
+					    position:    absolute,
+					    margin:      45px,
+					    border:      solid 15px,
+					    padding:     30px,
+					    width:       300px,
+					    height:      300px
+					}
+
+@html				<div class="box_1"></div>
+					<div class="box_2"></div>
+					<div class="box_3"></div>
+
+@code				$('div').equalWidth();
+
+@results			<div class="box_1" style="width: 300px;"></div>
+					<div class="box_2" style="width: 300px;"></div>
+					<div class="box_3" style="width: 300px;"></div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.equalHeight()                       | Set the heigh of a highest element in the set of matched elements to each of the set of matched elements. | method
+
+@categories			CSS | Dimensions
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.equalHeight()
+@added				1.0
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        The <<.equalHeight()>> method equals the height to each of the set of matched elements
+					to the height from the the highest one.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Equal the height of all div elements.
+
+@css				.box_1 {
+					    position:    absolute,
+					    margin:      15px,
+					    border:      solid 5px,
+					    padding:     10px,
+					    width:       100px,
+					    height:      100px
+					}
+					.box_2 {
+					    position:    absolute,
+					    margin:      30px,
+					    border:      solid 10px,
+					    padding:     20px,
+					    width:       200px,
+					    height:      200px
+					}
+					.box_3 {
+					    position:    absolute,
+					    margin:      45px,
+					    border:      solid 15px,
+					    padding:     30px,
+					    width:       300px,
+					    height:      300px
+					}
+
+@html				<div class="box_1"></div>
+					<div class="box_2"></div>
+					<div class="box_3"></div>
+
+@code				$('div').equalHeight();
+
+@results			<div class="box_1" style="height: 300px;"></div>
+					<div class="box_2" style="height: 300px;"></div>
+					<div class="box_3" style="height: 300px;"></div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.equalInnerWidth()                   | Set the innerWidth of a broadest element in the set of matched elements to each of the set of matched elements. | method
+
+@categories			CSS | Dimensions
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.equalInnerWidth()
+@added				1.0
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        The <<.equalInnerHeight()>> method equals the innerWidth to each of the set of matched elements
+					to the innerWidth from the the broadest one.
+
+					The <<.equalInnerWidth()>> method is related to the <<.innerWidth()>> method.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Equal the innerWidth of all div elements.
+
+@css				.box_1 {
+					    position:    absolute,
+					    margin:      15px,
+					    border:      solid 5px,
+					    padding:     10px,
+					    width:       100px,
+					    height:      100px
+					}
+					.box_2 {
+					    position:    absolute,
+					    margin:      30px,
+					    border:      solid 10px,
+					    padding:     20px,
+					    width:       200px,
+					    height:      200px
+					}
+					.box_3 {
+					    position:    absolute,
+					    margin:      45px,
+					    border:      solid 15px,
+					    padding:     30px,
+					    width:       300px,
+					    height:      300px
+					}
+
+@html				<div class="box_1"></div>
+					<div class="box_2"></div>
+					<div class="box_3"></div>
+
+@code				$('div').equalInnerWidth();
+
+@results			<div class="box_1" style="width: 340px;"></div>
+					<div class="box_2" style="width: 320px;"></div>
+					<div class="box_3" style="width: 300px;"></div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.equalInnerHeight()                  | Set the heigh of a innerHighest element in the set of matched elements to each of the set of matched elements. | method
+
+@categories			CSS | Dimensions
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.equalInnerHeight()
+@added				1.0
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        The <<.equalInnerHeight()>> method equals the innerHeight to each of the set of matched elements
+					to the innerHeight from the the highest one.
+
+					The <<.equalInnerHeight()>> method is related to the <<.innerHeight()>> method.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Equal the innerHeight of all div elements.
+
+@css				.box_1 {
+					    position:    absolute,
+					    margin:      15px,
+					    border:      solid 5px,
+					    padding:     10px,
+					    width:       100px,
+					    height:      100px
+					}
+					.box_2 {
+					    position:    absolute,
+					    margin:      30px,
+					    border:      solid 10px,
+					    padding:     20px,
+					    width:       200px,
+					    height:      200px
+					}
+					.box_3 {
+					    position:    absolute,
+					    margin:      45px,
+					    border:      solid 15px,
+					    padding:     30px,
+					    width:       300px,
+					    height:      300px
+					}
+
+@html				<div class="box_1"></div>
+					<div class="box_2"></div>
+					<div class="box_3"></div>
+
+@code				$('div').equalInnerHeight();
+
+@results			<div class="box_1" style="height: 340px;"></div>
+					<div class="box_2" style="height: 320px;"></div>
+					<div class="box_3" style="height: 300px;"></div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.equalOuterWidth()                   | Set the outerWidth of a broadest element in the set of matched elements to each of the set of matched elements. | method
+
+@categories			CSS | Dimensions
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.equalOuterWidth( [ includeMargin ] )
+@param				includeMargin                        | A Boolean indicating whether to include the element's margin in the calculation. | Optional,Boolean
+@added				1.0
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        The <<.equalOuterHeight()>> method equals the outerWidth to each of the set of matched elements
+					to the outerWidth from the the broadest one.
+
+					The <<.equalOuterWidth()>> method is related to the <<.outerWidth()>> method.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Equal the outerWidth of all div elements.
+
+@css				.box_1 {
+					    position:    absolute,
+					    margin:      15px,
+					    border:      solid 5px,
+					    padding:     10px,
+					    width:       100px,
+					    height:      100px
+					}
+					.box_2 {
+					    position:    absolute,
+					    margin:      30px,
+					    border:      solid 10px,
+					    padding:     20px,
+					    width:       200px,
+					    height:      200px
+					}
+					.box_3 {
+					    position:    absolute,
+					    margin:      45px,
+					    border:      solid 15px,
+					    padding:     30px,
+					    width:       300px,
+					    height:      300px
+					}
+
+@html				<div class="box_1"></div>
+					<div class="box_2"></div>
+					<div class="box_3"></div>
+
+@code				$('div').equalOuterWidth();
+
+@results			<div class="box_1" style="width: 360px;"></div>
+					<div class="box_2" style="width: 330px;"></div>
+					<div class="box_3" style="width: 300px;"></div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Equal the outerWidth of all div elements include the element's margin.
+
+@css				.box_1 {
+					    position:    absolute,
+					    margin:      15px,
+					    border:      solid 5px,
+					    padding:     10px,
+					    width:       100px,
+					    height:      100px
+					}
+					.box_2 {
+					    position:    absolute,
+					    margin:      30px,
+					    border:      solid 10px,
+					    padding:     20px,
+					    width:       200px,
+					    height:      200px
+					}
+					.box_3 {
+					    position:    absolute,
+					    margin:      45px,
+					    border:      solid 15px,
+					    padding:     30px,
+					    width:       300px,
+					    height:      300px
+					}
+
+@html				<div class="box_1"></div>
+					<div class="box_2"></div>
+					<div class="box_3"></div>
+
+@code				$('div').equalOuterWidth(true);
+
+@results			<div class="box_1" style="width: 420px;"></div>
+					<div class="box_2" style="width: 360px;"></div>
+					<div class="box_3" style="width: 300px;"></div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.equalOuterHeight()                  | Set the heigh of a outerHighest element in the set of matched elements to each of the set of matched elements. | method
+
+@categories			CSS | Dimensions
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.equalOuterHeight( [ includeMargin ] )
+@param				includeMargin                        | A Boolean indicating whether to include the element's margin in the calculation. | Optional,Boolean
+@added				1.0
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        The <<.equalOuterHeight()>> method equals the outerHeight to each of the set of matched elements
+					to the outerHeight from the the highest one.
+
+					The <<.equalOuterHeight()>> method is related to the <<.outerHeight()>> method.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Equal the outerHeight of all div elements.
+
+@css				.box_1 {
+					    position:    absolute,
+					    margin:      15px,
+					    border:      solid 5px,
+					    padding:     10px,
+					    width:       100px,
+					    height:      100px
+					}
+					.box_2 {
+					    position:    absolute,
+					    margin:      30px,
+					    border:      solid 10px,
+					    padding:     20px,
+					    width:       200px,
+					    height:      200px
+					}
+					.box_3 {
+					    position:    absolute,
+					    margin:      45px,
+					    border:      solid 15px,
+					    padding:     30px,
+					    width:       300px,
+					    height:      300px
+					}
+
+@html				<div class="box_1"></div>
+					<div class="box_2"></div>
+					<div class="box_3"></div>
+
+@code				$('div').equalOuterHeight();
+
+@results			<div class="box_1" style="height: 360px;"></div>
+					<div class="box_2" style="height: 330px;"></div>
+					<div class="box_3" style="height: 300px;"></div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Equal the outerHeight of all div elements include the element's margin.
+
+@css				.box_1 {
+					    position:    absolute,
+					    margin:      15px,
+					    border:      solid 5px,
+					    padding:     10px,
+					    width:       100px,
+					    height:      100px
+					}
+					.box_2 {
+					    position:    absolute,
+					    margin:      30px,
+					    border:      solid 10px,
+					    padding:     20px,
+					    width:       200px,
+					    height:      200px
+					}
+					.box_3 {
+					    position:    absolute,
+					    margin:      45px,
+					    border:      solid 15px,
+					    padding:     30px,
+					    width:       300px,
+					    height:      300px
+					}
+
+@html				<div class="box_1"></div>
+					<div class="box_2"></div>
+					<div class="box_3"></div>
+
+@code				$('div').equalOuterHeight(true);
+
+@results			<div class="box_1" style="height: 420px;"></div>
+					<div class="box_2" style="height: 360px;"></div>
+					<div class="box_3" style="height: 300px;"></div>

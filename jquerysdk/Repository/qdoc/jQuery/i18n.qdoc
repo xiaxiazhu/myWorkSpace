@@ -1,0 +1,1368 @@
+
+@plugin				jQuery.i18n
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				Internationalisation           | Configure default values for future internationalisation call. | config
+
+@categories			Internationalisation | Properties of jQueryConfig
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQueryConfig.i18n[ options ]
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        For details on the options available for <<$.i18n()>>, <<$.i18n.parseDate()>>, <<$.i18n.formatDate()>>, <<$.i18n.exprStrDate()>>
+					, <<$.i18n.parseNumber()>>, <<$.i18n.formatNumber()>> and <<$.i18n.exprStrNumber()>>. See <<[[api:method:jQuery.i18n()|$.i18n()]]>>.
+
+					All subsequent internationalisation calls using any function will use the configured options, unless overridden by the individual calls.
+
+					=====Available regions:=====
+					* '''af''' Afrikaans
+					* '''af-ZA''' Afrikaans (South Africa)
+					* '''am''' Amharic
+					* '''am-ET''' Amharic (Ethiopia)
+					* '''ar''' Arabic
+					* '''ar-AE''' Arabic (U.A.E.)
+					* '''ar-BH''' Arabic (Bahrain)
+					* '''ar-DZ''' Arabic (Algeria)
+					* '''ar-EG''' Arabic (Egypt)
+					* '''ar-IQ''' Arabic (Iraq)
+					* '''ar-JO''' Arabic (Jordan)
+					* '''ar-KW''' Arabic (Kuwait)
+					* '''ar-LB''' Arabic (Lebanon)
+					* '''ar-LY''' Arabic (Libya)
+					* '''ar-MA''' Arabic (Morocco)
+					* '''ar-OM''' Arabic (Oman)
+					* '''ar-QA''' Arabic (Qatar)
+					* '''ar-SA''' Arabic (Saudi Arabia)
+					* '''ar-SY''' Arabic (Syria)
+					* '''ar-TN''' Arabic (Tunisia)
+					* '''ar-YE''' Arabic (Yemen)
+					* '''arn''' Mapudungun
+					* '''arn-CL''' Mapudungun (Chile)
+					* '''as''' Assamese
+					* '''as-IN''' Assamese (India)
+					* '''az''' Azeri
+					* '''az-Cyrl''' Azeri (Cyrillic)
+					* '''az-Cyrl-AZ''' Azeri (Cyrillic, Azerbaijan)
+					* '''az-Latn''' Azeri (Latin)
+					* '''az-Latn-AZ''' Azeri (Latin, Azerbaijan)
+					* '''ba''' Bashkir
+					* '''ba-RU''' Bashkir (Russia)
+					* '''be''' Belarusian
+					* '''be-BY''' Belarusian (Belarus)
+					* '''bg''' Bulgarian
+					* '''bg-BG''' Bulgarian (Bulgaria)
+					* '''bn''' Bengali
+					* '''bn-BD''' Bengali (Bangladesh)
+					* '''bn-IN''' Bengali (India)
+					* '''bo''' Tibetan
+					* '''bo-CN''' Tibetan (PRC)
+					* '''br''' Breton
+					* '''br-FR''' Breton (France)
+					* '''bs''' Bosnian
+					* '''bs-Cyrl''' Bosnian (Cyrillic)
+					* '''bs-Cyrl-BA''' Bosnian (Cyrillic, Bosnia and Herzegovina)
+					* '''bs-Latn''' Bosnian (Latin)
+					* '''bs-Latn-BA''' Bosnian (Latin, Bosnia and Herzegovina)
+					* '''ca''' Catalan
+					* '''ca-ES''' Catalan (Catalan)
+					* '''co''' Corsican
+					* '''co-FR''' Corsican (France)
+					* '''cs''' Czech
+					* '''cs-CZ''' Czech (Czech Republic)
+					* '''cy''' Welsh
+					* '''cy-GB''' Welsh (United Kingdom)
+					* '''da''' Danish
+					* '''da-DK''' Danish (Denmark)
+					* '''de''' German
+					* '''de-AT''' German (Austria)
+					* '''de-CH''' German (Switzerland)
+					* '''de-DE''' German (Germany)
+					* '''de-LI''' German (Liechtenstein)
+					* '''de-LU''' German (Luxembourg)
+					* '''dsb''' Lower Sorbian
+					* '''dsb-DE''' Lower Sorbian (Germany)
+					* '''dv''' Divehi
+					* '''dv-MV''' Divehi (Maldives)
+					* '''el''' Greek
+					* '''el-GR''' Greek (Greece)
+					* '''en''' English
+					* '''en-029''' English (Caribbean)
+					* '''en-AU''' English (Australia)
+					* '''en-BZ''' English (Belize)
+					* '''en-CA''' English (Canada)
+					* '''en-GB''' English (United Kingdom)
+					* '''en-IE''' English (Ireland)
+					* '''en-IN''' English (India)
+					* '''en-JM''' English (Jamaica)
+					* '''en-MY''' English (Malaysia)
+					* '''en-NZ''' English (New Zealand)
+					* '''en-PH''' English (Republic of the Philippines)
+					* '''en-SG''' English (Singapore)
+					* '''en-TT''' English (Trinidad and Tobago)
+					* '''en-US''' English (United States)
+					* '''en-ZA''' English (South Africa)
+					* '''en-ZW''' English (Zimbabwe)
+					* '''es''' Spanish
+					* '''es-AR''' Spanish (Argentina)
+					* '''es-BO''' Spanish (Bolivia)
+					* '''es-CL''' Spanish (Chile)
+					* '''es-CO''' Spanish (Colombia)
+					* '''es-CR''' Spanish (Costa Rica)
+					* '''es-DO''' Spanish (Dominican Republic)
+					* '''es-EC''' Spanish (Ecuador)
+					* '''es-ES''' Spanish (Spain, International Sort)
+					* '''es-GT''' Spanish (Guatemala)
+					* '''es-HN''' Spanish (Honduras)
+					* '''es-MX''' Spanish (Mexico)
+					* '''es-NI''' Spanish (Nicaragua)
+					* '''es-PA''' Spanish (Panama)
+					* '''es-PE''' Spanish (Peru)
+					* '''es-PR''' Spanish (Puerto Rico)
+					* '''es-PY''' Spanish (Paraguay)
+					* '''es-SV''' Spanish (El Salvador)
+					* '''es-US''' Spanish (United States)
+					* '''es-UY''' Spanish (Uruguay)
+					* '''es-VE''' Spanish (Bolivarian Republic of Venezuela)
+					* '''et''' Estonian
+					* '''et-EE''' Estonian (Estonia)
+					* '''eu''' Basque
+					* '''eu-ES''' Basque (Basque)
+					* '''fa''' Persian
+					* '''fa-IR''' Persian
+					* '''fi''' Finnish
+					* '''fi-FI''' Finnish (Finland)
+					* '''fil''' Filipino
+					* '''fil-PH''' Filipino (Philippines)
+					* '''fo''' Faroese
+					* '''fo-FO''' Faroese (Faroe Islands)
+					* '''fr''' French
+					* '''fr-BE''' French (Belgium)
+					* '''fr-CA''' French (Canada)
+					* '''fr-CH''' French (Switzerland)
+					* '''fr-FR''' French (France)
+					* '''fr-LU''' French (Luxembourg)
+					* '''fr-MC''' French (Monaco)
+					* '''fy''' Frisian
+					* '''fy-NL''' Frisian (Netherlands)
+					* '''ga''' Irish
+					* '''ga-IE''' Irish (Ireland)
+					* '''gd''' Scottish Gaelic
+					* '''gd-GB''' Scottish Gaelic (United Kingdom)
+					* '''gl''' Galician
+					* '''gl-ES''' Galician (Galician)
+					* '''gsw''' Alsatian
+					* '''gsw-FR''' Alsatian (France)
+					* '''gu''' Gujarati
+					* '''gu-IN''' Gujarati (India)
+					* '''ha''' Hausa
+					* '''ha-Latn''' Hausa (Latin)
+					* '''ha-Latn-NG''' Hausa (Latin, Nigeria)
+					* '''he''' Hebrew
+					* '''he-IL''' Hebrew (Israel)
+					* '''hi''' Hindi
+					* '''hi-IN''' Hindi (India)
+					* '''hr''' Croatian
+					* '''hr-BA''' Croatian (Latin, Bosnia and Herzegovina)
+					* '''hr-HR''' Croatian (Croatia)
+					* '''hsb''' Upper Sorbian
+					* '''hsb-DE''' Upper Sorbian (Germany)
+					* '''hu''' Hungarian
+					* '''hu-HU''' Hungarian (Hungary)
+					* '''hy''' Armenian
+					* '''hy-AM''' Armenian (Armenia)
+					* '''id''' Indonesian
+					* '''id-ID''' Indonesian (Indonesia)
+					* '''ig''' Igbo
+					* '''ig-NG''' Igbo (Nigeria)
+					* '''ii''' Yi
+					* '''ii-CN''' Yi (PRC)
+					* '''is''' Icelandic
+					* '''is-IS''' Icelandic (Iceland)
+					* '''it''' Italian
+					* '''it-CH''' Italian (Switzerland)
+					* '''it-IT''' Italian (Italy)
+					* '''iu''' Inuktitut
+					* '''iu-Cans''' Inuktitut (Syllabics)
+					* '''iu-Cans-CA''' Inuktitut (Syllabics, Canada)
+					* '''iu-Latn''' Inuktitut (Latin)
+					* '''iu-Latn-CA''' Inuktitut (Latin, Canada)
+					* '''ja''' Japanese
+					* '''ja-JP''' Japanese (Japan)
+					* '''ka''' Georgian
+					* '''ka-GE''' Georgian (Georgia)
+					* '''kk''' Kazakh
+					* '''kk-KZ''' Kazakh (Kazakhstan)
+					* '''kl''' Greenlandic
+					* '''kl-GL''' Greenlandic (Greenland)
+					* '''km''' Khmer
+					* '''km-KH''' Khmer (Cambodia)
+					* '''kn''' Kannada
+					* '''kn-IN''' Kannada (India)
+					* '''ko''' Korean
+					* '''ko-KR''' Korean (Korea)
+					* '''kok''' Konkani
+					* '''kok-IN''' Konkani (India)
+					* '''ky''' Kyrgyz
+					* '''ky-KG''' Kyrgyz (Kyrgyzstan)
+					* '''lb''' Luxembourgish
+					* '''lb-LU''' Luxembourgish (Luxembourg)
+					* '''lo''' Lao
+					* '''lo-LA''' Lao (Lao P.D.R.)
+					* '''lt''' Lithuanian
+					* '''lt-LT''' Lithuanian (Lithuania)
+					* '''lv''' Latvian
+					* '''lv-LV''' Latvian (Latvia)
+					* '''mi''' Maori
+					* '''mi-NZ''' Maori (New Zealand)
+					* '''mk''' Macedonian (FYROM)
+					* '''mk-MK''' Macedonian (Former Yugoslav Republic of Macedonia)
+					* '''ml''' Malayalam
+					* '''ml-IN''' Malayalam (India)
+					* '''mn''' Mongolian
+					* '''mn-Cyrl''' Mongolian (Cyrillic)
+					* '''mn-MN''' Mongolian (Cyrillic, Mongolia)
+					* '''mn-Mong''' Mongolian (Traditional Mongolian)
+					* '''mn-Mong-CN''' Mongolian (Traditional Mongolian, PRC)
+					* '''moh''' Mohawk
+					* '''moh-CA''' Mohawk (Mohawk)
+					* '''mr''' Marathi
+					* '''mr-IN''' Marathi (India)
+					* '''ms''' Malay
+					* '''ms-BN''' Malay (Brunei Darussalam)
+					* '''ms-MY''' Malay (Malaysia)
+					* '''mt''' Maltese
+					* '''mt-MT''' Maltese (Malta)
+					* '''nb''' Norwegian (Bokmål)
+					* '''nb-NO''' Norwegian, Bokmål (Norway)
+					* '''ne''' Nepali
+					* '''ne-NP''' Nepali (Nepal)
+					* '''nl''' Dutch
+					* '''nl-BE''' Dutch (Belgium)
+					* '''nl-NL''' Dutch (Netherlands)
+					* '''nn''' Norwegian (Nynorsk)
+					* '''nn-NO''' Norwegian, Nynorsk (Norway)
+					* '''no''' Norwegian
+					* '''no-NO''' Norwegian (Norway)
+					* '''nso''' Sesotho sa Leboa
+					* '''nso-ZA''' Sesotho sa Leboa (South Africa)
+					* '''oc''' Occitan
+					* '''oc-FR''' Occitan (France)
+					* '''or''' Oriya
+					* '''or-IN''' Oriya (India)
+					* '''pa''' Punjabi
+					* '''pa-IN''' Punjabi (India)
+					* '''pl''' Polish
+					* '''pl-PL''' Polish (Poland)
+					* '''prs''' Dari
+					* '''prs-AF''' Dari (Afghanistan)
+					* '''ps''' Pashto
+					* '''ps-AF''' Pashto (Afghanistan)
+					* '''pt''' Portuguese
+					* '''pt-BR''' Portuguese (Brazil)
+					* '''pt-PT''' Portuguese (Portugal)
+					* '''qut''' K'iche
+					* '''qut-GT''' K'iche (Guatemala)
+					* '''quz''' Quechua
+					* '''quz-BO''' Quechua (Bolivia)
+					* '''quz-EC''' Quechua (Ecuador)
+					* '''quz-PE''' Quechua (Peru)
+					* '''rm''' Romansh
+					* '''rm-CH''' Romansh (Switzerland)
+					* '''ro''' Romanian
+					* '''ro-RO''' Romanian (Romania)
+					* '''ru''' Russian
+					* '''ru-RU''' Russian (Russia)
+					* '''rw''' Kinyarwanda
+					* '''rw-RW''' Kinyarwanda (Rwanda)
+					* '''sa''' Sanskrit
+					* '''sa-IN''' Sanskrit (India)
+					* '''sah''' Yakut
+					* '''sah-RU''' Yakut (Russia)
+					* '''se''' Sami (Northern)
+					* '''se-FI''' Sami, Northern (Finland)
+					* '''se-NO''' Sami, Northern (Norway)
+					* '''se-SE''' Sami, Northern (Sweden)
+					* '''si''' Sinhala
+					* '''si-LK''' Sinhala (Sri Lanka)
+					* '''sk''' Slovak
+					* '''sk-SK''' Slovak (Slovakia)
+					* '''sl''' Slovenian
+					* '''sl-SI''' Slovenian (Slovenia)
+					* '''sma''' Sami (Southern)
+					* '''sma-NO''' Sami, Southern (Norway)
+					* '''sma-SE''' Sami, Southern (Sweden)
+					* '''smj''' Sami (Lule)
+					* '''smj-NO''' Sami, Lule (Norway)
+					* '''smj-SE''' Sami, Lule (Sweden)
+					* '''smn''' Sami (Inari)
+					* '''smn-FI''' Sami, Inari (Finland)
+					* '''sms''' Sami (Skolt)
+					* '''sms-FI''' Sami, Skolt (Finland)
+					* '''sq''' Albanian
+					* '''sq-AL''' Albanian (Albania)
+					* '''sr''' Serbian
+					* '''sr-Cyrl''' Serbian (Cyrillic)
+					* '''sr-Cyrl-BA''' Serbian (Cyrillic, Bosnia and Herzegovina)
+					* '''sr-Cyrl-CS''' Serbian (Cyrillic, Serbia and Montenegro (Former))
+					* '''sr-Cyrl-ME''' Serbian (Cyrillic, Montenegro)
+					* '''sr-Cyrl-RS''' Serbian (Cyrillic, Serbia)
+					* '''sr-Latn''' Serbian (Latin)
+					* '''sr-Latn-BA''' Serbian (Latin, Bosnia and Herzegovina)
+					* '''sr-Latn-CS''' Serbian (Latin, Serbia and Montenegro (Former))
+					* '''sr-Latn-ME''' Serbian (Latin, Montenegro)
+					* '''sr-Latn-RS''' Serbian (Latin, Serbia)
+					* '''sv''' Swedish
+					* '''sv-FI''' Swedish (Finland)
+					* '''sv-SE''' Swedish (Sweden)
+					* '''sw''' Kiswahili
+					* '''sw-KE''' Kiswahili (Kenya)
+					* '''syr''' Syriac
+					* '''syr-SY''' Syriac (Syria)
+					* '''ta''' Tamil
+					* '''ta-IN''' Tamil (India)
+					* '''te''' Telugu
+					* '''te-IN''' Telugu (India)
+					* '''tg''' Tajik
+					* '''tg-Cyrl''' Tajik (Cyrillic)
+					* '''tg-Cyrl-TJ''' Tajik (Cyrillic, Tajikistan)
+					* '''th''' Thai
+					* '''th-TH''' Thai (Thailand)
+					* '''tk''' Turkmen
+					* '''tk-TM''' Turkmen (Turkmenistan)
+					* '''tn''' Setswana
+					* '''tn-ZA''' Setswana (South Africa)
+					* '''tr''' Turkish
+					* '''tr-TR''' Turkish (Turkey)
+					* '''tt''' Tatar
+					* '''tt-RU''' Tatar (Russia)
+					* '''tzm''' Tamazight
+					* '''tzm-Latn''' Tamazight (Latin)
+					* '''tzm-Latn-DZ''' Tamazight (Latin, Algeria)
+					* '''ug''' Uyghur
+					* '''ug-CN''' Uyghur (PRC)
+					* '''uk''' Ukrainian
+					* '''uk-UA''' Ukrainian (Ukraine)
+					* '''ur''' Urdu
+					* '''ur-PK''' Urdu (Islamic Republic of Pakistan)
+					* '''uz''' Uzbek
+					* '''uz-Cyrl-UZ''' Uzbek (Cyrillic, Uzbekistan)
+					* '''uz-Latn-UZ''' Uzbek (Latin, Uzbekistan)
+					* '''vi''' Vietnamese
+					* '''vi-VN''' Vietnamese (Vietnam)
+					* '''wo''' Wolof
+					* '''wo-SN''' Wolof (Senegal)
+					* '''xh''' isiXhosa
+					* '''xh-ZA''' isiXhosa (South Africa)
+					* '''yo''' Yoruba
+					* '''yo-NG''' Yoruba (Nigeria)
+					* '''zh''' Chinese
+					* '''zh-CHS''' Chinese (Simplified) Legacy
+					* '''zh-CHT''' Chinese (Traditional) Legacy
+					* '''zh-CN''' Chinese (Simplified, PRC)
+					* '''zh-HK''' Chinese (Traditional, Hong Kong S.A.R.)
+					* '''zh-Hans''' Chinese (Simplified)
+					* '''zh-Hant''' Chinese (Traditional)
+					* '''zh-MO''' Chinese (Traditional, Macao S.A.R.)
+					* '''zh-SG''' Chinese (Simplified, Singapore)
+					* '''zh-TW''' Chinese (Traditional, Taiwan)
+					* '''zu''' isiZulu
+					* '''zu-ZA''' isiZulu (South Africa)
+
+					=====Available currencies:=====
+					* '''ARS'''
+					* '''AUD'''
+					* '''BOB'''
+					* '''BRL'''
+					* '''CAD'''
+					* '''CHF'''
+					* '''CLP'''
+					* '''CNY'''
+					* '''CUC'''
+					* '''CUP'''
+					* '''CVE'''
+					* '''CVS'''
+					* '''CZK'''
+					* '''DKK'''
+					* '''DOP'''
+					* '''DZD'''
+					* '''EUR'''
+					* '''GBP'''
+					* '''GIP'''
+					* '''GQE'''
+					* '''GTQ'''
+					* '''HKD'''
+					* '''HNL'''
+					* '''HUF'''
+					* '''IDR'''
+					* '''ILS'''
+					* '''INR'''
+					* '''ISK'''
+					* '''JPY'''
+					* '''KRW'''
+					* '''MAD'''
+					* '''MTL'''
+					* '''MXN'''
+					* '''NIO'''
+					* '''NOK'''
+					* '''NZD'''
+					* '''PLN'''
+					* '''PAB'''
+					* '''PEN'''
+					* '''PYG'''
+					* '''RON'''
+					* '''RUB'''
+					* '''SEK'''
+					* '''SGD'''
+					* '''SKK'''
+					* '''TRY'''
+					* '''TND'''
+					* '''TWD'''
+					* '''UAH'''
+					* '''USD'''
+					* '''UYU'''
+					* '''VEB'''
+					* '''XAF'''
+					* '''XCD'''
+					* '''XDR'''
+					* '''XOF'''
+					* '''ZAR'''
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				calendar                       | An available calender of the selected region. | String
+@added				1.0
+@default			'standart'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				region                         | A combination of an ISO 639 two-letter lowercase culture code for the language (and a two-letter uppercase code for the country or region). | String
+@added				1.0
+@default			'en'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				region                         | An array of regions which should be loaded on start up. The first array item will be set as default region.  | String
+@added				1.1
+@default			'en'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				currency                       | An other ISO 4217 three-letter uppercase currency code than the default of the selected region. | String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				currency                       | An array of currencies which should be loaded on start up. The first array item will be set as default currency. | String
+@added				1.1
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.dependSettings          | Settings of the dependencies controller. | property
+
+@categories			Internationalisation | Properties of the Global jQuery Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.dependSettings
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				i18nRoot                       | The path to the root directory of jQuery SDK internationalisation scripts.  | Optional,String
+@default			$.config.pluginRoot + '/jQuery/i18n'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The jQuery.i18n plugin extends the settings of the plugin/depencies controller.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.i18n()                  | Get a formated date/number from Date/Number object. | method
+
+@categories			Utilities | Internationalisation
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.i18n( type, value, [ options ] )
+@added				1.0
+@param				type                           | A type for a date/number. | String
+@param				value                          | An Date/Number object. | Object,Number
+@param				options                        | A set of key/value pairs that configure the i18n call. A default are set for any option by jQuery.i18n.settings. | Optional,Object
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.i18n()>> method is a shortcut to format a date or number and supports only the standart types.
+
+					=====Standart types with their full formats (''Example: en''):=====
+					* '''date''' or '''d''' <<M/d/yyyy>>
+					* '''dateLong''' or '''D''' => dddd, MMMM dd, yyyy>>
+					* '''dateLong-time''' or '''f''' <<dddd, MMMM dd, yyyy h:mm tt>>
+					* '''dateLong-timeLong''' or '''F''' <<dddd, MMMM dd, yyyy h:mm:ss tt>>
+					* '''date-time''' or '''l''' <<M/d/yyyy h:mm tt>>
+					* '''date-timeLong''' or '''L''' <<M/d/yyyy h:mm:ss tt>>
+					* '''time''' or '''t''' <<h:mm tt>>
+					* '''timeLong''' or '''T''' <<h:mm:ss tt>>
+					* '''currency''' or '''c''' <<c2>>
+					* '''number''' or '''n''' <<n2>>
+					* '''percent''' or '''p''' <<p2>>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a formated date.
+
+@code				$.i18n( "d", new Date(2011, 1, 15) );
+
+					// or
+
+					$.i18n( "date", new Date(2011, 1, 15) );
+
+@results			2/15/2011
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a formated date in german.
+
+@code				$.i18n( "d", new Date(2011, 1, 15), {region:"de"} );
+
+@results			15.02.2011
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a formated number with percent.
+
+@code				$.i18n( "p", 25.50 );
+
+@results			25.50 %
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a formated number with percent in german.
+
+@code				$.i18n( "p", 25.50, {region:"de"} );
+
+@results			25,50 %
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.i18n()                  | Get a Date/Number object from formated string. | method
+
+@categories			Utilities | Internationalisation
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.i18n( type, value, [ options ] )
+@added				1.0
+@param				type                           | A type for a date/number. | String
+@param				value                          | An date or a number string. | String
+@param				options                        | A set of key/value pairs that configure the i18n call. A default are set for any option by jQuery.i18n.settings. | Optional,Object
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				calendar                       | An available calender of the selected region. | String
+@added				1.0
+@default			'standart'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				currency                       | An other ISO 4217 three-letter uppercase currency code than the default of the selected region. | String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				region                         | A combination of an ISO 639 two-letter lowercase culture code for the language (and a two-letter uppercase code for the country or region). | String
+@added				1.0
+@default			'en'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.i18n()>> method is a shortcut to get a Date/Number object from a formated string and supports only the standart types.
+
+					=====Standart types with their full formats (''Example: en''):=====
+					* '''date''' or '''d''' <<M/d/yyyy>>
+					* '''dateLong''' or '''D''' => dddd, MMMM dd, yyyy>>
+					* '''dateLong-time''' or '''f''' <<dddd, MMMM dd, yyyy h:mm tt>>
+					* '''dateLong-timeLong''' or '''F''' <<dddd, MMMM dd, yyyy h:mm:ss tt>>
+					* '''date-time''' or '''l''' <<M/d/yyyy h:mm tt>>
+					* '''date-timeLong''' or '''L''' <<M/d/yyyy h:mm:ss tt>>
+					* '''time''' or '''t''' <<h:mm tt>>
+					* '''timeLong''' or '''T''' <<h:mm:ss tt>>
+					* '''currency''' or '''c''' <<c2>>
+					* '''number''' or '''n''' <<n2>>
+					* '''percent''' or '''p''' <<p2>>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a Date object from date string.
+
+@code				$.i18n( "d", "2/15/2011" );
+
+					// or
+
+					$.i18n( "date", "2/15/2011" );
+
+@results			Date object // Tue Feb 15 2011 00:00:00 GMT+0100 (CET)
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a Date object from german date string.
+
+@code				$.i18n( "d", "15.02.2011", {region:"de"} );
+
+@results			Date object // Tue Feb 15 2011 00:00:00 GMT+0100 (CET)
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a Number object from percent string.
+
+@code				$.i18n( "p", "25.50 %" );
+
+@results			25.50
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a Number object from german percent string.
+
+@code				$.i18n( "p", "25,50 %", {region:"de"} );
+
+@results			25.50
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.i18n.parseDate()        | Get a Javascript Date object from formated string. | method
+
+@categories			Utilities | Internationalisation
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.i18n.parseDate( value, format, [ options ] )
+@added				1.0
+@param				value                          | An formated date string. | String
+@param				format                         | A token string to specify the format. | String
+@param				options                        | A set of key/value pairs that configure the i18n call. A default are set for any option by jQuery.i18n.settings. | Optional,Object
+@return				Date object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				calendar                       | An available calender of the selected region. | String
+@added				1.0
+@default			'standart'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				region                         | A combination of an ISO 639 two-letter lowercase culture code for the language (and a two-letter uppercase code for the country or region). | String
+@added				1.0
+@default			'en'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.i18n.parseDate()>> method parses a string representing a date into a JavaScript Date object,
+					taking the given format.
+
+					=====Shortcut tokens with their meaning and example (''en''):=====
+					* '''d''' Short Date <<M/d/yyyy>>
+					* '''D''' Long Date <<dddd, MMMM dd, yyyy>>
+					* '''l''' Date, Short Time <<M/d/yyyy h:mm tt>>
+					* '''L''' Date, Long Time <<M/d/yyyy h:mm:ss tt>>
+					* '''f''' Long Date, Short Time <<dddd, MMMM dd, yyyy h:mm tt>>
+					* '''F''' Long Date, Long Time <<dddd, MMMM dd, yyyy h:mm:ss tt>>
+					* '''t''' Short Time <<h:mm tt>>
+					* '''T''' Long Time <<h:mm:ss tt>>
+					* '''Y''' Month/Year <<MMMM, yyyy>>
+					* '''M''' Month/Day <<yyyy MMMM>>
+					* '''S''' Sortable format, is always the same for every region <<yyyy'/'MM'/'dd' 'HH':'mm':'ss>>
+
+					=====More specific tokens with their meaning and example:=====
+					* '''d''' Day of month (no leading zero) <<5>>
+					* '''dd''' Day of month (leading zero) <<05>>
+					* '''ddd''' Day name (abbreviated) <<Sat>>
+					* '''dddd''' Day name (full) <<Saturday>>
+					* '''M''' Month of year (no leading zero) <<9>>
+					* '''MM''' Month of year (leading zero) <<09>>
+					* '''MMM''' Month name (abbreivated) <<Sept>>
+					* '''MMMM''' Month name (full) <<September>>
+					* '''yy''' Year (two digits) <<55>>
+					* '''yyyy''' Year (four digits) <<1955>>
+					* ''''literal'''' Literal Text <<'Hmmmm'...>>
+					* '''\'''' Single Quote
+					* '''m''' Minutes (no leading zero) <<9>>
+					* '''mm''' Minutes (leading zero) <<09>>
+					* '''h''' Hours (leading zero) <<6>>
+					* '''hh''' Hours (leading zero) <<06>>
+					* '''H''' Hours (24 hour time, no leading zero) <<5 (5am) 15 (3pm)>>
+					* '''HH''' Hours (24 hour time, leading zero) <<05 (5am) 15 (3pm)>>
+					* '''s''' Seconds (no leading zero) <<9>>
+					* '''ss''' Seconds (leading zero) <<09>>
+					* '''f''' Deciseconds <<1>>
+					* '''ff''' Centiseconds <<11>>
+					* '''fff''' Milliseconds <<111>>
+					* '''t''' AM/PM indicator (first letter) <<A or P>>
+					* '''tt''' AM/PM indicator (full) <<AM or PM>>
+					* '''z''' Timezone offset (hours only, no leading zero) <<-8>>
+					* '''zz''' Timezone offset (hours only, leading zero) <<-08>>
+					* '''zzz''' Timezone offset (full hours/minutes) <<-08:00>>
+					* '''g or gg''' Era name <<A.D.>>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a Date object from date string.
+
+@code				$.i18n.parseDate( "2011-02-15T12:30:00", "yyyy'-'MM'-'dd'T'HH':'mm':'ss" );
+
+					// or
+
+					$.i18n.parseDate( "2/15/2011 12:30 PM", "l" );
+
+@results			Date object // Tue Feb 15 2011 12:30:00 GMT+0100 (CET)
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a Date object from german date string.
+
+@code				$.i18n.parseDate( "2011-02-15T12:30:00", "yyyy'-'MM'-'dd'T'HH':'mm':'ss", {region:'de-DE'} );
+
+					// or
+
+					$.i18n.parseDate( "15.02.2011 12:30", "l", {region:'de-DE'} );
+
+@results			Date object // Tue Feb 15 2011 12:30:00 GMT+0100 (CET)
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.i18n.formatDate()        | Get a formated string from a Javascript Date object. | method
+
+@categories			Utilities | Internationalisation
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.i18n.parseDate( value, format, [ options ] )
+@added				1.0
+@param				value                          | A Javascript Date object. | String
+@param				format                         | A token string to specify the format. | String
+@param				options                        | A set of key/value pairs that configure the i18n call. A default are set for any option by jQuery.i18n.settings. | Optional,Object
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				calendar                       | An available calender of the selected region. | String
+@added				1.0
+@default			'standart'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				region                         | A combination of an ISO 639 two-letter lowercase culture code for the language (and a two-letter uppercase code for the country or region). | String
+@added				1.0
+@default			'en'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.i18n.formatDate()>> method returns a formated string representing a date from a Javascript Date object.
+
+					=====Shortcut tokens with their meaning and example (''en''):=====
+					* '''d''' Short Date <<M/d/yyyy>>
+					* '''D''' Long Date <<dddd, MMMM dd, yyyy>>
+					* '''l''' Date, Short Time <<M/d/yyyy h:mm tt>>
+					* '''L''' Date, Long Time <<M/d/yyyy h:mm:ss tt>>
+					* '''f''' Long Date, Short Time <<dddd, MMMM dd, yyyy h:mm tt>>
+					* '''F''' Long Date, Long Time <<dddd, MMMM dd, yyyy h:mm:ss tt>>
+					* '''t''' Short Time <<h:mm tt>>
+					* '''T''' Long Time <<h:mm:ss tt>>
+					* '''Y''' Month/Year <<MMMM, yyyy>>
+					* '''M''' Month/Day <<yyyy MMMM>>
+					* '''S''' Sortable format, is always the same for every region <<yyyy'-'MM'-'dd'T'HH':'mm':'ss>>
+
+					=====More specific tokens with their meaning and example:=====
+					* '''d''' Day of month (no leading zero) <<5>>
+					* '''dd''' Day of month (leading zero) <<05>>
+					* '''ddd''' Day name (abbreviated) <<Sat>>
+					* '''dddd''' Day name (full) <<Saturday>>
+					* '''M''' Month of year (no leading zero) <<9>>
+					* '''MM''' Month of year (leading zero) <<09>>
+					* '''MMM''' Month name (abbreivated) <<Sept>>
+					* '''MMMM''' Month name (full) <<September>>
+					* '''yy''' Year (two digits) <<55>>
+					* '''yyyy''' Year (four digits) <<1955>>
+					* ''''literal'''' Literal Text <<'Hmmmm'...>>
+					* '''\'''' Single Quote
+					* '''m''' Minutes (no leading zero) <<9>>
+					* '''mm''' Minutes (leading zero) <<09>>
+					* '''h''' Hours (leading zero) <<6>>
+					* '''hh''' Hours (leading zero) <<06>>
+					* '''H''' Hours (24 hour time, no leading zero) <<5 (5am) 15 (3pm)>>
+					* '''HH''' Hours (24 hour time, leading zero) <<05 (5am) 15 (3pm)>>
+					* '''s''' Seconds (no leading zero) <<9>>
+					* '''ss''' Seconds (leading zero) <<09>>
+					* '''f''' Deciseconds <<1>>
+					* '''ff''' Centiseconds <<11>>
+					* '''fff''' Milliseconds <<111>>
+					* '''t''' AM/PM indicator (first letter) <<A or P>>
+					* '''tt''' AM/PM indicator (full) <<AM or PM>>
+					* '''z''' Timezone offset (hours only, no leading zero) <<-8>>
+					* '''zz''' Timezone offset (hours only, leading zero) <<-08>>
+					* '''zzz''' Timezone offset (full hours/minutes) <<-08:00>>
+					* '''g or gg''' Era name <<A.D.>>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a formated string from a Javascript Date object.
+
+@code				$.i18n.formatDate( new Date(2010,1,15,12,30,0), "l" );
+
+@results			2/15/2011 12:30 PM
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a german formated string from a Javascript Date object.
+
+@code				$.i18n.formatDate( new Date(2010,1,15,12,30,0), "l", {region:'de-DE'} );
+
+@results			15.02.2011 12:30
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.i18n.expStrDate()       | Get a string representing a regualar expression for a date format. | method
+
+@categories			Utilities | Internationalisation
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.i18n.expStrDate( format, [ strict ], [ options ] )
+@added				1.0
+@param				format                         | A token string to specify the format. | String
+@param				strict                         | A boolean indication whether the use format in strict mode. | Optional,Boolean
+@param				options                        | A set of key/value pairs that configure the i18n call. A default are set for any option by jQuery.i18n.settings. | Optional,Object
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				calendar                       | An available calender of the selected region. | String
+@added				1.0
+@default			'standart'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				region                         | A combination of an ISO 639 two-letter lowercase culture code for the language (and a two-letter uppercase code for the country or region). | String
+@added				1.0
+@default			'en'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.i18n.expStrDate()>> method returns a string representing a regualar expression for the specified date format.
+
+					=====Shortcut tokens with their meaning and example (''en''):=====
+					* '''d''' Short Date <<M/d/yyyy>>
+					* '''D''' Long Date <<dddd, MMMM dd, yyyy>>
+					* '''l''' Date, Short Time <<M/d/yyyy h:mm tt>>
+					* '''L''' Date, Long Time <<M/d/yyyy h:mm:ss tt>>
+					* '''f''' Long Date, Short Time <<dddd, MMMM dd, yyyy h:mm tt>>
+					* '''F''' Long Date, Long Time <<dddd, MMMM dd, yyyy h:mm:ss tt>>
+					* '''t''' Short Time <<h:mm tt>>
+					* '''T''' Long Time <<h:mm:ss tt>>
+					* '''Y''' Month/Year <<MMMM, yyyy>>
+					* '''M''' Month/Day <<yyyy MMMM>>
+					* '''S''' Sortable format, is always the same for every region <<yyyy'-'MM'-'dd'T'HH':'mm':'ss>>
+
+					=====More specific tokens with their meaning and example:=====
+					* '''d''' Day of month (no leading zero) <<5>>
+					* '''dd''' Day of month (leading zero) <<05>>
+					* '''ddd''' Day name (abbreviated) <<Sat>>
+					* '''dddd''' Day name (full) <<Saturday>>
+					* '''M''' Month of year (no leading zero) <<9>>
+					* '''MM''' Month of year (leading zero) <<09>>
+					* '''MMM''' Month name (abbreivated) <<Sept>>
+					* '''MMMM''' Month name (full) <<September>>
+					* '''yy''' Year (two digits) <<55>>
+					* '''yyyy''' Year (four digits) <<1955>>
+					* ''''literal'''' Literal Text <<'Hmmmm'...>>
+					* '''\'''' Single Quote
+					* '''m''' Minutes (no leading zero) <<9>>
+					* '''mm''' Minutes (leading zero) <<09>>
+					* '''h''' Hours (leading zero) <<6>>
+					* '''hh''' Hours (leading zero) <<06>>
+					* '''H''' Hours (24 hour time, no leading zero) <<5 (5am) 15 (3pm)>>
+					* '''HH''' Hours (24 hour time, leading zero) <<05 (5am) 15 (3pm)>>
+					* '''s''' Seconds (no leading zero) <<9>>
+					* '''ss''' Seconds (leading zero) <<09>>
+					* '''f''' Deciseconds <<1>>
+					* '''ff''' Centiseconds <<11>>
+					* '''fff''' Milliseconds <<111>>
+					* '''t''' AM/PM indicator (first letter) <<A or P>>
+					* '''tt''' AM/PM indicator (full) <<AM or PM>>
+					* '''z''' Timezone offset (hours only, no leading zero) <<-8>>
+					* '''zz''' Timezone offset (hours only, leading zero) <<-08>>
+					* '''zzz''' Timezone offset (full hours/minutes) <<-08:00>>
+					* '''g or gg''' Era name <<A.D.>>
+
+					=====The strict mode=====
+					If jQuery.i18n are running in strict mode, methods differentiate hard in some cases.
+
+					======Strict mode ,format tokens:======
+					* '''yyyy''' is not '''yy'''
+					* '''MM''' is not '''M'''
+					* '''dd''' is not '''d'''
+					* '''HH''' is not '''H'''
+					* '''mm''' is not '''m'''
+					* '''ss''' is not '''s'''
+
+					======Non strict mode, format tokens:======
+					* '''yyyy''' accept '''yy'''
+					* '''MM''' accept '''M'''
+					* '''dd''' accept '''d'''
+					* '''HH''' accept '''H'''
+					* '''mm''' accept '''m'''
+					* '''ss''' accept '''s'''
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a regualar expression string for a specified date format.
+
+@code				$.i18n.expStrDate( "n" );
+
+@results			(0[1-9]{1}|[1-2]{1}\d{1}|3[0-1]{1})\.(0[1-9]{1}|1[0-2]{1})\.(\d{4})\s+(0\d{1}|1\d{1}|2[0-3]{1}):([0-5]{1}\d{1})
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a regualar expression string for a specified date format in strict mode.
+
+@code				$.i18n.expStrDate( "n", true );
+
+@results			([1-9]{1}|1[1-2]{1})(\/)([1-9]{1}|[1-2]{1}\d{1}|3[0-1]{1})(\/)(\d{4})\s+([1-9]{1}|1[0-2]{1}):([0-5]{1}\d{1})\s+(AM|am|AM|PM|pm|PM)
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a regualar expression string for a specified german date format.
+
+@code				$.i18n.expStrDate( "n", {region: "de-DE"} );
+
+@results			(0[1-9]{1}|[1-2]{1}\d{1}|3[0-1]{1})\.(0[1-9]{1}|1[0-2]{1})\.(\d{4})\s+(0\d{1}|1\d{1}|2[0-3]{1}):([0-5]{1}\d{1})
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a regualar expression string for a specified german date format in strict mode.
+
+@code				$.i18n.expStrDate( "n", true, {region: "de-DE"} );
+
+@results			(0[1-9]{1}|[1-2]{1}\d{1}|3[0-1]{1})\.(0[1-9]{1}|1[0-2]{1})\.(\d{4})\s+(0\d{1}|1\d{1}|2[0-3]{1}):([0-5]{1}\d{1})
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.i18n.parseNumber()      | Get a Javascript Number object from a number string. | method
+
+@categories			Utilities | Internationalisation
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.i18n.parseNumber( value, [ radix ], [ options ] )
+@added				1.0
+@param				value                          | An formated date string. | String
+@param				radix                          | A number to specify which numeral system to be used. Default: 10. | Optional,Integer
+@param				options                        | A set of key/value pairs that configure the i18n call. A default are set for any option by jQuery.i18n.settings. | Optional,Object
+@return				Number
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				currency                       | An other ISO 4217 three-letter uppercase currency code than the default of the selected region. | String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				region                         | A combination of an ISO 639 two-letter lowercase culture code for the language (and a two-letter uppercase code for the country or region). | String
+@added				1.0
+@default			'en'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.i18n.parseNumber()>> method parses a string representing a number, currency or percent value
+					into a JavaScript Number object.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Parse number, currency and percent value.
+
+@code				$.i18n.parseNumber( "1,200.55" );
+
+					$.i18n.parseNumber( "$1,200.55" );
+
+					$.i18n.parseNumber( "1,200.55 %" );
+
+@results			1200.55
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Parse german number, currency and percent value.
+
+@code				$.i18n.parseNumber( "1.200,55", {region:'de-DE'} );
+
+					$.i18n.parseNumber( "1.200,55 €", {region:'de-DE'} );
+
+					$.i18n.parseNumber( "1.200,55 $", {region:'de-DE', currency:'USD'} );
+
+					$.i18n.parseNumber( "1.200,55 %", {region:'de-DE'} );
+
+@results			1200.55
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.i18n.formatNumber()     | Get a formated string from a Javascript Number object. | method
+
+@categories			Utilities | Internationalisation
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.i18n.formatNumber( value, format, [ options ] )
+@added				1.0
+@param				value                          | A Javascript Number object. | String
+@param				format                         | A token string to specify the format. | String
+@param				options                        | A set of key/value pairs that configure the i18n call. A default are set for any option by jQuery.i18n.settings. | Optional,Object
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				currency                       | An other ISO 4217 three-letter uppercase currency code than the default of the selected region. | String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				region                         | A combination of an ISO 639 two-letter lowercase culture code for the language (and a two-letter uppercase code for the country or region). | String
+@added				1.0
+@default			'en'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.i18n.formatNumber()>> method returns a formated string representing a number, currency or percent value from a Javascript Number object.
+
+					=====Tokens with default digits and example (''en''):=====
+					* '''n''' Number <<1,200.00>>, <<-1,200.00>>
+					* '''c''' Currency <<$1,200.00>>, <<($1,200.00)>>
+					* '''p''' Percent <<1,200.00 %>>, <<-1,200.00 %>>
+
+					=====Tokens with specified digits and example (''en''):=====
+					* '''n0''' Number <<1,200>>
+					* '''n1''' Number <<1,200.5>>
+					* '''n2''' Number <<1,200.55>>
+					* '''c0''' Currency <<$1,200>>
+					* '''c1''' Currency <<$1,200.5>>
+					* '''c2''' Currency <<$1,200.55>>
+					* '''p0''' Percent <<1,200 %>>
+					* '''p1''' Percent <<1,200.5 %>>
+					* '''p2''' Percent <<1,200.55 %>>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a formated number value from a Javascript Number object.
+
+@code				$.i18n.formatNumber( 1200.55, "n" );
+
+@results			1,200.55
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a formated currency value from a Javascript Number object.
+
+@code				$.i18n.formatNumber( 1200.55, "c" );
+
+@results			$1,200.55
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a formated percent value from a Javascript Number object.
+
+@code				$.i18n.formatNumber( 1200.55, "p" );
+
+@results			1,200.55 %
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a german formated number value from a Javascript Number object.
+
+@code				$.i18n.formatNumber( 1200.55, "n", {region:'de-DE'} );
+
+@results			1.200,55
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a german formated currency value from a Javascript Number object.
+
+@code				$.i18n.formatNumber( 1200.55, "c", {region:'de-DE'} );
+
+@results			1.200,55 €
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a german formated currency value with an other currency than the default from a Javascript Number object.
+
+@code				$.i18n.formatNumber( 1200.55, "c", {region:'de-DE', currency: 'USD'} );
+
+@results			1.200,55 $
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a german formated percent value from a Javascript Number object.
+
+@code				$.i18n.formatNumber( 1200.55, "p", {region:'de-DE'} );
+
+@results			1.200,55 %
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.i18n.expStrNumber()     | Get a string representing a regualar expression for a number format. | method
+
+@categories			Utilities | Internationalisation
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.i18n.expStrNumber( format, [ strict ], [ options ] )
+@added				1.0
+@param				format                         | A token string to specify the format. | String
+@param				strict                         | A boolean indication whether the use format in strict mode. | Optional,Boolean
+@param				options                        | A set of key/value pairs that configure the i18n call. A default are set for any option by jQuery.i18n.settings. | Optional,Object
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				currency                       | An other ISO 4217 three-letter uppercase currency code than the default of the selected region. | String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				region                         | A combination of an ISO 639 two-letter lowercase culture code for the language (and a two-letter uppercase code for the country or region). | String
+@added				1.0
+@default			'en'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.i18n.expStrDate()>> method returns a string representing a regualar expression for the specified date format.
+
+					=====Tokens with default digits and example (''en''):=====
+					* '''n''' Number <<1,200.00>>, <<-1,200.00>>
+					* '''c''' Currency <<$1,200.00>>, <<($1,200.00)>>
+					* '''p''' Percent <<1,200.00 %>>, <<-1,200.00 %>>
+
+					=====Tokens with specified digits and example (''en''):=====
+					* '''n0''' Number <<1,200>>
+					* '''n1''' Number <<1,200.5>>
+					* '''n2''' Number <<1,200.55>>
+					* '''c0''' Currency <<$1,200>>
+					* '''c1''' Currency <<$1,200.5>>
+					* '''c2''' Currency <<$1,200.55>>
+					* '''p0''' Percent <<1,200 %>>
+					* '''p1''' Percent <<1,200.5 %>>
+					* '''p2''' Percent <<1,200.55 %>>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a regualar expression string for a specified number format.
+
+@code				$.i18n.expStrNumber( "n" );
+
+@results			(-\d+(?:(?:,?\d{3})*)(?:\.{1}\d{0,2})?|\d+(?:(?:,?\d{3})*)(?:\.{1}\d{0,2})?)
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a regualar expression string for a specified number format in strict mode.
+
+@code				$.i18n.expStrNumber( "n", true );
+
+@results			(-\d+(?:(?:,?\d{3})*)\.{1}\d{2}|\d+(?:(?:,?\d{3})*)\.{1}\d{2})
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a regualar expression string for a specified german number format.
+
+@code				$.i18n.expStrNumber( "n", {region: "de-DE"} );
+
+@results			(-\d+(?:(?:\.?\d{3})*)(?:,{1}\d{0,2})?|\d+(?:(?:\.?\d{3})*)(?:,{1}\d{0,2})?)
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a regualar expression string for a specified german number format in strict mode.
+
+@code				$.i18n.expStrNumber( "n", true, {region: "de-DE"} );
+
+@results			(-\d+(?:(?:\.?\d{3})*),{1}\d{2}|\d+(?:(?:\.?\d{3})*),{1}\d{2})
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get a regualar expression string for a specified german number format with US Dollar as currency.
+
+@code				$.i18n.expStrNumber( "c", {region: "de-DE", currency: 'USD'} );
+
+@results			(-\d+(?:(?:\.?\d{3})*)(?:,{1}\d{0,2})?\s*\$?\s*|\d+(?:(?:\.?\d{3})*)(?:,{1}\d{0,2})?\s*\$?\s*|\(\s*\$?\s*\d+(?:(?:\.?\d{3})*)(?:,{1}\d{0,2})?\)|\s*\$?\s*\d+(?:(?:\.?\d{3})*)(?:,{1}\d{0,2})?)
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.ready()                       | Specify a function to execute when required plugins are fully loaded. | method
+
+@categories			Internationalisation
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.ready( options, function(jQuery) )
+@added				1.0
+@param				options                              | A set of type/name(s) pairs that define requirements for the ready call. | Object
+@param				function(jQuery)                     | A handler to execute after all required dependencies are ready. Receives jQuery as argument. | Function
+@return				Promise
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				i18n                                 | A region/currency name or an array of region/currency names. | Optional,Array,String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.i18n>> plugin extends the dependencies controller. So it is possible to load internationalisation regions and
+					currencies automatical with Ajax.
+
+					=====jQuery SDK file structure:=====
+					All region and currency are ''Javascript files'' located in the ''script/jQuery/i18n'' directory.
+
+					======Regions:======
+					Each region is given a unique code that is a combination of an ISO 639 two-letter lowercase culture code for the language
+					and a two-letter uppercase code for the country or region.
+					There are exceptions for some regions, such as Latin and Cyril variant.
+
+					* ''en'' is ''script/jQuery/i18n/en.js''
+					* ''en-US'' is ''script/jQuery/i18n/en-US.js''
+					* ''de'' is ''script/jQuery/i18n/de.js''
+					* ''de-DE'' is ''script/jQuery/i18n/de-DE.js''
+					* ''de-AT'' is ''script/jQuery/i18n/de-AT.js''
+
+					======Currencies:======
+					Each currency is given a unique code of an ISO 4217 three-letter uppercase code.
+
+					* ''USD'' is ''script/jQuery/i18n/USD.js''
+					* ''EUR'' is ''script/jQuery/i18n/EUR.js''
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Load the german-Germany region and curency US Dollar.
+
+@code				jQuery.ready({
+					        plugin: ['jQuery.i18n'],    // required plugins
+					        i18n:   ['de-DE', 'USD']    // specify required i18n definitions
+					    }, function($){
+
+					        // using the dictionaries
+
+					        $.i18n( "d", "15.02.2011", {region:"de-DE"} );
+					        // results: date object => Tue Feb 15 2011 00:00:00 GMT+0100 (CET)
+
+					        $.i18n( "c", 1325.25, {region:"de-DE"} );
+					        // results: 1.325,25 €
+
+					        $.i18n( "c", 1325.25, {region:"de-DE", currency: 'USD'} );
+					        // results: 1.325,25 $
+
+					        $.i18n( "c", 1325.25, {region:"en", currency: 'USD'} );
+					        // results: $1,325.25
+
+					    });
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.plugin()                      | Specify a plugin. | method
+
+@categories			Internationalisation
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.plugin( id, [ options ], function(jQuery) )
+@added				1.0
+@param				id                                   | A unique plugin identifier associated to the jQuery SDK file structure. | String
+@param				options                              | A set of type/name(s) pairs that define requirements for this plugin. | Optional,Object
+@param				function(jQuery)                     | The plugin function to execute after all dependencies are ready. Receives jQuery as argument. | Function
+@return				Promise
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				i18n                                 | A region/currency name or an array of region/currency names. | Optional,Array,String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.i18n>> plugin extends the dependencies controller. So it is possible to load internationalisation regions and
+					currencies automatical with Ajax.
+
+					=====jQuery SDK file structure:=====
+					All region and currency are ''Javascript files'' located in the ''script/jQuery/i18n'' directory.
+
+					======Regions:======
+					Each region is given a unique code that is a combination of an ISO 639 two-letter lowercase culture code for the language
+					and a two-letter uppercase code for the country or region.
+					There are exceptions for some regions, such as Latin and Cyril variant.
+
+					* ''en'' is ''script/jQuery/i18n/en.js''
+					* ''en-US'' is ''script/jQuery/i18n/en-US.js''
+					* ''de'' is ''script/jQuery/i18n/de.js''
+					* ''de-DE'' is ''script/jQuery/i18n/de-DE.js''
+					* ''de-AT'' is ''script/jQuery/i18n/de-AT.js''
+
+					======Currencies:======
+					Each currency is given a unique code of an ISO 4217 three-letter uppercase code.
+
+					* ''USD'' is ''script/jQuery/i18n/USD.js''
+					* ''EUR'' is ''script/jQuery/i18n/EUR.js''
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.provide()                     | Provide a script. | method
+
+@categories			Internationalisation
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.provide( id, [ options ], function(jQuery) )
+@added				1.0
+@param				id                                   | A unique identifier for the script to provide. | String
+@param				options                              | A set of type/name(s) pairs that define requirements for this script. | Optional,Object
+@param				function(jQuery)                     | The script code to execute after all dependencies are ready. Receives jQuery as argument. | Function
+@return				Promise
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				i18n                                 | A region/currency name or an array of region/currency names. | Optional,Array,String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.i18n>> plugin extends the dependencies controller. So it is possible to load internationalisation regions and
+					currencies automatical with Ajax.
+
+					=====jQuery SDK file structure:=====
+					All region and currency are ''Javascript files'' located in the ''script/jQuery/i18n'' directory.
+
+					======Regions:======
+					Each region is given a unique code that is a combination of an ISO 639 two-letter lowercase culture code for the language
+					and a two-letter uppercase code for the country or region.
+					There are exceptions for some regions, such as Latin and Cyril variant.
+
+					* ''en'' is ''script/jQuery/i18n/en.js''
+					* ''en-US'' is ''script/jQuery/i18n/en-US.js''
+					* ''de'' is ''script/jQuery/i18n/de.js''
+					* ''de-DE'' is ''script/jQuery/i18n/de-DE.js''
+					* ''de-AT'' is ''script/jQuery/i18n/de-AT.js''
+
+					======Currencies:======
+					Each currency is given a unique code of an ISO 4217 three-letter uppercase code.
+
+					* ''USD'' is ''script/jQuery/i18n/USD.js''
+					* ''EUR'' is ''script/jQuery/i18n/EUR.js''

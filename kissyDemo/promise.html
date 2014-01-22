@@ -1,0 +1,94 @@
+<html>
+<head>
+	<title></title>
+	<script src="http://localhost/myWorkSpace/tool/kissy-master/build/seed.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://a.tbcdn.cn/apps/tmall/mui/slide/css/slide-img.css"></head>
+	<style type="text/css">
+		/*-----箭头样式-----*/
+.ks-steps li .trigon{
+    position:absolute;top:0px;right:-14px;z-index:200;
+    width:14px;height:24px;overflow:hidden;
+    padding:0px;background-color:transparent;
+        z-index:200;
+}
+.ks-steps li .trigon span{width:0px; height:0px;line-height:0px !important;padding:0px;}
+.ks-steps li .trigon .blo{
+    position:absolute;left:0px;top:0px;
+    border:12px solid;
+    border-color:transparent transparent transparent #E4E4E4;
+    border-style:dashed dashed dashed solid;
+}
+.ks-steps li .trigon .bor{
+    position:absolute;left:0px;top:-2px;
+    border:14px solid;
+    border-color:transparent transparent transparent #FFF;
+    border-style:dashed dashed dashed solid;   
+}
+	</style>
+
+<body>
+	<h1 style="text-align:center;"> 异步链传递 </h1>
+	<ul class="ui-slide-nav-r ks-steps" style="margin-top:100px;width:600px; position:relative;">
+	<!-- <ul class=" ks-steps" style="margin-top:100px;width:600px; position:relative"> -->
+
+		<li class="">
+			<a>开始传值发送请求</a>
+
+			<div class="trigon">
+				<span class="bor"></span>
+				<span class="blo"></span>
+			</div>
+
+		</li>
+		<li>
+			<a>请求返回，异步链往下传>></a>
+		</li>
+		<li>
+			<a>
+				异步链传参	>>
+			</a>
+		</li>
+	</ul>
+</body>
+</html>
+
+<script type="text/javascript">
+
+	setTimeout(function(){
+
+		KISSY.use('promise,node', function (S, Promise,Node) {
+
+        var d = new Promise.Defer();
+        //向异步链传值，并运转异步链
+        d.resolve(1);
+	
+		S.all('.ui-slide-nav-r li').item(0).addClass('active');
+
+        var promise = d.promise;
+        //在setTimeout外包裹个promise
+        promise.then(function (v) {
+            var d = new Promise.Defer();
+            setTimeout(function () {
+                d.resolve(v + 1);
+		// S.all('.ui-slide-nav-r').addClass('active');
+		S.all('.ui-slide-nav-r li').item(1).addClass('active');
+            }, 2000);
+            return d.promise;
+        })
+        //特别留意这里，success的回调会等到上一个promise成功传递值到这里时触发
+        .then(function (v) {
+//             alert('第二个then执行，异步链传到这里的值为'+v);
+			setTimeout(function(){
+
+		S.all('.ui-slide-nav-r li').item(2).addClass('active');
+
+
+			},2000);
+
+
+        });
+    });
+
+
+	},2000);
+</script>

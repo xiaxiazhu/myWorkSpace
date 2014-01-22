@@ -1,0 +1,608 @@
+
+@plugin				jQuery.xml
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@entry				jQuery()                             | Creates DOM elements on the fly from the provided string of raw XML. | method
+
+@categories			Core
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@syntax				jQuery( xml, ownerDocument )
+@added				1.0
+@param				xml                                  | A string of XML to create on the fly. | String
+@param				ownderDocument                       | A xml document in which the new elements will be created. | document
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@description        This variant of <<jQuery()>> provides to create new XML elements.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@example			Create new XML elements from string.
+
+@code				$('<entry id="test">My <underline>new</underline> text</entry>', xmlDocument );
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@entry				.xml()                               | Get the XML contents of the first element in the set of matched elements. | method
+
+@categories			Attributes
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@syntax				.xml()
+@added				1.0
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@description        The <<.xml()>> method is only available for XML documents, '''not''' HTML or XHTML.
+
+					We can use <<.xml()>> to get the contents of any element. If the selector expression matches more than one element, only the first one's XML content is returned.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@example			Get XML from first element containing the class 'inner'
+
+@xml				<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">
+					    Hello
+					    <test>Regards</test>
+					  </entry>
+					  <entry class="inner">
+					    Goodbye
+					    <test>Regards</test>
+					  </entry>
+					</root>
+@code				$( '.inner', xmlDocument ).xml();
+
+@results			Hello
+					<test>Regards</test>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@entry				.xml()                               | Set the XML contents of each element in the set of matched elements. | method
+
+@categories			DOM Insertion, Inside
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@syntax				.xml( xmlString )
+@added				1.0
+@param				xmlString                            | A string of XML to set as the content of each matched element. | String
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@syntax				.xml( function(index, oldxml) )
+@param				function(index, oldxml)              | A function returning the XML content to set. Receives the index position of the element in the set and the old XML value as arguments. jQuery empties the element before calling the function; use the oldxml argument to reference the previous content. | Function
+@added				1.0
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@description        The <<.xml()>> method is only available for XML documents, '''not''' HTML or XHTML.
+
+					When we use <<.xml()>> to set elements' contents, any contents that were in those elements is completely replaced by the new contents.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@example			Set some XML to each element containing the class 'inner'.
+
+@xml				<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">
+					    Hello
+					  </entry>
+					  <entry class="inner">
+					    Goodbye
+					  </entry>
+					</root>
+
+@code				$( '.inner', xmlDocument )
+					    .xml('<test>Regards</test>');
+					// Each inner <entry> element content will replace with this new content
+
+@results			<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">
+					    <test>Regards</test>
+					  </entry>
+					  <entry class="inner">
+					    <test>Regards</test>
+					  </entry>
+					</root>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@entry				.prepend()                           | Insert content, specified by the parameter, to the beginning of each element in the set of matched elements. | method
+
+@categories			DOM Insertion, Inside
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@syntax				.prepend( content )
+@added				1.0
+@param				content                              | An element, XML string, or jQuery object to insert at the beginning of each element in the set of matched elements. | String,Element,jQuery
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@syntax				.prepend( function(index, xml) )
+@added				1.0
+@param				function(index, html)                | A function that returns an XML string to insert at the beginning of each element in the set of matched elements. Receives the index position of the element in the set and the old XML value of the element as arguments. | Function
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@description        This variant of <<.prepend()>> provides to insert content from a string in XML markup at the beginning of each element in the set of matched elements.
+
+					Content as XML string, is only available for XML documents, '''not''' HTML or XHTML.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@example			Prepend some XML to each element containing the class 'inner'.
+
+@xml				<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">Hello</entry>
+					  <entry class="inner">Goodbye</entry>
+					</root>
+
+@code				$( '.inner', xmlDocument ).prepend('<test>Regards</test>');
+
+					// Each inner <entry> element gets this new content
+@results			<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">
+					    <test>Regards</test>
+					    Hello
+					  </entry>
+					  <entry class="inner">
+					    <test>Regards</test>
+					    Goodbye
+					  </entry>
+					</root>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@example			Prepend some generated XML to each element containing the class 'inner'.
+
+@xml				<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">Hello</entry>
+					  <entry class="inner">Goodbye</entry>
+					</root>
+
+@code				$( '.inner', xmlDocument ).prepend(function( i, xml ){
+					  return return '<test name="' + xml + '">Regards</test>';
+					});
+					// Each inner <entry> element gets the returned new content
+
+@results			<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">
+					    <test name="Hello">Regards</test>
+					    Hello
+					  </entry>
+					  <entry class="inner">
+					    <test name="Goodbye">Regards</test>
+					    Goodbye
+					  </entry>
+					</root>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@entry				.append()                            | Insert content, specified by the parameter, to the end of each element in the set of matched elements. | method
+
+@categories			DOM Insertion, Inside
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@syntax				.append( content )
+@added				1.0
+@param				content                              | An element, XML string, or jQuery object to insert at the end of each element in the set of matched elements. | String,Element,jQuery
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@syntax				.append( function(index, xml) )
+@added				1.0
+@param				function(index, html)                | A function that returns an XML string to insert at the end of each element in the set of matched elements. Receives the index position of the element in the set and the old XML value of the element as arguments. | Function
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@description        This variant of <<.append()>> provides to insert content from a string in XML markup at the end of each element in the set of matched elements.
+
+					Content as XML string, is only available for XML documents, '''not''' HTML or XHTML.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@example			Append some XML to each element containing the class 'inner'.
+
+@xml				<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">Hello</entry>
+					  <entry class="inner">Goodbye</entry>
+					</root>
+
+@code				$( '.inner', xmlDocument ).append('<test>Regards</test>');
+					// Each inner <entry> element gets this new content
+
+@results			<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">
+					    Hello
+					    <test>Regards</test>
+					  </entry>
+					  <entry class="inner">
+					    Goodbye
+					    <test>Regards</test>
+					  </entry>
+					</root>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@example			Append some generated XML to each element containing the class 'inner'.
+
+@xml				<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">Hello</entry>
+					  <entry class="inner">Goodbye</entry>
+					</root>
+
+@code				$( '.inner', xmlDocument ).append(function( i, xml ){
+					  return return '<test name="' + xml + '">Regards</test>';
+					});
+					// Each inner <entry> element gets the returned new content
+
+@results			<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">
+					    Hello
+					    <test name="Hello">Regards</test>
+					  </entry>
+					  <entry class="inner">
+					    Goodbye
+					    <test name="Goodbye">Regards</test>
+					  </entry>
+					</root>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@entry				.before()                            | Insert content, specified by the parameter, before each element in the set of matched elements. | method
+
+@categories			DOM Insertion, Outside
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@syntax				.before( content )
+@added				1.0
+@param				content                              | An element, XML string, or jQuery object to insert before each element in the set of matched elements. | String,Element,jQuery
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@syntax				.before( function(index) )
+@added				1.0
+@param				function(index)                      | A function that returns an XML string to insert before each element in the set of matched elements. Receives the index position of the elemen as argument. | Function
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@description        This variant of <<.before()>> provides to insert content from a string in XML markup at before each element in the set of matched elements.
+
+					Content as XML string, is only available for XML documents, '''not''' HTML or XHTML.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@example			Add some XML before each element containing the class 'inner'.
+
+@xml				<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">Hello</entry>
+					  <entry class="inner">Goodbye</entry>
+					</root>
+
+@code				$( '.inner', xmlDocument ).before('<test>Regards</test>');
+					// Before each inner <entry> element add this new content
+
+@reults				<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <test>Regards</test>
+					  <entry class="inner">Hello</entry>
+					  <test>Regards</test>
+					  <entry class="inner">Goodbye</entry>
+					</root>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@example			Add some generated XML before each element containing the class 'inner'.
+
+@xml				<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">Hello</entry>
+					  <entry class="inner">Goodbye</entry>
+					</root>
+
+@code				$( '.inner', xmlDocument ).before(function( i ){
+					  return return '<test index="'+ i +'">Regards</test>';
+					});
+					// Before each inner <entry> element add the returned new content
+
+@results			<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <test index="0">Regards</test>
+					  <entry class="inner">Hello</entry>
+					  <test index="1">Regards</test>
+					  <entry class="inner">Goodbye</entry>
+					</root>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@entry				.after()                             | Insert content, specified by the parameter, after each element in the set of matched elements. | method
+
+@categories			DOM Insertion, Outside
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@syntax				.after( content )
+@added				1.0
+@param				content                              | An element, XML string, or jQuery object to insert after each element in the set of matched elements. | String,Element,jQuery
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@syntax				.after( function(index) )
+@added				1.0
+@param				function(index)                      | A function that returns an XML string to insert after each element in the set of matched elements. Receives the index position of the elemen as argument. | Function
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@description        This variant of <<.after()>> provides to insert content from a string in XML markup at after each element in the set of matched elements.
+
+					Content as XML string, is only available for XML documents, '''not''' HTML or XHTML.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@example			Add some XML after each element containing the class 'inner'.
+
+@xml				<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">Hello</entry>
+					  <entry class="inner">Goodbye</entry>
+					</root>
+
+@code				$( '.inner', xmlDocument ).after('<test>Regards</test>');
+					// After each inner <entry> element add this new content
+
+@results			<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">Hello</entry>
+					  <test>Regards</test>
+					  <entry class="inner">Goodbye</entry>
+					  <test>Regards</test>
+					</root>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@example			Add some generated XML after each element containing the class 'inner'.
+
+@xml				<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">Hello</entry>
+					  <entry class="inner">Goodbye</entry>
+					</root>
+
+@code				$( '.inner', xmlDocument ).before(function( i ){
+					  return return '<test index="'+ i +'">Regards</test>';
+					});
+					// Before each inner <entry> element add the returned new content
+
+@results			<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">Hello</entry>
+					  <test index="0">Regards</test>
+					  <entry class="inner">Goodbye</entry>
+					  <test index="1">Regards</test>
+					</root>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@entry				.wrap()                              | Wrap an XML structure around each element in the set of matched elements. | method
+
+@categories			DOM Insertion, Around
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@syntax				.wrap( wrappingElement )
+@added				1.0
+@param				wrappingElement                      | An XML snippet, jQuery object, or DOM element specifying the structure to wrap around the matched elements. | String,Element,jQuery
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@syntax				.wrap( wrappingElement )
+@added				1.0
+@param				wrappingFunction                     | A callback function which generates a structure to wrap around the matched elements. | Function
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@description        This variant of <<.wrap()>> provides to wrap elements from a string in XML markup around each element in the set of matched elements.
+
+					WrappingElement as XML string, is only available for XML documents, '''not''' HTML or XHTML.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@example			Wrap each element containing the class 'inner' with XML.
+
+@xml				<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">Hello</entry>
+					  <entry class="inner">Goodbye</entry>
+					</root>
+
+@code				$( '.inner', xmlDocument ).wrap('<test />');
+					// Wrap each inner <entry> element this wrappingElement
+
+@results			<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <test>
+					    <entry class="inner">Hello</entry>
+					  </test>
+					  <test>
+					    <entry class="inner">Goodbye</entry>
+					  </test>
+					</root>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@example			Wrap each element containing the class 'inner' with generated XML.
+
+@xml				<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">Hello</entry>
+					  <entry class="inner">Goodbye</entry>
+					</root>
+
+@code				$( '.inner', xmlDocument ).wrap(function(){
+					  return return '<test name="' + $(this).text() + '" />';
+					});
+					// Wrap each inner <entry> element with the returned wrappingElement
+
+@results			<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <test name="Hello">
+					    <entry class="inner">Hello</entry>
+					  </test>
+					  <test name="Goodbye">
+					    <entry class="inner">Goodbye</entry>
+					  </test>
+					</root>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@note				Wiki structure note.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@entry				.wrapInner()                         | Wrap an XML structure around the content of each element in the set of matched elements. | method
+
+@categories			DOM Insertion, Around
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@syntax				.wrapInner( wrappingElement )
+@added				1.0
+@param				wrappingElement                      | An XML snippet, jQuery object, or DOM element specifying the structure to wrap around the content of the matched elements. | String,Element,jQuery
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@syntax				.wrapInner( wrappingElement )
+@added				1.0
+@param				wrappingFunction                     | A callback function which generates a structure to wrap around the content of the matched elements. | Function
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@description        This variant of <<.wrapInner()>> provides to wrap elements from a string in XML markup around the content of each element in the set of matched elements.
+
+					WrappingElement as XML string, is only available for XML documents, '''not''' HTML or XHTML.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@example			Selects all elements containing the class 'inner' and wraps a XML around each of its contents
+
+@xml				<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">Hello</entry>
+					  <entry class="inner">Goodbye</entry>
+					</root>
+
+@code				$( '.inner', xmlDocument ).wrapInner('<test />');
+					// Wrap each inner <entry> element this wrappingElement
+
+@results			<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					    <entry class="inner"><test>Hello</test></entry>
+					    <entry class="inner"><test>Goodbye</test></entry>
+					</root>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@example			Selects all elements containing the class 'inner' and wraps a generated XML around each of its contents
+
+@xml				<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">Hello</entry>
+					  <entry class="inner">Goodbye</entry>
+					</root>
+
+@code				$( '.inner', xmlDocument ).wrapInner(function(){
+					  return return '<test name="' + $(this).text() + '" />';
+					});
+					// Wrap each inner <entry> element with the returned wrappingElement
+
+@results			<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					    <entry class="inner"><test name="Hello">Hello</test></entry>
+					    <entry class="inner"><test name="Goodbye">Goodbye</test></entry>
+					</root>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@entry				.wrapAll()                           | Wrap an XML structure around each element in the set of matched elements. | method
+
+@categories			DOM Insertion, Around
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@syntax				.wrapAll( wrappingElement )
+@added				1.0
+@param				wrappingElement                      | An XML snippet, jQuery object, or DOM element specifying the structure to wrap around the matched elements. | String,Element,jQuery
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@description        This variant of <<.wrapAll()>> provides to wrap elements from a string in XML markup around the matched elements.
+
+					WrappingElement as XML string, is only available for XML documents, '''not''' HTML or XHTML.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+
+@example			Wrap a XML around all of elements containing the class 'inner'.
+
+@xml				<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <entry class="inner">Hello</entry>
+					  <entry class="inner">Goodbye</entry>
+					</root>
+
+@code				$( '.inner', xmlDocument ).wrapAll('<test />');
+					// Wrap around all inner <entry> elements this wrappingElement
+
+@results			<?xml version="1.0" encoding="utf-8"?>
+					<root>
+					  <test>
+					    <entry class="inner">Hello</entry>
+					    <entry class="inner">Goodbye</entry>
+					  </test>
+					</root>

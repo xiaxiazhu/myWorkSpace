@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>/Users/superstarwulin/Sites/demo/myWorkSpace/tool/yuidocDemo/paysuccess.js - The yuidocDemo API</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="The yuidocDemo API"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 1.1.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/PaySuccess.html">PaySuccess</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: /Users/superstarwulin/Sites/demo/myWorkSpace/tool/yuidocDemo/paysuccess.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+KISSY.add(&#x27;mui/review/biz/paysuccess&#x27;, function(S, DOM, Event) {
+
+	/**
+	 * This is the description for my class.
+	 *
+	 * @class PaySuccess
+	 * @constructor
+	 */
+	var PaySuccess = {};
+
+
+	/**
+	 * 双十一评价降级开关
+	 * @property On
+	 * @type Boolean
+	 * @default &#x27;true&#x27;
+	 */
+	var On = true; // 双十一评价降级开关
+
+
+	S.mix(PaySuccess, {
+		/**
+		* get data from ratewrite app,
+		* fetch the data and save to _data field
+		* 
+		* @method getList
+		* @param {Null} null
+		* @return {Null} null
+		*/
+		getList: function() {
+
+			var self = this,
+				url = &quot;http://ratewrite.&quot; + (this._config.daily ? &#x27;daily.&#x27; : &#x27;&#x27;) + &quot;tmall.&quot;+(this._config.daily ? &#x27;net&#x27; : &#x27;com&#x27;)+&quot;/rate/get_all_waiting_rate_items.do?limit=3&quot;;
+
+			// document.domain = 
+
+			S.IO.jsonp(url, 
+			// {
+			// 	callback: &quot;superstar&quot;
+			// }, 
+			function(data) {
+
+				if ( !! data) {
+
+					self._data = data;
+
+					self.renderList();
+
+				};
+
+			});
+
+		},
+
+		/**
+		* render the review list when data is ready
+		* 	
+		* @method renderList
+		* @param {Null} null
+		* @return {Null} null
+		*/
+		renderList: function() {
+
+			var self = this,
+				dt = self._data.WaitingAllRate;
+
+			if (!dt) return;
+
+			var html = &#x27;&lt;div class=&quot;re-container&quot;&gt;&lt;div class=&quot;innerborder&quot;&gt;&lt;h3 class=&quot;re-hd&quot;&gt;&lt;strong&gt;还记得他们吗？&lt;/strong&gt;来分享你和它们一起的故事吧~&lt;/h3&gt;&lt;div class=&quot;itembox&quot;&gt;&#x27;;
+
+			for (var i = 0; i &lt; dt.length; i++) {
+
+				var vo = dt[i];
+
+				var rateUrl = vo.rateUrl;
+
+				if (vo.rateStatus) {
+					//rateUrl += &#x27;?bizOrderId=&#x27; + vo.mainOrderId
+					if (vo.rateStatus === 4) {
+
+						// 服务评价  superstar added
+						//http://fwfront.tmall.com/protocol/get_protocol.htm?spm=a1z09.2.9.85.RZNgzT&amp;service_item_id=25385280961&amp;servOrderId=224083371579208&amp;buyerId=282620892
+						rateUrl += &#x27;?service_item_id=&#x27; + vo.itemId + &#x27;&amp;servOrderId=&#x27; + vo.bizOrderId + &#x27;&amp;buyerId=&#x27; + vo.buyerId;
+
+					} else {
+
+						rateUrl += &#x27;?bizOrderId=&#x27; + vo.mainOrderId;
+
+					};
+
+				} else {
+					rateUrl += &#x27;?tradeId=&#x27; + vo.mainOrderId;
+					if (vo.mainOrderId !== vo.bizOrderId) {
+						rateUrl += &#x27;&amp;subTradeId=&#x27; + vo.bizOrderId;
+					}
+				};
+
+				html += &#x27;&lt;a class=&quot;itemlink &#x27; + (i ? &#x27;&#x27; : &#x27;inititembox&#x27;) + &#x27;&quot; target=&quot;_blank&quot; href=&quot;&#x27; + rateUrl + &#x27;&quot; title=&quot;&#x27; + dt[i].goodsTitle + &#x27;&quot;&gt;&#x27;;
+				html += &#x27;&lt;div class=&quot;wait-img&quot;&gt;&lt;img src=&quot;&#x27; + dt[i].picUrl + &#x27;&quot; width=&quot;60&quot;&gt;&#x27;;
+				html += &#x27;&lt;/div&gt;&lt;div class=&quot;wait-btn&quot;&gt;去评价&lt;/div&gt;&lt;/a&gt;&#x27;;
+
+			};
+
+			html += &#x27;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&#x27;;
+
+			if (dt.length&gt;0) {
+
+				S.one(self._containter).append(html);
+
+				self.eraseInitStyle();
+
+				self.clickGoInit();
+
+			};
+
+		},
+		/**
+		* main init and call
+		* 	
+		* @method init
+		* @param {Object} config 组件配置
+		* @param {Object} config.containterid  containter append the review list to container ,avaliable for 、 id 、 node
+		* @return {Null} null
+		*/
+		init: function(config) {
+
+			if (!On) return; // 降级开关
+
+			S.getScript(&#x27;http://g.tbcdn.cn/mui/review-enter/1.0.0/css/entry.css&#x27;);
+
+			this._config = config;
+
+			this.getContainer(config.containterid);
+
+			this.getList();
+
+		},
+		/**
+		* add click event for statics	
+		* @method clickGoInit
+		* @param {Null} null
+		* @return {Null} null
+		*/
+		clickGoInit:function (argument) {
+
+			var self = this,
+				btnlist = S.all(&#x27;.itemlink&#x27;);
+
+				btnlist.on(&#x27;click&#x27;,function  (ev) {
+
+					var slist = S.Node(this).attr(&#x27;href&#x27;).split(&#x27;?&#x27;);
+
+					var url = slist.length&gt;1 ? slist[1]:null;
+
+					var obj = S.unparam(url);
+
+					var logurl  = &#x27;http://gm.mmstat.com/tmallrate.6.3.1?logtype=2&amp;catid=&#x27;+ obj.tradeId+&#x27;&amp;uid=&#x27;+ obj.buyerId +&#x27;&amp;itemid=&#x27;+ obj.service_item_id;
+
+					//埋点 
+	       			new Image().src = logurl;
+
+				});
+
+		},
+		/**
+		* erase init style for first element
+		* @method eraseInitStyle
+		* @param {Null} null
+		* @return {Null} null
+		*/
+		eraseInitStyle: function() {
+
+			var self = this,
+				btnlist = S.all(&#x27;.itemlink&#x27;);
+
+			btnlist.on(&#x27;mouseenter&#x27;, function(ev) {
+
+				btnlist.removeClass(&#x27;inititembox&#x27;);
+
+				btnlist.removeClass(&#x27;current-hover&#x27;);
+
+				S.Node(this).addClass(&#x27;current-hover&#x27;);
+
+			});
+
+
+			btnlist.on(&#x27;mouseleave&#x27;,function  (ev) {
+
+				btnlist.removeClass(&#x27;current-hover&#x27;);
+
+			});
+
+			// S.one(self._containter+&#x27;.inititembox&#x27;).length;
+
+		},
+		/**
+		* get the containter node from argument
+		* @method getContainer
+		* @param {Object} v current node of container
+		* @return {Null} null
+		*/
+		getContainer: function(v) {
+			this._containter = v;
+		},
+		_data: null,
+		_containter: null,
+		_config: null
+	});
+
+	return PaySuccess;
+
+}, {
+	requires: [&#x27;dom&#x27;, &#x27;event&#x27;]
+});
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

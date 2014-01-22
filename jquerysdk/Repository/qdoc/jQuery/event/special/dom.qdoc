@@ -1,0 +1,101 @@
+
+@plugin				jQuery.event.special.dom
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				show                           | Bind special event on show element. | event
+
+@categories			Browser Events
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.bind( 'show', ... )
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This <<.bind()>> implements a simple bind of an event, fired when the visbility of the element switch from hidden to visible. 
+					This is not a native browser event, there is a polling running in the background to check the state of the element 40 times 
+					per second.
+
+					See the [[api:method:.bind()]] and [[api:method:.unbind()]] method references for a way to bind/unbind event handlers.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				hide                           | Bind special event on hide element. | event
+
+@categories			Browser Events
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.bind( 'hide', ... )
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This <<.bind()>> implements a simple bind of an event, fired when the visbility of the element switch from visible to hidden. 
+					This is not a native browser event, there is a polling running in the background to check the state of the element 40 times 
+					per second.
+
+					See the [[api:method:.bind()]] and [[api:method:.unbind()]] method references for a way to bind/unbind event handlers.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				toggle                         | Bind special event on toggle element. | event
+
+@categories			Browser Events
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.bind( 'toggle', ... )
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This <<.bind()>> implements a simple bind of an event, fired when the visbility of the element switch from visible to hidden 
+					or vice versa. This is not a native browser event, there is a polling running in the background to check the state of the 
+					element 40 times per second.
+
+					See the [[api:method:.bind()]] and [[api:method:.unbind()]] method references for a way to bind/unbind event handlers.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				resize                         | Bind special event on resize element. | event
+
+@categories			Browser Events
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.bind( 'resize', ... )
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This <<.bind()>> implements a simple bind of an event, fired when the size of the element changes. This is not a native 
+					browser event, there is a polling running in the background to check the state of the element 40 times per second.
+
+					See the [[api:method:.bind()]] and [[api:method:.unbind()]] method references for a way to bind/unbind event handlers.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				emchange                       | Bind special event on 'em' change. | event
+
+@categories			Browser Events
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.bind( 'emchange', ... )
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This <<.bind()>> implements a simple bind of an event, fired when the default text-size of the browser changes. 
+					This is not a native browser event, there is a polling running in the background to check the state of the element 40 
+					times per second.
+
+					See the [[api:method:.bind()]] and [[api:method:.unbind()]] method references for a way to bind/unbind event handlers.

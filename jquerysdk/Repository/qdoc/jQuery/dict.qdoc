@@ -1,0 +1,367 @@
+
+@plugin				jQuery.dict
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				Dictionary                     | Configure default values for future dictionary call. | config
+
+@categories			Internationalisation | Properties of jQueryConfig
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQueryConfig.dict[ options ]
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        For details on the options available for <<$.dict()>>, see <<[[api:method:jQuery.dict()|$.dict()]]>>.
+
+					All subsequent dictionary calls using any function will use the configured options, unless overridden by the individual calls.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.dependSettings          | Settings of the dependencies controller. | property
+
+@categories			Internationalisation | Properties of the Global jQuery Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.dependSettings
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				dictRoot                       | The path to the root directory of jQuery SDK dictionary JSON files.  | Optional,String
+@default			$.config.pluginRoot
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The jQuery.dict plugin extends the settings of the plugin/depencies controller.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.dict()                  | Get a dictionary object for translation. | method
+
+@categories			Utilities | Internationalisation
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.dict( dictname, [ options ] )
+@added				1.0
+@param				dictname                       | The name of the dictionary, optional including the namespace of region. | String
+@param				options                        | A set of key/value pairs that configure the jQuery.dict call. A default are set for any option by jQuery.dictSettings. | Optional,Object
+@return				Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				region                         | A region/language to use for this dict. | Optional,String
+@added				1.0
+@default			'en'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				parser                         | A regular expression including 2 matches. First one is the key word with markers and the second one is the keywors to translate. | Optional,Array
+@added				1.0
+@default			/(?:^|[^\{\$])(\{(.*?[^\\])\})/g
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Get a dictionary object for translation.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Use a dictionary.
+
+@code				// The example dictionary is already defined.
+
+					// use default region/language
+					$.dict( 'example' );
+
+					// use german
+					$.dict( 'example', {region:'de'} );
+
+					// use german
+					$.dict( 'de:example' );
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Translate keywords and parse text with a dict.
+
+@code				var obj = $.dict( 'de:example' );
+
+					obj.translate('translation');
+					// results: Übersetzung
+
+					obj.parse('jQuery SDK {translation}');
+					// results: jQuery SDK Übersetzung
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@method				.translate()
+
+@syntax				.translate( keyword )
+@added				1.0
+@param				keyword                        | A keyword to translate. | String
+@return				String
+
+@description        Get a translation for a keyword.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@method				.parse()
+
+@syntax				.parse( text )
+@added				1.0
+@param				text                           | A text with keyword markers to translate. | String
+@return				String
+
+@description        Parse a text with keyword markers and translate them with the dictionary.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.dictionary()            | Define a dictionary. | method
+
+@categories			Utilities | Internationalisation
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.dictionary( dictname, data )
+@added				1.0
+@param				dictname                       | The name of the dictionary, including the namespace of region. | String
+@param				data                           | An array containing names of other dictionaries, dictionary objects or a map of keyword/translation pairs to add. | Optional,Array
+@return				Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Use <<jQuery.dictionary>> method to define an dictionaries for using <<[[api:method:jQuery.dict()|jQuery.dict()]]>>.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Use an existing dictionary.
+
+@code				// The example dictionary is already defined.
+
+					// use default region/language
+					$.dictionary( 'example' );
+
+					// use german
+					$.dictionary( 'example', {region:'de'} );
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Create a foo dictionary.
+
+@code				// The example dictionary is already defined.
+
+					// use default region/language
+					$.dictionary( 'foo', [ 'example', {"strawberry":"Strawberry"} ] );
+
+					// use german
+					$.dictionary( 'foo', [ 'example', {"strawberry":"Erdbeere"} ], {region:'de'} );
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				.dictParse()                   | Parse translations for each element in the set fo matched elements. | method
+
+@categories			Utilities | Internationalisation
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.dictParse( dict, deep )
+@added				1.0
+@param				dict                           | A dictionary object. | String
+@param				deep                           | A boolean indication whether to parse all contained elements of each element in the set of matched elements. | Optional,Boolean
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.dictParse( dictname, deep, [ options ] )
+@added				1.0
+@param				dictname                       | The name of the dictionary. | String
+@param				deep                           | A boolean indication whether to parse all contained elements of each element in the set of matched elements. | Optional,Boolean
+@param				options                        | A set of key/value pairs that configure the jQuery.dict call. A default are set for any option by jQuery.dictSettings. | Optional,Object
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				region                         | A region/language to use for this dict. | Optional,String
+@added				1.0
+@default			'en'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				parser                         | A regular expression including 2 matches. First one is the key word with markers and the second one is the keywors to translate. | Optional,Array
+@added				1.0
+@default			/(?:^|[^\{\$])(\{(.*?[^\\])\})/g
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This method is using <<jQuery.dict()>> to parse translations in a DOM structure.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Run dictionary parser for an element.
+
+@html				<div id="translate">
+					  {Hello}
+					  <ul>
+					    <li>{ItemA}</li>
+					    <li>{ItemA}</li>
+					  </ul>
+					</div>
+
+@code				// The example dictionary must be already defined.
+					$('#translate').dictParse( 'example', {region:'de'} );
+
+@results			<div id="translate">
+					  Hallo
+					  <ul>
+					    <li>{ItemA}</li>
+					    <li>{ItemA}</li>
+					  </ul>
+					</div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Run dictionary parser for an element and contained elements.
+
+@html				<div id="translate">
+					  {Hello}
+					  <ul>
+					    <li>{ItemA}</li>
+					    <li>{ItemB}</li>
+					  </ul>
+					</div>
+
+@code				// The example dictionary must be already defined.
+					$('#translate').dictParse( 'example', true, {region:'de'} );
+
+@results			<div id="translate">
+					  Hallo
+					  <ul>
+					    <li>Artikel A</li>
+					    <li>Artikel B</li>
+					  </ul>
+					</div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.ready()                       | Specify a function to execute when required plugins are fully loaded. | method
+
+@categories			Internationalisation
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.ready( options, function(jQuery) )
+@added				1.0
+@param				options                              | A set of type/name(s) pairs that define requirements for the ready call. | Object
+@param				function(jQuery)                     | A handler to execute after all required dependencies are ready. Receives jQuery as argument. | Function
+@return				Promise
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				dict                                 | A template name or an array of template names. | Optional,Array,String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.dict>> plugin extends the dependencies controller. So it is possible to load dictionaries automatical with Ajax.
+
+					=====jQuery SDK file structure:=====
+					All dictionaries are ''JSON files'' located in the script directory and dots in dictionary names represent subdirectories.
+					To specify the region, set the region before the dictionary name with colon separation, if no region specified the default
+					region will be used.
+					* ''de:project.example'' is ''script/project/example.de.json''
+					* ''en:project.example'' is ''script/project/example.en.json''
+					* ''en-US:project.example'' is ''script/project/example.en-US.json''
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Load this dictionaries 'proj/example.de-DE.html' and 'proj/example.en-US.html' add it to the body.
+
+@code				jQuery.ready({
+					        plugin: ['jQuery.tmpl'],    // required plugins
+					        dict:   ['de-DE:proj.example', 'en-US:proj.example']    // specify required dictionaries
+					    }, function($){
+
+					        // using the dictionaries
+
+					        var dictDE = $.dict('de-DE:proj.example'),
+					            dictEN = $.dict('en-US:proj.example');
+
+					        dictDE.translate('Cancel') // Abbrechen
+					        dictEN.translate('Cancel') // Cancel
+
+					    });
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.plugin()                      | Specify a plugin. | method
+
+@categories			Internationalisation
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.plugin( id, [ options ], function(jQuery) )
+@added				1.0
+@param				id                                   | A unique plugin identifier associated to the jQuery SDK file structure. | String
+@param				options                              | A set of type/name(s) pairs that define requirements for this plugin. | Optional,Object
+@param				function(jQuery)                     | The plugin function to execute after all dependencies are ready. Receives jQuery as argument. | Function
+@return				Promise
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				dict                                 | A template name or an array of template names. | Optional,Array,String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.dict>> plugin extends the dependencies controller. So it is possible to load dictionaries automatical with Ajax.
+
+					=====jQuery SDK file structure:=====
+					All dictionaries are ''JSON files'' located in the script directory and dots in dictionary names represent subdirectories.
+					To specify the region, set the region before the dictionary name with colon separation, if no region specified the default
+					region will be used.
+					* ''de:project.example'' is ''script/project/example.de.json''
+					* ''en:project.example'' is ''script/project/example.en.json''
+					* ''en-US:project.example'' is ''script/project/example.en-US.json''
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.provide()                     | Provide a script. | method
+
+@categories			Internationalisation
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.provide( id, [ options ], function(jQuery) )
+@added				1.0
+@param				id                                   | A unique identifier for the script to provide. | String
+@param				options                              | A set of type/name(s) pairs that define requirements for this script. | Optional,Object
+@param				function(jQuery)                     | The script code to execute after all dependencies are ready. Receives jQuery as argument. | Function
+@return				Promise
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				dict                                 | A template name or an array of template names. | Optional,Array,String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.dict>> plugin extends the dependencies controller. So it is possible to load dictionaries automatical with Ajax.
+
+					=====jQuery SDK file structure:=====
+					All dictionaries are ''JSON files'' located in the script directory and dots in dictionary names represent subdirectories.
+					To specify the region, set the region before the dictionary name with colon separation, if no region specified the default
+					region will be used.
+					* ''de:project.example'' is ''script/project/example.de.json''
+					* ''en:project.example'' is ''script/project/example.en.json''
+					* ''en-US:project.example'' is ''script/project/example.en-US.json''

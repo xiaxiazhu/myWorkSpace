@@ -1,0 +1,38 @@
+
+@plugin				jQuery.mixin
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				jQuery.mixin()                 | Merge the contents of two or more objects together into the first object. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				jQuery.mixin( target, [ target1 ], [ targetN ] )
+@added				1.0
+@param				target                         | Object ... | Object
+@param				target1                        | Object ... | Optional,Object
+@param				targetN                        | Object ... | Optional,Object
+@return				Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        The <<jQuery.mixin()>> methods works like the <<jQuery.extend()>> method,
+					but <<jQuery.mixin()>> extends the target only with own properties of target1 and targetN.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Extend the ep object with some methods.
+
+@code				jQuery.mixin({
+					    bar: function(){
+					    },
+					    foo: function(){
+					    }
+					});
+					// will add the bar and foo method to the ep namespace
+					jQuery.bar();
+
+					jQuery.foo();

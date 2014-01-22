@@ -1,0 +1,938 @@
+
+@plugin				jQuery.core
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.innerWidth()                        | Set the current computed width for each element in the set of matched elements, including padding but not border. | method
+
+@categories			CSS | Dimensions
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.innerWidth( value )
+@added				1.4
+@param				value                                | An integer representing the number of pixels. | Number
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        This method set the width of the element, including left and right padding, in pixels.
+
+					This method is not applicable to window and document objects.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Set the inner width of all div elements with class box.
+
+@css				.box {
+					    position:    absolute,
+					    margin:      15px,
+					    border:      solid 5px,
+					    padding:     10px,
+					    width:       100px,
+					    height:      100px
+					}
+
+@html				<div class="box"></div>
+
+@code				$('div').innerWidth(300);
+
+@results			<div class="box" style="width: 280px;"></div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.innerHeight()                       | Set the current computed height for each element in the set of matched elements, including padding but not border. | method
+
+@categories			CSS | Dimensions
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.innerHeight( value )
+@added				1.4
+@param				value                                | An integer representing the number of pixels. | Number
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        This method set the height of the element, including top and bottom padding, in pixels.
+
+					This method is not applicable to window and document objects.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Set the inner height of all div elements with class box.
+
+@css				.box {
+					    position:    absolute,
+					    margin:      15px,
+					    border:      solid 5px,
+					    padding:     10px,
+					    width:       100px,
+					    height:      100px
+					}
+
+@html				<div class="box"></div>
+
+@code				$('div').innerHeight(300);
+
+@results			<div class="box" style="height: 280px;"></div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.outerWidth()                        | Set the current computed width for each element in the set of matched elements, including padding and border. | method
+
+@categories			CSS | Dimensions
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.outerWidth( value, [ includeMargin ] )
+@added				1.4
+@param				value                                | An integer representing the number of pixels. | Number
+@param				includeMargin                        | A Boolean indicating whether to include the element's margin in the calculation. | Optional,Boolean
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        This method set the width of the element, including left and right padding, border, and optionally margin, in pixels.
+
+					This method is not applicable to window and document objects.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Set the outer width of all div elements with class box.
+
+@css				.box {
+					    position:    absolute,
+					    margin:      15px,
+					    border:      solid 5px,
+					    padding:     10px,
+					    width:       100px,
+					    height:      100px
+					}
+
+@html				<div class="box"></div>
+
+@code				$('div').outerWidth(300);
+
+@results			<div class="box" style="width: 270px;"></div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Set the outer width inclusive margin of all div elements with class box.
+
+@css				.box {
+					    position:    absolute,
+					    margin:      15px,
+					    border:      solid 5px,
+					    padding:     10px,
+					    width:       100px,
+					    height:      100px
+					}
+
+@html				<div class="box"></div>
+
+@code				$('div').outerWidth( 300, true );
+
+@results			<div class="box" style="width: 240px;"></div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.outerHeight()                       | Set the current computed height for each element in the set of matched elements, including padding and border. | method
+
+@categories			CSS | Dimensions
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.outerHeight( value, [ includeMargin ] )
+@added				1.4
+@param				value                                | An integer representing the number of pixels. | Number
+@param				includeMargin                        | A Boolean indicating whether to include the element's margin in the calculation. | Optional,Boolean
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        This method set the height of the element, including top and bottom padding, border, and optionally margin, in pixels.
+
+					This method is not applicable to window and document objects.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Set the outer height of all div elements with class box.
+
+@css				.box {
+					    position:    absolute,
+					    margin:      15px,
+					    border:      solid 5px,
+					    padding:     10px,
+					    width:       100px,
+					    height:      100px
+					}
+
+@html				<div class="box"></div>
+
+@code				$('div').outerHeight(300);
+
+@results			<div class="box" style="height: 270px;"></div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Set the outer height inclusive margin of all div elements with class box.
+
+@css				.box {
+					    position:    absolute,
+					    margin:      15px,
+					    border:      solid 5px,
+					    padding:     10px,
+					    width:       100px,
+					    height:      100px
+					}
+
+@html				<div class="box"></div>
+
+@code				$('div').outerHeight( 300, true );
+
+@results			<div class="box" style="height: 240px;"></div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				Plugin Controller                    | Configure default values for the plugin/dependencies controller. | config
+
+@categories			Core | Properties of jQueryConfig
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQueryConfig.depend[ options ]
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        For details on the options available see <<[[api:property:jQuery.dependSettings|$.dependSettings]]>>.
+
+					All subsequent <<[[api:method:jQuery.ready()|$.ready()]]>>, <<[[api:method:jQuery.plugin()|$.plugin()]]>> and
+					<<[[api:method:jQuery.provide()|$.provide()]]>> calls using any function will use the configured options.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				Ajax                                 | Configure default values for future Ajax requests. | config
+
+@categories			Low-Level Interface | Properties of jQueryConfig
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQueryConfig.ajax[ options ]
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        For details on the options available for <<$.ajax()>>, see <<[[api:method:jQuery.ajax()|$.ajax()]]>>.
+
+					All subsequent Ajax calls using any function will use the configured options, unless overridden by the individual calls.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				noConflict                           | Preconfigure of jQuery.noConflict. | config
+
+@categories			Core | Properties of jQueryConfig
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQueryConfig.noConflict
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQueryConfig.noConflict>> allows to configure <<jQuery.noConflict()>> before jQuery is loaded.
+
+					Set a boolean indication to enable or disable "jQuery no conflict mode" on startup.
+					It's also posible to define a noConflict alias of jQuery on startup.
+
+					* see also: <<[[api:property:jQuery.config|jQuery.config]]>>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Set no conflict mode on startup.
+
+@code				// before include jQuery SDK Core
+
+					jQueryConfig = {
+					    noConflict: true
+					};
+
+					// now include the jQuery SDK Core
+
+@results			// after include jQuery SDK Core
+
+					$ !== jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Set no conflict mode on startup and define an alias
+
+@code				// before include jQuery SDK Core
+
+					jQueryConfig = {
+					    noConflict: '$jq'
+					};
+
+					// now include the jQuery SDK Core
+
+@results			// after include jQuery SDK Core
+
+					$jq === jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				.sub()                               | Change the used class. | method
+
+@categories			Core
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.sub( jQuerySubClass )
+@added				1.0
+@param				jQuerySubClass                       | A name of a global jQuery subclass or a jQuery subclass object, which was created with jQuery.subclass(). | Object,String
+@return				jQuerySubClass
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Chaining is one of the greates features of jQuery. The <<.sub()>> allows to change the used class as chain.
+					With <<.sub()>> we can switch to a subclass and back to jQuery class or to another subclass.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				.jquerysdk                           | A string containing the jQuery SDK version number. | property
+
+@categories			Properties of jQuery Object Instances
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.jquerysdk
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<.jquerysdk>> property is assigned to the jQuery prototype, commonly referred to by its
+					alias $.fn. It is a string containing the version number of jQuery SDK, such as "1.0".
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.debug                         | A base property for debug tools. | property
+
+@categories			Properties of the Global jQuery Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.debug
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.debug>> property is basicly an empty object.
+					Debug plugins should not extend the jQuery object,
+					it is better to use a separate object like <<jQuery.debug>>.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.debug.warn()                  | Takes a string and throws a warning containing it. | method
+
+@categories			Core
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.debug.warn( message )
+@added				1.0
+@param				message                              | The message to send out. | String
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This method exists primarily for developers who needs additional debug information.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Throw a simple warning.
+
+@code				jQuery.debug.warn('Deprecated: This method will removed in the near future.');
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.config                         | Configuration property for jQuery SDK and plugins. | property
+
+@categories			Core | Properties of jQueryConfig | Properties of the Global jQuery Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.config
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.config>> property is created on startup and all properties of <<jQueryConfig>>
+					will be transferred to <<jQuery.config>>.
+					Another possibility is to set a meta tag named jQueryConfig before jQuery SDK is loaded,
+					the content attribute of this tag must be an JSON string in single quot syntax.
+					The properties of this JSON string will be transferred to <<jQuery.config>> also.
+
+					Most plugins are using <<jQuery.config>> to preconfigure them self.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Configure jQuery SDK.
+
+@code				// before include jQuery SDK Core
+
+					jQueryConfig = {
+					    ajax: {
+					        dataType:   'json'
+					    },
+					    depend: {
+					        minify:     true,
+					        pluginRoot: './script'
+					    }
+					};
+
+					// now include the jQuery SDK Core
+
+@results			// after include jQuery SDK Core
+
+					jQuery.config = {
+					    ajax: {
+					        dataType: 'json'
+					    },
+					    depend: {
+					        minify: true,
+					        pluginRoot: './script'
+					    }
+					};
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				jQuery.scope()                 | Get an object from a scope string. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				jQuery.scope( scope, [ context ] )
+@added				1.2
+@param				scope                          | An object path in dot noatation. | String
+@param				context                        | An object as context for the object path. | Optional,Object
+@return				Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        The <<jQuery.scope()>> method returns the object which was selcted with the scope string,
+					if the object doesn't exists it is created by <<jQuery.scope()>>.
+
+					If no context is defined, the context is the window object.
+					It's are very usefull method to prevent errors if you are not sure whether the object already exists.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Get a simply scope.
+
+@code				$.extends( $.scope('jQuery.newPlugin.example'), {
+					    foo: 'bar'
+					});
+
+					$.scope('newPlugin.example', $ );
+					// results: {foo: 'bar'}
+
+					$.scope('newPlugin.example', $ );
+					// results: {foo: 'bar'}
+
+					jQuery.newPlugin.example.foo
+					// results: 'bar'
+
+					$.scope('jQuery.newPlugin.example').foo
+					// results: 'bar'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.ready()                       | Specify a function to execute when the DOM is fully loaded. | method
+
+@categories			Document Loading
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.ready( function(jQuery) )
+@added				1.0
+@param				function(jQuery)                     | A function to execute after the DOM is ready. Receives jQuery as argument. | Function
+@return				Promise
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The function passed to <<jQuery.ready()>> is guaranteed to be executed after the DOM is ready,
+					so this is usually the best place to attach all other event handlers and run other jQuery code.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Display a message when the DOM is loaded.
+
+@html				<body>
+					  <p></p>
+					</body>
+
+@code				jQuery.ready(function($){
+					    $("p").text("The DOM is now loaded and can be manipulated.");
+					});
+
+@results			<body>
+					  <p>The DOM is now loaded and can be manipulated.</p>
+					</body>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.ready()                       | Specify a function to execute when required plugins are fully loaded. | method
+
+@categories			Core
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.ready( plugins, function(jQuery) )
+@added				1.0
+@param				plugins                              | A plugin name or an array of plugin names. | Array,String
+@param				function(jQuery)                     | A handler to execute after all required plugins are ready. Receives jQuery as argument. | Function
+@return				Promise
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.ready( options, function(jQuery) )
+@added				1.0
+@param				options                              | A set of type/name(s) pairs that define requirements for the ready call. | Object
+@param				function(jQuery)                     | A handler to execute after all required dependencies are ready. Receives jQuery as argument. | Function
+@return				Promise
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				DOM                                  | A boolean indication wheather to wait for the DOM ready event. | Optional,Boolean
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				plugin                               | A plugin name or an array of plugin names. | Optional,Array,String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				script                               | A script name or an array of script names (defined with jQuery.provide()). | Optional,Array,String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.ready()>> is a method to bind dependencies for a method.
+
+					=====Dependencies controller:=====
+					You want to execute some code which requires plugins, plugin extensions or oder scripts?
+					Use the <<jQuery.ready()>>, it will check the availability of these rather load these.
+					If all dependencies are available then your code will execute.
+
+					The received argument is jQuery, it is very useful if jQuery are running in noConflict mode.
+					So you can use the <<$>> alias inside your handler.
+
+					=====jQuery SDK file structure:=====
+					All plugins are located in the script directory and dots in plugin names represent subdirectories.
+					* ''jQuery.core'' is ''script/jQuery/core.js''
+					* ''jQuery.ui.dialog'' is ''script/jQuery/ui/dialog.js''
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Append list items from template when the jQuery.tmpl plugin loaded and the DOM is loaded.
+
+@html				<div>
+					  <ul class="list">
+					  </ul>
+					</div>
+
+@code				jQuery.ready( 'jQuery.tmpl', function($){
+					    var tmpl = $.tmpl( '<li>${name}</li>', [
+					            {name:'list entry 1'},
+					            {name:'list entry 2'},
+					            {name:'list entry 3'},
+					            {name:'list entry 4'}
+					        ]);
+
+					    // wait for DOM ready
+					    $.ready(function(){
+					        $('ul.list').append(tmpl);
+					    });
+					});
+
+@results			<div>
+					  <ul class="list">
+					    <li>list entry 1</li>
+					    <li>list entry 2</li>
+					    <li>list entry 3</li>
+					    <li>list entry 4</li>
+					  </ul>
+					</div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Append list items from template when the jQuery.tmpl and jQuery.json plugins and the DOM is loaded.
+
+@html				<div>
+					  <ul class="list">
+					  </ul>
+					</div>
+
+@code				jQuery.ready( ['jQuery.tmpl', 'jQuery.json'], function($){
+					    var data = [
+					            {name:'list entry 1'},
+					            {name:'list entry 2'},
+					            {name:'list entry 3'},
+					            {name:'list entry 4'}
+					        ],
+					        tmpl = $.tmpl( '<li>${name}</li>', data ),
+					        json = $('<span>).text( $.toJSON(data) );
+
+					    // wait for DOM ready
+					    $.ready(function(){
+					        $('ul.list')
+					            .append(tmpl)
+					            .before( json );
+					    });
+					});
+
+@results			<div>
+					  <span>[{"name":"list entry 1"},{"name":"list entry 2"},{"name":"list entry 3"},{"name":"list entry 4"}]</span>
+					  <ul class="list">
+					    <li>list entry 1</li>
+					    <li>list entry 2</li>
+					    <li>list entry 3</li>
+					    <li>list entry 4</li>
+					  </ul>
+					</div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Append list items from template when the jQuery.tmpl and jQuery.json plugins and the DOM is loaded.
+
+@html				<div>
+					  <ul class="list">
+					  </ul>
+					</div>
+
+@code				jQuery.ready({
+					        plugin: [ 'jQuery.tmpl', 'jQuery.json' ],  // wait for plugins
+					        DOM:    true                               // wait for DOM ready
+					    }, function($){
+					        var data = [
+					                {name:'list entry 1'},
+					                {name:'list entry 2'},
+					                {name:'list entry 3'},
+					                {name:'list entry 4'}
+					            ],
+					            tmpl = $.tmpl( '<li>${name}</li>', data ),
+					            json = $('<span>).text( $.toJSON(data) );
+
+					        $('ul.list')
+					            .append(tmpl)
+					            .before( json );
+					});
+
+@results			<div>
+					  <span>[{"name":"list entry 1"},{"name":"list entry 2"},{"name":"list entry 3"},{"name":"list entry 4"}]</span>
+					  <ul class="list">
+					    <li>list entry 1</li>
+					    <li>list entry 2</li>
+					    <li>list entry 3</li>
+					    <li>list entry 4</li>
+					  </ul>
+					</div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Append list items from template when the jQuery.tmpl and jQuery.json plugins, provide-foo script and the DOM is loaded.
+
+@html				<div>
+					  <ul class="list">
+					  </ul>
+					</div>
+
+@code				jQuery.ready({
+					        plugin: [ 'jQuery.tmpl', 'jQuery.json' ],  // wait for plugins
+					        script: 'provide-foo',                     // wait for script
+					        DOM:    true                               // wait for DOM ready
+					    }, function($){
+					        var tmpl = $.tmpl( '<li>${name}</li>', data ),
+					            json = $('<span>).text( $.toJSON(window.fooData) );
+
+					        $('ul.list')
+					            .append(tmpl)
+					            .before( json );
+					});
+
+@code				jQuery.provide( 'provide-foo', function($){
+					    window.fooData = [
+					        {name:'list entry 1'},
+					        {name:'list entry 2'},
+					        {name:'list entry 3'},
+					        {name:'list entry 4'}
+					    ];
+					});
+
+@results			<div>
+					  <span>[{"name":"list entry 1"},{"name":"list entry 2"},{"name":"list entry 3"},{"name":"list entry 4"}]</span>
+					  <ul class="list">
+					    <li>list entry 1</li>
+					    <li>list entry 2</li>
+					    <li>list entry 3</li>
+					    <li>list entry 4</li>
+					  </ul>
+					</div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.plugin()                      | Specify a plugin. | method
+
+@categories			Core
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.plugin( id, [ plugins ], function(jQuery) )
+@added				1.0
+@param				id                                   | A unique plugin identifier associated to the jQuery SDK file structure. | String
+@param				plugins                              | A plugin name or an array of plugin names that define requirements for this plugin. | Optional,Array,String
+@param				function(jQuery)                     | The plugin function to execute after all required plugins are ready. Receives jQuery as argument. | Function
+@return				Promise
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.plugin( id, [ options ], function(jQuery) )
+@added				1.0
+@param				id                                   | A unique plugin identifier associated to the jQuery SDK file structure. | String
+@param				options                              | A set of type/name(s) pairs that define requirements for this plugin. | Optional,Object
+@param				function(jQuery)                     | The plugin function to execute after all dependencies are ready. Receives jQuery as argument. | Function
+@return				Promise
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				DOM                                  | A boolean indication wheather to wait for the DOM ready event. | Optional,Boolean
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				plugin                               | A plugin name or an array of plugin names. | Optional,Array,String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				script                               | A script name or an array of script names (defined with jQuery.provide()). | Optional,Array,String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.plugin()>> is a method to create plugins for jQuery SDK.
+
+					=====Dependencies controller:=====
+					jQuery SDK let you create plugins which requires other plugins or plugin extensions,
+					the central dependencies controller guarantees to provide a plugin after all dependencies are ready.
+
+					The dependencies controller handles <<jQuery.ready()>> and <<jQuery.provide()>> also.
+
+					The received argument is jQuery, it is very useful if jQuery are running in noConflict mode.
+					So you can use the <<$>> alias inside your plugin.
+
+					=====jQuery SDK file structure:=====
+					All plugins are located in the script directory and dots in plugin names represent subdirectories.
+					* ''jQuery.core'' is ''script/jQuery/core.js''
+					* ''jQuery.ui.dialog'' is ''script/jQuery/ui/dialog.js''
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Create a simple plugin without dependecies.
+
+@code				jQuery.plugin( 'jQuery.foo', function($){
+					    // run your plugin code here
+					});
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Create a plugin which requires 2 other plugins.
+
+@code				jQuery.plugin( 'jQuery.foo', ['jQuery.tmpl', 'jQuery.json'], function($){
+					    // run your plugin code here
+					});
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Create a plugin which requires 2 plugins and a provided scipt.
+
+@code				jQuery.plugin( 'jQuery.foo', {
+					        plugin: ['jQuery.tmpl', 'jQuery.dict'],
+					        script: 'foo'
+					    }, function($){
+					        // run your plugin code here
+					    });
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.provide()                     | Provide a script. | method
+
+@categories			Core
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.provide( id, [ plugins ], function(jQuery) )
+@added				1.0
+@param				id                                   | A unique identifier for the script to provide. | String
+@param				plugins                              | A plugin name or an array of plugin names that define requirements for this scipt. | Optional,Array,String
+@param				function(jQuery)                     | The script code to execute after all required plugins are ready. Receives jQuery as argument. | Function
+@return				Promise
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.provide( id, [ options ], function(jQuery) )
+@added				1.0
+@param				id                                   | A unique identifier for the script to provide. | String
+@param				options                              | A set of type/name(s) pairs that define requirements for this script. | Optional,Object
+@param				function(jQuery)                     | The script code to execute after all dependencies are ready. Receives jQuery as argument. | Function
+@return				Promise
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				DOM                                  | A boolean indication wheather to wait for the DOM ready event. | Optional,Boolean
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				plugin                               | A plugin name or an array of plugin names. | Optional,Array,String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				script                               | A script name or an array of script names (defined with jQuery.provide()). | Optional,Array,String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.provide()>> method is a part of the dependencies controler in jQuery SDK.
+
+					=====Dependencies controller:=====
+					jQuery SDK let you provide scripts for other scripts.
+
+					The received argument is jQuery, it is very useful if jQuery are running in noConflict mode.
+					So you can use the <<$>> alias inside your plugin.
+
+					=====jQuery SDK file structure:=====
+					All plugins are located in the script directory and dots in plugin names represent subdirectories.
+					* ''jQuery.core'' is ''script/jQuery/core.js''
+					* ''jQuery.ui.dialog'' is ''script/jQuery/ui/dialog.js''
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			A simple provide without dependecies.
+
+@code				jQuery.provide( 'bar', function($){
+					    // run your script code here
+					});
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			A provide which requires 2 other plugins.
+
+@code				jQuery.provide( 'bar', ['jQuery.tmpl', 'jQuery.json'], function($){
+					    // run your script code here
+					});
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			A provide which requires 2 plugins and a provided scipt.
+
+@code				jQuery.provide( 'bar', {
+					        plugin: ['jQuery.tmpl', 'jQuery.dict'],
+					        script: 'foor'
+					    }, function($){
+					        // run your script code here
+					    });
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.dependSettings                | Settings of the dependencies controller. | property
+
+@categories			Properties of the Global jQuery Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.dependSettings
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				minify                               | A boolean indication wheather to load minified files (Example: jQuery/dict.min.js instead of jQuery/dict.js) | Optional,Boolean
+@default			false
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				jsonp                                | A boolean indication wheather to load dependencies with JSONP or the name of JSONP callback.  | Optional,Boolean,String
+@default			false
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				pluginRoot                           | The path to the root directory of jQuery SDK plugin scripts.  | Optional,String
+@default			script
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<$.dependSettings>> property keeps all values  for the plugin/dependency controller.
+					Before loading jQuery SDK, <<$.dependSettings>> should already be configured with
+					<<[[api:config:Plugin Controller|jQueryConfig.depend]]>>.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.dependRegister()              | Register a handle to extend the dependencies controller. | method
+
+@categories			Core
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.dependHandle( name, handle( depend, deferred, when ) )
+@added				1.0
+@param				name                                 | Name of the handle to extend the dependencies controller. | String
+@param				handle( depend, deferred, when )     | A function to handle the extended dependencies. Receives the name of the dependency, the associated deferred object as arguments and the promise object of the dependent caller. | Function
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.dependRegister()>> methow allows to extend the dependencies controller which control calls
+					of <<[[api:method:jQuery.ready()|$.ready()]]>>, <<[[api:method:jQuery.provide()|$.provide()]]>> or <<[[api:method:jQuery.plugin()|$.plugin()]]>>.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Simple extension of the dependencies controller.
+
+@code				$.dependRegister( 'dict', function( depend, deferred ){
+					    if( !$.dict[ depend ] ){
+					        deferred.resolve();
+					    }
+					    else{
+					        $.ajax({
+					            url:        $.dependSettings.dictRoot+'/'+depend+'.json',
+					            dataType:   'json',
+					            type:       'get',
+					            asnyc:      true,
+					            cache:      true
+					        })
+					        .success(function( data ){
+					            $.dictionary( depend, data );
+					            deferred.resolve();
+					        });
+					    }
+					});

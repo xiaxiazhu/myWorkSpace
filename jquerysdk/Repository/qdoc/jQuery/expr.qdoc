@@ -1,0 +1,93 @@
+
+@plugin				jQuery.expr
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				:changed                       | Selects all input, textarea, select and button elements which have a changed value. | selector
+
+@categories			Forms
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				:changed
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        The <<:changed>> selector basically selects all form controls which value was different to the default
+					value on startup.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Finds all changed input elements.
+
+@html				<form>
+					  <input type="button" value="Input Button"/>
+					  <input type="checkbox" />
+
+					  <input type="file" />
+					  <input type="hidden" />
+					  <input type="image" />
+
+					  <input type="password" />
+					  <input type="radio" />
+					  <input type="reset" />
+
+					  <input type="submit" />
+					  <input type="text" />
+					  <select><option>Option</option></select>
+
+					  <textarea></textarea>
+					  <button>Button</button>
+					</form>
+
+@code				// change value of the text input
+					$(':text').val('change value');
+
+					// find all change inputs
+					$(':changed');
+					// results only the previous modified text input
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				:readonly                      | Selects all elements that are readonly. | selector
+
+@categories			Forms
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				:readonly
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        The <<:readonly>> selector works for input, textarea, select and button elements.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Finds all readonly input elements.
+
+@html				<form>
+					  <input type="button" value="Input Button"/>
+					  <input type="checkbox" />
+
+					  <input type="file" />
+					  <input type="hidden" />
+					  <input type="image" />
+
+					  <input type="password" readonly="readonly" />
+					  <input type="radio" />
+					  <input type="reset" />
+
+					  <input type="submit" />
+					  <input type="text" readonly="readonly" />
+					  <select><option>Option</option></select>
+
+					  <textarea></textarea>
+					  <button>Button</button>
+					</form>
+
+@code				$(':input:readonly');
+					// results only the password and text input

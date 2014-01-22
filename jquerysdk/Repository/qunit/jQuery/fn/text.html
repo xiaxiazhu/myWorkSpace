@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 2 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.fn.text");
+
+	asyncTest('jQuery.fn.text', function() {
+
+		$.ready( 'jQuery.fn.text', function($){
+
+			equals(
+				$('#qunit-fixture').text(),
+				'\n		Hello World!\n		\n			Inner text ... !\n			\n				Deeper inner text ...\n			\n		\n		middle of my text \n		\n			more inner text\n		\n		The end.\n	',
+				"$('#qunit-fixture').text()"
+			);
+
+			equals(
+				$('#qunit-fixture').text(true),
+				'\n		Hello World!\n		 \n		middle of my text \n		 \n		The end.\n	',
+				"$('#qunit-fixture').text(true)"
+			);
+
+			start();
+
+		});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">
+		Hello World!
+		<div class="box">
+			Inner text ... !
+			<span>
+				Deeper inner text ...
+			</span>
+		</div>
+		middle of my text 
+		<span>
+			more inner text
+		</span>
+		The end.
+	</div>
+</body>
+</html>

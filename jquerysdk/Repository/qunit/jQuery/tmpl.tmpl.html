@@ -1,0 +1,12 @@
+<div>
+	<ul {{elem(jQuerySub) 'list'}}>
+	{{each(i, row) rows}}
+		<li {{elem 'listitem_'+i}}>${row}</li>
+	{{/each}}
+	</ul>
+	<ul {{elem 'listed'}}>
+	{{each(i, row) rows}}
+		<li {{elem 'listedItems'}}>${row}</li>
+	{{/each}}
+	</ul>
+</div>

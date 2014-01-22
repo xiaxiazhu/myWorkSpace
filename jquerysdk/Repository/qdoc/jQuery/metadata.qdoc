@@ -1,0 +1,125 @@
+
+@plugin				jQuery.metadata
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				.metadata()                    | Extracts, caches, and returns metadata from the first element in the jQuery collection. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.metadata( [ options ] )
+@added				1.0
+@param				options                        | A set of key/value pairs that define the type of metadata to be extracted. All options are optional. | Optional,Object
+@return				Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				type                           | Specify the expected locations of metadata for the element. Possible values are 'class': search in the class attribute, 'elem': search for an element inside the element being searched, and 'attr': search in a custom attribute on the element. | String
+@added				1.0
+@default			'class'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				name                           | When type is 'attr', specify the name of the custom attribute for which to search. When type is 'elem', specify the tag name of the element for which to search. | String
+@added				1.0
+@default			'metadata'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				single                         | The name given to the data extracted from the element in the jQuery cache. | String
+@added				1.0
+@default			'metadata'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<.metadata()>> method is capable of extract data from classes, random attributes, child elements and HTML5 data-* attributes.
+
+					Attention: <<.metadata()>> could be in conflict with <<.metaparse()>>, be sure to prevent conflicts use different modes for these methods.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Extract data from the first element in the jQuery collection.
+
+@html				<li class="someclass {some: 'data'} anotherclass">...</li>
+
+@code				var data = $('li.someclass').metadata();
+
+					if( data.some && data.some == 'data' )
+					    alert('It Worked!');
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.metadata.get()          | Extracts, caches, and returns metadata from an element. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.metadata.get( elem, [options] )
+@added				1.0
+@param				elem                           | The element containing the metadata to be extracted. | Object
+@param				options                        | A set of key/value pairs that define the type of metadata to be extracted. All options are optional. | Optional,Object
+@return				Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				type                           | Specify the expected locations of metadata for the element. Possible values are 'class': search in the class attribute, 'elem': search for an element inside the element being searched, and 'attr': search in a custom attribute on the element. | String
+@added				1.0
+@default			'class'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				name                           | When type is 'attr', specify the name of the custom attribute for which to search. When type is 'elem', specify the tag name of the element for which to search. | String
+@added				1.0
+@default			'metadata'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				single                         | The name given to the data extracted from the element in the jQuery cache. | String
+@added				1.0
+@default			'metadata'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.metadata.get()>> method is capable of extract data from classes, random attributes, child elements and HTML5 data-* attributes.
+
+					Attention: <<jQuery.metadata.get()>> could be in conflict with <<.metaparse()>>, be sure to prevent conflicts use different modes for these methods.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Extract data from element.
+
+@html				<li id="meta" class="someclass {some: 'data'} anotherclass">...</li>
+
+@code				var data = jQuery.metadata.get( document.getElementById('meta') );
+
+					if( data.some && data.some == 'data' )
+					    alert('It Worked!');
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.metadata.setType()      | Sets the default type and name options for all following metadata requests. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.metadata.setType( type, name )
+@added				1.0
+@param				type                           | Specify the expected location of metadata for the element. Possible values are 'class' (default): search in the class attribute, 'elem': search for an element inside the element being searched, and 'attr': search in a custom attribute on the element. | String
+@param				name                           | The name of the tag or attribute for which to search depending on the value of the 'type' option. | String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Sets the default type and name options for all following metadata requests.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Use the meta attribute as default for metadata requests.
+
+@code				$.metadata.setType( 'attr', 'meta' )

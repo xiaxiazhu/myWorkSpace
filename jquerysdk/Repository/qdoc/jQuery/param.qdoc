@@ -1,0 +1,37 @@
+
+@plugin				jQuery.param
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				jQuery.param()                 | Takes a serialized string and returns the resulting JavaScript object. | method
+
+@categories			Utilities | Collection Manipulation
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				jQuery.param( string )
+@added				1.0
+@param				string                         | A string to deserialize. | String
+@return				Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        Parse a serialized string and return the resulting JavaScript object.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Deserialize a complex string.
+
+@code				$.param( 'banana=yellow&strawberry=red&group%5Bred%5D=strawberry&group%5Bblue%5D%5B%5D=berry&group%5Bblue%5D%5B%5D=other&group%5Bblue%5D%5B%5D=%5B%5D' );
+
+@results			{
+					    "banana": "yellow",
+					    "strawberry": "red",
+					    "group": {
+					        "red": "strawberry",
+					        "blue": [ "berry", "other", "[]" ]
+					    }
+					}
+
+

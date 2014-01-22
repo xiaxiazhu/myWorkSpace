@@ -1,0 +1,81 @@
+
+@plugin				jQuery.fn.class
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.hasClass()                          | Determine whether any of the matched elements are assigned the given class. | method
+
+@categories			Attributes
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.hasClass( className )
+@added				1.0
+@param				className                            | The class name to search for or a regular expression. | String,Regexp
+@return				Boolean
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        The <<.hasClass()>> method will return true if the class is assigned to an element or the regular expression test success, even if other classes also are.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Check if element has class foo.
+
+@html				<div id="mydiv" class="foo bar"></div>
+
+@code				$('#mydiv').hasClass('foo')
+
+@results			true
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Check if element has class fo.
+
+@html				<div id="mydiv" class="foo bar"></div>
+
+@code				$('#mydiv').hasClass('fo')
+
+@results			false
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Check if class of element match /fo\w+/.
+
+@html				<div id="mydiv" class="foo bar"></div>
+
+@code				$('#mydiv').hasClass(/fo\w+/)
+
+@results			true
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.removeClass()                       | Remove a single class, multiple classes, or all classes from each element in the set of matched elements. | method
+
+@categories			Attributes
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.removeClass( [ className ] )
+@added				1.0
+@param				className                            | A class name to be removed or a regular expression to catch classes to remove from the class attribute of each matched element. | String,Regexp
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        If a class name is included as a parameter, then only that class will be removed from the set of matched elements. If no class names are specified in the parameter, all classes will be removed.
+
+@example			Remove classes from element.
+
+@html				<div id="mydiv" class="foa fob foc foo bar ball"></div>
+
+@code				$('#mydiv').removeClass('foo')
+					// 'foa fob foc bar ball'
+
+					$('#mydiv').removeClass(/fo\w+/)
+					// 'bar ball'
+
+					$('#mydiv').removeClass()
+					// ''

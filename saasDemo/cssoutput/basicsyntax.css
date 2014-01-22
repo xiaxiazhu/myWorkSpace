@@ -1,0 +1,95 @@
+@charset "UTF-8";
+div {
+  color: #129999;
+  background: #129999; }
+
+.rounded {
+  　　　　border-left-radius: 5px; }
+
+body {
+  　　　　top: 150px;
+  　　　　right: 1000%; }
+
+div h1 {
+  color: red; }
+
+p {
+  border-color: red; }
+
+a:hover {
+  color: #ffb3ff; }
+
+.class1, .class2 {
+  border: 1px solid #ddd; }
+
+.class2 {
+  font-size: 120%; }
+
+div {
+  float: left;
+  margin-left: 10px; }
+
+div {
+  float: left;
+  margin-right: 20px; }
+
+#navbar li {
+  border-top-left-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -webkit-border-top-left-radius: 10px; }
+
+#footer {
+  border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px; }
+
+div {
+  color: #d6d65c;
+  color: #a3a329;
+  color: gray;
+  color: #3333cc; }
+
+p {
+  border: 1px solid; }
+
+p {
+  background-color: #fff; }
+
+.border-1 {
+  border: 1px solid blue; }
+
+.border-2 {
+  border: 2px solid blue; }
+
+.border-3 {
+  border: 3px solid blue; }
+
+.border-4 {
+  border: 4px solid blue; }
+
+.border-5 {
+  border: 5px solid blue; }
+
+.border-6 {
+  border: 6px solid blue; }
+
+.border-7 {
+  border: 7px solid blue; }
+
+.border-8 {
+  border: 8px solid blue; }
+
+.border-9 {
+  border: 9px solid blue; }
+
+.item-6 {
+  width: 12em; }
+
+.item-4 {
+  width: 8em; }
+
+.item-2 {
+  width: 4em; }
+
+#sidebar {
+  width: 50px; }

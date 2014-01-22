@@ -1,0 +1,216 @@
+
+@plugin				jQuery.fn.json
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				.toJSON()                            | Transform the first element in the set of matched elements to JSON format. | method
+
+@categories			Attributes
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.toJSON( [ options ] )
+@added				1.0
+@param				options                              | A map of additional options pass to the method. | Optional,Object
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				extended                             | A boolean indicating whether convert each element to an array | Boolean
+@added				1.0
+@default			false
+
+@option				camelCase                            | A boolean indicating whether convert element and attribute names to CamelCase. | Boolean
+@added				1.0
+@default			false
+
+@option				multiple                             | A selector to convert each element witch pas the selecter to an array. | String
+@added				1.0
+
+@option				cdata                                | A selector to handle the contents each element witch pas the selecter as CDATA-Section. | String
+@added				1.0
+
+@option				getObject                            | A boolean indicating whether return the JSON formated data as object. | Boolean
+@added				1.0
+@default			false
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<.toJSON()>> method convert the DOM structure of the first element in the set of matched elements,
+					to a JSON string.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Convert XMl to JSON string.
+
+@xml				<list>
+					  Start
+					  <entry full-name="Number 1">
+					    <nr>1</nr>
+					    <category>Tests</category>
+					    <desc>
+					      <p>Text of no. 1.</p>
+					      <a hre="entry/1/more.html">more...</a>
+					    </desc>
+					  </entry>
+					  <entry full-name="Number 2">
+					    <nr>2</nr>
+					    <category>Tests</category>
+					    <category>Advanced</category>
+					    <desc>
+					      <p>Text of no. 2.</p>
+					      <a hre="entry/2/more.html">more...</a>
+					    </desc>
+					  </entry>
+					  End
+					</list>
+
+@code				$('list').toJSON();
+
+@results			{
+					    "entry": [{
+					        "nr": "1",
+					        "category": "Tests",
+					        "desc": {
+					            "p": "Text of no. 1.",
+					            "a": {
+					                "href": "entry/1/more.html",
+					                "text": "more..."
+					            }
+					        },
+					        "full-name": "Number 1"
+					    }, {
+					        "nr": "2",
+					        "category": ["Tests", "Advanced"],
+					        "desc": {
+					            "p": "Text of no. 2.",
+					            "a": {
+					                "href": "entry/2/more.html",
+					                "text": "more..."
+					            }
+					        },
+					        "full-name": "Number 2"
+					    }],
+					    "text": ["Start", "End"]
+					}
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Convert XMl to JSON string.
+
+@xml				<list>
+					  Start
+					  <entry full-name="Number 1">
+					    <nr>1</nr>
+					    <category>Tests</category>
+					    <desc>
+					      <p>Text of no. 1.</p>
+					      <a hre="entry/1/more.html">more...</a>
+					    </desc>
+					  </entry>
+					  <entry full-name="Number 2">
+					    <nr>2</nr>
+					    <category>Tests</category>
+					    <category>Advanced</category>
+					    <desc>
+					      <p>Text of no. 2.</p>
+					      <a hre="entry/2/more.html">more...</a>
+					    </desc>
+					  </entry>
+					  End
+					</list>
+
+@code				$('list')
+					    .toJSON({
+					        camelCase:  true,
+					        multiple:  'entry > category',
+					        cdata:    'entry > desc'
+					    });
+
+@results			{
+					    "entry": [{
+					        "nr": "1",
+					        "category": ["Tests"],
+					        "desc": "<p>Text of no. 1.</p><a href=\\"entry/1/more.html\\">more...</a>",
+					        "fullName": "Number 1"
+					    }, {
+					        "nr": "2",
+					        "category": ["Tests", "Advanced"],
+					        "desc": "<p>Text of no. 2.</p><a href=\\"entry/2/more.html\\">more...</a>",
+					        "fullName": "Number 2"
+					    }],
+					    "text": ["Start", "End"]
+					}
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Convert XMl to JSON string.
+
+@xml				<list>
+					  Start
+					  <entry full-name="Number 1">
+					    <nr>1</nr>
+					    <category>Tests</category>
+					    <desc>
+					      <p>Text of no. 1.</p>
+					      <a hre="entry/1/more.html">more...</a>
+					    </desc>
+					  </entry>
+					  <entry full-name="Number 2">
+					    <nr>2</nr>
+					    <category>Tests</category>
+					    <category>Advanced</category>
+					    <desc>
+					      <p>Text of no. 2.</p>
+					      <a hre="entry/2/more.html">more...</a>
+					    </desc>
+					  </entry>
+					  End
+					</list>
+
+@code				$('list')
+					    .toJSON({
+					        extended: true
+					    });
+
+@results			{
+						"entry": [{
+					        "nr": [{
+					            "text": ["1"]
+					        }],
+					        "category": [{
+					            "text": ["Tests"]
+					        }],
+					        "desc": [{
+					            "p": [{
+					                "text": ["Text of no. 1."]
+					            }],
+					            "a": [{
+					                "href": "entry/1/more.html",
+					                "text": ["more..."]
+					            }]
+					        }],
+					        "full-name": "Number 1"
+					    }, {
+					        "nr": [{
+					            "text": ["2"]
+					        }],
+					        "category": [{
+					            "text": ["Tests"]
+					        }, {
+					            "text": ["Advanced"]
+					        }],
+					        "desc": [{
+					            "p": [{
+					                "text": ["Text of no. 2."]
+					            }],
+					            "a": [{
+					                "href": "entry/2/more.html",
+					                "text": ["more..."]
+					            }]
+					        }],
+					        "full-name": "Number 2"
+					    }],
+					    "text": ["Start", "End"]
+					}

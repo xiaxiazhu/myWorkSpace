@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 1 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.class");
+
+	asyncTest("jQuery.class", function() {
+
+		$.ready('jQuery.class', function($){
+
+			$.Class( 'BaseClass', {
+				Constructor: function(){
+					this.base = '';
+				},
+				A: function(){
+					this.base += 'A';
+				},
+				B: function(){
+					this.base += 'B';
+				}
+			});
+
+			$.Class( 'ExtClass', BaseClass, {
+				Constructor: function(){
+					this.ext = '';
+				},
+				A: function(){
+					this.ext += 'A';
+				},
+				B: function(){
+					this.Inherited(arguments);
+					this.ext += 'B';
+				}
+			});
+
+			var baseObj = new BaseClass(),
+				extObj = new ExtClass();
+
+
+			equal(
+				baseObj.base,
+				'',
+				"new BaseClass()"
+			);
+			baseObj.A();
+			equal(
+				baseObj.base,
+				'A',
+				".A(); .base == 'A'"
+			);
+			baseObj.B();
+			equal(
+				baseObj.base,
+				'AB',
+				".B(); .base == 'AB'"
+			);
+
+
+			equal(
+				extObj.base,
+				'',
+				"new ExtClass()"
+			);
+			extObj.A();
+			equal(
+				extObj.base,
+				'',
+				".A(); .base == ''"
+			);
+			equal(
+				extObj.ext,
+				'A',
+				".A(); .ext == 'A'"
+			);
+			extObj.B();
+			equal(
+				extObj.base,
+				'B',
+				".B(); .base == 'B'"
+			);
+			equal(
+				extObj.ext,
+				'AB',
+				".B(); .ext == 'AB'"
+			);
+
+			start();
+		});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">test markup, will be hidden</div>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 1 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script',
+		dictRoot:	'qunit'
+	},
+	dict:{
+		region:		'de-DE'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.dict");
+
+	asyncTest("jQuery.dict", function() {
+
+		$.ready({
+				plugin:	'jQuery.dict',
+				dict:	['jQuery.dict','en-US:jQuery.dict']
+			}, function($){
+
+				var dictDE = $.dict('de-DE:jQuery.dict'),
+					dictEN = $.dict('en-US:jQuery.dict');
+
+
+				// translate --> de-DE
+				equal(
+					dictDE.translate('apply'),
+					'Übernehmen',
+					"dictDE.translate('apply') == 'Übernehmen'"
+				);
+				equal(
+					dictDE.translate('close'),
+					'Schließen',
+					"dictDE.translate('close') == 'Schließen'"
+				);
+				equal(
+					dictDE.translate('{apply}'),
+					'Übernehmen',
+					"dictDE.translate('{apply}') == 'Übernehmen'"
+				);
+				equal(
+					dictDE.translate('{close}'),
+					'Schließen',
+					"dictDE.translate('{close}') == 'Schließen'"
+				);
+				// translate --> en-US
+				equal(
+					dictEN.translate('apply'),
+					'Apply',
+					"dictEN.translate('apply') == 'Apply'"
+				);
+				equal(
+					dictEN.translate('close'),
+					'Close',
+					"dictEN.translate('close') == 'Close'"
+				);
+				equal(
+					dictEN.translate('{apply}'),
+					'Apply',
+					"dictEN.translate('{apply}') == 'Apply'"
+				);
+				equal(
+					dictEN.translate('{close}'),
+					'Close',
+					"dictEN.translate('{close}') == 'Close'"
+				);
+				// parse --> de-DE
+				equal(
+					dictDE.parse('{apply} {cancel}'),
+					'Übernehmen Abbrechen',
+					"dictDE.parse('{apply} {cancel}') == 'Übernehmen Abbrechen'"
+				);
+				equal(
+					dictDE.parse('{ok} {close}'),
+					'Ok Schließen',
+					"dictDE.parse('{ok} {close}') == 'Ok Schließen'"
+				);
+				// parse --> en-US
+				equal(
+					dictEN.parse('{apply} {cancel}'),
+					'Apply Cancel',
+					"dictEN.parse('{apply} {cancel}') == 'Apply Cancel'"
+				);
+				equal(
+					dictEN.parse('{ok} {close}'),
+					'Ok Close',
+					"dictEN.parse('{ok} {close}') == 'Ok Close'"
+				);
+				// .dictParse --> de-DE
+				equal(
+					$('.dict').clone().dictParse('jQuery.dict').text(),
+					'\n			{ok}\n			{cancel}\n			Schließen\n		\n			{apply} {cancel}\n			Schließen\n			{{apply}}\n				${close}\n			{{/apply}}\n		',
+					"$('.dict').clone().dictParse('jQuery.dict').text()"
+				);
+				equal(
+					$('.dict').clone().dictParse('jQuery.dict',true).text(),
+					'\n			Ok\n			Abbrechen\n			Schließen\n		\n			Übernehmen Abbrechen\n			Schließen\n			{{apply}}\n				${close}\n			{{/apply}}\n		',
+					"$('.dict').clone().dictParse('jQuery.dict',true).text()"
+				);
+				equal(
+					$('.dict').clone().dictParse(dictDE,true).text(),
+					'\n			Ok\n			Abbrechen\n			Schließen\n		\n			Übernehmen Abbrechen\n			Schließen\n			{{apply}}\n				${close}\n			{{/apply}}\n		',
+					"$('.dict').clone().dictParse(dictDE,true).text()"
+				);
+				// .dictParse --> en-US
+				equal(
+					$('.dict').clone().dictParse('en-US:jQuery.dict').text(),
+					'\n			{ok}\n			{cancel}\n			Close\n		\n			{apply} {cancel}\n			Close\n			{{apply}}\n				${close}\n			{{/apply}}\n		',
+					"$('.dict').clone().dictParse('en-US:jQuery.dict').text()"
+				);
+				equal(
+					$('.dict').clone().dictParse('en-US:jQuery.dict',true).text(),
+					'\n			Ok\n			Cancel\n			Close\n		\n			Apply Cancel\n			Close\n			{{apply}}\n				${close}\n			{{/apply}}\n		',
+					"$('.dict').clone().dictParse('en-US:jQuery.dict',true).text()"
+				);
+				equal(
+					$('.dict').clone().dictParse(dictEN,true).text(),
+					'\n			Ok\n			Cancel\n			Close\n		\n			Apply Cancel\n			Close\n			{{apply}}\n				${close}\n			{{/apply}}\n		',
+					"$('.dict').clone().dictParse(dictEN,true).text()"
+				);
+
+				start();
+			});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">
+		<div class="dict">
+			<span>{ok}</span>
+			<span>{cancel}</span>
+			{close}
+		</div>
+		<div class="dict">
+			<span><strong>{apply}</strong> {cancel}</span>
+			{close}
+			{{apply}}
+				<span>${close}</span>
+			{{/apply}}
+		</div>
+	</div>
+</body>
+</html>

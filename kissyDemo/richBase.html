@@ -1,0 +1,92 @@
+<html>
+<head>
+	<title></title>
+	<script src="http://localhost/myWorkSpace/tool/kissy-master/build/seed.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://a.tbcdn.cn/apps/tmall/mui/form/css/form.css"></head>
+	<script src="./src/js/rich-base.js"></script>
+
+	<style type="text/css">
+		#J_MainForm ol{
+			list-style-type: none;
+			list-style: none;
+		}
+	</style>
+
+<body>
+	<h1 style="text-align:center;">KISSY 基类RichBase</h1>
+
+	<form id="J_MainForm">
+		<ol class="ui-form-bd">
+			<li class="ui-form-row">
+				<label class="ui-form-label"> <em class="ui-form-req">*</em>
+					引用:
+				</label>
+				<div class="ui-form-right">
+					<textarea class="ui-form-textarea" name="">
+KISSY.add("brix/core/chunk", function(S, RichBase) {
+
+}, {
+    requires: ["rich-base"]
+});
+					</textarea>
+				</div>
+			</li>
+						<li class="ui-form-row">
+				<label class="ui-form-label"> <em class="ui-form-req">*</em>
+					继承:
+				</label>
+				<div class="ui-form-right">
+					<textarea class="ui-form-textarea" name="">
+
+KISSY.add("brix/core/chunk", function(S, RichBase) {
+    var Chunk = RichBase.extend({},{});
+    return Chunk;
+}, {
+    requires: ["rich-base"]
+});
+					</textarea>
+				</div>
+			</li>
+
+		</ol>
+	</form>
+
+
+
+</body>
+</html>
+
+<script type="text/javascript">
+
+	setTimeout(function(){
+
+		KISSY.use('brix/core/chunk',function  (S,Chunk) {
+
+			var chunk = new Chunk({name:1,        	
+			listeners:{
+        		myfire:function(e) {
+        			// body...
+        			alert('myfire trigger')
+        		},
+        		hefire:{
+        			fn:function  (e) {
+        				// body...
+        				alert(this);
+        			},
+        			context:{}
+        		}
+        	}
+
+        });
+			
+			// chunk.set('name',2);  // 测试监听事件
+
+			chunk.fire('hefire');
+
+			//chunk.destroy()  析构
+
+		});
+
+	},1000);
+
+</script>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 2 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.fn.attr");
+
+	asyncTest('jQuery.fn.attr', function() {
+
+		$.ready( 'jQuery.fn.attr', function($){
+
+			equals(
+				$(':input').filter('[title]').length,
+				2,
+				"$(':input').filter('[title]').length"
+			);
+
+			equals(
+				$(':input').toggleAttr('title','MyTitle').filter('[title]').length,
+				1,
+				"$(':input').toggleAttr('title','MyTitle').filter('[title]').length"
+			);
+
+			equals(
+				$(':input').filter('[name=A]').length,
+				1,
+				"$(':input').filter('[name=A]').length"
+			);
+
+			equals(
+				$(':input').filter('[name=B]').length,
+				1,
+				"$(':input').filter('[name=B]').length"
+			);
+
+			equals(
+				$(':input').toggleAttr('name','A').filter('[name=A]').length,
+				2,
+				"$(':input').toggleAttr('name','A').filter('[name=A]').length"
+			);
+
+			equals(
+				$(':input').toggleAttr('name','A','B').filter('[name=B]').length,
+				2,
+				"$(':input').toggleAttr('name','A','B').filter('[name=B]').length"
+			);
+
+			equals(
+				$(':input').toggleAttr('name','B').filter('[name=B]').length,
+				1,
+				"$(':input').toggleAttr('name','B').filter('[name=B]').length"
+			);
+
+			equals(
+				$(':input').toggleAttr('name','C').filter('[name=C]').length,
+				3,
+				"$(':input').toggleAttr('name','C').filter('[name=C]').length"
+			);
+
+			start();
+		});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">
+		<input type="text" name="A" title="MyTitle"/>
+		<input type="text" name="C" title="MyTitle"/>
+		<input type="text" name="B"/>
+	</div>
+</body>
+</html>

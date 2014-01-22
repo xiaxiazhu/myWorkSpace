@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 1 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	},
+	mime:{
+		groups:{
+			'custom/*':		'application/json,application/zip,application/xml'
+		}
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.mime");
+
+	asyncTest("jQuery.mime", function() {
+
+		$.ready('jQuery.mime', function($){
+			
+			equal(
+				$.mime('previewable/*'),
+				'image/png,image/jpeg,image/jpg,image/gif,image/vnd.microsoft.icon',
+				"$.mime('previewable/*')"
+			);
+			equal(
+				$.mime('application/json,previewable/*,text/html'),
+				'application/json,image/png,image/jpeg,image/jpg,image/gif,image/vnd.microsoft.icon,text/html',
+				"$.mime('application/json,previewable/*,text/html')"
+			);
+			equal(
+				$.mime('custom/*'),
+				'application/json,application/zip,application/xml',
+				"$.mime('custom/*')"
+			);
+			
+			equal(
+				$.mime('jpeg'),
+				'image/jpeg',
+				"$.mime('jpeg')"
+			);
+			equal(
+				$.mime('zip'),
+				'application/zip',
+				"$.mime('zip')"
+			);
+			
+			equal(
+				$.mime('image/jpeg','previewable/*'),
+				true,
+				"$.mime('image/jpeg','previewable/*')"
+			);
+			equal(
+				$.mime('application/zip','previewable/*'),
+				false,
+				"$.mime('application/zip','previewable/*')"
+			);
+			equal(
+				$.mime('application/xml','custom/*'),
+				true,
+				"$.mime('application/xml','custom/*')"
+			);
+			
+			equal(
+				$.mime('png','previewable/*'),
+				true,
+				"$.mime('png','previewable/*')"
+			);
+			equal(
+				$.mime('xml','previewable/*'),
+				false,
+				"$.mime('xml','previewable/*')"
+			);
+			equal(
+				$.mime('xml','custom/*'),
+				true,
+				"$.mime('xml','custom/*')"
+			);
+			
+			equal(
+				$.mime('png','custom/*,image/*'),
+				true,
+				"$.mime('png','custom/*,image/*')"
+			);
+
+			start();
+		});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">test markup, will be hidden</div>
+</body>
+</html>

@@ -1,0 +1,407 @@
+<html>
+<head>
+	<title></title>
+
+	<script src="http://localhost/myWorkSpace/tool/kissy-master/build/seed.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://a.tbcdn.cn/apps/tmall/mui/btn/css/btn.css"></head>
+	<style type="text/css">
+	#tb td{
+		height: 30px;
+		text-align: center;
+	}
+</style>
+<body>
+	<h1 style="text-align:center;">XTemplate</h1>
+
+	<table id="tb" border="1" width="40%" style="margin:50px auto;">
+		<tr>
+			<td>
+				<span>简单的变量替换</span>
+				<a href="javascript:void(0)" id="c1"  class="ui-btn-s-primary">触发</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span>函数作为模板</span>
+				<a href="javascript:void(0)" id="c2"  class="ui-btn-s-primary">触发</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span>if语句</span>
+				<a href="javascript:void(0)" id="c3"  class="ui-btn-s-primary">触发</a>
+			</td>
+		</tr>
+				<tr>
+			<td>
+				<span>each</span>
+				<a href="javascript:void(0)" id="c4"  class="ui-btn-s-primary">触发</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
+								<span>注释</span>
+				<a href="javascript:void(0)" id="c5"  class="ui-btn-s-primary">触发</a>
+
+			</td>	
+		</tr>
+				<tr>
+			<td>
+								<span>HTML转义</span>
+				<a href="javascript:void(0)" id="c6"  class="ui-btn-s-primary">触发</a>
+
+			</td>	
+		</tr>
+						<tr>
+			<td>
+								<span>全局块状命令</span>
+				<a href="javascript:void(0)" id="c7"  class="ui-btn-s-primary">触发</a>
+
+			</td>
+		</tr>
+						<tr>
+			<td>
+								<span>简单表达式</span>
+				<a href="javascript:void(0)" id="c8"  class="ui-btn-s-primary">触发</a>
+
+			</td>
+		</tr>
+								<tr>
+			<td>
+								<span>each 中的关系表达式</span>
+				<a href="javascript:void(0)" id="c9"  class="ui-btn-s-primary">触发</a>
+
+			</td>
+		</tr>
+										<tr>
+			<td>
+								<span>关系表达式
+目前支持 === !== > >= < <=</span>
+				<a href="javascript:void(0)" id="c10"  class="ui-btn-s-primary">触发</a>
+			</td>
+		</tr>
+								<tr>
+			<td>
+								<span>支持 set 设置变量</span>
+				<a href="javascript:void(0)" id="c11"  class="ui-btn-s-primary">触发</a>
+			</td>
+		</tr>
+										<tr>
+			<td>
+								<span>未闭合标签报错</span>
+				<a href="javascript:void(0)" id="c12"  class="ui-btn-s-primary">触发</a>
+			</td>
+		</tr>
+
+
+
+	</table>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+
+
+	KISSY.use('node,xtemplate,event',function(S,N,XTemplate,E){
+
+
+		var $ = S.all;
+
+    	$('#c1').on('click',function  (ev) {
+
+    		//简单的变量替换 
+
+    		window.supportVariable = function () {
+        			
+        	var tpl = 'this is {{title}}!';
+
+        	var data = {title: 'o'};
+
+    		var render = new XTemplate(tpl).render(data);
+        		alert(render);
+    		};
+
+    		supportVariable();
+
+    	});
+
+    	$('#c2').on('click',function  (ev) {
+
+    		// 函数作为模板
+
+    		 var fnTpl = function () {
+        var tpl = function (scopes) {
+            return 'this is ' + scopes[0].title + '!';
+        };
+
+        var data = {
+            title: 'o'
+        };
+
+        var render = new XTemplate(tpl).render(data);
+
+        alert(render);
+    };
+
+    fnTpl();
+
+    	});
+
+    	//if 语句
+    	$('#c3').on('click',function  (ev) {
+
+    		var supportIf = function () {
+        var tpl = '{{#if title}}has title{{/if}}\n' +
+            '{{@if title2}}has title2{{else}}not has title2{{/if}}';
+
+        var data = {
+            title: 'o',
+            title2: ''
+        };
+
+        var render = new XTemplate(tpl).render(data);
+
+        alert(render);
+    };
+
+    	supportIf();
+
+
+    	});
+
+    	//each
+
+    	$('#c4').on('click',function  (ev) {
+
+    		var supportEachObject = function () {
+        var tpl = '{{#each data}}你的大名{{name}}-你的大index{{xindex}}/你的大{{xcount}}|{{/each}}';
+
+        var data = {
+            data: [
+                {
+                    name: 1
+                },
+                {
+                    name: 2
+                }
+            ]
+        };
+
+        var render = new XTemplate(tpl).render(data);
+
+        alert(render);
+    };
+    	supportEachObject();
+    	});
+
+    	//注释
+
+    	$('#c5').on('click',function  (ev) {
+
+    		    window.supportComment = function () {
+        var tpl = 'my {{!\n' +
+            'comment' +
+            '\n}} {{title}}';
+
+        var data = {
+            title: 'oo'
+        };
+
+
+        var render = new XTemplate(tpl).render(data);
+
+        alert(render);
+    };
+
+    	supportComment();
+
+
+    	});
+
+    	//html 转义
+
+    	$('#c6').on('click',function  (ev) {
+
+
+    		    window.supportEscapeHtml = function () {
+        var tpl = 'my {{title}} is {{{title}}}';
+
+        var data = {
+            title: '<a>'
+        };
+
+        var render = new XTemplate(tpl).render(data);
+
+        alert(render);
+    };
+
+    supportEscapeHtml();
+    	});
+
+    	// 命令
+    	$('#c7').on('click',function  (ev) {
+    		   window.supportGlobalBlockCommand = function () {
+        XTemplate.addCommand('global2', function (scopes, option) {
+            return 'global2-' + option.fn(scopes);
+        });
+
+        var tpl = 'my {{#global2}}{{title}}{{/global2}}';
+
+        var data = {
+            title: '1'
+        };
+
+        var render = new XTemplate(tpl).render(data);
+
+        alert(render);
+    };
+
+    	supportGlobalBlockCommand();
+    		// body...
+    	})
+
+    	// 简单表达式作为变量
+
+    	$('#c8').on('click',function  (ev) {
+
+    		    window.supportExpressionVariable = function () {
+        var tpl = '{{n+3*4/2}}';
+
+        var data = {
+            n: 1
+        };
+
+        var render=new XTemplate(tpl).render(data);
+
+        alert(render);
+    };
+
+    	supportExpressionVariable();
+    		// body...
+    	})
+
+    	$('#c9').on('click',function  (ev) {
+
+    		   window.supportRelationalExpressionEach = function () {
+        var tpl = '{{#each data}}' +
+            '{{#if this > ../limit+1}}' +
+            '{{this+1}}-{{xindex+1}}-{{xcount}}|' +
+            '{{/if}}' +
+            '{{/each}}' +
+            '';
+
+        var data = {
+            data: [11, 5, 12, 6, 19, 0],
+            limit: 10
+        };
+
+        var render = new XTemplate(tpl).render(data);
+
+        alert(render);
+    };
+
+    	supportRelationalExpressionEach();
+    		// body...
+    	});
+
+
+    	$('#c10').on('click',function function_name (argument) {
+    		// body...
+
+    		 window.supportRelationalExpression = function () {
+        var tpl = '{{#if n > n2+4/2}}' +
+            '{{n+1}}' +
+            '{{else}}' +
+            '{{n2+1}}' +
+            '{{/if}}';
+
+        var tpl3 = '{{#if n === n2+4/2}}' +
+            '{{n+1}}' +
+            '{{else}}' +
+            '{{n2+1}}' +
+            '{{/if}}';
+
+
+        var tpl4 = '{{#if n !== n2+4/2}}' +
+            '{{n+1}}' +
+            '{{else}}' +
+            '{{n2+1}}' +
+            '{{/if}}';
+
+
+        var data = {
+                n: 5,
+                n2: 2
+            }, data2 = {
+                n: 1,
+                n2: 2
+            },
+            data3 = {
+                n: 4,
+                n2: 2
+            };
+
+        alert(new XTemplate(tpl).render(data));
+
+        alert(new XTemplate(tpl).render(data2));
+
+        alert(new XTemplate(tpl3).render(data3));
+
+        alert(new XTemplate(tpl4).render(data3));
+    };
+
+    supportRelationalExpression();
+    	})
+
+	$('#c11').on('click',function  (ev) {
+
+		    window.supportSet = function () {
+        var tpl = '{{#each data}}' +
+            '{{set n2=this*2 n3=this*3}}' +
+            '{{n2}}-{{n3}}|' +
+            '{{/each}}';
+
+        var data = {
+            data: [1, 2]
+        };
+
+        var render = new XTemplate(tpl).render(data);
+
+        alert(render);
+    };
+
+    supportSet();
+
+
+	});
+
+	$('#c12').on('click',function  (ev) {
+
+		window.supportDetectUnclosed = function () {
+        var tpl = '{{#if title}}\n' +
+            'shoot\n' +
+            '';
+
+        var data = {
+            title: 'o'
+        };
+
+        try {
+            new XTemplate(tpl).render(data);
+        } catch (e) {
+            alert(e);
+            throw e;
+        }
+    };
+
+    supportDetectUnclosed();
+		// body...
+	})
+
+
+	});
+
+</script>

@@ -1,0 +1,169 @@
+{
+    "project": {
+        "name": "The yuidocDemo API",
+        "description": "The yuidocDemo API: a library for doing X, Y, and Z",
+        "version": "1.1.0",
+        "url": "http://127.0.0.1:3000/"
+    },
+    "files": {
+        "/Users/superstarwulin/Sites/demo/myWorkSpace/tool/yuidocDemo/paysuccess.js": {
+            "name": "/Users/superstarwulin/Sites/demo/myWorkSpace/tool/yuidocDemo/paysuccess.js",
+            "modules": {},
+            "classes": {
+                "PaySuccess": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "PaySuccess": {
+            "name": "PaySuccess",
+            "shortname": "PaySuccess",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "/Users/superstarwulin/Sites/demo/myWorkSpace/tool/yuidocDemo/paysuccess.js",
+            "line": 3,
+            "description": "This is the description for my class.",
+            "is_constructor": 1
+        }
+    },
+    "classitems": [
+        {
+            "file": "/Users/superstarwulin/Sites/demo/myWorkSpace/tool/yuidocDemo/paysuccess.js",
+            "line": 12,
+            "description": "双十一评价降级开关",
+            "itemtype": "property",
+            "name": "On",
+            "type": "Boolean",
+            "default": "'true'",
+            "class": "PaySuccess"
+        },
+        {
+            "file": "/Users/superstarwulin/Sites/demo/myWorkSpace/tool/yuidocDemo/paysuccess.js",
+            "line": 22,
+            "description": "get data from ratewrite app,\nfetch the data and save to _data field",
+            "itemtype": "method",
+            "name": "getList",
+            "params": [
+                {
+                    "name": "null",
+                    "description": "",
+                    "type": "Null"
+                }
+            ],
+            "return": {
+                "description": "null",
+                "type": "Null"
+            },
+            "class": "PaySuccess"
+        },
+        {
+            "file": "/Users/superstarwulin/Sites/demo/myWorkSpace/tool/yuidocDemo/paysuccess.js",
+            "line": 55,
+            "description": "render the review list when data is ready",
+            "itemtype": "method",
+            "name": "renderList",
+            "params": [
+                {
+                    "name": "null",
+                    "description": "",
+                    "type": "Null"
+                }
+            ],
+            "return": {
+                "description": "null",
+                "type": "Null"
+            },
+            "class": "PaySuccess"
+        },
+        {
+            "file": "/Users/superstarwulin/Sites/demo/myWorkSpace/tool/yuidocDemo/paysuccess.js",
+            "line": 117,
+            "description": "main init and call",
+            "itemtype": "method",
+            "name": "init",
+            "params": [
+                {
+                    "name": "config",
+                    "description": "组件配置",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "containterid",
+                            "description": "containter append the review list to container ,avaliable for 、 id 、 node",
+                            "type": "Object"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "null",
+                "type": "Null"
+            },
+            "class": "PaySuccess"
+        },
+        {
+            "file": "/Users/superstarwulin/Sites/demo/myWorkSpace/tool/yuidocDemo/paysuccess.js",
+            "line": 138,
+            "description": "add click event for statics",
+            "itemtype": "method",
+            "name": "clickGoInit",
+            "params": [
+                {
+                    "name": "null",
+                    "description": "",
+                    "type": "Null"
+                }
+            ],
+            "return": {
+                "description": "null",
+                "type": "Null"
+            },
+            "class": "PaySuccess"
+        },
+        {
+            "file": "/Users/superstarwulin/Sites/demo/myWorkSpace/tool/yuidocDemo/paysuccess.js",
+            "line": 165,
+            "description": "erase init style for first element",
+            "itemtype": "method",
+            "name": "eraseInitStyle",
+            "params": [
+                {
+                    "name": "null",
+                    "description": "",
+                    "type": "Null"
+                }
+            ],
+            "return": {
+                "description": "null",
+                "type": "Null"
+            },
+            "class": "PaySuccess"
+        },
+        {
+            "file": "/Users/superstarwulin/Sites/demo/myWorkSpace/tool/yuidocDemo/paysuccess.js",
+            "line": 196,
+            "description": "get the containter node from argument",
+            "itemtype": "method",
+            "name": "getContainer",
+            "params": [
+                {
+                    "name": "v",
+                    "description": "current node of container",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "null",
+                "type": "Null"
+            },
+            "class": "PaySuccess"
+        }
+    ],
+    "warnings": []
+}

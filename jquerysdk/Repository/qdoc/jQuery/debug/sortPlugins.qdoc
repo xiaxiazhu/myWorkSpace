@@ -1,0 +1,33 @@
+
+@plugin				jQuery.debug.sortPlugins
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				jQuery.debug.sortPlugins()           | Debug order of plugins. | method
+
+@categories			Debug
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				jQuery.debug.sortPlugins( [ plugins ], function(list) )
+@added				1.0
+@param				plugins                              | A plugin name or an array of plugin names that define requirements. | Array,String
+@param				function(list)                       | A handler to execute after all required plugins are ready. Receives the sorted plugin list as argument. | Function
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        The <<jQuery.debug.sortPlugins()>> is a debugging tool to get a list of already loaded plugins,
+					additionally we can add some plugins with the <<plugins>> argumnet.
+
+					The list is sorted in the order in which the plugins depend on each other.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Get a list of loaded plugins.
+
+@code				jQuery.debug.sortPlugins( ['jQuery.base64', 'jQuery.tmpl'], function( list ){
+					    alert( list.join(', ') );
+					});
+
+@results			jQuery.json, jQuery.base64, jQuery.tmpl

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 1 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.cookie");
+
+	asyncTest("jQuery.cookie", function() {
+
+		$.ready('jQuery.cookie', function($){
+
+			$.cookie( 'qunit::A', 'cookie A' );
+			$.cookie( 'qunit::B', '1 cookie' );
+			$.cookie( 'qunit::C', 'cookie 2' );
+			
+			equal(
+				$.cookie('qunit::A'),
+				'cookie A',
+				"$.cookie('qunit::A')"
+			);
+			equal(
+				$.cookie('qunit::B'),
+				'1 cookie',
+				"$.cookie('qunit::B')"
+			);
+			equal(
+				$.cookie('qunit::C'),
+				'cookie 2',
+				"$.cookie('qunit::C')"
+			);
+			
+			$.cookie( 'qunit::A', null );
+			$.cookie( 'qunit::B', null );
+			$.cookie( 'qunit::C', null );
+
+			start();
+		});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">test markup, will be hidden</div>
+</body>
+</html>

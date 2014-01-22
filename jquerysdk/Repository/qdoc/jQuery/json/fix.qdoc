@@ -1,0 +1,22 @@
+
+@plugin				jQuery.json.fix
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				jQuery.toJSON()                | Takes a JavaScript object and returns the resulting well-formed JSON string. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				jQuery.toJSON( obj )
+@added				1.2
+@param				obj                            | A object to stringify. | Array,Number,Object,String
+@return				string
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        Stringify a JavaScript object and returns the resulting well-formed JSON string.
+					
+					The jQuery.json.fix plugin is specially built, for browsers which don't support native JSON methods.

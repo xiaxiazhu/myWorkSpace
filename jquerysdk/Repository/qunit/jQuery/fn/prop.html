@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 2 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.fn.prop");
+
+	asyncTest('jQuery.fn.prop', function() {
+
+		$.ready( 'jQuery.fn.prop', function($){
+
+			equals(
+				$(':input').filter(':disabled').length,
+				2,
+				"$(':input').filter(':disabled').length"
+			);
+
+			equals(
+				$(':input').toggleProp('disabled',true).filter(':disabled').length,
+				1,
+				"$(':input').toggleProp('disabled',true).filter(':disabled').length"
+			);
+
+			equals(
+				$(':input').filter(':checked').length,
+				2,
+				"$(':input').filter(':checked').length"
+			);
+
+			equals(
+				$(':input').toggleProp('checked',true).filter(':checked').length,
+				1,
+				"$(':input').toggleProp('checked',true).filter(':checked').length"
+			);
+
+			equals(
+				$(':input').filter('[multiple]').length,
+				0,
+				"$(':input').filter('[multiple]').length"
+			);
+
+			equals(
+				$(':input').toggleProp('multiple',true).filter('[multiple]').length,
+				3,
+				"$(':input').toggleProp('multiple',true).filter('[multiple]').length"
+			);
+
+			equals(
+				$(':input').filter('[tabindex=2]').length,
+				1,
+				"$(':input').filter('[tabindex=2]').length"
+			);
+
+			equals(
+				$(':input').toggleProp('tabindex',2,0).filter('[tabindex=2]').length,
+				2,
+				"$(':input').toggleProp('tabindex',2,0).filter('[tabindex=2]').length"
+			);
+
+			start();
+		});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">
+		<input type="checkbox" disabled="disabled" checked="checked" tabindex="2"/>
+		<input type="checkbox" disabled="disabled"/>
+		<input type="checkbox" checked="checked"/>
+	</div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+
+@plugin				jQuery.json
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				jQuery.toJSON()                      | Takes a JavaScript object and returns the resulting well-formed JSON string. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				jQuery.toJSON( obj )
+@added				1.0
+@param				obj                                  | A object to stringify. | Array,Number,Object,String
+@return				string
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        Stringify a JavaScript object and returns the resulting well-formed JSON string.
+					
+					For browsers which don't support a native JSON  methods, the jQuery.json plugin will load the jQuery.json.fix plugin automatically.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Stringify an object.
+
+@code				$.toJSON({
+					    banana: "yellow",
+					    strawberry: "red",
+					    group: {
+					        red: "strawberry",
+					        blue: [ "berry", "other", "[]" ]
+					    }
+					});
+
+@results			{"banana":"yellow","strawberry":"red","group":{"red":"strawberry","blue":["berry","other","[]"]}}
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				jQuery.support.JSON                  | Support of native JSON methods. | property
+
+@categories			Utilities | Properties of the Global jQuery Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				jQuery.support.JSON
+@added				1.2
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        A boolean indication whether the browser supports native JSON methods like <<JSON.parse()>> or <<JSON.stringify()>>.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				jQuery.fromJSON()                    | Takes a well-formed JSON string and returns the resulting JavaScript object. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				jQuery.fromJSON( json )
+@added				1.3
+@param				json                                 | The JSON string to parse. | String
+@return				string
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        Parse a well-formed JSON string and returns the resulting JavaScript object.
+					
+					The <<$.fromJSON()>> method is defined according to an API standard of converter methods. For example 
+					<<[[api:method:jQuery.toUTF8|$.toUTF8()]]>> and <<[[api:method:jQuery.fromUTF8|$.fromUTF8()]]>> respectively 
+					<<[[api:method:jQuery.toBASE64|$.toBASE64()]]>> and <<[[api:method:jQuery.fromBASE64|$.fromBASE64()]]>>. So <<$.fromJSON()>> is 
+					just the opposite of <<[[api:method:jQuery.toJSON|$.toJSON()]]>> and is equal to <<[[api:method:jQuery.parseJSON|$.parseJSON()]]>>.
+					
+					For browsers which don't support a native JSON  methods, the jQuery.json plugin will load the jQuery.json.fix plugin automatically.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Get an object from JSON string.
+
+@code				$.fromJSON('{"banana":"yellow","strawberry":"red","group":{"red":"strawberry","blue":["berry","other","[]"]}}');
+
+@results			{
+					    banana: "yellow",
+					    strawberry: "red",
+					    group: {
+					        red: "strawberry",
+					        blue: [ "berry", "other", "[]" ]
+					    }
+					}

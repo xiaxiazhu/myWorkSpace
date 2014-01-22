@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 2 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.fn.class");
+
+	asyncTest('jQuery.fn.class', function() {
+
+		$.ready( 'jQuery.fn.class', function($){
+
+			equals(
+				$('#qunit-fixture div:eq(1)').hasClass(/test-/),
+				true,
+				"$('#qunit-fixture div:eq(1)').hasClass(/test-/)"
+			);
+
+			equals(
+				$('#qunit-fixture div:eq(3)').hasClass(/test-/),
+				false,
+				"$('#qunit-fixture div:eq(3)').hasClass(/test-/)"
+			);
+
+			equals(
+				$('#qunit-fixture div:eq(1)').hasClass(/-test/),
+				true,
+				"$('#qunit-fixture div:eq(1)').hasClass(/-test/)"
+			);
+
+			equals(
+				$('#qunit-fixture div:eq(3)').hasClass(/-ok/),
+				false,
+				"$('#qunit-fixture div:eq(3)').hasClass(/-ok/)"
+			);
+
+			equals(
+				$('#qunit-fixture div').filter('.test').length,
+				3,
+				"$('#qunit-fixture div').filter('.test').length"
+			);
+
+			equals(
+				$('#qunit-fixture div').filter('.test-alpha').length,
+				3,
+				"$('#qunit-fixture div').filter('.test-alpha').length"
+			);
+
+			equals(
+				$('#qunit-fixture div').filter('.test-beta').length,
+				3,
+				"$('#qunit-fixture div').filter('.test-beta').length"
+			);
+
+			equals(
+				$('#qunit-fixture div').filter('.alpha-test').length,
+				4,
+				"$('#qunit-fixture div').filter('.alpha-test').length"
+			);
+
+			equals(
+				$('#qunit-fixture div').filter('.beta-test').length,
+				3,
+				"$('#qunit-fixture div').filter('.beta-test').length"
+			);
+
+			equals(
+				$('#qunit-fixture div').filter('.beta-ok').length,
+				2,
+				"$('#qunit-fixture div').filter('.beta-ok').length"
+			);
+
+			equals(
+				$('#qunit-fixture div').filter('.beta-test, .beta-ok').length,
+				4,
+				"$('#qunit-fixture div').filter('.beta-test, .beta-ok').length"
+			);
+
+			equals(
+				$('#qunit-fixture div').removeClass(/beta-/).filter('.beta-test, .beta-ok').length,
+				0,
+				"$('#qunit-fixture div').removeClass(/beta-/).filter('.beta-test, .beta-ok').length"
+			);
+
+			equals(
+				$('#qunit-fixture div').removeClass(/alpha-/).filter('.alpha-test').length,
+				0,
+				"$('#qunit-fixture div').removeClass(/alpha-/).filter('.alpha-test').length"
+			);
+
+			equals(
+				$('#qunit-fixture div').filter('.alpha-test, .beta-test, .beta-ok, .test-alpha, .test-beta, .test').length,
+				4,
+				"$('#qunit-fixture div').filter('.alpha-test, .beta-test, .beta-ok, .test-alpha, .test-beta, .test').length"
+			);
+
+			equals(
+				$('#qunit-fixture div').removeClass(/test/).filter('.alpha-test, .beta-test, .beta-ok, .test-alpha, .test-beta, .test').length,
+				0,
+				"$('#qunit-fixture div').removeClass(/test/).filter('.alpha-test, .beta-test, .beta-ok, .test-alpha, .test-beta, .test').length"
+			);
+
+			start();
+		});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">
+		<div class="alpha-test beta-test beta-ok test-alpha test-beta test"></div>
+		<div class="alpha-test test-alpha beta-ok test-beta test"></div>
+		<div class="alpha-test beta-test test-alpha  test-beta"></div>
+		<div class="alpha-test beta-test test"></div>
+	</div>
+</body>
+</html>

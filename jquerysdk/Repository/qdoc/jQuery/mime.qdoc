@@ -1,0 +1,133 @@
+
+@plugin				jQuery.mime
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				MIME                           | Configure default values for future MIME calls. | config
+
+@categories			Utilities | Properties of jQueryConfig
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQueryConfig.mime[ options ]
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				unknow                         | A value for unknown MIME types. | String
+@added				1.0
+@default			'application/octet-stream'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				groups                         | A map of advanced MIME groups with sets of MIME types. | Object
+@added				1.0
+@default			{ ... }
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				mimeRegxMap                    | A map of MIME types/regular expression pairs to find MIME types by file extension. | Object
+@added				1.0
+@default			{ ... }
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        All subsequent <<[[api:method:jQuery.mime()|$.mime()]]>> calls will use the configured options.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.mime()                  | Get the MIME type by file extension. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.mime( ext )
+@added				1.0
+@param				ext                            | A file extension like 'jpeg','doc' or .... | String
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This method converts a file extension to a MIME type using the <<jQuery.mimeSettings.mimeRegxMap>> properties.
+					If the extension doesn't match a MIME type <<jQuery.mime()>> retuns to unknow mime which is specifiend in
+					<<jQuery.mimeSettings.unknow>> property.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Get MIME type from jpg file extension.
+
+@code				$.mime("jpg");
+
+@results			image/jpeg
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.mime()                  | Replace MIME groups with specified mimetypes. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.mime( mimes )
+@added				1.0
+@param				mimes                          | A string of MIME types and/or MIME groups. | String
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This method replace MIME groups with MIME types specified in <<jQuery.mimeSettings.groups>>.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Replace a MIME group.
+
+@code				$.mime("image/tiff,previewable/*");
+
+@results			image/tiff,image/png,image/jpeg,image/jpg,image/gif,image/vnd.microsoft.icon
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			A not speciefied MIME group will be not replaced.
+
+@code				$.mime("image/tiff,image/*");
+
+@results			image/tiff,image/*
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.mime()                  | Checks if a MIME type or file extension is accepted. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.mime( mimes, accept )
+@added				1.0
+@param				mimes                          | A MIME type or file extension. | String
+@param				accept                         | A string of MIME types and/or MIME groups as acception. | String
+@return				Boolean
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This method replace MIME groups with MIME types specified in <<jQuery.mimeSettings.groups>>.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Check some mimes or file extensions of acception.
+
+@code				$.mime( "image/tiff" "previewable/*");
+					// results: false
+
+					$.mime( "image/jpg" "previewable/*");
+					// results: true
+
+					$.mime( "png" "previewable/*");
+					// results: true
+
+					$.mime( "doc" "previewable/*");
+					// results: false

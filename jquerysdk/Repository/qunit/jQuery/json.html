@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 1 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.json");
+
+	asyncTest("jQuery.json", function() {
+
+		$.ready('jQuery.json', function($){
+		
+			equal(
+				$.toJSON({ 0:'A', 1:'B', 2:'C', 3:'D', 4:'E', 5:'F', 6:'G', 7:'H', 8:'I', length:9 }),
+				'{"0":"A","1":"B","2":"C","3":"D","4":"E","5":"F","6":"G","7":"H","8":"I","length":9}',
+				"$.toJSON({ 0:'A', 1:'B', 2:'C', 3:'D', 4:'E', 5:'F', 6:'G', 7:'H', 8:'I', length:9 })"
+			);
+			equal(
+				$.toJSON([ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I' ]),
+				'["A","B","C","D","E","F","G","H","I"]',
+				"$.toJSON([ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I' ])"
+			);
+			equal(
+				$.toJSON({ 0:'A', 1:'B', 2:'C', 3:[ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I' ], 4:'E', R:{A:1}, 6:'G', 7:'H', 8:'I', length:9 }),
+				'{"0":"A","1":"B","2":"C","3":["A","B","C","D","E","F","G","H","I"],"4":"E","R":{"A":1},"6":"G","7":"H","8":"I","length":9}',
+				"$.toJSON({ 0:'A', 1:'B', 2:'C', 3:[ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I' ], 4:'E', R:{A:1}, 6:'G', 7:'H', 8:'I', length:9 })"
+			);
+			
+			
+
+			start();
+		});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">test markup, will be hidden</div>
+</body>
+</html>

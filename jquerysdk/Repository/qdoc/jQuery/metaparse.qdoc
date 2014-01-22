@@ -1,0 +1,294 @@
+
+@plugin				jQuery.metaparse
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				Metaparse                      | Default values for future metaparse calls. | config
+
+@categories			Properties of jQueryConfig
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQueryConfig.metaparse[ options ]
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        For details on the options available for <<.metaparse()>>, see <<[[api:method:.metaparse()]]>>.
+
+					All subsequent metaparse calls using any function will use the configured options, unless overridden by the individual calls.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				type                           | An extraction type 'class', 'elem', 'attr', 'data' or 'html5'. | String
+@added				1.0
+@default			'class'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				name                           | The name of the attribute, html5 data-* attribute or element to extract the code. | String
+@added				1.0
+@default			'metaparse'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				autoparse                      | A boolean indication whether to run metaparse automatically with the '.metaparse' selector (Will trigger the 'metaparse' event also on the document). | Boolean
+@added				1.2
+@default			false
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				autoparse                      | A selector to run metaparse automatically of each element in the set of matched elements (Will trigger the 'metaparse' event also on the document). | Boolean
+@added				1.2
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				autoparse                      | A map set up the 'selector' and optional the 'ready' dependencies to run metaparse automatically. Example: {selector:'.metaparse',ready:'jQuery.fn.size'}. (Will trigger the 'metaparse' event also on the document) | Object
+@added				1.2
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.metaparse()             | Run jQuery methods instantly without script tags. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.metaparse( element, [ options ] )
+@added				1.0
+@param				element                        | A DOM element. | Object
+@param				options                        | A set of key/value pairs that configure the .metaparse() call. A default are set for any option by jQuery.metaparseSettings. | Optional,Object
+@return				Promise
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				type                           | An extraction type 'class', 'elem', 'attr', 'data' or 'html5'. | String
+@added				1.0
+@default			'class'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				name                           | The name of the attribute, html5 data-* attribute or element to extract the code. | String
+@added				1.0
+@default			'metaparse'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.metaparse()>> method is capable of runnig meta code extracted from classes, random attributes, child elements and HTML5 data-* attributes.
+					It returns a deferred object, which indicates whether the metaparse call is done.
+					
+					The syntax: write jQuery methods without selector and use single quotes,
+					the extracted code will be applied to the element which containted the code.
+
+					====A standart meta code====
+
+					 ".fadeTo()"
+
+					====Meta code using a plugin====
+
+					It's posible to load dependencies like the <<jQuery.ready()>> call in a metaparse statement.
+					Just set <<.ready(dependencies)>> in front of the statement.
+
+					 ".ready({plugin:'jQuery.fn.size'}).outerWidth(500)"
+
+					====Meta code using a jQuery sub class====
+
+					If you want to run code from jQuery sub classes write the name of the sub class object before the first dot.
+					Be sure the sub class was defined on the global window object like this <<window.$sub = $.sub()>>.
+
+					 "$sub.fadeTo().subMethod()"
+
+					====Meta code using plugins and a jQuery sub class====
+
+					You also can combine dependencies and jQuery sub classes in a metaparse statement.
+
+					 "$sub.ready({plugin:['$sub.core','jQuery.fn.size']}).outerWidth(500).subMethod()"
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Run meta code extracted from a class.
+
+@html				<ul>
+					  <li class="metaparse .fadeTo(0.5)" id="fade"></li>
+					</ul>
+
+@code				$.metaparse( document.getElementById('fade'), {type: 'class'});
+
+@results			<ul>
+					  <li class="metaparse " style="opacity:0.5;"></li>
+					</ul>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				.metaparse()                   | Run jQuery methods instantly without script tags. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.metaparse( [ options ] )
+@added				1.0
+@param				options                        | A set of key/value pairs that configure the .metaparse() call. A default are set for any option by jQuery.metaparseSettings. | Optional,Object
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				type                           | An extraction type 'class', 'elem', 'attr', 'data' or 'html5'. | String
+@added				1.0
+@default			'class'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				name                           | The name of the attribute, html5 data-* attribute or element to extract the code. | String
+@added				1.0
+@default			'metaparse'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<.metaparse()>> method is capable of runnig meta code extracted from classes, random attributes, child elements and HTML5 data-* attributes.
+
+					The syntax: write jQuery methods without selector and use single quotes,
+					the extracted code will be applied to the element which containted the code.
+
+					====A standart meta code====
+
+					 ".fadeTo()"
+
+					====Meta code using a plugin====
+
+					It's posible to load dependencies like the <<jQuery.ready()>> call in a metaparse statement.
+					Just set <<.ready(dependencies)>> in front of the statement.
+
+					 ".ready({plugin:'jQuery.fn.size'}).outerWidth(500)"
+
+					====Meta code using a jQuery sub class====
+
+					If you want to run code from jQuery sub classes write the name of the sub class object before the first dot.
+					Be sure the sub class was defined on the global window object like this <<window.$sub = $.sub()>>.
+
+					 "$sub.fadeTo().subMethod()"
+
+					====Meta code using plugins and a jQuery sub class====
+
+					You also can combine dependencies and jQuery sub classes in a metaparse statement.
+
+					 "$sub.ready({plugin:['$sub.core','jQuery.fn.size']}).outerWidth(500).subMethod()"
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Run meta code extracted from a class.
+
+@html				<ul>
+					  <li class="metaparse .addClass('li-1')"></li>
+					  <li class="metaparse .addClass('li-2')"></li>
+					  <li class="metaparse .addClass('li-3')"></li>
+					  <li class="metaparse .hide()"></li>
+					  <li class="metaparse .fadeTo(0.5)"></li>
+					</ul>
+
+@code				$('*.metaparse')
+					    .metaparse({
+					    	type: 'class'
+					    });
+
+@results			<ul>
+					  <li class="metaparse li-1"></li>
+					  <li class="metaparse li-2"></li>
+					  <li class="metaparse li-3"></li>
+					  <li class="metaparse " style="display:none;"></li>
+					  <li class="metaparse " style="opacity:0.5;"></li>
+					</ul>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Run meta code extracted from html5 metaparse.
+
+@html				<ul>
+					  <li metaparse=".addClass('li-1')"></li>
+					  <li metaparse=".addClass('li-2')"></li>
+					  <li metaparse=".addClass('li-3')"></li>
+					  <li metaparse=".hide()"></li>
+					  <li metaparse=".fadeTo(0.5)"></li>
+					</ul>
+
+@code				$('*[metaparse]')
+					    .metaparse({
+					    	type: 'attr',
+					    	name: 'metaparse'
+					    });
+
+@results			<ul>
+					  <li class="li-1" metaparse=""></li>
+					  <li class="li-2" metaparse=""></li>
+					  <li class="li-3" metaparse=""></li>
+					  <li metaparse=""style="display:none;"></li>
+					  <li metaparse="" style="opacity:0.5;"></li>
+					</ul>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Run meta code extracted from data (html5) attribute metaparse.
+
+@html				<ul>
+					  <li data-metaparse=".addClass('li-1')"></li>
+					  <li data-metaparse=".addClass('li-2')"></li>
+					  <li data-metaparse=".addClass('li-3')"></li>
+					  <li data-metaparse=".hide()"></li>
+					  <li data-metaparse=".fadeTo(0.5)"></li>
+					</ul>
+
+@code				$('*[data-metaparse]')
+					    .metaparse({
+					    	type: 'data',
+					    	name: 'metaparse'
+					    });
+
+					// or
+
+					$('*[data-metaparse]')
+					    .metaparse({
+					    	type: 'html5',
+					    	name: 'metaparse'
+					    });
+
+@results			<ul>
+					  <li class="li-1" data-metaparse=""></li>
+					  <li class="li-2" data-metaparse=""></li>
+					  <li class="li-3" data-metaparse=""></li>
+					  <li data-metaparse="" style="display:none;"></li>
+					  <li data-metaparse="" style="opacity:0.5;"></li>
+					</ul>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Run meta code extracted from an element.
+
+@html				<ul>
+					  <li class="metaparse"><var>.addClass('li-1')</var></li>
+					  <li class="metaparse"><var>.addClass('li-2')</var></li>
+					  <li class="metaparse"><var>.addClass('li-3')</var></li>
+					  <li class="metaparse"><var>.hide()</var></li>
+					  <li class="metaparse"><var>.fadeTo(0.5)</var></li>
+					</ul>
+
+@code				$('*.metaparse')
+					    .metaparse({
+					    	type: 'elem',
+					    	name: 'var'
+					    });
+
+@results			<ul>
+					  <li class="metaparse li-1"></li>
+					  <li class="metaparse li-2"></li>
+					  <li class="metaparse li-3"></li>
+					  <li class="metaparse " style="display:none;"></li>
+					  <li class="metaparse " style="opacity:0.5;"></li>
+					</ul>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@event				metaparse                      | This event is triggered when metaparse is done.
+@added				1.2

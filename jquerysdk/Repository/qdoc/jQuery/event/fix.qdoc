@@ -1,0 +1,24 @@
+
+@plugin				jQuery.event.fix
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				jQuery.event.fix()             | Normalize event object. | method
+
+@categories			Internals
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				jQuery.event.fix( event )
+@added				1.0
+@param				event                          | An event object to normalize | Object
+@return				Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        This method normalizes event objects for cross browser support.
+					This extended version of <<jQuery.event.fix()>> normalize also the <<event.touches>> property for
+					cross browser/device support.
+
+					The <<jQuery.event.fix()>> method works on the interal event methods like <<.bind()>> or <<.trigger()>>.

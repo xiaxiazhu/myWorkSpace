@@ -1,0 +1,35 @@
+
+@plugin				jQuery.ui.datepicker
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				.datepicker()                   | Apply the Datepicker widget for each element in the set of matched elements | method
+
+@categories			UI
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.datepicker( [ options ] )
+@added				1.2
+@param				options                        | A map of additional options pass to the widget. | String
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				region                         | A combination of an ISO 639 two-letter lowercase culture code for the language (and a two-letter uppercase code for the country or region).  | Optional,String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        In jQuery SDK are additional options available for the <<.datepicker()>> widget compared to the standard from jQuery UI.
+
+					The <<region>> option is based on the <<[[category:jQuery.i18n| jQueri.i18n]]>> plugin. 
+					Using the <<region>> option will set the following options automatically:
+					* dayNames
+					* dayNamesMin
+					* dayNamesShort	
+					* monthNames
+					* monthNamesShort
+					* firstDay
+					* shortYearCutoff
+					* dateFormat

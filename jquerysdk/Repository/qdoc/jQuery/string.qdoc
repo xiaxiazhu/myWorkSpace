@@ -1,0 +1,240 @@
+
+@plugin				jQuery.string
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				Shrink                         | Configure default values for future shrink calls. | config
+
+@categories			Utilities | Properties of jQueryConfig
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQueryConfig.shrink[ options ]
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        For details on the options available for <<$.shrink()>>, see <<[[api:method:jQuery.shrink()|$.shrink()]]>>.
+
+					All subsequent Shrink calls using any function will use the configured options, unless overridden by the individual calls.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.escExpStr()             | Escape an string for use as regular expression. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.escExpStr( string, [ except ] )
+@added				1.0
+@param				string                         | A string to escape. | String
+@param				except                         | A string containing characters to except from escaping. | Optional,String
+@return				Array
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.escExpStr()>> method escape reserved regular expression characters.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Escape all reserved regular expression characters.
+
+@code				var string = '[A-Z]*[()0-9]+';
+
+					$.escExpStr( string );
+
+@results			\[A-Z\]\*\[\(\)0-9\]\+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Escape reserved regular expression characters, excepting []*+.
+
+@code				var string = '[A-Z]*[()0-9]+';
+
+					$.escExpStr( string, '[]*+' );
+
+@results			[A-Z]*[\(\)0-9]+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.shrink()                | Shrink a text to a speciefied length. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.shrink( string, [ length ] )
+@added				1.0
+@param				string                         | A string to shrink. | String
+@param				length                         | A number to set the length of chars for the shrinked result. Default is 50. | Optional,Integer
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.shrink( string, [ options ] )
+@added				1.0
+@param				string                         | A string to shrink. | String
+@param				length                         | A set of key/value pairs that configure the scrunch. | Optional,Object
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				length                         | A number to set the length of chars for the scrunch result. | Integer
+@added				1.0
+@default			50
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				ratio                          | A number between 0 (begin) and 1 (end) to set the position of scrunch and replace it with the spacer.  | Number
+@added				1.0
+@default			1
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				cut                            | A boolean indicating whether to cut words. | Boolean
+@added				1.0
+@default			true
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				spacer                         | A string to replace the text at the scrunch position. | String
+@added				1.0
+@default			'...'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The << jQuery.shrink()>> method shrink the length of a text in different modes.
+
+					With the ratio argument you can set the shrink position, so you can trim the begin, end or middle of a text.
+					The shrinked text will replaced with a specified spacer.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Shrink a text at the end.
+
+@code				jQuery.shrink("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.")
+
+@results			Lorem ipsum dolor sit amet, consetetur sad...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Shrink a text at the begin.
+
+@code				jQuery.shrink( "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.", {
+					    ratio: 0
+					});
+
+@results			...scing elitr, sed diam nonumy eirmod tempor.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Shrink a text at the middle to length 50 without cut a word.
+
+@code				jQuery.shrink( "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.", {
+					    ratio:  0,
+					    cut:    false,
+					    spacer: "....."
+					});
+
+@results			Lorem ipsum dolor sit.....nonumy eirmod tempor.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.reverse()               | Reverse a text. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.reverse( text )
+@added				1.0
+@param				text                           | A string to reverse. | String,Number
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.reverse()>> method reverse the complete givn text, it works also with numbers, but results always a string.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Revers a text.
+
+@code				jQuery.reverse("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.");
+
+@results			.ropmet domrie ymunon maid des ,rtile gnicspidas rutetesnoc ,tema tis rolod muspi meroL
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Revers a numbers only string.
+
+@code				jQuery.reverse("124500");
+
+@results			005421
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Revers a number.
+
+@code				jQuery.reverse(124500);
+
+@results			005421
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.stripTags()             | Remove HTML and XML tags. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.stripTags( text )
+@added				1.0
+@param				text                           | A HTML or XML formated string. | String
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.stripTags()>> method remove all HTML and XML tags from the givn String.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Strip HTML.
+
+@code				jQuery.stripTags("<div>Header<span class="subheader">My Subtitle.</span>And the end.</div>");
+
+@results			Header My Subtitle. And the end
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.htmlspecialchars()      | Escape special html chars. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.htmlspecialchars( text, [ quotType ] )
+@added				1.0
+@param				text                           | A HTML or XML formated string. | String
+@param				quotType                       | An indication which quot types will be escaped, (0=double quotes, 1=single quotes, 2=both). | Optional,Integer
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.htmlspecialchars()>> method escapes special chars like ''<'', ''>'', ''&'' and quotes from a HTML and XML string.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Escape special chars.
+
+@code				jQuery.htmlspecialchars("<div>Header<span class="subheader">My Subtitle.</span>And the end.</div>");
+
+@results			&lt;div&gt;Header&lt;span class=&quot;subheader&quot;&gt;My Subtitle.&lt;/span&gt;And the end.&lt;/div&gt;
+
+

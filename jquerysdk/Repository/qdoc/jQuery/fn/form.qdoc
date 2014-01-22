@@ -1,0 +1,263 @@
+
+@plugin				jQuery.fn.form
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.formInput()                         | Find all inputs of the first matched form of matched elements. | method
+
+@categories			Forms | Tree Traversal
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.formInput()
+@added				1.0
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        The <<.formInput()>> method searchs for the first form element in matched elements and
+					returns all inputs of this form.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Find form inputs.
+
+@html				<div>
+					  <form id="form_1">
+					    <input type="text" name="A"/>
+					    <input type="text" name="B"/>
+					    <input type="text" name="C"/>
+					    <textarea type="text" name="D"></textarea>
+					  </form>
+					  <form id="form_2">
+					    <input type="text" name="X"/>
+					    <input type="text" name="Y"/>
+					    <input type="text" name="Z"/>
+					  </form>
+					</div>
+
+@code				$('form').formInput();
+
+@results			<input type="text" name="A"/>
+					<input type="text" name="B"/>
+					<input type="text" name="C"/>
+					<textarea type="text" name="D"></textarea>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Find form inputs.
+
+@html				<div>
+					  <form id="form_1">
+					    <input type="text" name="A"/>
+					    <input type="text" name="B"/>
+					    <input type="text" name="C"/>
+					    <textarea type="text" name="D"></textarea>
+					  </form>
+					  <form id="form_2">
+					    <input type="text" name="X"/>
+					    <input type="text" name="Y"/>
+					    <input type="text" name="Z"/>
+					  </form>
+					</div>
+
+@code				$('#form_2').formInput();
+
+@results			<input type="text" name="X"/>
+					<input type="text" name="Y"/>
+					<input type="text" name="Z"/>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.formGroup()                         | Find all inputs grouped by name to the first matched input of matched elements. | method
+
+@categories			Forms | Tree Traversal
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.formGroup( [ selector ] )
+@added				1.0
+@param				selector                             | A selector to prefilter elements, default: ':radio'. | Optional,String
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        This method take attribute name and value as its parameter. If the value of the named attribute
+					for the matched element the same as the givn value, the attribute will removed or replaced with the alternateValue.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Find a group of inputs.
+
+@html				<div>
+					  <form id="form_1">
+					    <input type="radio" name="A" value="1"/>
+					    <input type="radio" name="A" value="2"/>
+					    <input type="checkbox" name="B" value="1"/>
+					    <input type="checkbox" name="B" value="2"/>
+					    <input type="text" name="C"/>
+					    <textarea type="text" name="D"></textarea>
+					  </form>
+					  <form id="form_2">
+					    <input type="radio" name="A" value="2"/>
+					    <input type="radio" name="A" value="3"/>
+					    <input type="checkbox" name="B" value="2"/>
+					    <input type="checkbox" name="B" value="3"/>
+					  </form>
+					</div>
+
+@code				$('input').formGroup();
+
+@results			<input type="radio" name="A" value="1"/>
+					<input type="radio" name="A" value="2"/>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example				Find a group of inputs.
+
+@html				<div>
+					  <form id="form_1">
+					    <input type="radio" name="A" value="1"/>
+					    <input type="radio" name="A" value="2"/>
+					    <input type="checkbox" name="B" value="1"/>
+					    <input type="checkbox" name="B" value="2"/>
+					    <input type="text" name="C"/>
+					    <textarea type="text" name="D"></textarea>
+					  </form>
+					  <form id="form_2">
+					    <input type="radio" name="A" value="2"/>
+					    <input type="radio" name="A" value="3"/>
+					    <input type="checkbox" name="B" value="2"/>
+					    <input type="checkbox" name="B" value="3"/>
+					  </form>
+					</div>
+
+@code				$(':checkbox').formInput(':checkbox');
+
+@results			<input type="checkbox" name="B" value="1"/>
+					<input type="checkbox" name="B" value="2"/>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Find a group of inputs.
+
+@html				<div>
+					  <form id="form_1">
+					    <input type="radio" name="A" value="1"/>
+					    <input type="radio" name="A" value="2"/>
+					    <input type="checkbox" name="B" value="1"/>
+					    <input type="checkbox" name="B" value="2"/>
+					    <input type="text" name="C"/>
+					    <textarea type="text" name="D"></textarea>
+					  </form>
+					  <form id="form_2">
+					    <input type="radio" name="A" value="2"/>
+					    <input type="radio" name="A" value="3"/>
+					    <input type="checkbox" name="B" value="2"/>
+					    <input type="checkbox" name="B" value="3"/>
+					  </form>
+					</div>
+
+@code				$('#form_2 :radio').formInput();
+
+@results			<input type="radio" name="A" value="2"/>
+					<input type="radio" name="A" value="3"/>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.formReset()                         | Resest each inputs and first form element of matched elements. | method
+
+@categories			Forms | Attributes, Tree Traversal
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.formReset()
+@added				1.0
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        This method provides to reset one or more inputs, or a complete form.
+
+					The <<.formReset()>> reset each input, select and textarea and the complete first matched form.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Reset form elements.
+
+@html				<div>
+					  <form id="form_1">
+					    <input type="radio" name="A" value="1"/>
+					    <input type="radio" name="A" value="2"/>
+					    <input type="checkbox" name="B" value="1"/>
+					    <input type="checkbox" name="B" value="2"/>
+					    <input type="text" name="C"/>
+					    <textarea type="text" name="D"></textarea>
+					  </form>
+					  <form id="form_2">
+					    <input type="radio" name="A" value="2"/>
+					    <input type="radio" name="A" value="3"/>
+					    <input type="checkbox" name="B" value="2"/>
+					    <input type="checkbox" name="B" value="3"/>
+					  </form>
+					</div>
+
+@code				$(':checkbox').formReset();
+					// reset all input type checkbox
+
+					$('#form_2,textarea').formReset();
+					// reset all inputs form_2 and the textarea of form_1
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.formClear()                         | Clear the value of each inputs and inputs of the first form element of matched elements. | method
+
+@categories			Forms | Attributes, Tree Traversal
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.formClear()
+@added				1.0
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        This method provides to clear value or uncheck one or more inputs, or inputs of a complete form.
+
+					The <<.formClear()>> empty the value for each input, select and textarea
+					and each input, select and textarea of first matched form.
+
+					For <<<input type="radio"/>>> or <<<input type="checkbox"/>>>, the element will unchecked and the
+					value will not be empty, same works for <<<select>...</select>>> the selected <<<option/>>> will unselect
+					and the value will not be empty.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Clear form elements.
+
+@html				<div>
+					  <form id="form_1">
+					    <input type="radio" name="A" value="1"/>
+					    <input type="radio" name="A" value="2"/>
+					    <input type="checkbox" name="B" value="1"/>
+					    <input type="checkbox" name="B" value="2"/>
+					    <input type="text" name="C"/>
+					    <textarea type="text" name="D"></textarea>
+					  </form>
+					  <form id="form_2">
+					    <input type="radio" name="A" value="2"/>
+					    <input type="radio" name="A" value="3"/>
+					    <input type="checkbox" name="B" value="2"/>
+					    <input type="checkbox" name="B" value="3"/>
+					  </form>
+					</div>
+
+@code				$(':checkbox').formReset();
+					// reset all input type checkbox
+
+					$('#form_2,textarea').formReset();
+					// reset all inputs form_2 and the textarea of form_1

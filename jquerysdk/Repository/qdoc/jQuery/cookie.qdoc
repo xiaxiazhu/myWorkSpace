@@ -1,0 +1,84 @@
+
+@plugin				jQuery.cookie
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				jQuery.cookie()                | Get the value of a cookie. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				jQuery.cookie( key )
+@added				1.0
+@param				key                            | A string naming the cookie to get. | String
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        Get a previous stored cookie by a key name.
+
+					Thanks for this great plugin to [http://stilbuero.de|Klaus Hartl].
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Compare some versions control numbers.
+
+@code				// set a cookie
+					$.cookie( 'foo', 'bar' );
+
+					// get get cookie
+					$.cookie( 'foo' );
+
+@results			bar
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				jQuery.cookie()                | Set a cookie. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				jQuery.cookie( key, value, [ options ] )
+@added				1.0
+@param				key                            | A string naming the cookie to set. | String
+@param				value                          | The new cookie value. | String
+@param				options                        | A map of additional options pass to the method. | Optional,Object
+@return				String
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@option				expires                        | A number of days as storability or an expire date for the cookie. | Optional,Number,Object
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@option				path                           |  A path prefix to limit the validity of the cookie to a specific path / path prefix. | String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@option				domain                         | A domain name to limit the validity of the cookie to a specific domain. | String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@option				secure                         | A boolean indication whether to access the cookie allows only from SSL (https). | Array
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        Set a new cookie.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Set some cookies.
+
+@code				// set a cookie
+					$.cookie( 'foo', 'bar' );
+
+					// set a cookie for one week
+					$.cookie( 'foo', 'bar', {expires:7} );

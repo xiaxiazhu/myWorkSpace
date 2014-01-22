@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 2 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.ui.widget");
+
+	// Define a subclass
+	jQuerySub = $.sub();
+
+
+	asyncTest('jQuery.ui.widget', function() {
+
+		$.ready('jQuery.ui.widget', function($){
+
+				$.widget('ui.widget01',{
+				
+				});
+
+				$.widget('jQuery.ui.widget02',{
+				
+				});
+
+				$.widget('jQuerySub.ui.widget03',{
+				
+				});
+
+				$.widget('jQuerySub.ui.widget.ext',{
+				
+				});
+				
+				$('#widget01').widget01();
+				$('#widget02').widget02();
+				jQuerySub('#widget03').widget03();
+				jQuerySub('#widgetExt').widgetExt();
+				
+				// classes
+				equal(
+					$.isFunction(jQuery.ui.widget01),
+					true,
+					"$.isFunction(jQuery.ui.widget01)"
+				);
+				
+				equal(
+					$.isFunction(jQuery.ui.widget02),
+					true,
+					"$.isFunction(jQuery.ui.widget02)"
+				);
+				
+				equal(
+					jQuery.ui.widget03 === undefined,
+					true,
+					"jQuery.ui.widget03 === undefined"
+				);
+				
+				equal(
+					$.isFunction(jQuerySub.ui.widget03),
+					true,
+					"$.isFunction(jQuerySub.ui.widget03)"
+				);
+				
+				equal(
+					$.isFunction(jQuerySub.ui.widget.ext),
+					true,
+					"$.isFunction(jQuerySub.ui.widget.ext)"
+				);
+				
+				// bridged calls
+				equal(
+					$.isFunction(jQuery.fn.widget01),
+					true,
+					"$.isFunction(jQuery.fn.widget01)"
+				);
+				
+				equal(
+					$.isFunction(jQuery.fn.widget02),
+					true,
+					"$.isFunction(jQuery.fn.widget02)"
+				);
+				
+				equal(
+					jQuery.fn.widget03 === undefined,
+					true,
+					"jQuery.fn.widget03 === undefined"
+				);
+				
+				equal(
+					$.isFunction(jQuerySub.fn.widget01),
+					true,
+					"$.isFunction(jQuerySub.fn.widget01)"
+				);
+				
+				equal(
+					$.isFunction(jQuerySub.fn.widget02),
+					true,
+					"$.isFunction(jQuerySub.fn.widget02)"
+				);
+				
+				equal(
+					$.isFunction(jQuerySub.fn.widget03),
+					true,
+					"$.isFunction(jQuerySub.fn.widget03)"
+				);
+				
+				equal(
+					$.isFunction(jQuerySub.fn.widgetExt),
+					true,
+					"$.isFunction(jQuerySub.fn.widgetExt)"
+				);
+				
+				// instances
+				equal(
+					$('#widget01').data('widget01') instanceof jQuery.ui.widget01,
+					true,
+					"$('#widget01').data('widget01') instanceof jQuery.ui.widget01"
+				);
+				
+				equal(
+					$('#widget02').data('widget02') instanceof jQuery.ui.widget02,
+					true,
+					"$('#widget02').data('widget02') instanceof jQuery.ui.widget02"
+				);
+				
+				equal(
+					$('#widget03').data('jQuerySub-widget03') instanceof jQuerySub.ui.widget03,
+					true,
+					"$('#widget03').data('jQuerySub-widget03') instanceof jQuerySub.ui.widget03"
+				);
+				
+				equal(
+					$('#widgetExt').data('jQuerySub-widgetExt') instanceof jQuerySub.ui.widget.ext,
+					true,
+					"$('#widgetExt').data('jQuerySub-widgetExt') instanceof jQuerySub.ui.widget.ext"
+				);
+
+				start();
+			});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">test markup, will be hidden
+		<div id="widget01"></div>
+		<div id="widget02"></div>
+		<div id="widget03"></div>
+		<div id="widgetExt"></div>
+	</div>
+</body>
+</html>

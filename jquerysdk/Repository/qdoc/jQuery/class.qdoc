@@ -1,0 +1,176 @@
+
+@plugin				jQuery.class
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.Class()                 | Create a class object. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.Class( classname, [ superclass ], properties )
+@added				1.0
+@param				classname                      | A scope name in dot natation to define the class. | String
+@param				superclass                     | A class object or an array of class objects. | Optional,Array,Object
+@param				properties                     | An object of methods and properties for the speciefied class. | Object
+@return				Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Javascript doesn't have a Class system like Java, <<jQuery.Class()>> simulate this.
+
+					=====Setup a constuctor for the class=====
+					If a method of the properties named ''Constructor'', it will be interpreted as the constructor method on
+					calling a new instance of the class. Also all constuctors of superclasses will be exectuted on calling a
+					new instance of the class.
+
+					=====Call overwritten inherited methods=====
+					If a class overwrites a method of a superclass with an own method, you can call the original method inside
+					of the new method in the following way <<this.Inherited( arguments )>>. The arguments property is optional,
+					but if the original method expects properties, you must commit the arguments.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@method				.Proxy()
+
+@syntax				.Proxy( function )
+@added				1.0
+@param				function                       | The function or the name of a function(from current instance) whose context will be changed to the current instance. | Function
+@return				Function
+
+@description        This method is most useful for attaching event handlers to an element where the context is the current class instance.
+					Additionally, jQuery makes sure that even if you bind the function returned from <<.Proxy()>> it will still unbind the correct function, if passed the original.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Working with the class system.
+
+@code				// define a class object
+					$.Class( 'example.Controller', {
+					    Contructor: function(){
+					        this.handles = {};
+					    },
+					    addHandle: function( name, fn ){
+					        this.handles[ name ] = fn;
+					    },
+					    removeHandle: function( name ){
+					        delete( this.handles[ name ] );
+					    }
+					});
+
+					// define a class object and inherit properties from a superclass
+					$.Class( 'advanced.Controller', example.Controller, {
+					    Contructor: function( rsort ){
+					        // the inherited Constructor method will be run automatically
+					        this.handlesSort = [];
+					        this.rsort = rsort;
+					    },
+					    addHandle: function( name, fn ){
+					        // call the inherited method
+					        this.Inherited(arguments);
+
+					        if( !$.inArray(name, this.handlesSort) ){
+					            this.handlesSort.push(name);
+					        }
+					    },
+					    removeHandle: function( name ){
+					        // call the inherited method
+					        this.Inherited(arguments);
+
+					        var i = $.inArray(name, this.handlesSort);
+					        this.handlesSort.splice(i,1);
+					    },
+					    getSorted: function(){
+					        var result = {};
+
+					        this.handlesSort.sort();
+
+					        if( this.rsort ){
+					            this.handlesSort.reverse();
+					        }
+
+					        // run each with a changed context
+					        $.each( this.handlesSort, this.Proxy(function( i, name ){
+					            result[ name ] = this.handles[ name ];
+					        }));
+
+					        return result;
+					    }
+					});
+
+					// get a instance on a class
+					var test = new advanced.Controller();
+
+					// add handles to this instance
+					test.addHandle( 'C', function(){} );
+					test.addHandle( 'B', function(){} );
+					test.addHandle( 'A', function(){} );
+
+					// remove a handle
+					test.removeHandle( 'B' );
+
+					// set the rsort property to true, to reverse order on call .getSorted()
+					test.rsort = true;
+
+					// get all handles
+					test.getSorted();
+
+@results			{
+					    'A': function(){},
+					    'B': function(){}
+					}
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.isClass()               | Determine whether the argument is an class object. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.isClass( obj, [ strict ] )
+@added				1.0
+@param				obj                            | Object to test whether or not it is a function. | Function
+@param				strict                         | A boolean indication whether the class was created with jQuery.Class(). | Optional,Boolean
+@return				Booelean
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        This method determines whether the argument is an class object.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Check if the givn obj is a class.
+
+@code				// define a class object
+					$.Class( 'bar.Controller', {
+					    Contructor: function( data ){
+					        this.data = data || {};
+					    },
+					    getDat: function(){
+					        return this.data;
+					    }
+					});
+
+					foo.Controller = function( data ){
+					    this.data = data || {};
+					}
+
+					foo.prototype.getData = function(){
+					    return this.data;
+					}
+
+					$.isClass( bar );
+					// results: true
+
+					$.isClass( foo );
+					// results: true
+
+					$.isClass( bar, true );
+					// results: true
+
+					$.isClass( foo, true );
+					// results: false

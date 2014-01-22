@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 1 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.compareVersion");
+
+	asyncTest("jQuery.compareVersion", function() {
+
+		$.ready('jQuery.compareVersion', function($){
+
+			equal(
+				$.compareVersion('1.0.5','1.0.5'),
+				0,
+				"$.compareVersion('1.0.5','1.0.5')"
+			);
+			equal(
+				$.compareVersion('1.0.5','1.0.5.1'),
+				-1,
+				"$.compareVersion('1.0.5','1.0.5.1')"
+			);
+			equal(
+				$.compareVersion('1.0.5.2','1.0.5.1'),
+				1,
+				"$.compareVersion('1.0.5.2','1.0.5.1')"
+			);
+			equal(
+				$.compareVersion('1.0.5b','1.0.5'),
+				-1,
+				"$.compareVersion('1.0.5b','1.0.5')"
+			);
+			equal(
+				$.compareVersion('1.0.5b','1.0.5beta'),
+				0,
+				"$.compareVersion('1.0.5b','1.0.5beta')"
+			);
+			equal(
+				$.compareVersion('1.0.5.b','1.0.5.1'),
+				-1,
+				"$.compareVersion('1.0.5.b','1.0.5.1')"
+			);
+			equal(
+				$.compareVersion('1.0.5.2','1.0.5.2a'),
+				1,
+				"$.compareVersion('1.0.5.2','1.0.5.2a')"
+			);
+			equal(
+				$.compareVersion('1.0r','1.0rc1'),
+				-1,
+				"$.compareVersion('1.0r','1.0rc1')"
+			);
+			equal(
+				$.compareVersion('1.0.5b.4','1.0.5.b.4'),
+				0,
+				"$.compareVersion('1.0.5b.4','1.0.5.b.4')"
+			);
+
+			start();
+		});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">test markup, will be hidden</div>
+</body>
+</html>

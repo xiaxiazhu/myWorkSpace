@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 2 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.base64.fix");
+
+	asyncTest("jQuery.base64.fix", function() {
+
+		$.ready('jQuery.base64.fix', function($){
+
+			var obj	= { A:1, B:2, C:3 },
+				arr	= [ 'A', 'B', 'C' ],
+				str	= 'A B C',
+				int	= 123;
+
+			// encode
+			equal(
+				$.toBASE64(obj),
+				'eyJBIjoxLCJCIjoyLCJDIjozfQ==',
+				"$.toBASE64({ A:1, B:2, C:3 })"
+			);
+			equal(
+				$.toBASE64(arr),
+				'WyJBIiwiQiIsIkMiXQ==',
+				"$.toBASE64([ 'A', 'B', 'C' ])"
+			);
+			equal(
+				$.toBASE64(str),
+				'IkEgQiBDIg==',
+				"$.toBASE64('A B C')"
+			);
+			equal(
+				$.toBASE64(str,true),
+				'QSBCIEM=',
+				"$.toBASE64('A B C',true)"
+			);
+			equal(
+				$.toBASE64(int),
+				'MTIz',
+				"$.toBASE64(123)"
+			);
+			equal(
+				$.toBASE64(int,true),
+				'MTIz',
+				"$.toBASE64(123,true)"
+			);
+			// decode
+			same(
+				$.fromBASE64('eyJBIjoxLCJCIjoyLCJDIjozfQ=='),
+				obj,
+				"$.fromBASE64('eyJBIjoxLCJCIjoyLCJDIjozfQ==')"
+			);
+			same(
+				$.fromBASE64('WyJBIiwiQiIsIkMiXQ=='),
+				arr,
+				"$.fromBASE64('WyJBIiwiQiIsIkMiXQ==')"
+			);
+			equal(
+				$.fromBASE64('IkEgQiBDIg=='),
+				str,
+				"$.fromBASE64('IkEgQiBDIg==')"
+			);
+			equal(
+				$.fromBASE64('QSBCIEM=',true),
+				str,
+				"$.fromBASE64('QSBCIEM=',true)"
+			);
+			equal(
+				$.fromBASE64('MTIz'),
+				123,
+				"$.fromBASE64('MTIz')"
+			);
+			equal(
+				$.fromBASE64('MTIz',true),
+				123,
+				"$.fromBASE64('MTIz',true)"
+			);
+
+			start();
+		});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">test markup, will be hidden</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+
+@plugin				jQuery.md5
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				jQuery.md5()                   | Get MD5 hash from string. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				jQuery.md5( string )
+@added				1.0
+@param				string                         | A string to creat a MD5 hash from it. | String
+@return				string
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        The <<$.md5()>> method is a simple method get a hash from a string.
+
+					Thanks for this great plugin [http://www.webtoolkit.info/javascript-md5.html].
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Create a MD5 hash.
+
+@code				$.md5('geheim');
+
+@results			e8636ea013e682faf61f56ce1cb1ab5c
+
+

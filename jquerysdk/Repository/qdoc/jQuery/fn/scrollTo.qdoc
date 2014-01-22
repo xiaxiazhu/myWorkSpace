@@ -1,0 +1,88 @@
+
+@plugin				jQuery.fn.scrollTo
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				.scrollTo()                    | Scroll content of each element in the set of matched elements. | method
+
+@categories			UI
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				.scrollTo( target, [ duration ], [ options ] )
+@added				1.0
+@param				target                         | A specified target position. | Number,Object,String
+@param				duration                       | A number determining how long the animation will run. | Optional,Number
+@param				options                        | A map of additional options pass to the method. | Optional,Object
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				axis                           | Axes to be scrolled, 'x', 'y', 'xy' or 'yx'. | Optional,String
+@added				1.0
+@default			'xy'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				duration                       | A string or number determining how long the animation will run. | Optional,Number,String
+@added				1.0
+@default			'normal'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				easing                         | Name of the easing equation. | Optional,String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				margin                         | If true, target's border and margin are deducted. | Optional,Boolean
+@added				1.0
+@default			false
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				offset                         | Number or hash {left: x, top:y }. This will be added to the final position(can be negative). | Optional,Number,Object
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				over                           | Add a fraction of the element's height/width (can also be negative). | Optional,String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				queue                          | If true and both axes are scrolled, it will animate on one axis, and then on the other. Note that 'axis' being 'xy' or 'yx', concludes the order. | Optional,Boolean
+@added				1.0
+@default			false
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				onAfterFirst                   | If queing, a function to be called after scrolling the first axis. | Optional,Function
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@option				onAfter                        | A function to be called after the whole animation ended. | Optional,Number,String
+@added				1.0
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        Animated scrolling for scrolling elements, or the window itself.
+
+					'''There are many different ways to specify the target position:'''
+					* A raw number
+					* A string('44', '100px', '+=30px', etc )
+					* A DOM element (logically, child of the scrollable element)
+					* A selector, that will be relative to the scrollable element
+					* The string 'max' to scroll to the end.
+					* A string specifying a percentage to scroll to that part of the container (f.e: 50% goes to to the middle).
+					* A hash { top:x, left:y }, x and y can be any kind of number/string like above.
+
+					Thanks for this great plugin to [http://flesler.blogspot.com Ariel Flesler].
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Scroll content of a pane div.
+
+@code				$('div.pane').scrollTo({ top:150, left:50 });

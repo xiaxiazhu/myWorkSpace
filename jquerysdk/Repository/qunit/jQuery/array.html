@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 1 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.array");
+
+	asyncTest("jQuery.array", function() {
+
+		$.ready('jQuery.array', function($){
+			
+			var arr		= [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I' ],
+				arrBase	= [ 'A', 'B', 'F', 'G', 'H', 'I' ],
+				arrAdd	= ['C','D','E'],
+				
+				obj		= { 0:'A', 1:'B', 2:'C', 3:'D', 4:'E', 5:'F', 6:'G', 7:'H', 8:'I', length:9 },
+				objBase	= { 0:'A', 1:'B', 2:'F', 3:'G', 4:'H', 5:'I', length:6 },
+				objAdd	= { 0:'C', 1:'D', 2:'E', length:3 },
+				
+				t;
+			
+			t = $.merge([],arrBase);
+			$.unsplice( t, arrAdd, 2 );
+			same(
+				t,
+				arr,
+				"$.unsplice( [ 'A', 'B', 'F', 'G', 'H', 'I' ], ['C','D','E'], 2 )"
+			);
+			
+			t = $.merge([],arrBase);
+			$.unsplice( t, objAdd, 2 );
+			same(
+				t,
+				arr,
+				"$.unsplice( [ 'A', 'B', 'F', 'G', 'H', 'I' ], { 0:'C', 1:'D', 2:'E', length:3 }, 2 )"
+			);
+			
+			t = $.extend({},objBase);
+			$.unsplice( t, arrAdd, 2 );
+			same(
+				t,
+				obj,
+				"$.unsplice( { 0:'A', 1:'B', 2:'F', 3:'G', 4:'H', 5:'I', length:6 }, ['C','D','E'], 2 )"
+			);
+			
+			t = $.extend({},objBase);
+			$.unsplice( t, objAdd, 2 );
+			same(
+				t,
+				obj,
+				"$.unsplice( { 0:'A', 1:'B', 2:'F', 3:'G', 4:'H', 5:'I', length:6 }, { 0:'C', 1:'D', 2:'E', length:3 }, 2 )"
+			);
+			
+			t = $.unsplice( $('h2'), $('h1'), 1 );
+			equal(
+				t.length,
+				3,
+				"$.unsplice( $('h2'), $('h1'), 0 ).length"
+			);
+			equal(
+				t.eq(1).is('h1'),
+				true,
+				"$.unsplice( $('h2'), $('h1'), 0 ).eq(1).is('h1')"
+			);
+
+			start();
+		});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">test markup, will be hidden</div>
+</body>
+</html>

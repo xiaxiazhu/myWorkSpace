@@ -1,0 +1,59 @@
+
+@plugin				jQuery.fn.attr
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.toggleAttr()                        | Add or remove a attribute from each element in the set of matched elements. | method
+
+@categories			Attributes
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.toggleAttr( attributeName, value, [ alternateValue ] )
+@added				1.0
+@param				attributeName                        | The name of the attribute to toggle. | String
+@param				value                                | A value to be toggled for each element in the matched set. | String,Boolean
+@param				alternateValue                       | A value to be set for each element in the matched set for preventing remove the attribute. | Optional,String,Boolean
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        This method take attribute name and value as its parameter. If the value of the named attribute
+					for the matched element the same as the givn value, the attribute will removed or replaced with the alternateValue.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Toggle attribute name for all input elements.
+
+@html				<div>
+					  <input type="text" name="A" title="My title"/>
+					  <input type="text" name="C" title="My title"/>
+					  <input type="text" name="B"/>
+					</div>
+
+@code				$('input').toggleAttr( 'title', 'My title' );
+
+@results			<div>
+					  <input type="text" name="A"/>
+					  <input type="text" name="B"/>
+					  <input type="text" name="C" title="My title"/>
+					</div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Toggle attribute name for all input elements, set old to prevent remove the attribute.
+
+@html				<div>
+					  <input type="text" name="A" value="new"/>
+					  <input type="text" name="C" value="new"/>
+					  <input type="text" name="B" value="changed"/>
+					</div>
+
+@code				$('input').toggleAttr( 'value', 'new', 'old' );
+
+@results			<div>
+					  <input type="text" name="A" value="old"/>
+					  <input type="text" name="C" value="old"/>
+					  <input type="text" name="B" value="new"/>
+					</div>

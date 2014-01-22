@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- 过渡类型较容易通过w3c验证 -->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!-- kissy 1.3.0 -->
+    <script src="http://a.tbcdn.cn/??s/kissy/1.3.0/kissy-min.js,apps/tmall/tml/1.0/tml/tml-min.js,p/mall/base/global-v2.js,p/mall/base/header-v2.js,s/kissy/1.3.0/suggest-min.js?t=2013051020121022.js"></script>
+
+    <script src="http://g.tbcdn.cn/tm/fuwu-ws/1.0.7/seed.js" charset="utf-8"></script>
+
+    <link rel="stylesheet" type="text/css" href="http://g.tbcdn.cn/tm/fuwu-ws/1.0.0/css/??stepback.css,mui-msg.css,enter.css,mui-form.css,mui-btn.css">
+
+    <!-- 搜索树组件引入 -->
+
+    <!--
+    <script src="http://a.tbcdn.cn/s/kissy/1.3.0/??editor.js,htmlparser.js,component/base.js,rich-base.js,base.js,event/custom.js,event/base.js,node.js,dom/base.js,event/dom/base.js,event/dom/focusin.js,anim.js,ajax.js,json.js,cookie.js?t=20130621173819" async="" charset="utf-8"></script>
+-->
+<!-- use seed-min in production-->
+
+<!-- <link rel="stylesheet" type="text/css" href="http://g.tbcdn.cn/tm/fuwu-ws/1.0.0/css/??entry.css,table.css,btn.css,msg.css"></head>
+-->
+<style type="text/css" charset="utf-8">
+    
+        body{padding: 0;margin: 0; font: 12px/1.5 'Lucida Grande',tahoma,arial,\5b8b\4f53;}
+        .wrap-w100{min-height: 900px; *height: 900px; width: 100%; background: #eee;overflow: hidden; padding-top: 20px;}
+        /*.wrap-w100 h3{text-align: center; height: 30px;}*/
+        .body-w950{width: 950px; min-height:30px; *height:30px;
+            margin: 20px auto; *margin: 20px auto; background:#eee;}
+        .body-w750{width: 750px; min-height:30px; *height:30px;
+            margin: 20px auto; *margin: 20px auto; background:#eee;}
+        #SV_Review{min-height: 90px;*height: 90px;}
+        
+        .body-w843{
+            width: 843px; min-height:30px; 
+            margin: 20px auto; background:#eee;
+        }
+    </style>
+<body>
+
+<div class="wrap-w100">
+    <h3>商家入驻demo</h3>
+    <div class="body-w843 clearfix" id ="demoHolder">
+
+        <div class="enter-container">
+
+            <div class="mui-flow-steps mui-flow-red top-progressbar">
+                <ul class="mui-flow-steps-ul">
+                    <li class="mui-flow-steps-first mui-flow-step-done mui-flow-step-current-prov">支付宝企业认证</li>
+                    <li class="mui-flow-step-current">填写联系人信息</li>
+                    <li class="">确认品牌</li>
+                    <li class="mui-flow-steps-last">签订协议</li>
+                </ul>
+            </div>
+            <div class="enter-bodypart">
+                <ul class="steps-body">
+                    <li class="alipayReg">
+                        <!-- 提示 -->
+                        <div class="mui-msg ">
+                            <div class="mui-msg-con mui-msg-tip">
+                                1.供应商入驻需先申请企业支付宝账号，并完成企业支付宝实名认证，
+                                <a href="#">立即申请企业支付宝</a>
+                                <br/>
+                                2.提交入驻申请后，请不要更改您企业支付宝的登陆 e-mail邮箱，否则会造成您审核失败！
+                                <br/>
+                                3.如何注册和认证企业支付宝，请
+                                <a href="#">查看操作步骤</a>
+                                <s class="mui-msg-icon"></s>
+
+                            </div>
+                        </div>
+                        <!-- 账号填入 -->
+                        <div class="provider account">
+                            <label class="mui-form-label">供应商账号 :</label>
+                            <div class="mui-form-right pdlft5">
+                                <label class="">九阳售后服务中心</label>
+                                <div class="mui-msg mgrlft10">
+                                    <div class="mui-msg-con mui-msg-error">
+                                        供应商账号中必须包括售后或服务关键字,请您重新申请
+                                        <s class="mui-msg-icon"></s>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alipay account">
+                            <label class="mui-form-label">支付宝账号 :</label>
+                            <div class="mui-form-right pdlft5">
+                                <input type="text" class="mui-form-text">
+                                <div class="mui-msg mgrlft10">
+                                    <div class="mui-msg-con mui-msg-error">
+                                        支付宝账号检测失败，可能是未通过支付宝认证
+                                        <s class="mui-msg-icon"></s>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="steps-foot">
+                            <button class="mui-btn-m-primary mui-form-subbtn">下一步</button>
+                        </div>
+                    </li>
+                    <li class="current contactsInfo">
+                        <h2>会员信息</h2>
+                        <div class="vipinfo-content">
+
+
+                        </div>
+                        <h2>联系人信息</h2>
+                        <div class="contacitsinfo-content">
+
+                        </div>
+
+                    </li>
+                    <li></li>
+                    <li></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+
+    KISSY.config({debug:true});
+
+    KISSY.use('fuwu-ws/biz/enter',function (S,Enter) {
+
+
+        // tab 测试用例通过插件加载
+        KISSY.use('fuwu-ws/testcase/plugins/tab',function (S,T_Tab) {
+
+            var app = new Enter({plugins:[new T_Tab()]});
+
+            app.init();
+
+            // var pgin = app.getPlugin('T_Tab');
+
+            S.log(app.getPlugin('T_Tab'));
+
+        })
+
+    });
+
+
+</script>
+
+
+</html>

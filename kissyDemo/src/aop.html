@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <script src="http://a.tbcdn.cn/??s/kissy/1.3.0/kissy-min.js,apps/tmall/tml/1.0/tml/tml-min.js,p/mall/base/global-v2.js,p/mall/base/header-v2.js,s/kissy/1.3.0/suggest-min.js?t=2013051020121022.js"></script>
+    </head>
+    
+    <script>
+    KISSY.use('overlay,gallery/aop/1.0/', function(S, Overlay, Do) {
+
+    var popup = {
+        show: function() {
+            console.log('show');
+        },
+        hide: function() {
+            console.log('hide');
+        }
+    };
+
+    // 在pop执行show方法前执行回调
+    Do.before(function() {
+        console.log('before show');
+    }, popup, 'show');
+
+    // 在pop执行hide方法后执行回调
+    Do.after(function() {
+        console.log('after hide');
+    }, popup, 'hide');
+
+    popup.show(); // before show -> show
+    popup.hide(); // hide -> after hide
+
+});
+    </script>
+    
+    <body>
+        <p>
+AOP为Aspect Oriented Programming的缩写，意为：面向切面编程（也叫面向方面）
+</p>
+    </body>
+</html>
+
+

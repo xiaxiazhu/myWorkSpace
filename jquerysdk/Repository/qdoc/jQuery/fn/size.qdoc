@@ -1,0 +1,210 @@
+
+@plugin				jQuery.fn.size
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.innerWidth()                        | Set the current computed width for each element in the set of matched elements, including padding but not border. | method
+
+@categories			CSS | Dimensions
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.innerWidth( value )
+@added				1.0
+@deprecated			1.4
+@param				value                                | An integer representing the number of pixels. | Number
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        This method set the width of the element, including left and right padding, in pixels.
+
+					This method is not applicable to window and document objects.
+					
+					'''Deprecated plugin: Now methods from <<jQuery.fn.size>> are standard methods in jQuery.'''
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Set the inner width of all div elements with class box.
+
+@css				.box {
+					    position:    absolute,
+					    margin:      15px,
+					    border:      solid 5px,
+					    padding:     10px,
+					    width:       100px,
+					    height:      100px
+					}
+
+@html				<div class="box"></div>
+
+@code				$('div').innerWidth(300);
+
+@results			<div class="box" style="width: 280px;"></div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.innerHeight()                       | Set the current computed height for each element in the set of matched elements, including padding but not border. | method
+
+@categories			CSS | Dimensions
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.innerHeight( value )
+@added				1.0
+@deprecated			1.4
+@param				value                                | An integer representing the number of pixels. | Number
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        This method set the height of the element, including top and bottom padding, in pixels.
+
+					This method is not applicable to window and document objects.
+					
+					'''Deprecated plugin: Now methods from <<jQuery.fn.size>> are standard methods in jQuery.'''
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Set the inner height of all div elements with class box.
+
+@css				.box {
+					    position:    absolute,
+					    margin:      15px,
+					    border:      solid 5px,
+					    padding:     10px,
+					    width:       100px,
+					    height:      100px
+					}
+
+@html				<div class="box"></div>
+
+@code				$('div').innerHeight(300);
+
+@results			<div class="box" style="height: 280px;"></div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.outerWidth()                        | Set the current computed width for each element in the set of matched elements, including padding and border. | method
+
+@categories			CSS | Dimensions
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.outerWidth( value, [ includeMargin ] )
+@added				1.0
+@deprecated			1.4
+@param				value                                | An integer representing the number of pixels. | Number
+@param				includeMargin                        | A Boolean indicating whether to include the element's margin in the calculation. | Optional,Boolean
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        This method set the width of the element, including left and right padding, border, and optionally margin, in pixels.
+
+					This method is not applicable to window and document objects.
+					
+					'''Deprecated plugin: Now methods from <<jQuery.fn.size>> are standard methods in jQuery.'''
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Set the outer width of all div elements with class box.
+
+@css				.box {
+					    position:    absolute,
+					    margin:      15px,
+					    border:      solid 5px,
+					    padding:     10px,
+					    width:       100px,
+					    height:      100px
+					}
+
+@html				<div class="box"></div>
+
+@code				$('div').outerWidth(300);
+
+@results			<div class="box" style="width: 270px;"></div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Set the outer width inclusive margin of all div elements with class box.
+
+@css				.box {
+					    position:    absolute,
+					    margin:      15px,
+					    border:      solid 5px,
+					    padding:     10px,
+					    width:       100px,
+					    height:      100px
+					}
+
+@html				<div class="box"></div>
+
+@code				$('div').outerWidth( 300, true );
+
+@results			<div class="box" style="width: 240px;"></div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@entry				.outerHeight()                       | Set the current computed height for each element in the set of matched elements, including padding and border. | method
+
+@categories			CSS | Dimensions
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@syntax				.outerHeight( value, [ includeMargin ] )
+@added				1.0
+@deprecated			1.4
+@param				value                                | An integer representing the number of pixels. | Number
+@param				includeMargin                        | A Boolean indicating whether to include the element's margin in the calculation. | Optional,Boolean
+@return				jQuery
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@description        This method set the height of the element, including top and bottom padding, border, and optionally margin, in pixels.
+
+					This method is not applicable to window and document objects.
+					
+					'''Deprecated plugin: Now methods from <<jQuery.fn.size>> are standard methods in jQuery.'''
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Set the outer height of all div elements with class box.
+
+@css				.box {
+					    position:    absolute,
+					    margin:      15px,
+					    border:      solid 5px,
+					    padding:     10px,
+					    width:       100px,
+					    height:      100px
+					}
+
+@html				<div class="box"></div>
+
+@code				$('div').outerHeight(300);
+
+@results			<div class="box" style="height: 270px;"></div>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+@example			Set the outer height inclusive margin of all div elements with class box.
+
+@css				.box {
+					    position:    absolute,
+					    margin:      15px,
+					    border:      solid 5px,
+					    padding:     10px,
+					    width:       100px,
+					    height:      100px
+					}
+
+@html				<div class="box"></div>
+
+@code				$('div').outerHeight( 300, true );
+
+@results			<div class="box" style="height: 240px;"></div>

@@ -1,0 +1,47 @@
+
+@plugin				jQuery.array
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.unsplice()              | Add an array into an array at a specified position without overwrite existing items. | method
+
+@categories			Utilities
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.unsplice( target, insert, [ index ] )
+@added				1.0
+@param				target                         | An array or array-like object to extend with values. | Array
+@param				insert                         | An array containing additional properties to add. | Array
+@param				index                          | A zero index position to insert. | Optional,Integer
+@return				Array
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.unsplice()>> is an inverted method to the native javascript <<.splice()>>.
+
+					If no index position specified, the array will insert at the end of the target array.
+					The The <<jQuery.unsplice()>> works with array-like objects also.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Insert value at a specified position in an array.
+
+@code				var target = [ 'bar', 'ba', 'banana' ];
+
+					$.unsplice( target, [ 'strawberry', 'apple' ], 2 );
+
+@results			[ 'bar', 'ba', 'strawberry', 'apple', 'banana' ]
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Insert value without specified position.
+
+@code				var target = [ 'bar', 'ba', 'banana' ];
+
+					$.unsplice( target, [ 'strawberry', 'apple' ] );
+
+@results			[ 'bar', 'ba', 'banana', 'strawberry', 'apple' ]
+
+

@@ -1,0 +1,129 @@
+
+@plugin				jQuery.ui.widget
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.Widget()                | UI widget base class. | method
+
+@categories			Internals
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				new jQuery.Widget( options, elem )
+@added				1.0
+@param				options                        | A map of options pass to the widget. | Object
+@param				elem                           | The DOM element to apply the widget. | Object
+@return				Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<jQuery.Widget()>> is the base class for UI widgets.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@entry				jQuery.widget()                      | Define a new widget. | method
+
+@categories			Internals
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@syntax				jQuery.widget( widgetname, [ superwidget ], properties )
+@added				1.0
+@param				widgetname                     | A scope name in dot natation to define the widget. | String
+@param				superwidget                    | A widget class object or an array of widget class objects. | Optional,Array,Object
+@param				properties                     | An object of methods and properties for the speciefied class. | Object
+@return				Object
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@description        The <<$.widget()>> defines a new widget.
+
+					====Widget name====
+					The widget name consists of three parts <<'jQuerySubClass.namespace.name'>>.
+					* '''jQuerySubclass''' an optional part to define the widget only for a jQuery subclass
+					* '''namespace''' a keyword like <<ui>> to structure your code
+					* '''name''' the name which will use to call the widget
+
+					====Widget class====
+					Each defined widget using <<$.widget()>> is a class object, see: <<[[api:method:jQuery.Class()|$.Class()]]>>.
+
+					Define a widget without using a jQuery subclass:
+					 $.widget('ui.mywidget',{});
+					 // same like this
+					 $.widget('jQuery.ui.mywidget',{});
+					The class object:
+					 jQuery.ui.widget
+
+					Define a widget using a jQuery subclass:
+					 $.widget('mySubclass.ui.mywidget',{});
+					The class object:
+					 mySubclass.ui.mywidget
+
+					====Widget instance storage====
+					<<$.widget()>> is using <<.data()>> / <<jQuery.data()>> to cache instances of called widgets.
+					The data name is created from the jQuerySubclass and the call name.
+
+					Define a widget without using a jQuery subclass:
+					 $.widget('ui.mywidget',{});
+					 // same like this
+					 $.widget('jQuery.ui.mywidget',{});
+					The associated data name:
+					 'mywidget'
+
+					Define a widget using a jQuery subclass:
+					 $.widget('mySubclass.ui.mywidget',{});
+					The associated data name:
+					 'mySubclass-mywidget'
+
+					====Widget pseudo selector====
+					<<$.widget()>> provides a speudo-selector for your widget automatically. The pseudo-selector is created from the jQuerySubclass,
+					the namespace and the call name.
+
+					Define a widget without using a jQuery subclass:
+					 $.widget('ui.mywidget',{});
+					 // same like this
+					 $.widget('jQuery.ui.mywidget',{});
+					The associated speudo-selector:
+					 ':ui-mywidget'
+
+					Define a widget using a jQuery subclass:
+					 $.widget('mySubclass.ui.mywidget',{});
+					The associated speudo-selector:
+					 ':mySubclass-ui-mywidget'
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@example			Define a simply widget
+
+@code				$.widget("ui.mywidget", {
+					    // default options
+					    options: {
+					        option1: "defaultValue",
+					        hidden: true
+					    },
+					    _create: function() {
+					        // creation code for mywidget
+					        // can use this.options
+					        if (this.options.hidden) {
+					            // and this.element
+					            this.element.hide(); 
+					        }
+					    },
+					    _doSomething: function() {
+					        // internal functions should be named with a leading underscore
+					        // manipulate the widget
+					    },
+					    value: function() {
+					        // calculate some value and return it
+					        return this._calculate();
+					    },
+					    length: function() {
+					        return this._someOtherValue();
+					    },
+					    destroy: function() {
+					        this.Inherited(arguments); // default destroy
+					        // now do other stuff particular to this widget
+					    }
+					});

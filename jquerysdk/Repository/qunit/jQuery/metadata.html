@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 1 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.metadata");
+
+	asyncTest("jQuery.metadata", function() {
+
+		$.ready('jQuery.metadata', function($){
+			
+			same( 
+				$('.metadata').metadata({type:'class'}),
+				{type:'A',count:2,get:'value'},
+				"$('.metadata').metadata({type:'class'})"
+			);
+			same( 
+				$('.attr').metadata({type:'attr',name:'metadata'}),
+				{type:'A',count:2,get:'value'},
+				"$('.attr').metadata({type:'attr',name:'metadata'})"
+			);
+			same( 
+				$('.elem').metadata({type:'elem',name:'var'}),
+				{type:'A',count:2,get:'value'},
+				"$('.elem').metadata({type:'elem',name:'var'})"
+			);
+			
+			start();
+		});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">
+		<div class="metadata {type:'A',count:2,get:'value'}"></div>
+		<div class="attr" metadata="{type:'A',count:2,get:'value'}"></div>
+		<div class="elem"><var>{type:'A',count:2,get:'value'}</var></div>
+	</div>
+</body>
+</html>

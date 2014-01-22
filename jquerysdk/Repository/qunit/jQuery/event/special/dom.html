@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- BEGIN: Dynamic <base> -->
+<script type="text/javascript">(function(level){document.write('<base href="'+location.href.replace( new RegExp('(?:\\/[^\\/]*){'+(level+2)+'}$',''),'/' )+'"/>' )})
+( 3 )
+</script>
+<!-- END: Dynamic <base> -->
+<title>QUnit</title>
+<!-- BEGIN: jQuery Configuration -->
+<script type="text/javascript">
+jQueryConfig = {
+	depend:{
+		jsonp:		false,
+		pluginRoot:	'script'
+	}
+}
+</script>
+<!-- END: jQuery Configuration -->
+<!-- BEGIN: Includes -->
+<link   type="text/css"       href="style/qunit/core.css" rel="stylesheet"/>
+<script type="text/javascript" src="script/jQuery/core.js"></script>
+<script type="text/javascript" src="script/qunit/core.js"></script>
+<!-- END: Includes -->
+<!-- BEGIN: Test case -->
+<script type="text/javascript">
+(function($){
+
+	module("jQuery.event.special.dom");
+
+	asyncTest("jQuery.event.special.dom", function() {
+
+		$.ready( 'jQuery.event.special.dom', function($){
+
+			var t = {
+					emchange:	0,
+					resize:		0,
+					show:		0,
+					hide:		0,
+					toggle:		0
+				},
+				emchange = $('.emchange')
+					.on( 'emchange', function( event ){
+						t.emchange += 1;
+					}),
+				resize = $('.resize')
+					.on( 'resize', function( event ){
+						t.resize += 1;
+					}),
+				show = $('.show')
+					.hide()
+					.on( 'show', function( event ){
+						t.show += 1;
+					}),
+				hide = $('.hide')
+					.on( 'hide', function( event ){
+						t.hide += 1;
+					}),
+				toggle = $('.toggle')
+					.on( 'toggle', function( event ){
+						t.toggle += 1;
+					});
+			
+			setTimeout(function(){
+			
+				$('html').css('font-size','8px');
+				
+				resize.width(200);
+				
+				show.show();
+				
+				hide.hide();
+				
+				toggle.hide();
+				
+    		},100);
+			
+			setTimeout(function(){
+			
+				$('html').css('font-size','10px');
+				
+				resize.width(300);
+				
+				show.hide();
+				
+				hide.show();
+				
+				toggle.show();
+				
+    		},200);
+			
+			setTimeout(function(){
+				
+				equals(
+					t.emchange,
+					2,
+					".on('emchange')"
+				);
+				
+				equals(
+					t.resize,
+					2,
+					".on('resize')"
+				);
+				
+				equals(
+					t.show,
+					1,
+					".on('show')"
+				);
+				
+				equals(
+					t.hide,
+					1,
+					".on('hide')"
+				);
+				
+				equals(
+					t.toggle,
+					2,
+					".on('toggle')"
+				);
+			
+				$('#_qunit-fixture *').off();
+			
+				start();
+				
+    		},300);
+    	
+    	});
+
+	});
+
+})(jQuery);
+</script>
+<!-- END: Test case -->
+</head>
+<body>
+	<h1 id="qunit-header">QUnit</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="_qunit-fixture">
+		<div class="emchange"></div>
+		<div class="resize"></div>
+		<div class="show"></div>
+		<div class="hide"></div>
+		<div class="toggle"></div>
+	</div>
+</body>
+</html>
