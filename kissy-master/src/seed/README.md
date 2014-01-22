@@ -1,2 +1,0 @@
-# KISSY Seed for Bootstrap
-
